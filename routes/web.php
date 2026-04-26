@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SkillController; // Don't forget this at the top of the file!
 use App\Models\Skill; // Don't forget this at the top of the file!
 
 Route::get('/', function () {
@@ -8,9 +9,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/about', function () {
-    return view('about', [
-        'user_name' => 'Dleiszar',
-        'skills' => Skill::all() // This pulls EVERY skill from your MySQL table
-    ]);
-});
+Route::get('/about', [SkillController::class, 'index']);
