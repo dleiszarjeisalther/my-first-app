@@ -4,6 +4,11 @@
     <title>About Me</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+@if(session('success'))
+    <div class="p-3 mb-3 text-green-800 bg-green-100 rounded">
+        {{ session('success') }}
+    </div>
+@endif
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-red-500">
         <h1 class="text-3xl font-bold text-gray-800">Hello, {{ $user_name }}!</h1>
@@ -16,7 +21,7 @@
         @foreach($skills as $skill)
         <li class="bg-red-50 text-red-700 px-4 py-2 rounded-md border border-red-100 flex justify-between">
             <span>🚀 {{ $skill->name }}</span>
-            
+
             <span class="font-bold text-red-400">{{ $skill->percent }}%</span>
         </li>
     @endforeach
