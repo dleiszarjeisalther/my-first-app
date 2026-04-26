@@ -19,12 +19,20 @@
     <h2 class="mt-6 font-semibold text-gray-800">My 15-Day Sprint Skills:</h2>
     <ul class="mt-2 space-y-2">
         @foreach($skills as $skill)
-        <li class="bg-red-50 text-red-700 px-4 py-2 rounded-md border border-red-100 flex justify-between">
-            <span>🚀 {{ $skill->name }}</span>
+    <li class="flex justify-between items-center bg-white p-4 mb-2 shadow rounded">
+        <span>🚀 {{ $skill->name }} ({{ $skill->percent }}%)</span>
 
-            <span class="font-bold text-red-400">{{ $skill->percent }}%</span>
-        </li>
-    @endforeach
+        <div class="flex space-x-2">
+            <a href="/skills/{{ $skill->id }}/edit" class="text-blue-500 text-sm">Edit</a>
+
+            <form action="/skills/{{ $skill->id }}" method="POST" onsubmit="return confirm('Really delete?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-500 text-sm">Delete</button>
+            </form>
+        </div>
+    </li>
+@endforeach
     </ul>
 </body>
 </html>

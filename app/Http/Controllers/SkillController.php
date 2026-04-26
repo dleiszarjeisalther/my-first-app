@@ -37,4 +37,34 @@ class SkillController extends Controller
         // 3. Go back to the list with a "Success" message
         return redirect('/about')->with('success', 'Skill added successfully!');
     }
+
+    public function edit($id)
+    {
+        // Find the specific skill or fail with a 404 error
+        $skill = Skill::findOrFail($id);
+
+        return view('skills.edit', compact('skill'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $skill = Skill::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|min:3',
+            'percent' => 'required|integer|min:0|max:100',
+        ]);
+
+        $skill->update($validated);
+
+        return redirect('/about')->with('success', 'Skill updated!');
+    }
+
+    public function destroy($id)
+    {
+        $skill = Skill::findOrFail($id);
+        $skill->delete();
+
+        return redirect('/about')->with('success', 'Skill removed.');
+    }
 }
