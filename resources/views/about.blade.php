@@ -14,10 +14,12 @@
     <h2 class="mt-6 font-semibold text-gray-800">My 15-Day Sprint Skills:</h2>
     <ul class="mt-2 space-y-2">
         @foreach($skills as $skill)
-            <li class="bg-red-50 text-red-700 px-4 py-2 rounded-md border border-red-100">
-                🚀 {{ $skill }}
-            </li>
-        @endforeach
+        <li class="bg-red-50 text-red-700 px-4 py-2 rounded-md border border-red-100 flex justify-between">
+            <span>🚀 {{ $skill->name }}</span>
+            
+            <span class="font-bold text-red-400">{{ $skill->percent }}%</span>
+        </li>
+    @endforeach
     </ul>
 </body>
 </html>
