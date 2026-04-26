@@ -7,10 +7,14 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    $name = 'Dleiszar'; // Imagine this came from a database later
-    $email = 'example@gmail.com';
     return view('about', [
-        'user_name' => $name,
-        'user_email' => $email,
+        'user_name' => 'Dleiszar',
+        'skills' => [
+            'Laravel Herd',
+            'Laravel 13',
+            'Git',
+            'MySQL',
+            'Tailwind CSS'
+        ]
     ]);
 });
