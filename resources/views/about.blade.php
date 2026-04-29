@@ -1,38 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>About Me</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-@if(session('success'))
-    <div class="p-3 mb-3 text-green-800 bg-green-100 rounded">
-        {{ session('success') }}
-    </div>
-@endif
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-red-500">
-        <h1 class="text-3xl font-bold text-gray-800">Hello, {{ $user_name }}!</h1>
-        <p class="mt-4 text-gray-600">This page is being served by a Blade template.</p>
-        <a href="/" class="mt-6 inline-block text-red-500 hover:underline">← Back to Home</a>
-    </div>
+@extends('layouts.app')
 
-    <h2 class="mt-6 font-semibold text-gray-800">My 15-Day Sprint Skills:</h2>
+@section('content')
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Hello, {{ $user_name }}!</h1>
+
+    @if(session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <ul class="mt-2 space-y-2">
         @foreach($skills as $skill)
-    <li class="flex justify-between items-center bg-white p-4 mb-2 shadow rounded">
-        <span>🚀 {{ $skill->name }} ({{ $skill->percent }}%)</span>
+            <li class="flex justify-between items-center bg-white p-4 shadow rounded border-l-4 border-red-500">
+                <div>
+                    <span class="font-bold text-gray-800">🚀 {{ $skill->name }}</span>
+                    <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full uppercase">
+                        {{ $skill->category->name }}
+                    </span>
+                </div>
 
-        <div class="flex space-x-2">
-            <a href="/skills/{{ $skill->id }}/edit" class="text-blue-500 text-sm">Edit</a>
-
-            <form action="/skills/{{ $skill->id }}" method="POST" onsubmit="return confirm('Really delete?')">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-red-500 text-sm">Delete</button>
-            </form>
-        </div>
-    </li>
-@endforeach
+                <div class="flex items-center space-x-4">
+                    <span class="font-bold text-red-500">{{ $skill->percent }}%</span>
+                    <a href="/skills/{{ $skill->id }}/edit" class="text-blue-500 hover:underline">Edit</a>
+                </div>
+            </li>
+        @endforeach
     </ul>
-</body>
-</html>
+@endsection
