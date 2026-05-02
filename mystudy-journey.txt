@@ -1,0 +1,263 @@
+1. Move to the Workshop
+PowerShell
+cd ~\Herd
+
+2. Build the Application
+PowerShell
+laravel new my-first-app
+
+3. The Interview (Installer Questions)
+summary {
+	Starter Kit: Choose "No starter kit".
+	Testing Framework: Choose "Pest".
+	Initialize Git: Choose "Yes".
+	Database: Choose "MySQL".
+        }
+--Which starter kit would you like to install?
+Select "No starter kit".
+Why? We want to see the "bare bones" first so you understand where the files live before we use "magic" tools like Breeze or Jetstream.
+--Which testing framework do you prefer?
+Select "Pest".
+Why? It’s the modern standard for Laravel. It makes testing your code feel like writing a sentence.
+--Initialize a Git repository?
+Select "Yes".
+--Why? This automatically runs git init for you, so your "Time Machine" is ready from second one.
+--Which database would you like to use?
+Select "MySQL".
+Why? We have DBngin running specifically for this.
+
+
+
+=====================================================
+=====================================================
+1. Move into your project folder:
+PowerShell
+cd my-first-app
+
+2. Open folder to an ide
+C:\Users\universal\Herd\my-first-app
+
+=====================================================================
+=====================================================================
+1. Initialize the repo:
+PowerShell
+git init
+2. Stage all your files:
+git add .
+3. Create your first "Save Point":
+git commit -m "Initial commit: Fresh Laravel 13 installation"
+4. git status
+
+====================================================
+====================================================
+Database migration 
+Step 1: Create the Blueprint
+PowerShell
+php artisan make:migration create_skills_table
+Step 3: Run the Migration
+PowerShell
+php artisan migrate
+Step 4: The Bridge (The Model)
+PowerShell
+php artisan make:model Skill
+
+
+
+====================================================
+====================================================
+Pro-Tip: The Config Cache
+If you ever change your .env file and Laravel doesn't seem to notice, it's because the "engine" has memorized (cached) the old settings. If things feel "stuck," run this command to clear the memory:
+Senior Tip: Browsers only understand GET and POST. To use PATCH or DELETE, Laravel uses Method Spoofing via the @method() tag. It tells the engine, "I know the browser says POST, but please treat this as a PATCH request."
+
+
+Step 4: The Model (The Translator)
+PowerShell
+php artisan make:model Skill
+
+Artisan Tinker (the developer's playground).
+php artisan tinker
+
+App\Models\Skill::create(['name' => 'Laravel 13', 'percent' => 85]);
+App\Models\Skill::create(['name' => 'MySQL Mastery', 'percent' => 90]);
+Model::all() // get all data
+
+redirect return return redirect('/about')->with('success', 'Skill added successfully!');
+@if(session('success'))
+    <div class="p-3 mb-3 text-green-800 bg-green-100 rounded">
+        {{ session('success') }}
+    </div>
+@endif
+
+error validation 
+@if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+====================================================
+====================================================
+Step 1: Create the Controller
+PowerShell
+php artisan make:controller SkillController
+
+
+
+
+
+
+
+Step 2: The Magic Tag—@yield
+Notice the @yield('content') tag. This is a placeholder. It tells Laravel: "Wait here. A child page is going to come along and inject its specific HTML into this spot."
+
+
+=====================================================
+Step 1: Create the Category Model & Migration
+PowerShell
+php artisan make:model Category -m
+(The -m flag is a shortcut that creates the migration file at the same time. Efficiency is key!)
+
+Step 3: Connect the Skills (The "Foreign Key")
+We need to tell the skills table which category it belongs to. We do this by adding a category_id column.
+Create a new migration to update the existing table:
+PowerShell
+php artisan make:migration add_category_id_to_skills_table
+
+
+Step 4: Run the Migration
+Since we are adding a required column to a table that already has data, the easiest thing for a local dev environment is to "refresh" the whole warehouse.
+Warning: This will delete your current skills, but it's the cleanest way to restructure.
+PowerShell
+php artisan migrate:fresh
+
+
+
+
+
+
+
+
+
+
+=====================================================
+=====================================================
+Day 9: The Security Guard (Authentication & Middleware)
+Right now, your app is a "Free-for-All." Anyone can go to /skills/create and add a skill to your database. In a real-world app, you need a Front Door.
+
+Today, we are going to install Laravel Breeze. It is the industry-standard "Starter Kit" that gives you a professional Login, Registration, Password Reset, and Profile Management system in about 30 seconds.
+Powershell
+composer require laravel/breeze --dev
+
+Step 2: The Installation Wizard
+Now we tell Breeze to set itself up. We want the "Blade" version (since that’s what we’ve been learning).
+Powershell 
+php artisan breeze:install
+Follow these prompts exactly:
+Which stack would you like to install? → Select Blade.
+Would you like dark mode support? → Type no (unless you really want it, but let's keep it simple for now).
+Which testing framework do you prefer? → Just hit Enter for PHPUnit.
+
+Step 3: The Asset Build
+Breeze generates a lot of CSS using Tailwind. We need to "compile" it so it looks pretty.
+Install the JS dependencies:
+PowerShell
+npm install
+
+Build the assets:
+PowerShell
+npm run build
+
+=====================================================
+=====================================================
+Day 10: Understanding Layouts, Components & Authentication
+
+Step 1: Layouts & Components (The Building Blocks)
+When we installed Breeze, it introduced a new way to structure our views using "Blade Components."
+
+1. What is a Layout?
+Think of a Layout as the "frame" of your house. It contains the parts of your website that remain the same on every single page, like the:
+- `<head>` section (loading CSS and JS)
+- Navigation bar (the menu at the top)
+- The main background
+
+2. What is a Component?
+A component is a reusable piece of UI. Instead of writing the same HTML over and over, you write it once and use it everywhere. 
+In modern Laravel, we use components instead of the old `@extends` and `@section` method.
+
+Example of how it works:
+When you see `<x-app-layout>` in your code (like in `about.blade.php`), you are telling Laravel: 
+"Hey, wrap this entire page inside the `resources/views/layouts/app.blade.php` component."
+
+The Layout file (`app.blade.php`) has a special variable called `{{ $slot }}`. 
+Whatever you put inside the `<x-app-layout>` tags on your page will be automatically injected into that `{{ $slot }}` in the layout!
+
+It also has named slots. For example, `<x-slot name="header">` injects its contents specifically into the `{{ $header }}` variable in the layout file.
+
+Step 2: How Authentication Works (The Bouncer)
+Authentication is how your application verifies who a user is. Breeze gives us the full system out of the box.
+
+1. The Routes (The Front Door):
+When you installed Breeze, it added `require __DIR__.'/auth.php';` to your `routes/web.php`. This file contains all the routes for login, registration, password reset, etc.
+
+2. The Controllers (The Brains):
+When a user goes to `/login` and submits their email and password, the request goes to the `AuthenticatedSessionController`. 
+This controller checks if the credentials match what is in the `users` table in your database. 
+
+3. Middleware (The Bouncer):
+How do we protect pages (like creating a new skill) so that only logged-in users can see them? We use "Middleware."
+Middleware sits between the incoming request and your application.
+
+If you add `->middleware('auth')` to a route in `routes/web.php`:
+- The user tries to go to `/skills/create`
+- The 'auth' middleware intercepts them.
+- It checks: "Is this user logged in?"
+- If YES: It lets them through to the page.
+- If NO: It kicks them back to the `/login` page automatically.
+
+To protect your routes, you would do something like this in `web.php`:
+`Route::resource('skills', SkillController::class)->middleware('auth');`
+
+=====================================================
+=====================================================
+Day 11: Handling File Uploads
+
+Uploading files (like images) in Laravel involves a few key steps. It's not just about saving data to the database; it's about physically storing a file on your server and making it accessible to the public.
+
+Step 1: The Form (enctype="multipart/form-data")
+If your HTML form contains an `<input type="file">`, you MUST add `enctype="multipart/form-data"` to the `<form>` tag.
+Without this, the browser will only send the name of the file as text, not the actual file data.
+
+Example:
+`<form action="/skills" method="POST" enctype="multipart/form-data">`
+
+Step 2: The Controller (Storing the File)
+In your Controller, you receive the file through the `$request`. You use the `store()` method to save it.
+
+Example:
+```php
+if ($request->hasFile('image')) {
+    // This saves the file in storage/app/public/skills
+    // and returns the path (e.g., "skills/xyz123.jpg")
+    $path = $request->file('image')->store('skills', 'public');
+    
+    // You then save this $path to your database
+}
+```
+
+Step 3: The Storage Link (Making it Public)
+By default, Laravel saves files in the `storage/app/public` directory. However, browsers can only access files inside the `public/` directory of your project.
+
+To fix this, Laravel provides a command that creates a "shortcut" (a symbolic link) from your `public/storage` folder directly to `storage/app/public`.
+
+Run this in your terminal:
+`php artisan storage:link`
+
+Step 4: Displaying the Image (The asset() helper)
+Now that your file is stored and publicly accessible, you can display it in your Blade files using the `asset()` helper function.
+
+Example:
+`<img src="{{ asset('storage/' . $skill->image) }}" />`
+This generates a full URL like: `http://your-app.test/storage/skills/xyz123.jpg`

@@ -1,42 +1,45 @@
-﻿{{--
+{{--
     ============================================================
-    LAYOUT: layouts/app.blade.php  →  used as x-layouts.app
-    SOURCE : Laravel Breeze (auto-generated)
-    FILE   : resources/views/layouts/app.blade.php
+    LAYOUT: components/layouts/capp.blade.php  →  <x-layouts.capp>
+    SOURCE : Custom (hand-crafted, not from Breeze)
+    FILE   : resources/views/components/layouts/capp.blade.php
 
     WHAT IT IS:
-        The main full-page layout for AUTHENTICATED users.
-        Includes the top navigation bar and a header slot.
-        All protected pages (dashboard, profile, etc.) use this.
+        A custom version of the standard app layout (x-layouts.app).
+        The "c" prefix stands for "custom" — it's identical in
+        structure but uses cnavigation.blade.php as the navbar,
+        so you can customise the two independently without
+        touching the Breeze-generated originals.
 
     SLOTS:
-        $header  — (optional) The page heading bar shown below
-                   the navbar. Wrap your <h2> title here.
-        $slot    — (required) Main page content.
+        $header  — (optional) White banner below the navbar with your page title.
+        $slot    — (required) The main page content.
 
     HOW TO USE:
-        <x-layouts.app>
+        <x-layouts.capp>
             <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Dashboard
+                    My Page Title
                 </h2>
             </x-slot>
 
-            <!-- Your page content goes here -->
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    Hello World
+                    {{-- page content here --}}
                 </div>
             </div>
-        </x-layouts.app>
+        </x-layouts.capp>
+
+    ROUTE EXAMPLE (in routes/web.php):
+        Route::view('/cdashboard', 'cdashboard')->name('cdashboard');
 
     INCLUDES:
-        @include('layouts.navigation')
-        → Pulls in the top nav bar with logo, links, and user dropdown.
+        @include('layouts.cnavigation')
+        → Uses the custom nav bar (layouts/cnavigation.blade.php).
 
-    RELATED FILES:
-        layouts/navigation.blade.php  — the navbar partial
-        components/layouts/capp.blade.php — custom c-prefixed version
+    COMPARED TO x-layouts.app:
+        Identical structure — only uses cnavigation instead of navigation.
+        Customise cnavigation without affecting the Breeze original.
     ============================================================
 --}}
 <!DOCTYPE html>
@@ -57,17 +60,17 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            <!-- Top navigation bar (logo + links + user dropdown) -->
-            @include('layouts.navigation')
+            {{-- Custom navigation bar — edit layouts/cnavigation.blade.php to add links --}}
+            @include('layouts.cnavigation')
 
             <!-- Page Heading — only rendered if $header slot is provided -->
-            @isset($header)
+            @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
-            @endisset
+            @endif
 
             <!-- Main page content — goes into $slot -->
             <main>
