@@ -13,7 +13,7 @@ class SkillController extends Controller
         // "with('category')" tells Laravel to fetch all categories in ONE query
         $skills = Skill::with('category')->get();
 
-        return view('about', [
+        return view('skills.skills', [
             'user_name' => 'Dleiszar',
             'skills' => $skills
         ]);

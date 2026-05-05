@@ -1,4 +1,4 @@
-﻿{{--
+{{--
     ============================================================
     PARTIAL: layouts/navigation.blade.php
     SOURCE : Laravel Breeze (auto-generated)
@@ -54,6 +54,10 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav.nav-link>
+
+                    <x-nav.nav-link :href="route('skills.index')" :active="request()->routeIs('skills')">
+                        {{ __('Skills') }}
                     </x-nav.nav-link>
                     <!-- Add more desktop links here -->
                 </div>
