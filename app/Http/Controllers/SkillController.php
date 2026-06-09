@@ -13,7 +13,7 @@ class SkillController extends Controller
         // "with('category')" tells Laravel to fetch all categories in ONE query
         $skills = Skill::with('category')->get();
 
-        return view('skills.skills', [
+        return view('skills.index', [
             'user_name' => 'Dleiszar',
             'skills' => $skills
         ]);
@@ -37,10 +37,10 @@ class SkillController extends Controller
 
         Skill::create($validated);
 
-        return redirect('/about')->with('success', 'Skill categorized and saved!');
+        return redirect('/skills')->with('success', 'Skill categorized and saved!');
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
         // Find the specific skill or fail with a 404 error
         $skill = Skill::findOrFail($id);
@@ -48,7 +48,7 @@ class SkillController extends Controller
         return view('skills.edit', compact('skill', 'categoriesopt'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
         $skill = Skill::findOrFail($id);
 
@@ -60,14 +60,14 @@ class SkillController extends Controller
 
         $skill->update($validated);
 
-        return redirect('/about')->with('success', 'Skill updated!');
+        return redirect('/skills')->with('success', 'Skill updated!');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $skill = Skill::findOrFail($id);
         $skill->delete();
 
-        return redirect('/about')->with('success', 'Skill removed.');
+        return redirect('/skills')->with('success', 'Skill removed.');
     }
 }

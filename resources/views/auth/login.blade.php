@@ -1,4 +1,4 @@
-﻿<x-guest-layout>
+<x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -16,8 +16,7 @@
         <div class="mt-4">
             <x-forms.input-label for="password" :value="__('Password')" />
 
-            <x-forms.text-input id="password" class="block mt-1 w-full"
-                            type="password"
+            <x-forms.password-input id="password" class="block mt-1 w-full"
                             name="password"
                             required autocomplete="current-password" />
 

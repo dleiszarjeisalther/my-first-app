@@ -12,13 +12,13 @@
         $slot  — The button label text.
 
     HOW TO USE:
-        <x-buttons.primary-button>Save Changes</x-buttons.primary-button>
+        [x-buttons.primary-button>Save Changes[/x-buttons.primary-button>
 
         Override type (default is "submit"):
-        <x-buttons.primary-button type="button">Click Me</x-buttons.primary-button>
+        [x-buttons.primary-button type="button">Click Me[/x-buttons.primary-button>
 
         Add extra classes via $attributes:
-        <x-buttons.primary-button class="w-full">Log In</x-buttons.primary-button>
+        [x-buttons.primary-button class="w-full">Log In[/x-buttons.primary-button>
 
     STYLE:
         Dark gray background (bg-gray-800), white text, rounded,

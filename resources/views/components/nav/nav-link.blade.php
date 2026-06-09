@@ -17,13 +17,13 @@
     HOW TO USE:
         Used inside layouts/navigation.blade.php nav bar:
 
-        <x-nav.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        [x-nav.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             Dashboard
-        </x-nav.nav-link>
+        [/x-nav.nav-link>
 
-        <x-nav.nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
+        [x-nav.nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
             Skills
-        </x-nav.nav-link>
+        [/x-nav.nav-link>
 
     NOTE:
         This is the DESKTOP link (hidden on mobile).

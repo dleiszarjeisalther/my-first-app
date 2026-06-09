@@ -16,7 +16,7 @@
     HOW TO USE:
         Typically placed at the top of a login/auth form:
 
-        <x-auth-session-status :status="session('status')" />
+        [x-auth-session-status :status="session('status')" />
 
     REAL EXAMPLE (in auth/login.blade.php):
         session('status') returns "Password reset link sent!"
@@ -26,7 +26,7 @@
         You can pass extra classes via $attributes to override
         or extend the default green styling:
 
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        [x-auth-session-status class="mb-4" :status="session('status')" />
     ============================================================
 --}}
 @props(['status'])

@@ -1,6 +1,6 @@
 {{--
     ============================================================
-    LAYOUT: components/layouts/capp.blade.php  →  <x-layouts.capp>
+    LAYOUT: components/layouts/capp.blade.php  →  [x-layouts.capp>
     SOURCE : Custom (hand-crafted, not from Breeze)
     FILE   : resources/views/components/layouts/capp.blade.php
 
@@ -16,12 +16,12 @@
         $slot    — (required) The main page content.
 
     HOW TO USE:
-        <x-layouts.capp>
-            <x-slot name="header">
+        [x-layouts.capp>
+            [x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     My Page Title
                 </h2>
-            </x-slot>
+            [/x-slot>
 
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

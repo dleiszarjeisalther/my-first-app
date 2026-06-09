@@ -1,4 +1,27 @@
 
+{{--
+    ============================================================
+    VIEW: skills/index.blade.php
+    WHAT IT IS:
+        The dashboard/listing page for the "Skills" resource.
+        Shows a list of all skills owned by the current user.
+
+    DATA:
+        $skills    — Collection of Skill models.
+        $user_name — The name of the authenticated user.
+
+    HOW IT WORKS:
+        - Loops over $skills using @foreach.
+        - Displays progress percentage and category for each.
+        - Provides "Edit" (GET) and "Delete" (DELETE) actions.
+
+    HOW TO CUSTOMIZE:
+        1. Layout: Modify the <li> container for card styling.
+        2. Logic: The delete action uses a standard HTML form
+           with @method('DELETE') since browsers only support GET/POST.
+    ============================================================
+--}}
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

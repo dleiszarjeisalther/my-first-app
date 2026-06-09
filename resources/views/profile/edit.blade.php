@@ -1,3 +1,26 @@
+{{--
+    ============================================================
+    VIEW: profile/edit.blade.php
+    WHAT IT IS:
+        The profile management page where users can update their
+        info, change password, or delete their account.
+
+    HOW IT WORKS:
+        - Uses <x-app-layout> for the main structure.
+        - Splits the page into separate sections via @include.
+        - Each section is a "partial" found in profile/partials/.
+
+    DATA FLOW:
+        - The ProfileController passes the $user object implicitly.
+        - Partial files receive this data and handle their own forms.
+
+    STRUCTURE:
+        1. Profile Info Form
+        2. Password Update Form
+        3. Delete Account Form
+    ============================================================
+--}}
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

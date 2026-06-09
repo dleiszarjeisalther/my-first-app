@@ -12,8 +12,8 @@
         Pass any HTML attributes (class, style, etc.) directly.
         It forwards them via $attributes.
 
-        <x-application-logo class="h-9 w-auto fill-current text-gray-800" />
-        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+        [x-application-logo class="h-9 w-auto fill-current text-gray-800" />
+        [x-application-logo class="w-20 h-20 fill-current text-gray-500" />
 
     TIP:
         Replace the SVG path inside with your own logo SVG if

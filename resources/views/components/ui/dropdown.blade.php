@@ -16,19 +16,19 @@
 
     SLOTS:
         $trigger  — The clickable element that opens the dropdown (button, avatar, etc.)
-        $content  — The dropdown panel contents (use <x-ui.dropdown-link> items here)
+        $content  — The dropdown panel contents (use [x-ui.dropdown-link> items here)
 
     HOW TO USE:
-        <x-ui.dropdown align="right" width="48">
-            <x-slot name="trigger">
+        [x-ui.dropdown align="right" width="48">
+            [x-slot name="trigger">
                 <button>My Account ▾</button>
-            </x-slot>
+            [/x-slot>
 
-            <x-slot name="content">
-                <x-ui.dropdown-link :href="route('profile.edit')">Profile</x-ui.dropdown-link>
-                <x-ui.dropdown-link href="/settings">Settings</x-ui.dropdown-link>
-            </x-slot>
-        </x-ui.dropdown>
+            [x-slot name="content">
+                [x-ui.dropdown-link :href="route('profile.edit')">Profile[/x-ui.dropdown-link>
+                [x-ui.dropdown-link href="/settings">Settings[/x-ui.dropdown-link>
+            [/x-slot>
+        [/x-ui.dropdown>
 
     HOW IT WORKS:
         Uses Alpine.js x-data="{ open: false }".

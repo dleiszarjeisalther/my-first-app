@@ -1,7 +1,7 @@
 {{--
     ============================================================
     LAYOUT: components/layouts/csidebar-layout.blade.php
-            →  <x-layouts.csidebar-layout>
+            →  [x-layouts.csidebar-layout>
     SOURCE : Custom (hand-crafted)
     FILE   : resources/views/components/layouts/csidebar-layout.blade.php
 
@@ -21,7 +21,7 @@
         $slot     — (required) The main page content area.
 
     HOW TO USE:
-        <x-layouts.csidebar-layout>
+        [x-layouts.csidebar-layout>
 
             {{-- Sidebar navigation links --}}
             <x-slot name="sidebar">

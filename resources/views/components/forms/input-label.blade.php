@@ -14,16 +14,16 @@
 
     HOW TO USE:
         Prop-based (recommended — matches the `for` attribute):
-        <x-forms.input-label for="email" value="Email Address" />
+        [x-forms.input-label for="email" value="Email Address" />
 
         Slot-based (also works):
-        <x-forms.input-label for="email">Email Address</x-forms.input-label>
+        [x-forms.input-label for="email">Email Address[/x-forms.input-label>
 
     FULL FORM GROUP EXAMPLE:
         <div>
-            <x-forms.input-label for="name" value="Full Name" />
-            <x-forms.text-input id="name" type="text" name="name" class="mt-1 block w-full" />
-            <x-forms.input-error :messages="$errors->get('name')" class="mt-2" />
+            [x-forms.input-label for="name" value="Full Name" />
+            [x-forms.text-input id="name" type="text" name="name" class="mt-1 block w-full" />
+            [x-forms.input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
     TIP:

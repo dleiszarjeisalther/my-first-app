@@ -6,23 +6,23 @@
 
     WHAT IT IS:
         A styled <a> link item designed to sit INSIDE a
-        <x-ui.dropdown> content slot. It renders a full-width,
+        [x-ui.dropdown> content slot. It renders a full-width,
         hoverable menu row.
 
     HOW TO USE:
         Always place it inside the "content" slot of x-ui.dropdown:
 
-        <x-ui.dropdown>
-            <x-slot name="content">
-                <x-ui.dropdown-link :href="route('profile.edit')">
+        [x-ui.dropdown>
+            [x-slot name="content">
+                [x-ui.dropdown-link :href="route('profile.edit')">
                     Profile
-                </x-ui.dropdown-link>
+                [/x-ui.dropdown-link>
 
-                <x-ui.dropdown-link href="/settings">
+                [x-ui.dropdown-link href="/settings">
                     Settings
-                </x-ui.dropdown-link>
-            </x-slot>
-        </x-ui.dropdown>
+                [/x-ui.dropdown-link>
+            [/x-slot>
+        [/x-ui.dropdown>
 
     TIP:
         To make a POST link (like Logout), wrap it in a form
@@ -30,10 +30,10 @@
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <x-ui.dropdown-link href="{{ route('logout') }}"
+            [x-ui.dropdown-link href="{{ route('logout') }}"
                 onclick="event.preventDefault(); this.closest('form').submit();">
                 Log Out
-            </x-ui.dropdown-link>
+            [/x-ui.dropdown-link>
         </form>
     ============================================================
 --}}

@@ -18,13 +18,13 @@
     HOW TO USE:
         Used inside the responsive section of layouts/navigation.blade.php:
 
-        <x-nav.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        [x-nav.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             Dashboard
-        </x-nav.responsive-nav-link>
+        [/x-nav.responsive-nav-link>
 
-        <x-nav.responsive-nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
+        [x-nav.responsive-nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
             Skills
-        </x-nav.responsive-nav-link>
+        [/x-nav.responsive-nav-link>
 
     NOTE:
         This is the MOBILE link (only visible on sm: and below).

@@ -12,12 +12,12 @@
         $slot  — The button label text.
 
     HOW TO USE:
-        <x-buttons.secondary-button>Cancel</x-buttons.secondary-button>
+        [x-buttons.secondary-button>Cancel[/x-buttons.secondary-button>
 
         Note: default type is "button" (not "submit"), so it
         won't accidentally submit a form.
 
-        <x-buttons.secondary-button @click="open = false">Close</x-buttons.secondary-button>
+        [x-buttons.secondary-button @click="open = false">Close[/x-buttons.secondary-button>
 
     STYLE:
         White background with a gray border. Hover → bg-gray-50.

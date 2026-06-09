@@ -17,9 +17,9 @@
     HOW TO USE:
         Place it after the corresponding x-forms.text-input:
 
-        <x-forms.input-label for="email" value="Email" />
-        <x-forms.text-input id="email" name="email" type="email" />
-        <x-forms.input-error :messages="$errors->get('email')" class="mt-2" />
+        [x-forms.input-label for="email" value="Email" />
+        [x-forms.text-input id="email" name="email" type="email" />
+        [x-forms.input-error :messages="$errors->get('email')" class="mt-2" />
 
     HOW IT WORKS:
         Laravel's validation puts errors into the $errors
