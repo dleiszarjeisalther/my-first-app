@@ -15,6 +15,7 @@ class Skill extends Model
         'name',
         'percent',
         'category_id',
+        'user_id',
     ];
 
     public function category()

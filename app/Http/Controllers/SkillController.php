@@ -2,72 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSkillRequest;
+use App\Http\Requests\UpdateSkillRequest;
 use App\Models\Category;
-use App\Models\Skill; // Don't forget to import your Model!
-use Illuminate\Http\Request;
+use App\Models\Skill;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
 
-class SkillController extends Controller
+class SkillController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('throttle:skill-store', only: ['store']),
+            new Middleware('throttle:skill-update', only: ['update']),
+            new Middleware('throttle:skill-destroy', only: ['destroy']),
+            new Middleware('can:update,skill', only: ['edit', 'update']),
+            new Middleware('can:delete,skill', only: ['destroy']),
+        ];
+    }
+
     public function index()
     {
-        // "with('category')" tells Laravel to fetch all categories in ONE query
-        $skills = Skill::with('category')->get();
+        $skills = Skill::with('category')->where('user_id', Auth::id())->get();
 
         return view('skills.index', [
-            'user_name' => 'Dleiszar',
-            'skills' => $skills
+            'user_name' => Auth::user()->name,
+            'skills' => $skills,
         ]);
     }
 
     public function create()
     {
-        // 2. Fetch all categories so the user can choose one in a dropdown
         $categories = Category::all();
+
         return view('skills.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StoreSkillRequest $request)
     {
-        // 3. Update validation to ensure a category_id is selected and exists in the DB
-        $validated = $request->validate([
-            'name' => 'required|min:3',
-            'percent' => 'required|integer|min:0|max:100',
-            'category_id' => 'required|exists:categories,id',
-        ]);
+        $validated = $request->validated();
+
+        $validated['user_id'] = Auth::id();
 
         Skill::create($validated);
 
-        return redirect('/skills')->with('success', 'Skill categorized and saved!');
+        return redirect()->route('skills.index')->with('success', 'Skill categorized and saved!');
     }
 
-    public function edit(string $id)
+    public function edit(Skill $skill)
     {
-        // Find the specific skill or fail with a 404 error
-        $skill = Skill::findOrFail($id);
         $categoriesopt = Category::all();
+
         return view('skills.edit', compact('skill', 'categoriesopt'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateSkillRequest $request, Skill $skill)
     {
-        $skill = Skill::findOrFail($id);
-
-        $validated = $request->validate([
-            'name' => 'required|min:3',
-            'percent' => 'required|integer|min:0|max:100',
-            'category_id' => 'required|exists:categories,id',
-        ]);
+        $validated = $request->validated();
 
         $skill->update($validated);
 
-        return redirect('/skills')->with('success', 'Skill updated!');
+        return redirect()->route('skills.index')->with('success', 'Skill updated!');
     }
 
-    public function destroy(string $id)
+    public function destroy(Skill $skill)
     {
-        $skill = Skill::findOrFail($id);
         $skill->delete();
 
-        return redirect('/skills')->with('success', 'Skill removed.');
+        return redirect()->route('skills.index')->with('success', 'Skill removed.');
     }
 }

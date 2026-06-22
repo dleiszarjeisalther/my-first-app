@@ -33,7 +33,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="max-w-md mx-auto bg-white p-8 rounded shadow">
                 <h1 class="text-2xl font-bold mb-6">Add a New Skill</h1>
-                
+
                 @if ($errors->any())
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                         <ul>
@@ -44,7 +44,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('skills.store') }}" method="POST">
+                <x-form.prevent-double-submit :action="route('skills.store')">
                     @csrf
                     <div class="mb-4">
                         <label class="block text-gray-700">Skill Name</label>
@@ -55,18 +55,24 @@
                         <input type="number" name="percent" value="{{ old('percent') }}" class="w-full border p-2 rounded" placeholder="e.g. 85" required>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Category</label>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-gray-700 font-bold">Category</label>
+                            <a href="{{ route('category.create') }}" class="inline-flex items-center px-2 py-1 bg-indigo-600 border border-transparent rounded-md font-semibold text-[10px] text-white uppercase tracking-widest hover:bg-indigo-500">
+                                + Create Category
+                            </a>
+                        </div>
                         <select name="category_id" class="w-full border p-2 rounded shadow-sm focus:border-red-500 outline-none" required>
                             <option value="">-- Select Category --</option>
+
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    <button type="submit" :disabled="submitting" :class="{ 'opacity-50 cursor-not-allowed': submitting }" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-all">
                         Save Skill
                     </button>
-                </form>
+                </x-form.prevent-double-submit>
             </div>
         </div>
     </div>

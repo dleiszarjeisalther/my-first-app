@@ -43,7 +43,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('skills.update', $skill->id) }}" method="POST">
+                <x-form.prevent-double-submit :action="route('skills.update', $skill->id)">
                     @csrf
                     @method('PATCH')
                     <div class="mb-4">
@@ -55,7 +55,12 @@
                         <input type="number" name="percent" value="{{ old('percent', $skill->percent) }}" class="w-full border p-2 rounded" required>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Category</label>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-gray-700 font-bold">Category</label>
+                            <a href="{{ route('category.create') }}" class="inline-flex items-center px-2 py-1 bg-indigo-600 border border-transparent rounded-md font-semibold text-[10px] text-white uppercase tracking-widest hover:bg-indigo-500">
+                                + Create Category
+                            </a>
+                        </div>
                         <select name="category_id" class="w-full border p-2 rounded shadow-sm focus:border-red-500 outline-none" required>
                             <option value="">-- Select Category --</option>
                             @foreach($categoriesopt as $category)
@@ -63,8 +68,8 @@
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Update Skill</button>
-                </form>
+                    <button type="submit" :disabled="submitting" :class="{ 'opacity-50 cursor-not-allowed': submitting }" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-all">Update Skill</button>
+                </x-form.prevent-double-submit>
             </div>
         </div>
     </div>

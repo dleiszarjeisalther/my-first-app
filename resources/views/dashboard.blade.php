@@ -35,9 +35,12 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     
-                    <div class="mt-4">
+                    <div class="mt-4 space-x-2">
                         <a href="{{ route('skills.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
                             View Skills
+                        </a>
+                        <a href="{{ route('category.index') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500">
+                            View Categories
                         </a>
                     </div>
                 </div>

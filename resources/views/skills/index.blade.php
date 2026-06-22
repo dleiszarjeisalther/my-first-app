@@ -56,11 +56,14 @@
                         <div class="flex items-center space-x-4">
                             <span class="font-bold text-red-500">{{ $skill->percent }}%</span>
                             <a href="{{ route('skills.edit', $skill->id) }}" class="text-blue-500 hover:underline">Edit</a>
-                            <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" onsubmit="return confirm('Delete this skill?');">
+                            <x-form.prevent-double-submit
+                                :action="route('skills.destroy', $skill->id)"
+                                confirm="Delete this skill?"
+                            >
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:underline">Delete</button>
-                            </form>
+                                <button type="submit" :disabled="submitting" :class="{ 'opacity-50 cursor-not-allowed': submitting }" class="text-red-500 hover:underline">Delete</button>
+                            </x-form.prevent-double-submit>
                         </div>
                     </li>
                 @endforeach

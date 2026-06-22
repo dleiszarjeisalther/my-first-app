@@ -56,8 +56,12 @@
                         {{ __('Dashboard') }}
                     </x-nav.nav-link>
 
-                    <x-nav.nav-link :href="route('skills.index')" :active="request()->routeIs('skills')">
+                    <x-nav.nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
                         {{ __('Skills') }}
+                    </x-nav.nav-link>
+
+                    <x-nav.nav-link :href="route('category.index')" :active="request()->routeIs('category.*')">
+                        {{ __('Categories') }}
                     </x-nav.nav-link>
                     <!-- Add more desktop links here -->
                 </div>
@@ -115,6 +119,14 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-nav.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-nav.responsive-nav-link>
+
+            <x-nav.responsive-nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
+                {{ __('Skills') }}
+            </x-nav.responsive-nav-link>
+
+            <x-nav.responsive-nav-link :href="route('category.index')" :active="request()->routeIs('category.*')">
+                {{ __('Categories') }}
             </x-nav.responsive-nav-link>
             <!-- Add more mobile links here -->
         </div>

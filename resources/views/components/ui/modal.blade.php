@@ -1,4 +1,4 @@
-﻿{{--
+{{--
     ============================================================
     COMPONENT: modal
     SOURCE   : Laravel Breeze (auto-generated)
@@ -26,12 +26,12 @@
         </button>
 
     FULL USAGE EXAMPLE:
-        {{-- Trigger button --}}
+        Trigger button:
         <x-buttons.primary-button @click="$dispatch('open-modal', 'my-modal')">
             Open Modal
         </x-buttons.primary-button>
 
-        {{-- Modal definition (anywhere in the same page) --}}
+        Modal definition (anywhere in the same page):
         <x-ui.modal name="my-modal" :show="false" max-width="md">
             <div class="p-6">
                 <h2 class="text-lg font-bold">Are you sure?</h2>
