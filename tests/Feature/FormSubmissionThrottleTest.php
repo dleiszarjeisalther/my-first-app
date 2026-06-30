@@ -4,7 +4,7 @@ use App\Models\Category;
 use App\Models\User;
 
 test('category store succeeds on first submission', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
 
     $response = $this->actingAs($user)->post(route('category.store'), [
         'name' => 'Design',
@@ -15,7 +15,7 @@ test('category store succeeds on first submission', function () {
 });
 
 test('category store is throttled on rapid duplicate submissions', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
 
     $this->actingAs($user)->post(route('category.store'), [
         'name' => 'Design',

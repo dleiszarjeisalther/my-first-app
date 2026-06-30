@@ -39,19 +39,33 @@
                     </div>
 
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($errors->any()): ?>
-                        <div class="bg-red-50 border-l-4 border-red-500 text-red-800 p-4 rounded-r-lg mb-6 shadow-sm flex items-start">
-                            <svg class="w-5 h-5 text-red-500 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                            </svg>
-                            <div>
-                                <span class="font-semibold text-sm block">Please fix the errors:</span>
-                                <ul class="list-disc list-inside text-xs mt-1 space-y-0.5">
-                                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
-                                        <li><?php echo e($error); ?></li>
-                                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
-                                </ul>
-                            </div>
-                        </div>
+                        <?php if (isset($component)) { $__componentOriginal746de018ded8594083eb43be3f1332e1 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal746de018ded8594083eb43be3f1332e1 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.ui.alert','data' => ['type' => 'error','message' => 'Please fix the errors below.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('ui.alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'error','message' => 'Please fix the errors below.']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal746de018ded8594083eb43be3f1332e1)): ?>
+<?php $attributes = $__attributesOriginal746de018ded8594083eb43be3f1332e1; ?>
+<?php unset($__attributesOriginal746de018ded8594083eb43be3f1332e1); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal746de018ded8594083eb43be3f1332e1)): ?>
+<?php $component = $__componentOriginal746de018ded8594083eb43be3f1332e1; ?>
+<?php unset($__componentOriginal746de018ded8594083eb43be3f1332e1); ?>
+<?php endif; ?>
+                        <ul class="text-red-500 mb-4 list-disc pl-5">
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+                        </ul>
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                     <?php if (isset($component)) { $__componentOriginalc6eccc84c547bc62667cd749f508b1a4 = $component; } ?>
@@ -70,17 +84,99 @@
                         <?php echo method_field('PUT'); ?>
                         
                         <div class="mb-6">
-                            <label class="block text-sm font-bold text-gray-700 mb-2">Category Name</label>
-                            <input type="text" name="name" value="<?php echo e(old('name', $category->name)); ?>" class="w-full border border-gray-200 px-3.5 py-2.5 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all text-gray-800" required>
+                            <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.forms.input-label','data' => ['for' => 'name','value' => 'Category Name']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('forms.input-label'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['for' => 'name','value' => 'Category Name']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalabddde62786fb871e8a66d2206a4e797)): ?>
+<?php $attributes = $__attributesOriginalabddde62786fb871e8a66d2206a4e797; ?>
+<?php unset($__attributesOriginalabddde62786fb871e8a66d2206a4e797); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalabddde62786fb871e8a66d2206a4e797)): ?>
+<?php $component = $__componentOriginalabddde62786fb871e8a66d2206a4e797; ?>
+<?php unset($__componentOriginalabddde62786fb871e8a66d2206a4e797); ?>
+<?php endif; ?>
+                            <?php if (isset($component)) { $__componentOriginaldca3bb76b5bf0aaf83ee2266180b6d2c = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginaldca3bb76b5bf0aaf83ee2266180b6d2c = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.forms.text-input','data' => ['id' => 'name','type' => 'text','name' => 'name','value' => ''.e(old('name', $category->name)).'','class' => 'w-full mt-1','required' => true]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('forms.text-input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['id' => 'name','type' => 'text','name' => 'name','value' => ''.e(old('name', $category->name)).'','class' => 'w-full mt-1','required' => true]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginaldca3bb76b5bf0aaf83ee2266180b6d2c)): ?>
+<?php $attributes = $__attributesOriginaldca3bb76b5bf0aaf83ee2266180b6d2c; ?>
+<?php unset($__attributesOriginaldca3bb76b5bf0aaf83ee2266180b6d2c); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginaldca3bb76b5bf0aaf83ee2266180b6d2c)): ?>
+<?php $component = $__componentOriginaldca3bb76b5bf0aaf83ee2266180b6d2c; ?>
+<?php unset($__componentOriginaldca3bb76b5bf0aaf83ee2266180b6d2c); ?>
+<?php endif; ?>
                         </div>
                         
                         <div class="flex items-center gap-3 pt-4 border-t border-gray-100 mt-8">
-                            <button type="submit" :disabled="submitting" :class="{ 'opacity-50 cursor-not-allowed': submitting }" class="inline-flex items-center justify-center px-5 py-2.5 bg-indigo-600 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 active:bg-indigo-700 transition-all shadow-sm">
+                            <?php if (isset($component)) { $__componentOriginal54c5a1a52b6cf346236637a05b110723 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal54c5a1a52b6cf346236637a05b110723 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.primary-button','data' => ['type' => 'submit','xBind:disabled' => 'submitting','xBind:class' => '{ \'opacity-50 cursor-not-allowed\': submitting }']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('buttons.primary-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'submit','x-bind:disabled' => 'submitting','x-bind:class' => '{ \'opacity-50 cursor-not-allowed\': submitting }']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
                                 Update Category
-                            </button>
-                            <a href="<?php echo e(route('category.index')); ?>" class="inline-flex items-center justify-center px-4 py-2.5 bg-white border border-gray-200 rounded-lg font-semibold text-xs text-gray-600 uppercase tracking-widest hover:bg-gray-50 active:bg-gray-100 transition-all">
+                             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal54c5a1a52b6cf346236637a05b110723)): ?>
+<?php $attributes = $__attributesOriginal54c5a1a52b6cf346236637a05b110723; ?>
+<?php unset($__attributesOriginal54c5a1a52b6cf346236637a05b110723); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal54c5a1a52b6cf346236637a05b110723)): ?>
+<?php $component = $__componentOriginal54c5a1a52b6cf346236637a05b110723; ?>
+<?php unset($__componentOriginal54c5a1a52b6cf346236637a05b110723); ?>
+<?php endif; ?>
+                            <?php if (isset($component)) { $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.button-link','data' => ['href' => ''.e(route('category.index')).'','class' => 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('buttons.button-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => ''.e(route('category.index')).'','class' => 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
                                 Cancel
-                            </a>
+                             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e)): ?>
+<?php $attributes = $__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e; ?>
+<?php unset($__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalb0083d113ecf7b04bfc3fa94a403051e)): ?>
+<?php $component = $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e; ?>
+<?php unset($__componentOriginalb0083d113ecf7b04bfc3fa94a403051e); ?>
+<?php endif; ?>
                         </div>
                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

@@ -31,20 +31,18 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                    
-                    <div class="mt-4 space-x-2">
-                        <a href="{{ route('skills.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
-                            View Skills
-                        </a>
-                        <a href="{{ route('category.index') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500">
-                            View Categories
-                        </a>
-                    </div>
+            <x-ui.card>
+                {{ __("You're logged in!") }}
+                
+                <div class="mt-4 space-x-2">
+                    <x-buttons.button-link href="{{ route('skills.index') }}">
+                        View Skills
+                    </x-buttons.button-link>
+                    <x-buttons.button-link href="{{ route('category.index') }}">
+                        View Categories
+                    </x-buttons.button-link>
                 </div>
-            </div>
+            </x-ui.card>
         </div>
     </div>
 </x-app-layout>

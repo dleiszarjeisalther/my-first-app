@@ -2,15 +2,11 @@
 
 use App\Models\Category;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertModelExists;
 use function Pest\Laravel\assertModelMissing;
-
-
 
 test('non-admin user can only see their own categories in index', function () {
     $user1 = User::factory()->create();

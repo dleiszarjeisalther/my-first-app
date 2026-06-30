@@ -33,39 +33,39 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-3xl font-bold text-gray-800">Hello, {{ $user_name }}!</h1>
-                <a href="{{ route('skills.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500">
+                <x-buttons.button-link href="{{ route('skills.create') }}">
                     Add Skill
-                </a>
+                </x-buttons.button-link>
             </div>
 
             @if(session('success'))
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                    {{ session('success') }}
-                </div>
+                <x-ui.alert type="success" message="{{ session('success') }}" />
             @endif
 
             <ul class="mt-2 space-y-2">
                 @foreach($skills as $skill)
-                    <li class="flex justify-between items-center bg-white p-4 shadow rounded border-l-4 border-red-500">
+                    <x-ui.card class="flex justify-between items-center mb-2 border-l-4 border-red-500">
                         <div>
                             <span class="font-bold text-gray-800">🚀 {{ $skill->name }}</span>
-                            <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full uppercase">
+                            <x-ui.badge color="gray" class="ml-2 uppercase">
                                 {{ $skill->category->name }}
-                            </span>
+                            </x-ui.badge>
                         </div>
                         <div class="flex items-center space-x-4">
                             <span class="font-bold text-red-500">{{ $skill->percent }}%</span>
-                            <a href="{{ route('skills.edit', $skill->id) }}" class="text-blue-500 hover:underline">Edit</a>
+                            <a href="{{ route('skills.edit', $skill->id) }}" class="text-indigo-600 hover:text-indigo-900 hover:underline text-sm font-medium">Edit</a>
                             <x-form.prevent-double-submit
                                 :action="route('skills.destroy', $skill->id)"
                                 confirm="Delete this skill?"
                             >
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" :disabled="submitting" :class="{ 'opacity-50 cursor-not-allowed': submitting }" class="text-red-500 hover:underline">Delete</button>
+                                <x-buttons.danger-button type="submit" x-bind:disabled="submitting" x-bind:class="{ 'opacity-50 cursor-not-allowed': submitting }">
+                                    Delete
+                                </x-buttons.danger-button>
                             </x-form.prevent-double-submit>
                         </div>
-                    </li>
+                    </x-ui.card>
                 @endforeach
             </ul>
         </div>
