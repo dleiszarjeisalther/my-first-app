@@ -56,13 +56,29 @@
                             <a href="{{ route('skills.edit', $skill->id) }}" class="text-indigo-600 hover:text-indigo-900 hover:underline text-sm font-medium">Edit</a>
                             <x-form.prevent-double-submit
                                 :action="route('skills.destroy', $skill->id)"
-                                confirm="Delete this skill?"
                             >
                                 @csrf
                                 @method('DELETE')
-                                <x-buttons.danger-button type="submit" x-bind:disabled="submitting" x-bind:class="{ 'opacity-50 cursor-not-allowed': submitting }">
+                                <x-buttons.danger-button type="button" @click="$dispatch('open-modal', 'confirm-delete-skill-{{ $skill->id }}')">
                                     Delete
                                 </x-buttons.danger-button>
+
+                                <x-ui.modal name="confirm-delete-skill-{{ $skill->id }}" :show="false" maxWidth="sm">
+                                    <div class="p-6">
+                                        <h2 class="text-lg font-bold text-gray-900">Are you sure?</h2>
+                                        <p class="mt-2 text-sm text-gray-600">
+                                            Delete this skill? This action cannot be undone.
+                                        </p>
+                                        <div class="mt-6 flex justify-end gap-3">
+                                            <x-buttons.secondary-button type="button" @click="$dispatch('close-modal', 'confirm-delete-skill-{{ $skill->id }}')">
+                                                Cancel
+                                            </x-buttons.secondary-button>
+                                            <x-buttons.danger-button type="submit" x-bind:disabled="submitting" x-bind:class="{ 'opacity-50 cursor-not-allowed': submitting }">
+                                                Yes, Delete
+                                            </x-buttons.danger-button>
+                                        </div>
+                                    </div>
+                                </x-ui.modal>
                             </x-form.prevent-double-submit>
                         </div>
                     </x-ui.card>

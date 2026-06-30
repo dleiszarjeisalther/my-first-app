@@ -51,16 +51,32 @@
                                 </x-buttons.button-link>
                                 <x-form.prevent-double-submit
                                     :action="route('category.destroy', $category->id)"
-                                    confirm="Are you sure you want to delete this category? This might affect skills categorized under it."
                                 >
                                     @csrf
                                     @method('DELETE')
-                                    <x-buttons.danger-button type="submit" x-bind:disabled="submitting" x-bind:class="{ 'opacity-50 cursor-not-allowed': submitting }">
+                                    <x-buttons.danger-button type="button" @click="$dispatch('open-modal', 'confirm-delete-category-{{ $category->id }}')">
                                         <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                         </svg>
                                         Delete
                                     </x-buttons.danger-button>
+
+                                    <x-ui.modal name="confirm-delete-category-{{ $category->id }}" :show="false" maxWidth="sm">
+                                        <div class="p-6">
+                                            <h2 class="text-lg font-bold text-gray-900">Are you sure?</h2>
+                                            <p class="mt-2 text-sm text-gray-600">
+                                                Are you sure you want to delete this category? This might affect skills categorized under it.
+                                            </p>
+                                            <div class="mt-6 flex justify-end gap-3">
+                                                <x-buttons.secondary-button type="button" @click="$dispatch('close-modal', 'confirm-delete-category-{{ $category->id }}')">
+                                                    Cancel
+                                                </x-buttons.secondary-button>
+                                                <x-buttons.danger-button type="submit" x-bind:disabled="submitting" x-bind:class="{ 'opacity-50 cursor-not-allowed': submitting }">
+                                                    Yes, Delete
+                                                </x-buttons.danger-button>
+                                            </div>
+                                        </div>
+                                    </x-ui.modal>
                                 </x-form.prevent-double-submit>
                             </div>
                         </li>
