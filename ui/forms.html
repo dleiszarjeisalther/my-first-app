@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forms Components - Static UI</title>
+    <title>Form Inputs — UI Standard Library</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -12,15 +12,26 @@
     <link rel="stylesheet" href="app.css">
     <style>
         [x-cloak] { display: none !important; }
+        svg { display: inline-block; flex-shrink: 0; vertical-align: middle; }
     </style>
 </head>
 <body class="font-sans text-gray-900 bg-gray-100 antialiased min-h-screen py-8">
-    <main class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="mb-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-2">Forms Components</h1>
-            <p class="text-sm text-gray-600">
-                Native HTML representation of form input elements and controls.
-            </p>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6 pb-16">
+
+        <!-- Page Header Card -->
+        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xs border border-gray-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100 mb-2">
+                    UI Standard Library &bull; Forms
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Form Inputs &amp; Controls</h1>
+                <p class="text-sm text-gray-500 mt-1">
+                    Native HTML representation of all form input elements and controls — text, password, select, checkbox, radio, toggle, and file.
+                </p>
+            </div>
+            <a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-lg shadow-sm transition text-decoration-none">
+                &larr; Back to Hub
+            </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

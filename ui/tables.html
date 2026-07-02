@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Tables — UI Standard Library</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="app.css">
+    <style>
+        [x-cloak] { display: none !important; }
+        svg { display: inline-block; flex-shrink: 0; vertical-align: middle; }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-gray-100 antialiased min-h-screen py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6 pb-16">
+
+        <!-- Page Header Card -->
+        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xs border border-gray-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100 mb-2">
+                    UI Standard Library &bull; Data Display
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Data Tables</h1>
+                <p class="text-sm text-gray-500 mt-1">
+                    Sortable data tables, row selections, action menus, and responsive layouts for listing records in any module.
+                </p>
+            </div>
+            <a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-lg shadow-sm transition text-decoration-none">
+                &larr; Back to Hub
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Card 1: Basic Data Table -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Basic Data Table</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">Standard 5-column table with status badges and inline row actions.</p>
+                <div class="overflow-x-auto">
+                    <table class="table-auto w-full text-sm">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">ID</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Name</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Status</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Date</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">#1042</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100 font-medium">Sarah Johnson</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+                                </td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">Jun 14, 2025</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium mr-3">Edit</button>
+                                    <button class="text-red-500 hover:text-red-700 font-medium">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">#1043</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100 font-medium">Marcus Webb</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600 border border-gray-200">Inactive</span>
+                                </td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">May 28, 2025</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium mr-3">Edit</button>
+                                    <button class="text-red-500 hover:text-red-700 font-medium">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">#1044</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100 font-medium">Priya Nair</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">Pending</span>
+                                </td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">Jun 01, 2025</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium mr-3">Edit</button>
+                                    <button class="text-red-500 hover:text-red-700 font-medium">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">#1045</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100 font-medium">Daniel Chen</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+                                </td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">Jun 09, 2025</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium mr-3">Edit</button>
+                                    <button class="text-red-500 hover:text-red-700 font-medium">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">#1046</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100 font-medium">Olivia Martínez</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600 border border-gray-200">Inactive</span>
+                                </td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">Apr 30, 2025</td>
+                                <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-medium mr-3">Edit</button>
+                                    <button class="text-red-500 hover:text-red-700 font-medium">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Card 2: Table with Row Selection -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+                 x-data="{
+                     rows: [
+                         { id: '#2011', name: 'Tom Nakamura', status: 'Active', date: 'Jun 18, 2025' },
+                         { id: '#2012', name: 'Elena Vasquez', status: 'Pending', date: 'Jun 15, 2025' },
+                         { id: '#2013', name: 'Kwame Asante', status: 'Active', date: 'Jun 10, 2025' },
+                         { id: '#2014', name: 'Fiona McLaren', status: 'Inactive', date: 'May 22, 2025' },
+                         { id: '#2015', name: 'Ravi Patel', status: 'Active', date: 'Jun 20, 2025' },
+                     ],
+                     selected: [],
+                     get isAllSelected() { return this.rows.length > 0 && this.selected.length === this.rows.length; },
+                     toggleAll() {
+                         if (this.isAllSelected) { this.selected = []; } else { this.selected = this.rows.map(r => r.id); }
+                     },
+                     statusClass(s) {
+                         if (s === 'Active') return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                         if (s === 'Pending') return 'bg-amber-50 text-amber-700 border-amber-200';
+                         return 'bg-gray-100 text-gray-600 border-gray-200';
+                     }
+                 }">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Table with Row Selection</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">Checkboxes on each row with Select All and a bulk action bar.</p>
+
+                <!-- Bulk Action Bar -->
+                <div x-show="selected.length > 0" x-cloak
+                     class="mb-3 flex items-center justify-between bg-indigo-50 border border-indigo-200 rounded-lg px-4 py-2">
+                    <span class="text-xs font-semibold text-indigo-700" x-text="selected.length + ' row(s) selected'"></span>
+                    <button class="px-3 py-1 bg-red-600 text-white text-xs font-semibold rounded hover:bg-red-700 transition"
+                            @click="selected = []">
+                        Delete Selected
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="table-auto w-full text-sm">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-3 text-left border-b border-gray-200">
+                                    <input type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                           :checked="isAllSelected" @change="toggleAll()" />
+                                </th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">ID</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Name</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Status</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="row in rows" :key="row.id">
+                                <tr class="hover:bg-gray-50 transition" :class="selected.includes(row.id) ? 'bg-indigo-50' : ''">
+                                    <td class="px-4 py-3 border-b border-gray-100">
+                                        <input type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                               :value="row.id" x-model="selected" />
+                                    </td>
+                                    <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100" x-text="row.id"></td>
+                                    <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100 font-medium" x-text="row.name"></td>
+                                    <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100">
+                                        <span class="px-2 py-0.5 rounded-full text-xs font-semibold border" :class="statusClass(row.status)" x-text="row.status"></span>
+                                    </td>
+                                    <td class="px-4 py-3 text-xs text-gray-700 border-b border-gray-100" x-text="row.date"></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Card 3: Empty Table State -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Empty Table State</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">Table with headers but zero records — shows a centered empty state in the body.</p>
+                <div class="overflow-x-auto">
+                    <table class="table-auto w-full text-sm">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">ID</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Name</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Status</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Date</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="px-4 py-12 text-center">
+                                    <div class="flex flex-col items-center gap-3">
+                                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </svg>
+                                        </div>
+                                        <p class="text-sm font-semibold text-gray-700">No records found</p>
+                                        <p class="text-xs text-gray-400">Start by creating your first entry.</p>
+                                        <button class="mt-1 px-4 py-2 bg-gray-800 text-white text-xs font-semibold rounded-md hover:bg-gray-700 transition">
+                                            Create Entry
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Card 4: Condensed / Dense Table with Sort -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+                 x-data="{
+                     sortCol: 'name',
+                     sortDir: 'asc',
+                     rawRows: [
+                         { id: '#3001', name: 'Aisha Kowalski', status: 'Active', date: '2025-06-22', amount: '$1,240' },
+                         { id: '#3002', name: 'Ben Harrington', status: 'Pending', date: '2025-06-18', amount: '$380' },
+                         { id: '#3003', name: 'Carmen López', status: 'Inactive', date: '2025-05-30', amount: '$975' },
+                         { id: '#3004', name: 'Darius Okoye', status: 'Active', date: '2025-06-20', amount: '$2,100' },
+                         { id: '#3005', name: 'Eva Lindqvist', status: 'Active', date: '2025-06-15', amount: '$640' },
+                         { id: '#3006', name: 'Felix Müller', status: 'Pending', date: '2025-06-12', amount: '$890' },
+                     ],
+                     get sortedRows() {
+                         return [...this.rawRows].sort((a, b) => {
+                             let av = a[this.sortCol], bv = b[this.sortCol];
+                             return this.sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+                         });
+                     },
+                     setSort(col) {
+                         if (this.sortCol === col) { this.sortDir = this.sortDir === 'asc' ? 'desc' : 'asc'; }
+                         else { this.sortCol = col; this.sortDir = 'asc'; }
+                     },
+                     statusClass(s) {
+                         if (s === 'Active') return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                         if (s === 'Pending') return 'bg-amber-50 text-amber-700 border-amber-200';
+                         return 'bg-gray-100 text-gray-600 border-gray-200';
+                     }
+                 }">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Condensed / Dense Table</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">Compact cell padding with sortable column headers. Click a column header to sort.</p>
+                <div class="overflow-x-auto">
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="px-3 py-2 text-left border-b border-gray-200">
+                                    <button @click="setSort('id')" class="flex items-center gap-1 text-[11px] font-semibold text-gray-500 uppercase hover:text-gray-700 transition">
+                                        ID
+                                        <svg class="w-3 h-3" :class="sortCol === 'id' ? 'text-indigo-500' : 'text-gray-300'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol !== 'id' || sortDir === 'asc'" d="M5 15l7-7 7 7"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol === 'id' && sortDir === 'desc'" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </button>
+                                </th>
+                                <th class="px-3 py-2 text-left border-b border-gray-200">
+                                    <button @click="setSort('name')" class="flex items-center gap-1 text-[11px] font-semibold text-gray-500 uppercase hover:text-gray-700 transition">
+                                        Name
+                                        <svg class="w-3 h-3" :class="sortCol === 'name' ? 'text-indigo-500' : 'text-gray-300'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol !== 'name' || sortDir === 'asc'" d="M5 15l7-7 7 7"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol === 'name' && sortDir === 'desc'" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </button>
+                                </th>
+                                <th class="px-3 py-2 text-left border-b border-gray-200">
+                                    <button @click="setSort('status')" class="flex items-center gap-1 text-[11px] font-semibold text-gray-500 uppercase hover:text-gray-700 transition">
+                                        Status
+                                        <svg class="w-3 h-3" :class="sortCol === 'status' ? 'text-indigo-500' : 'text-gray-300'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol !== 'status' || sortDir === 'asc'" d="M5 15l7-7 7 7"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol === 'status' && sortDir === 'desc'" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </button>
+                                </th>
+                                <th class="px-3 py-2 text-left border-b border-gray-200">
+                                    <button @click="setSort('date')" class="flex items-center gap-1 text-[11px] font-semibold text-gray-500 uppercase hover:text-gray-700 transition">
+                                        Date
+                                        <svg class="w-3 h-3" :class="sortCol === 'date' ? 'text-indigo-500' : 'text-gray-300'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol !== 'date' || sortDir === 'asc'" d="M5 15l7-7 7 7"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x-show="sortCol === 'date' && sortDir === 'desc'" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </button>
+                                </th>
+                                <th class="px-3 py-2 text-[11px] font-semibold text-gray-500 uppercase text-left border-b border-gray-200">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="row in sortedRows" :key="row.id">
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-3 py-2 text-[11px] text-gray-700 border-b border-gray-100" x-text="row.id"></td>
+                                    <td class="px-3 py-2 text-[11px] text-gray-700 border-b border-gray-100 font-medium" x-text="row.name"></td>
+                                    <td class="px-3 py-2 text-[11px] text-gray-700 border-b border-gray-100">
+                                        <span class="px-1.5 py-0.5 rounded-full text-[10px] font-semibold border" :class="statusClass(row.status)" x-text="row.status"></span>
+                                    </td>
+                                    <td class="px-3 py-2 text-[11px] text-gray-700 border-b border-gray-100" x-text="row.date"></td>
+                                    <td class="px-3 py-2 text-[11px] text-gray-700 border-b border-gray-100 font-medium" x-text="row.amount"></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>
