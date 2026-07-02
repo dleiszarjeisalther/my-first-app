@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nav Components - Static UI</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body class="font-sans text-gray-900 bg-gray-100 antialiased min-h-screen py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Nav Components</h1>
+            <p class="text-sm text-gray-600">
+                Native HTML representation of navigation bars, links, menus, and breadcrumbs.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Desktop Nav Link -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Desktop Nav Link</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">
+                    Top horizontal navbar links with bottom border indicator for active states.
+                </p>
+                <div class="border-b border-gray-200 flex space-x-8 px-4 bg-gray-50 pt-3">
+                    <!-- Active State -->
+                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out pb-3">
+                        Dashboard (Active)
+                    </a>
+                    <!-- Inactive State -->
+                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out pb-3">
+                        Projects (Inactive)
+                    </a>
+                    <!-- Inactive State 2 -->
+                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out pb-3">
+                        Team (Inactive)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Responsive Mobile Nav Link -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Responsive Mobile Nav Link</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">
+                    Mobile menu navigation links with left border highlight for active views.
+                </p>
+                <div class="bg-gray-50 border border-gray-200 rounded py-2 space-y-1">
+                    <!-- Active State -->
+                    <a href="#" class="block w-full pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-left text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">
+                        Dashboard (Active)
+                    </a>
+                    <!-- Inactive State -->
+                    <a href="#" class="block w-full pl-3 pr-4 py-2 border-l-4 border-transparent text-left text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+                        Settings (Inactive)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sidebar Link -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Sidebar Nav Link</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">
+                    Left navigation sidebar items with rounded pill backgrounds and icon slots.
+                </p>
+                <div class="bg-gray-800 p-4 rounded-md space-y-2 max-w-xs">
+                    <!-- Active Sidebar Link -->
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md bg-gray-900 text-white font-medium text-sm transition duration-150">
+                        <svg class="w-5 h-5 mr-3 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        <span>Overview (Active)</span>
+                    </a>
+                    <!-- Inactive Sidebar Link -->
+                    <a href="#" class="flex items-center px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white font-medium text-sm transition duration-150">
+                        <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        <span>Analytics (Inactive)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="border-b border-gray-200 pb-3 mb-4">
+                    <h2 class="font-semibold text-base text-gray-800">Breadcrumb Navigation Trail</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-4">
+                    Hierarchical path indicator with slash separators and clickable ancestor links.
+                </p>
+                <nav class="flex bg-gray-50 p-3 rounded border border-gray-200" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600 transition">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <span class="text-gray-400 mx-2">/</span>
+                                <a href="#" class="text-sm font-medium text-gray-700 hover:text-indigo-600 transition">Projects</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <span class="text-gray-400 mx-2">/</span>
+                                <span class="text-sm font-semibold text-gray-500">Component Library</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

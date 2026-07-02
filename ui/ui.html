@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Progressive &amp; Responsive UI Components - Static UI</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="app.css">
+    <style>
+        [x-cloak] { display: none !important; }
+        svg { display: inline-block; flex-shrink: 0; vertical-align: middle; }
+    </style>
+</head>
+<body class="font-sans text-gray-900 bg-gray-100 antialiased min-h-screen py-6 sm:py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-12 pb-16">
+        
+        <!-- Header Section (100% Responsive Stacking) -->
+        <div class="bg-white p-5 sm:p-8 rounded-xl shadow-xs border border-gray-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100 mb-2">
+                    Laravel Breeze Theme &bull; 100% Mobile Responsive
+                </span>
+                <h1 class="text-xl sm:text-3xl font-bold text-gray-900">Progressive &amp; Responsive UI Components</h1>
+                <p class="text-xs sm:text-sm text-gray-500 mt-1 leading-relaxed">
+                    Dynamic HTML widgets engineered for flawless display across mobile phones (320px+), tablets, and desktop displays.
+                </p>
+            </div>
+            <a href="app.html" class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold rounded-lg shadow-sm transition text-decoration-none">
+                &larr; Back to Dashboard
+            </a>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- 1. PROGRESSIVE DISCLOSURE: ACCORDIONS & COLLAPSIBLES -->
+        <!-- ============================================================ -->
+        <section class="bg-white rounded-xl shadow-xs border border-gray-200 p-5 sm:p-8" x-data="{ activeAccordion: 1 }">
+            <div class="border-b border-gray-200 pb-4 mb-6">
+                <h2 class="text-base sm:text-lg font-bold text-gray-800">1. Responsive Progressive Disclosure (Accordions)</h2>
+                <p class="text-xs text-gray-500 mt-0.5">Click headers to smoothly reveal or collapse details without crowding mobile viewports.</p>
+            </div>
+            <div class="space-y-3 sm:space-y-4">
+                <!-- Accordion Item 1 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden transition-colors" :class="activeAccordion === 1 ? 'border-indigo-200 bg-indigo-50/20' : 'bg-white'">
+                    <button @click="activeAccordion = (activeAccordion === 1 ? null : 1)" class="w-full px-4 py-3.5 sm:px-5 sm:py-4 text-left font-semibold text-xs sm:text-sm text-gray-800 flex items-center justify-between gap-3 hover:bg-gray-50 transition focus:outline-none">
+                        <span class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                            <span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-bold shrink-0">01</span>
+                            <span class="truncate sm:whitespace-normal">How does progressive disclosure improve UX on mobile?</span>
+                        </span>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-200 shrink-0" :class="activeAccordion === 1 ? 'rotate-180 text-indigo-600' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="activeAccordion === 1" x-collapse x-cloak class="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-gray-600 border-t border-gray-100 leading-relaxed break-words">
+                        Progressive disclosure defers advanced features to collapsible panels. On mobile devices with limited screen real estate, this prevents endless scrolling and helps users focus on primary tasks first.
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden transition-colors" :class="activeAccordion === 2 ? 'border-indigo-200 bg-indigo-50/20' : 'bg-white'">
+                    <button @click="activeAccordion = (activeAccordion === 2 ? null : 2)" class="w-full px-4 py-3.5 sm:px-5 sm:py-4 text-left font-semibold text-xs sm:text-sm text-gray-800 flex items-center justify-between gap-3 hover:bg-gray-50 transition focus:outline-none">
+                        <span class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                            <span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-bold shrink-0">02</span>
+                            <span class="truncate sm:whitespace-normal">What makes this layout 100% responsive?</span>
+                        </span>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-200 shrink-0" :class="activeAccordion === 2 ? 'rotate-180 text-indigo-600' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="activeAccordion === 2" x-collapse x-cloak class="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-gray-600 border-t border-gray-100 leading-relaxed break-words">
+                        We utilize mobile-first utility classes (`flex-col sm:flex-row`, `w-full sm:w-auto`, `grid-cols-1 sm:grid-cols-2`) and flexible wrapping (`min-w-0`, `truncate`, `break-words`). This ensures buttons, badges, and tabs stack neatly on phones without horizontal overflow.
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden transition-colors" :class="activeAccordion === 3 ? 'border-indigo-200 bg-indigo-50/20' : 'bg-white'">
+                    <button @click="activeAccordion = (activeAccordion === 3 ? null : 3)" class="w-full px-4 py-3.5 sm:px-5 sm:py-4 text-left font-semibold text-xs sm:text-sm text-gray-800 flex items-center justify-between gap-3 hover:bg-gray-50 transition focus:outline-none">
+                        <span class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                            <span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-bold shrink-0">03</span>
+                            <span class="truncate sm:whitespace-normal">How can I integrate these into Laravel apps?</span>
+                        </span>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-200 shrink-0" :class="activeAccordion === 3 ? 'rotate-180 text-indigo-600' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="activeAccordion === 3" x-collapse x-cloak class="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-gray-600 border-t border-gray-100 leading-relaxed break-words">
+                        Copy these modular structures directly into your Blade templates (`resources/views/components/`). Replace static strings with Blade variables (`{{ $title }}`) and connect Livewire actions for data binding.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 2. INTERACTIVE TABBED WORKSPACE (RESPONSIVE STACKING TABS) -->
+        <!-- ============================================================ -->
+        <section class="bg-white rounded-xl shadow-xs border border-gray-200 p-5 sm:p-8" x-data="{ activeTab: 'account' }">
+            <div class="border-b border-gray-200 pb-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-base sm:text-lg font-bold text-gray-800">2. Responsive Tabbed Navigation</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">Instant view switching with full-width touch tabs on mobile and inline pills on desktop.</p>
+                </div>
+                <!-- Responsive Tab Buttons: Stacked grid on mobile, inline flex on desktop -->
+                <div class="grid grid-cols-1 sm:flex sm:space-x-1 gap-1.5 sm:gap-0 bg-gray-100 p-1.5 sm:p-1 rounded-xl border border-gray-200 w-full sm:w-auto">
+                    <button @click="activeTab = 'account'" :class="activeTab === 'account' ? 'bg-white text-indigo-600 font-bold shadow-xs' : 'text-gray-600 hover:text-gray-900 font-medium'" class="w-full sm:w-auto px-4 py-2 sm:py-1.5 rounded-lg text-xs transition text-center">
+                        Account Settings
+                    </button>
+                    <button @click="activeTab = 'security'" :class="activeTab === 'security' ? 'bg-white text-indigo-600 font-bold shadow-xs' : 'text-gray-600 hover:text-gray-900 font-medium'" class="w-full sm:w-auto px-4 py-2 sm:py-1.5 rounded-lg text-xs transition text-center">
+                        Security &amp; Auth
+                    </button>
+                    <button @click="activeTab = 'notifications'" :class="activeTab === 'notifications' ? 'bg-white text-indigo-600 font-bold shadow-xs' : 'text-gray-600 hover:text-gray-900 font-medium'" class="w-full sm:w-auto px-4 py-2 sm:py-1.5 rounded-lg text-xs transition text-center">
+                        Notifications
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content 1: Account -->
+            <div x-show="activeTab === 'account'" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-4">
+                <!-- User Profile Card: Stacks cleanly on mobile phones -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <div class="w-12 h-12 rounded-full bg-indigo-600 text-white font-bold text-base flex items-center justify-center shrink-0 shadow-sm">SJ</div>
+                        <div class="min-w-0">
+                            <h3 class="font-bold text-gray-800 text-sm truncate">Sarah Jenkins (Admin Pro)</h3>
+                            <p class="text-xs text-gray-500 truncate">sarah.jenkins@example.com &bull; Member since 2026</p>
+                        </div>
+                    </div>
+                    <span class="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200 shrink-0">
+                        Verified Status
+                    </span>
+                </div>
+                <!-- Input Grid: 1 col on mobile, 2 col on tablet/desktop -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                        <label class="block text-xs font-semibold uppercase text-gray-500 mb-1.5">Display Name</label>
+                        <input type="text" value="Sarah Jenkins" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition" />
+                    </div>
+                    <div class="p-4 border border-gray-200 rounded-xl bg-white">
+                        <label class="block text-xs font-semibold uppercase text-gray-500 mb-1.5">Primary Timezone</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition">
+                            <option>UTC-08:00 Pacific Time (US &amp; Canada)</option>
+                            <option>UTC+00:00 London / UTC</option>
+                            <option>UTC+08:00 Singapore / Hong Kong</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 2: Security -->
+            <div x-show="activeTab === 'security'" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="space-y-4">
+                <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3">
+                    <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    <div>
+                        <h4 class="text-xs sm:text-sm font-bold text-amber-800">Two-Factor Authentication is Recommended</h4>
+                        <p class="text-xs text-amber-700 mt-0.5 leading-relaxed">Add an extra layer of security to your Laravel Breeze account by enabling TOTP authenticator app support.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 border border-gray-200 rounded-xl">
+                    <div>
+                        <h4 class="font-bold text-sm text-gray-800">Password Last Changed</h4>
+                        <p class="text-xs text-gray-500">30 days ago from IP 192.168.1.1</p>
+                    </div>
+                    <button class="w-full sm:w-auto px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-xs rounded-lg transition border border-gray-300 text-center">Update Password</button>
+                </div>
+            </div>
+
+            <!-- Tab Content 3: Notifications -->
+            <div x-show="activeTab === 'notifications'" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="space-y-3">
+                <label class="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer transition gap-4">
+                    <div class="min-w-0">
+                        <span class="block text-sm font-semibold text-gray-800">Email Alerts for New Logins</span>
+                        <span class="text-xs text-gray-500 leading-relaxed block">Receive an instant email when a new device connects to your account.</span>
+                    </div>
+                    <input type="checkbox" checked class="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 shrink-0" />
+                </label>
+                <label class="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer transition gap-4">
+                    <div class="min-w-0">
+                        <span class="block text-sm font-semibold text-gray-800">Weekly Analytics Digest</span>
+                        <span class="text-xs text-gray-500 leading-relaxed block">Get summary reports of your skills and team progress every Monday.</span>
+                    </div>
+                    <input type="checkbox" checked class="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 shrink-0" />
+                </label>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 3. PROGRESSIVE WIZARD / MULTI-STEP PROGRESS BAR (RESPONSIVE) -->
+        <!-- ============================================================ -->
+        <section class="bg-white rounded-xl shadow-xs border border-gray-200 p-5 sm:p-8" x-data="{ step: 2 }">
+            <div class="border-b border-gray-200 pb-4 mb-6">
+                <h2 class="text-base sm:text-lg font-bold text-gray-800">3. Multi-Step Wizard &amp; Progress Tracker</h2>
+                <p class="text-xs text-gray-500 mt-0.5">Guide users through multi-stage workflows without cluttering small screens.</p>
+            </div>
+
+            <!-- Progress Bar & Responsive Step Indicator -->
+            <div class="mb-6 sm:mb-8">
+                <!-- Desktop View: 4 Columns side-by-side -->
+                <div class="hidden md:grid grid-cols-4 gap-2 text-xs font-semibold text-gray-500 mb-2.5 text-center">
+                    <span :class="step >= 1 ? 'text-indigo-600 font-bold' : ''">1. Profile Setup</span>
+                    <span :class="step >= 2 ? 'text-indigo-600 font-bold' : ''">2. Skill Select</span>
+                    <span :class="step >= 3 ? 'text-indigo-600 font-bold' : ''">3. Verification</span>
+                    <span :class="step >= 4 ? 'text-indigo-600 font-bold' : ''">4. Workspace Ready</span>
+                </div>
+                <!-- Mobile View: Compact active step label to prevent text collision on 320px screens -->
+                <div class="md:hidden flex items-center justify-between text-xs font-bold text-indigo-600 mb-2">
+                    <span x-text="'Step ' + step + ' of 4: ' + (step === 1 ? 'Profile Setup' : step === 2 ? 'Skill Select' : step === 3 ? 'Verification' : 'Workspace Ready')"></span>
+                    <span class="text-gray-400 font-normal" x-text="((step / 4) * 100) + '%'"></span>
+                </div>
+
+                <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                    <div class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300 ease-out" :class="step === 1 ? 'w-1/4' : step === 2 ? 'w-2/4' : step === 3 ? 'w-3/4' : 'w-full'"></div>
+                </div>
+            </div>
+
+            <!-- Step Cards -->
+            <div class="p-6 sm:p-8 bg-gray-50 rounded-xl border border-gray-200 mb-6 text-center">
+                <div x-show="step === 1" x-transition>
+                    <h3 class="font-bold text-base text-gray-800 mb-1">Step 1: Create Account Profile</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">Enter your official name, workplace email, and select your primary departmental role.</p>
+                </div>
+                <div x-show="step === 2" x-transition x-cloak>
+                    <h3 class="font-bold text-base text-gray-800 mb-1">Step 2: Choose Your Technical Skills</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">Select relevant tags such as Laravel Framework, Tailwind CSS, and Alpine.js Interactivity.</p>
+                </div>
+                <div x-show="step === 3" x-transition x-cloak>
+                    <h3 class="font-bold text-base text-gray-800 mb-1">Step 3: Verify Domain Credentials</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">We have sent a verification code to your registered email address. Enter the 6-digit PIN below.</p>
+                </div>
+                <div x-show="step === 4" x-transition x-cloak>
+                    <h3 class="font-bold text-base text-green-700 mb-1">&check; Step 4: Workspace Ready!</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">Your configuration is complete. You can now access your full application dashboard.</p>
+                </div>
+            </div>
+
+            <!-- Wizard Control Buttons (Stack full width on mobile) -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+                <button @click="if(step > 1) step--" :disabled="step === 1" :class="step === 1 ? 'opacity-50 cursor-not-allowed bg-gray-100 text-gray-400 border-gray-200' : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-300 shadow-xs'" class="w-full sm:w-auto px-5 py-2.5 border rounded-lg text-xs font-semibold transition justify-center">
+                    &larr; Previous Step
+                </button>
+                <span class="text-xs font-medium text-gray-500 order-first sm:order-none mb-1 sm:mb-0" x-text="'Current Step: ' + step + ' of 4'"></span>
+                <button @click="if(step < 4) step++" :disabled="step === 4" :class="step === 4 ? 'opacity-50 cursor-not-allowed bg-indigo-400 text-white' : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm'" class="w-full sm:w-auto px-6 py-2.5 rounded-lg text-xs font-semibold transition justify-center">
+                    Next Step &rarr;
+                </button>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 4. RESPONSIVE DISMISSIBLE ALERTS & LIVE TOASTS -->
+        <!-- ============================================================ -->
+        <section class="bg-white rounded-xl shadow-xs border border-gray-200 p-5 sm:p-8" x-data="{ alert1: true, alert2: true, toast: false, toastMsg: '' }">
+            <div class="border-b border-gray-200 pb-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-base sm:text-lg font-bold text-gray-800">4. Dismissible Alerts &amp; Live Toasts</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">Responsive banners that adapt to mobile widths without clipping dismiss buttons.</p>
+                </div>
+                <button @click="toastMsg = 'Alert triggered at ' + new Date().toLocaleTimeString(); toast = true; setTimeout(() => { toast = false }, 4000)" class="w-full sm:w-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold shadow-sm transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A20.317 20.317 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                    <span>Trigger Live Toast Notification</span>
+                </button>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Dismissible Success Alert -->
+                <div x-show="alert1" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-xs">
+                    <div class="flex items-start sm:items-center gap-3 min-w-0">
+                        <svg class="w-5 h-5 text-green-600 shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span class="break-words"><strong>Success:</strong> Your system configuration was saved and deployed without errors.</span>
+                    </div>
+                    <button @click="alert1 = false" class="self-end sm:self-auto text-green-600 hover:text-green-800 font-bold p-1 rounded hover:bg-green-100 transition shrink-0" title="Dismiss Alert">&times;</button>
+                </div>
+
+                <!-- Dismissible Warning Alert -->
+                <div x-show="alert2" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="p-4 bg-amber-50 border border-amber-200 text-amber-800 rounded-xl text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-xs">
+                    <div class="flex items-start sm:items-center gap-3 min-w-0">
+                        <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <span class="break-words"><strong>Notice:</strong> Scheduled database maintenance will occur tonight from 02:00 UTC to 03:00 UTC.</span>
+                    </div>
+                    <button @click="alert2 = false" class="self-end sm:self-auto text-amber-600 hover:text-amber-800 font-bold p-1 rounded hover:bg-amber-100 transition shrink-0" title="Dismiss Alert">&times;</button>
+                </div>
+
+                <div x-show="!alert1 && !alert2" x-transition class="p-6 text-center bg-gray-50 rounded-xl border border-dashed border-gray-300 text-xs text-gray-500">
+                    All static alerts have been dismissed! Click "Trigger Live Toast Notification" above to test dynamic toast alerts.
+                </div>
+            </div>
+
+            <!-- Floating Toast Notification (Responsive bottom placement on mobile) -->
+            <div x-show="toast" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:translate-x-4" x-transition:enter-end="opacity-100 translate-y-0 sm:translate-x-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" x-cloak class="fixed bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 sm:bottom-6 z-50 max-w-md w-auto bg-gray-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-gray-700 flex items-center justify-between sm:justify-start gap-3 text-xs sm:text-sm font-medium">
+                <div class="flex items-center gap-3 min-w-0">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse shrink-0"></span>
+                    <span x-text="toastMsg" class="truncate"></span>
+                </div>
+                <button @click="toast = false" class="text-gray-400 hover:text-white ml-2 font-bold shrink-0">&times;</button>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 5. PROGRESSIVE RANGE SLIDER & DYNAMIC BADGE PILLS -->
+        <!-- ============================================================ -->
+        <section class="bg-white rounded-xl shadow-xs border border-gray-200 p-5 sm:p-8" x-data="{ sliderVal: 65 }">
+            <div class="border-b border-gray-200 pb-4 mb-6">
+                <h2 class="text-base sm:text-lg font-bold text-gray-800">5. Dynamic Sliders &amp; Responsive Badges</h2>
+                <p class="text-xs text-gray-500 mt-0.5">Interactive range controls updating badges and flexible wrapping status pills.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="space-y-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <label class="text-xs font-bold uppercase text-gray-600">CPU Allocation Limit</label>
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 border border-indigo-200" x-text="sliderVal + '%'"></span>
+                    </div>
+                    <input type="range" min="0" max="100" x-model="sliderVal" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-indigo-600" />
+                    <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                        <div class="bg-indigo-600 h-2 rounded-full transition-all duration-150" :class="{'w-0': sliderVal < 10, 'w-1/4': sliderVal >= 10 && sliderVal < 35, 'w-1/2': sliderVal >= 35 && sliderVal < 65, 'w-3/4': sliderVal >= 65 && sliderVal < 90, 'w-full': sliderVal >= 90}"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <span class="block text-xs font-bold uppercase text-gray-500">Responsive Status Badges (Pills)</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> Active Pro
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-800 border border-indigo-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span> Verified
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Pending Review
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 border border-red-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span> Action Required
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
