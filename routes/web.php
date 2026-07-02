@@ -10,6 +10,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ui', function () {
+    return redirect('/ui/index.html');
+});
+
+Route::get('/ui/{file?}', function (?string $file = null) {
+    if ($file === null || $file === '') {
+        return redirect('/ui/index.html');
+    }
+
+    $path = realpath(base_path('ui/'.$file));
+    $basePath = realpath(base_path('ui')).DIRECTORY_SEPARATOR;
+
+    if (! $path || ! str_starts_with($path, $basePath) || ! is_file($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+})->where('file', '.*');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
