@@ -40,7 +40,7 @@ jobs:
           rm -rf node_modules
           rm -rf tests
 
-      - name: 🚀 Deploy to InfinityFree via FTP
+      - name: 🚀 Deploy to via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
