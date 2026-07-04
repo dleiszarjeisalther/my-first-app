@@ -262,26 +262,20 @@ function initSidebarController() {
     if (!sidebar) return;
 
     let isDesktopOpen = true;
-
-    // Desktop Sidebar Toggle (collapses from 16rem/256px down to 0px width with smooth transition)
-    if (desktopToggle) {
-        desktopToggle.addEventListener('click', () => {
-            isDesktopOpen = !isDesktopOpen;
-            if (isDesktopOpen) {
-                sidebar.classList.remove('w-0', 'border-r-0', 'opacity-0', 'pointer-events-none', 'md:opacity-0', 'md:border-r-0', 'md:w-0');
-                sidebar.classList.add('w-64', 'border-r', 'opacity-100');
-                if (toggleIcon) toggleIcon.textContent = 'menu_open';
-                desktopToggle.setAttribute('title', 'Close Sidebar');
-            } else {
-                sidebar.classList.remove('w-64', 'border-r', 'opacity-100');
-                sidebar.classList.add('w-0', 'border-r-0', 'opacity-0', 'pointer-events-none', 'md:opacity-0', 'md:border-r-0', 'md:w-0');
-                if (toggleIcon) toggleIcon.textContent = 'menu';
-                desktopToggle.setAttribute('title', 'Open Sidebar');
-            }
-        });
-    }
-
     let isMobileOpen = false;
+
+    const updateIcon = () => {
+        if (!toggleIcon) return;
+        if (window.innerWidth < 768) {
+            toggleIcon.textContent = isMobileOpen ? 'menu_open' : 'menu';
+        } else {
+            toggleIcon.textContent = isDesktopOpen ? 'menu_open' : 'menu';
+        }
+    };
+
+    // Initialize icon on page load
+    updateIcon();
+
     const openMobile = () => {
         isMobileOpen = true;
         sidebar.classList.remove('-translate-x-full', 'w-0', 'md:w-0', 'border-r-0', 'md:border-r-0', 'opacity-0', 'md:opacity-0', 'pointer-events-none', 'md:pointer-events-none');
@@ -290,10 +284,8 @@ function initSidebarController() {
             backdrop.classList.remove('hidden', 'opacity-0');
             backdrop.classList.add('block', 'opacity-100', 'pointer-events-auto');
         }
-        if (mobileToggle) {
-            const icon = mobileToggle.querySelector('.material-symbols-outlined');
-            if (icon) icon.textContent = 'menu_open';
-        }
+        updateIcon();
+        if (desktopToggle) desktopToggle.setAttribute('title', 'Close Sidebar');
     };
 
     const closeMobile = () => {
@@ -304,33 +296,48 @@ function initSidebarController() {
             backdrop.classList.remove('block', 'opacity-100', 'pointer-events-auto');
             backdrop.classList.add('hidden', 'opacity-0');
         }
-        if (mobileToggle) {
-            const icon = mobileToggle.querySelector('.material-symbols-outlined');
-            if (icon) icon.textContent = 'menu';
-        }
+        updateIcon();
+        if (desktopToggle) desktopToggle.setAttribute('title', 'Open Navigation');
     };
 
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
+    const toggleHandler = () => {
+        if (window.innerWidth < 768) {
             if (isMobileOpen) {
                 closeMobile();
             } else {
                 openMobile();
             }
-        });
-    }
+        } else {
+            isDesktopOpen = !isDesktopOpen;
+            if (isDesktopOpen) {
+                sidebar.classList.remove('w-0', 'border-r-0', 'opacity-0', 'pointer-events-none', 'md:opacity-0', 'md:border-r-0', 'md:w-0');
+                sidebar.classList.add('w-64', 'border-r', 'opacity-100');
+                if (desktopToggle) desktopToggle.setAttribute('title', 'Close Sidebar');
+            } else {
+                sidebar.classList.remove('w-64', 'border-r', 'opacity-100');
+                sidebar.classList.add('w-0', 'border-r-0', 'opacity-0', 'pointer-events-none', 'md:opacity-0', 'md:border-r-0', 'md:w-0');
+                if (desktopToggle) desktopToggle.setAttribute('title', 'Open Sidebar');
+            }
+            updateIcon();
+        }
+    };
+
+    if (desktopToggle) desktopToggle.addEventListener('click', toggleHandler);
+    if (mobileToggle && mobileToggle !== desktopToggle) mobileToggle.addEventListener('click', toggleHandler);
     if (mobileClose) mobileClose.addEventListener('click', closeMobile);
     if (backdrop) backdrop.addEventListener('click', closeMobile);
 
     // Responsive Breakpoint Reset on Window Resize
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) {
+            isMobileOpen = false;
             sidebar.classList.remove('-translate-x-full', 'translate-x-0');
             if (backdrop) {
                 backdrop.classList.remove('block', 'opacity-100', 'pointer-events-auto');
                 backdrop.classList.add('hidden', 'opacity-0');
             }
         }
+        updateIcon();
     });
 }
 
