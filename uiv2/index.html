@@ -16,7 +16,6 @@
         <input type="radio" name="filter" id="filter-auth" class="filter-radio">
         <input type="radio" name="filter" id="filter-comp" class="filter-radio">
         <input type="radio" name="filter" id="filter-layout" class="filter-radio">
-        <input type="radio" name="filter" id="filter-system" class="filter-radio">
 
         <!-- Header Aligned with Breeze UI Hub -->
         <header class="app-header">
@@ -59,7 +58,7 @@
                     <div class="filter-container">
                         <label for="filter-all" class="filter-btn">
                             <span>All Modules</span>
-                            <span class="count-pill">16</span>
+                            <span class="count-pill">15</span>
                         </label>
                         <label for="filter-auth" class="filter-btn">
                             <span>Authentication</span>
@@ -67,14 +66,10 @@
                         </label>
                         <label for="filter-comp" class="filter-btn">
                             <span>Components</span>
-                            <span class="count-pill">7</span>
+                            <span class="count-pill">8</span>
                         </label>
                         <label for="filter-layout" class="filter-btn">
                             <span>Layouts</span>
-                            <span class="count-pill">2</span>
-                        </label>
-                        <label for="filter-system" class="filter-btn">
-                            <span>Design Systems</span>
                             <span class="count-pill">2</span>
                         </label>
                     </div>
@@ -433,6 +428,35 @@
                         </div>
                     </article>
 
+                    <!-- 15. Confirmation Modals & Dialogs -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="modal_confirmation_component_standards/screen.png?v=3" alt="Confirmation Modals & Dialogs Preview" class="card-thumb" style="display: none;" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: flex;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+                                <div class="fallback-text">Confirmation Modals &amp; Dialogs</div>
+                                <div class="fallback-subtext">Interactive Dialogs &amp; Warnings</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Confirmation Modals &amp; Dialogs</h3>
+                            <p class="card-desc">Standardized interactive modal dialogs for critical user decisions, destructive actions, and session safeguards.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="modal_confirmation_component_standards/code.html">📁 modal_confirmation_component_standards/code.html</span>
+                                <a href="modal_confirmation_component_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
                     <!-- 13. Dashboard App Layout -->
                     <article class="component-card" data-group="Layouts">
                         <div class="card-thumb-wrapper">
@@ -481,64 +505,6 @@
                             <div class="card-footer">
                                 <span class="file-path-info" title="guest_layout_container_standard/code.html">📁 guest_layout_container_standard/code.html</span>
                                 <a href="guest_layout_container_standard/code.html" class="btn btn-view">
-                                    <span>View</span>
-                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 15. Laravel Breeze Design System -->
-                    <article class="component-card" data-group="Design Systems">
-                        <div class="card-thumb-wrapper">
-                            <div class="card-badge-container">
-                                <span class="card-badge badge-design-systems">Design Systems</span>
-                            </div>
-                            <img src="laravel_breeze_design_system/screen.png?v=3" alt="Laravel Breeze Design System Preview" class="card-thumb" style="display: none;" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="fallback-banner" style="display: flex;">
-                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                                <div class="fallback-text">Laravel Breeze Design System</div>
-                                <div class="fallback-subtext">Core Design Tokens & Specs</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Laravel Breeze Design System</h3>
-                            <p class="card-desc">Core design tokens, color palettes, typography scale, spacing rules, and elevation shadows.</p>
-                            <div class="card-footer">
-                                <span class="file-path-info" title="laravel_breeze_design_system/DESIGN.md">📁 laravel_breeze_design_system/DESIGN.md</span>
-                                <a href="laravel_breeze_design_system/DESIGN.md" class="btn btn-view">
-                                    <span>View</span>
-                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 16. Laravel Breeze Template Hub -->
-                    <article class="component-card" data-group="Design Systems">
-                        <div class="card-thumb-wrapper">
-                            <div class="card-badge-container">
-                                <span class="card-badge badge-design-systems">Design Systems</span>
-                            </div>
-                            <img src="laravel_breeze_template_hub/screen.png?v=3" alt="Laravel Breeze Template Hub Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="fallback-banner" style="display: none;">
-                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
-                                <div class="fallback-text">Laravel Breeze Template Hub</div>
-                                <div class="fallback-subtext">Static Prototype Template</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Laravel Breeze Template Hub</h3>
-                            <p class="card-desc">Central overview and catalog showcasing all integrated templates and standardized UI modules.</p>
-                            <div class="card-footer">
-                                <span class="file-path-info" title="laravel_breeze_template_hub/code.html">📁 laravel_breeze_template_hub/code.html</span>
-                                <a href="laravel_breeze_template_hub/code.html" class="btn btn-view">
                                     <span>View</span>
                                     <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <line x1="5" y1="12" x2="19" y2="12"></line>
