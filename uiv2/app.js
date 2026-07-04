@@ -281,27 +281,44 @@ function initSidebarController() {
         });
     }
 
-    // Mobile Sidebar Open (Slide-over drawer from -translate-x-full to translate-x-0)
+    let isMobileOpen = false;
     const openMobile = () => {
+        isMobileOpen = true;
         sidebar.classList.remove('-translate-x-full', 'w-0', 'md:w-0', 'border-r-0', 'md:border-r-0', 'opacity-0', 'md:opacity-0', 'pointer-events-none', 'md:pointer-events-none');
         sidebar.classList.add('translate-x-0', 'w-64', 'border-r', 'opacity-100');
         if (backdrop) {
             backdrop.classList.remove('hidden', 'opacity-0');
             backdrop.classList.add('block', 'opacity-100', 'pointer-events-auto');
         }
+        if (mobileToggle) {
+            const icon = mobileToggle.querySelector('.material-symbols-outlined');
+            if (icon) icon.textContent = 'menu_open';
+        }
     };
 
-    // Mobile Sidebar Close
     const closeMobile = () => {
+        isMobileOpen = false;
         sidebar.classList.remove('translate-x-0');
         sidebar.classList.add('-translate-x-full');
         if (backdrop) {
             backdrop.classList.remove('block', 'opacity-100', 'pointer-events-auto');
             backdrop.classList.add('hidden', 'opacity-0');
         }
+        if (mobileToggle) {
+            const icon = mobileToggle.querySelector('.material-symbols-outlined');
+            if (icon) icon.textContent = 'menu';
+        }
     };
 
-    if (mobileToggle) mobileToggle.addEventListener('click', openMobile);
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            if (isMobileOpen) {
+                closeMobile();
+            } else {
+                openMobile();
+            }
+        });
+    }
     if (mobileClose) mobileClose.addEventListener('click', closeMobile);
     if (backdrop) backdrop.addEventListener('click', closeMobile);
 
