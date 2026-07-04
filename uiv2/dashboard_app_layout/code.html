@@ -19,20 +19,9 @@
 <button id="close-mobile-sidebar" type="button" class="md:hidden absolute top-3 right-3 text-on-surface-variant hover:text-on-surface p-1 transition-colors" title="Close Sidebar">
 <span class="material-symbols-outlined">close</span>
 </button>
-<!-- BCP-Inspired Shield Logo Placeholder -->
-<div class="flex flex-col items-center gap-2" title="Logo Placeholder">
-<svg class="w-24 h-28 drop-shadow-md" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M 50,5 L 92,20 L 92,60 C 92,88 50,112 50,115 C 50,112 8,88 8,60 L 8,20 Z" fill="#1e3a8a" stroke="#dc2626" stroke-width="4"/>
-<path d="M 50,12 L 85,25 L 85,58 C 85,82 50,103 50,106 C 50,103 15,82 15,58 L 15,25 Z" fill="#0369a1" stroke="#ffffff" stroke-width="2"/>
-<path d="M 55,16 L 85,25 L 75,40 L 48,28 Z" fill="#ffffff"/>
-<text x="64" y="28" fill="#1e3a8a" font-size="8" font-family="sans-serif" font-weight="bold" transform="rotate(18 64 28)">2002</text>
-<ellipse cx="50" cy="60" rx="20" ry="8" stroke="#38bdf8" stroke-width="2.5" transform="rotate(-30 50 60)"/>
-<ellipse cx="50" cy="60" rx="20" ry="8" stroke="#f87171" stroke-width="2.5" transform="rotate(30 50 60)"/>
-<circle cx="50" cy="60" r="6" fill="#ffffff"/>
-<rect x="18" y="88" width="64" height="14" rx="3" fill="#1e3a8a" stroke="#f87171" stroke-width="1"/>
-<text x="50" y="98" fill="#ffffff" font-size="7" font-family="sans-serif" font-weight="900" text-anchor="middle" tracking="tighter">LOGO PLACEHOLDER</text>
-</svg>
-<span class="text-xs font-label font-bold text-on-surface-variant tracking-wider uppercase">BCP Inspired Placeholder</span>
+<!-- Logo Placeholder -->
+<div class="flex items-center justify-center py-2" title="Logo Placeholder">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='16' fill='%23f1f5f9'/%3E%3Cpath d='M30 36a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm22 14H28l8-10 5 6 4-5 5 6z' fill='%23cbd5e1'/%3E%3C/svg%3E" alt="Logo" class="w-20 h-20 rounded-2xl object-cover border border-outline-variant/30 shadow-sm">
 </div>
 </div>
 <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
@@ -66,8 +55,10 @@
 <div class="flex items-center md:hidden">
 <span class="text-xl font-headline font-black tracking-tight text-primary">Breeze UI Hub</span>
 </div>
-<!-- Desktop Sidebar Toggle Button -->
-<div class="relative hidden md:flex items-center">
+<!-- Desktop Sidebar Toggle Button with Small Logo -->
+<div class="relative hidden md:flex items-center gap-3">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f1f5f9'/%3E%3Cpath d='M10 16a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm12 6H10l4-5 2.5 3 2-2.5 3.5 4.5z' fill='%23cbd5e1'/%3E%3C/svg%3E" alt="Logo" class="w-8 h-8 rounded-lg object-cover border border-outline-variant/30 shadow-2xs shrink-0">
+<span class="text-outline-variant font-light select-none">|</span>
 <button id="desktop-sidebar-toggle" type="button" class="flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low focus:outline-none transition border border-outline-variant/30 shrink-0 min-w-[2.5rem] min-h-[2.5rem]" title="Close Sidebar">
 <span class="material-symbols-outlined text-xl" id="sidebar-toggle-icon">menu_open</span>
 </button>
