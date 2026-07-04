@@ -26,7 +26,21 @@ Route::get('/ui/{file?}', function (?string $file = null) {
         abort(404);
     }
 
-    return response()->file($path);
+    $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+    $headers = match ($extension) {
+        'css' => ['Content-Type' => 'text/css; charset=utf-8'],
+        'js' => ['Content-Type' => 'application/javascript; charset=utf-8'],
+        'html', 'htm' => ['Content-Type' => 'text/html; charset=utf-8'],
+        'svg' => ['Content-Type' => 'image/svg+xml'],
+        'png' => ['Content-Type' => 'image/png'],
+        'jpg', 'jpeg' => ['Content-Type' => 'image/jpeg'],
+        'gif' => ['Content-Type' => 'image/gif'],
+        'ico' => ['Content-Type' => 'image/x-icon'],
+        'json' => ['Content-Type' => 'application/json; charset=utf-8'],
+        default => [],
+    };
+
+    return response()->file($path, $headers);
 })->where('file', '.*');
 
 Route::get('/uiv2', function () {
@@ -45,7 +59,21 @@ Route::get('/uiv2/{file?}', function (?string $file = null) {
         abort(404);
     }
 
-    return response()->file($path);
+    $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+    $headers = match ($extension) {
+        'css' => ['Content-Type' => 'text/css; charset=utf-8'],
+        'js' => ['Content-Type' => 'application/javascript; charset=utf-8'],
+        'html', 'htm' => ['Content-Type' => 'text/html; charset=utf-8'],
+        'svg' => ['Content-Type' => 'image/svg+xml'],
+        'png' => ['Content-Type' => 'image/png'],
+        'jpg', 'jpeg' => ['Content-Type' => 'image/jpeg'],
+        'gif' => ['Content-Type' => 'image/gif'],
+        'ico' => ['Content-Type' => 'image/x-icon'],
+        'json' => ['Content-Type' => 'application/json; charset=utf-8'],
+        default => [],
+    };
+
+    return response()->file($path, $headers);
 })->where('file', '.*');
 
 Route::get('/dashboard', function () {
