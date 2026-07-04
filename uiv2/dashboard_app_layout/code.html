@@ -2,7 +2,7 @@
 
 <html lang="en"><head>
 <link href="../app.css?v=2" rel="stylesheet"/>
-<script src="../app.js?v=3" defer></script>
+<script src="../app.js?v=4" defer></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dashboard</title>
@@ -46,6 +46,16 @@
 <span class="font-label font-medium text-sm">Settings</span>
 </a>
 </nav>
+<!-- User Profile Summary at bottom of sidebar -->
+<div class="p-4 border-t border-outline-variant/30 shrink-0">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-surface-container-low/50">
+<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;auto=format&amp;fit=crop&amp;q=80" alt="Admin" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30 shrink-0">
+<div class="overflow-hidden">
+<p class="text-sm font-label font-semibold text-on-surface truncate">Admin User</p>
+<p class="text-xs text-on-surface-variant truncate">admin@example.com</p>
+</div>
+</div>
+</div>
 </aside>
 <!-- Main Content Wrapper -->
 <div class="flex-1 flex flex-col h-full overflow-hidden relative">
@@ -59,6 +69,48 @@
 <button id="desktop-sidebar-toggle" type="button" class="flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low focus:outline-none transition border border-outline-variant/30 shrink-0 min-w-[2.5rem] min-h-[2.5rem]" title="Close Sidebar">
 <span class="material-symbols-outlined text-xl" id="sidebar-toggle-icon">menu_open</span>
 </button>
+</div>
+
+<!-- Right Side: Profile Dropdown -->
+<div class="relative flex items-center">
+<button id="profile-dropdown-toggle" type="button" class="flex items-center gap-3 p-1.5 rounded-full hover:bg-surface-container-low transition-colors focus:outline-none border border-transparent hover:border-outline-variant/30 cursor-pointer" aria-expanded="false" title="Account Menu">
+<div class="w-9 h-9 rounded-full bg-primary-container/30 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm shadow-2xs shrink-0">
+AU
+</div>
+<div class="hidden md:flex flex-col text-left mr-1">
+<span class="font-label font-semibold text-sm text-on-surface leading-tight">Admin User</span>
+<span class="text-xs text-on-surface-variant font-light">Administrator</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm hidden sm:inline-block">expand_more</span>
+</button>
+
+<!-- Profile Dropdown Menu Container -->
+<div id="profile-dropdown-menu" class="absolute right-0 top-14 w-60 bg-surface rounded-2xl shadow-xl border border-outline-variant/30 py-2 z-50 transition-all duration-200 hidden opacity-0 scale-95 origin-top-right">
+<div class="px-4 py-3 border-b border-outline-variant/20 md:hidden">
+<p class="text-sm font-semibold text-on-surface">Admin User</p>
+<p class="text-xs text-on-surface-variant truncate">admin@example.com</p>
+</div>
+<div class="px-4 py-2 hidden md:block">
+<p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Account</p>
+</div>
+<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg text-on-surface-variant">person</span>
+<span class="font-medium">My Profile</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg text-on-surface-variant">manage_accounts</span>
+<span class="font-medium">Account Settings</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg text-on-surface-variant">notifications</span>
+<span class="font-medium">Notifications</span>
+</a>
+<div class="my-1 border-t border-outline-variant/20"></div>
+<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors font-medium">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Log Out</span>
+</a>
+</div>
 </div>
 </header>
 <!-- Main Scrollable Area -->

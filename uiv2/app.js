@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCatalogHub();
     initComponentInteractions();
     initSidebarController();
+    initProfileDropdown();
 });
 
 /**
@@ -338,6 +339,66 @@ function initSidebarController() {
             }
         }
         updateIcon();
+    });
+}
+
+/**
+ * Profile Dropdown Controller
+ * Handles toggling the account profile dropdown menu in the header and closing when clicking outside or pressing Escape.
+ */
+function initProfileDropdown() {
+    const toggleBtn = document.getElementById('profile-dropdown-toggle');
+    const dropdownMenu = document.getElementById('profile-dropdown-menu');
+
+    if (!toggleBtn || !dropdownMenu) return;
+
+    let isOpen = false;
+
+    const openDropdown = () => {
+        isOpen = true;
+        dropdownMenu.classList.remove('hidden', 'opacity-0', 'scale-95');
+        dropdownMenu.classList.add('block', 'opacity-100', 'scale-100');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        const arrow = toggleBtn.querySelector('.material-symbols-outlined');
+        if (arrow && arrow.textContent === 'expand_more') {
+            arrow.textContent = 'expand_less';
+        }
+    };
+
+    const closeDropdown = () => {
+        if (!isOpen) return;
+        isOpen = false;
+        dropdownMenu.classList.remove('block', 'opacity-100', 'scale-100');
+        dropdownMenu.classList.add('opacity-0', 'scale-95');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        const arrow = toggleBtn.querySelector('.material-symbols-outlined');
+        if (arrow && arrow.textContent === 'expand_less') {
+            arrow.textContent = 'expand_more';
+        }
+        setTimeout(() => {
+            if (!isOpen) dropdownMenu.classList.add('hidden');
+        }, 200);
+    };
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (isOpen && !dropdownMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) {
+            closeDropdown();
+        }
     });
 }
 

@@ -737,7 +737,15 @@ button, label[for^="filter-"] {
 .opacity-100 { opacity: 1 !important; }
 .translate-x-0 { transform: translateX(0) !important; }
 .-translate-x-full { transform: translateX(-100%) !important; }
+.duration-200 { transition-duration: 200ms !important; }
 .duration-300 { transition-duration: 300ms !important; }
+.top-12 { top: 3rem !important; }
+.top-14 { top: 3.5rem !important; }
+.w-56 { width: 14rem !important; }
+.w-60 { width: 15rem !important; }
+.scale-95 { transform: scale(0.95) !important; }
+.scale-100 { transform: scale(1) !important; }
+.origin-top-right { transform-origin: top right !important; }
 .ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important; }
 .pointer-events-auto { pointer-events: auto !important; }
 .min-w-\[2\.5rem\] { min-width: 2.5rem !important; }
