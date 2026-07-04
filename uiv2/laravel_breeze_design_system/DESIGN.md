@@ -1,0 +1,1 @@
+A clean, modern, responsive Laravel Breeze static UI template design system. Features Tailwind CSS styling, soft shadows, rounded border cards, indigo primary accents (#4f46e5), subtle gray backgrounds (bg-gray-100), clean table views, modal overlays, badges, and responsive header navigation.

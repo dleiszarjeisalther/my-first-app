@@ -29,6 +29,25 @@ Route::get('/ui/{file?}', function (?string $file = null) {
     return response()->file($path);
 })->where('file', '.*');
 
+Route::get('/uiv2', function () {
+    return redirect('/uiv2/index.html');
+});
+
+Route::get('/uiv2/{file?}', function (?string $file = null) {
+    if ($file === null || $file === '') {
+        return redirect('/uiv2/index.html');
+    }
+
+    $path = realpath(base_path('uiv2/'.$file));
+    $basePath = realpath(base_path('uiv2')).DIRECTORY_SEPARATOR;
+
+    if (! $path || ! str_starts_with($path, $basePath) || ! is_file($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+})->where('file', '.*');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

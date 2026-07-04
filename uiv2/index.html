@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breeze UI Hub & Standard Components (Pure CSS)</title>
+    <meta name="description" content="Centralized Laravel Breeze design system repository featuring authentication flows, component libraries, responsive layouts, and static prototypes. Pure CSS Architecture without JS or Tailwind.">
+    <!-- Link to universal app.css design system and app.js interactivity -->
+    <link rel="stylesheet" href="app.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Pure CSS Radio Inputs for Interactive Filtering (Zero JavaScript) -->
+        <input type="radio" name="filter" id="filter-all" class="filter-radio" checked>
+        <input type="radio" name="filter" id="filter-auth" class="filter-radio">
+        <input type="radio" name="filter" id="filter-comp" class="filter-radio">
+        <input type="radio" name="filter" id="filter-layout" class="filter-radio">
+        <input type="radio" name="filter" id="filter-system" class="filter-radio">
+
+        <!-- Header Aligned with Breeze UI Hub -->
+        <header class="app-header">
+            <div class="container header-content">
+                <div class="brand-identity">
+                    <div class="brand-logo">BZ</div>
+                    <div class="brand-text">
+                        <h1>Laravel <span>Breeze UI Hub</span></h1>
+                    </div>
+                    <span class="brand-badge">Pure CSS</span>
+                </div>
+
+                <div class="header-actions">
+                    <div class="search-box" style="position: relative; width: 260px;">
+                        <svg class="search-icon" style="position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-dim); pointer-events: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" class="form-input" style="padding-left: 2.5rem; border-radius: 9999px; background: var(--bg-surface-low);" placeholder="Search modules...">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="container">
+                    <div class="hero-badge">
+                        <span>⚡ Production-Ready Static UI Kits & Authentication</span>
+                    </div>
+                    <h1 class="hero-title">The Standard <span>Breeze Architecture</span></h1>
+                    <p class="hero-subtitle">
+                        A meticulously crafted collection of static templates, layouts, and authentication modules aligned with Laravel Breeze.
+                        Filter by category using pure CSS or click <strong>View</strong> for direct redirection to the prototype source.
+                    </p>
+
+                    <!-- Filter Bar / Labels for Pure CSS Radio Filtering -->
+                    <div class="filter-container">
+                        <label for="filter-all" class="filter-btn">
+                            <span>All Modules</span>
+                            <span class="count-pill">16</span>
+                        </label>
+                        <label for="filter-auth" class="filter-btn">
+                            <span>Authentication</span>
+                            <span class="count-pill">5</span>
+                        </label>
+                        <label for="filter-comp" class="filter-btn">
+                            <span>Components</span>
+                            <span class="count-pill">7</span>
+                        </label>
+                        <label for="filter-layout" class="filter-btn">
+                            <span>Layouts</span>
+                            <span class="count-pill">2</span>
+                        </label>
+                        <label for="filter-system" class="filter-btn">
+                            <span>Design Systems</span>
+                            <span class="count-pill">2</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Components Grid Section -->
+            <section class="container">
+                <div class="components-grid">
+                    
+                    <!-- 1. Authentication Card Standard -->
+                    <article class="component-card" data-group="Authentication">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-authentication">Authentication</span>
+                            </div>
+                            <img src="authentication_card_component_standard/screen.png" alt="Authentication Card Standard Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <div class="fallback-text">Authentication Card Standard</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Authentication Card Standard</h3>
+                            <p class="card-desc">Standardized login and user authentication interface with form validation and social sign-in actions.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="authentication_card_component_standard/code.html">📁 authentication_card_component_standard/code.html</span>
+                                <a href="authentication_card_component_standard/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 2. Forgot Password Card -->
+                    <article class="component-card" data-group="Authentication">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-authentication">Authentication</span>
+                            </div>
+                            <img src="forgot_password_card_component_standard/screen.png" alt="Forgot Password Card Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                                <div class="fallback-text">Forgot Password Card</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Forgot Password Card</h3>
+                            <p class="card-desc">Password recovery request workflow with clean status reporting and back-to-login navigation.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="forgot_password_card_component_standard/code.html">📁 forgot_password_card_component_standard/code.html</span>
+                                <a href="forgot_password_card_component_standard/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 3. MFA OTP Verification Card -->
+                    <article class="component-card" data-group="Authentication">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-authentication">Authentication</span>
+                            </div>
+                            <img src="mfa_otp_verification_card_standard/screen.png" alt="MFA OTP Verification Card Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <div class="fallback-text">MFA OTP Verification Card</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">MFA OTP Verification Card</h3>
+                            <p class="card-desc">Multi-factor authentication one-time password (OTP) input interface with resend countdown timer.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="mfa_otp_verification_card_standard/code.html">📁 mfa_otp_verification_card_standard/code.html</span>
+                                <a href="mfa_otp_verification_card_standard/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 4. Reset Password Card -->
+                    <article class="component-card" data-group="Authentication">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-authentication">Authentication</span>
+                            </div>
+                            <img src="reset_password_card_component_standard/screen.png" alt="Reset Password Card Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                                <div class="fallback-text">Reset Password Card</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Reset Password Card</h3>
+                            <p class="card-desc">Secure new password assignment interface with real-time strength indicator and confirmation fields.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="reset_password_card_component_standard/code.html">📁 reset_password_card_component_standard/code.html</span>
+                                <a href="reset_password_card_component_standard/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 5. Security & Session Protection -->
+                    <article class="component-card" data-group="Authentication">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-authentication">Authentication</span>
+                            </div>
+                            <img src="security_session_protection_standards/screen.png" alt="Security & Session Protection Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                <div class="fallback-text">Security & Session Protection</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Security & Session Protection</h3>
+                            <p class="card-desc">Active browser session management, device logout controls, and account security audit settings.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="security_session_protection_standards/code.html">📁 security_session_protection_standards/code.html</span>
+                                <a href="security_session_protection_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 6. Badge & Avatar Standards -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="badge_avatar_component_standards/screen.png" alt="Badge & Avatar Standards Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <div class="fallback-text">Badge & Avatar Standards</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Badge & Avatar Standards</h3>
+                            <p class="card-desc">User profile avatars, status indicators, notification badges, and metadata tags library.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="badge_avatar_component_standards/code.html">📁 badge_avatar_component_standards/code.html</span>
+                                <a href="badge_avatar_component_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 7. Button & Action Library -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="button_action_component_library/screen.png" alt="Button & Action Library Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                <div class="fallback-text">Button & Action Library</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Button & Action Library</h3>
+                            <p class="card-desc">Comprehensive interactive buttons, dropdown actions, icon triggers, and state variants.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="button_action_component_library/code.html">📁 button_action_component_library/code.html</span>
+                                <a href="button_action_component_library/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 8. Data Table Standards -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="data_table_component_standards/screen.png" alt="Data Table Standards Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>
+                                <div class="fallback-text">Data Table Standards</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Data Table Standards</h3>
+                            <p class="card-desc">Advanced tabular data presentation with sorting, pagination, search filtering, and bulk actions.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="data_table_component_standards/code.html">📁 data_table_component_standards/code.html</span>
+                                <a href="data_table_component_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 9. Form Input Standards -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="form_input_component_standards/screen.png" alt="Form Input Standards Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                <div class="fallback-text">Form Input Standards</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Form Input Standards</h3>
+                            <p class="card-desc">Input fields, select dropdowns, toggles, checkboxes, and error state validation feedback.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="form_input_component_standards/code.html">📁 form_input_component_standards/code.html</span>
+                                <a href="form_input_component_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 10. Icon & Symbol Standards -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="icon_symbol_component_standards/screen.png" alt="Icon & Symbol Standards Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 12 8"></polygon></svg>
+                                <div class="fallback-text">Icon & Symbol Standards</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Icon & Symbol Standards</h3>
+                            <p class="card-desc">Consolidated UI iconography, system symbols, and graphical indicators with sizing tokens.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="icon_symbol_component_standards/code.html">📁 icon_symbol_component_standards/code.html</span>
+                                <a href="icon_symbol_component_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 11. Navigation Standards -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="navigation_component_standards/screen.png" alt="Navigation Standards Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <div class="fallback-text">Navigation Standards</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Navigation Standards</h3>
+                            <p class="card-desc">Sidebars, top header bars, breadcrumbs, tabbed navigation, and modular menu structures.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="navigation_component_standards/code.html">📁 navigation_component_standards/code.html</span>
+                                <a href="navigation_component_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 12. UI States & Feedback -->
+                    <article class="component-card" data-group="Components">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-components">Components</span>
+                            </div>
+                            <img src="ui_states_component_standards/screen.png" alt="UI States & Feedback Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                <div class="fallback-text">UI States & Feedback</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">UI States & Feedback</h3>
+                            <p class="card-desc">Empty states, loading spinners, skeleton screens, error alerts, and success notification toasts.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="ui_states_component_standards/code.html">📁 ui_states_component_standards/code.html</span>
+                                <a href="ui_states_component_standards/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 13. Dashboard App Layout -->
+                    <article class="component-card" data-group="Layouts">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-layouts">Layouts</span>
+                            </div>
+                            <img src="dashboard_app_layout/screen.png" alt="Dashboard App Layout Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                <div class="fallback-text">Dashboard App Layout</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Dashboard App Layout</h3>
+                            <p class="card-desc">Full application dashboard container with responsive sidebar, header, and content widgets grid.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="dashboard_app_layout/code.html">📁 dashboard_app_layout/code.html</span>
+                                <a href="dashboard_app_layout/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 14. Guest Layout Container -->
+                    <article class="component-card" data-group="Layouts">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-layouts">Layouts</span>
+                            </div>
+                            <img src="guest_layout_container_standard/screen.png" alt="Guest Layout Container Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                <div class="fallback-text">Guest Layout Container</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Guest Layout Container</h3>
+                            <p class="card-desc">Minimalist centered layout structure designed for public guest pages, onboarding, and auth flows.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="guest_layout_container_standard/code.html">📁 guest_layout_container_standard/code.html</span>
+                                <a href="guest_layout_container_standard/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 15. Laravel Breeze Design System -->
+                    <article class="component-card" data-group="Design Systems">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-design-systems">Design Systems</span>
+                            </div>
+                            <img src="laravel_breeze_design_system/screen.png" alt="Laravel Breeze Design System Preview" class="card-thumb" style="display: none;" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: flex;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                                <div class="fallback-text">Laravel Breeze Design System</div>
+                                <div class="fallback-subtext">Core Design Tokens & Specs</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Laravel Breeze Design System</h3>
+                            <p class="card-desc">Core design tokens, color palettes, typography scale, spacing rules, and elevation shadows.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="laravel_breeze_design_system/DESIGN.md">📁 laravel_breeze_design_system/DESIGN.md</span>
+                                <a href="laravel_breeze_design_system/DESIGN.md" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 16. Laravel Breeze Template Hub -->
+                    <article class="component-card" data-group="Design Systems">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-design-systems">Design Systems</span>
+                            </div>
+                            <img src="laravel_breeze_template_hub/screen.png" alt="Laravel Breeze Template Hub Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                                <div class="fallback-text">Laravel Breeze Template Hub</div>
+                                <div class="fallback-subtext">Static Prototype Template</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Laravel Breeze Template Hub</h3>
+                            <p class="card-desc">Central overview and catalog showcasing all integrated templates and standardized UI modules.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="laravel_breeze_template_hub/code.html">📁 laravel_breeze_template_hub/code.html</span>
+                                <a href="laravel_breeze_template_hub/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="container footer-content">
+                <div class="footer-text">
+                    &copy; 2026 Proposed Standard CSS Architecture. All HTML prototypes indexed.
+                </div>
+                <div class="footer-links">
+                    <span>⚡ Standard Breeze UI Architecture</span>
+                    <span>🔒 Pure CSS Radio Filter Enabled</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

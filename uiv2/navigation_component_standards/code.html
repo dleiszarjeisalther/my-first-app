@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<link href="../app.css" rel="stylesheet"/>
+<script src="../app.js" defer></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Navigation Component Standards</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+<!-- Header -->
+<header class="border-b border-outline-variant pb-8">
+<h1 class="text-3xl font-headline font-bold text-on-surface">Navigation Component Standards</h1>
+<p class="mt-2 text-on-surface-variant font-label text-lg">A comprehensive library of navigation patterns built with Laravel Breeze and Tailwind CSS design tokens.</p>
+</header>
+<!-- 1. Tab Navigation -->
+<section class="space-y-8">
+<div class="space-y-2">
+<h2 class="text-2xl font-headline font-semibold text-on-surface">1. Tab Navigation</h2>
+<p class="text-on-surface-variant text-sm">Horizontal tabs used to alternate between views within the same context.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Underline Style -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm">
+<h3 class="text-sm font-label font-medium text-on-surface-variant mb-6 uppercase tracking-wider">Underline Style</h3>
+<div class="border-b border-outline-variant">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<a aria-current="page" class="border-primary text-primary whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">My Account</a>
+<a class="border-transparent text-on-surface-variant hover:border-outline hover:text-on-surface whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Company</a>
+<a class="border-transparent text-on-surface-variant hover:border-outline hover:text-on-surface whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Team Members</a>
+<a class="border-transparent text-on-surface-variant hover:border-outline hover:text-on-surface whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Billing</a>
+</nav>
+</div>
+</div>
+<!-- Pill/Capsule Style -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm">
+<h3 class="text-sm font-label font-medium text-on-surface-variant mb-6 uppercase tracking-wider">Pill Style</h3>
+<nav aria-label="Tabs" class="flex space-x-4">
+<a aria-current="page" class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-medium text-sm" href="#">Overview</a>
+<a class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface px-4 py-2 rounded-full font-medium text-sm" href="#">Analytics</a>
+<a class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface px-4 py-2 rounded-full font-medium text-sm" href="#">Reports</a>
+<a class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface px-4 py-2 rounded-full font-medium text-sm" href="#">Settings</a>
+</nav>
+</div>
+</div>
+</section>
+<!-- 2. Breadcrumb Trails -->
+<section class="space-y-8">
+<div class="space-y-2">
+<h2 class="text-2xl font-headline font-semibold text-on-surface">2. Breadcrumb Trails</h2>
+<p class="text-on-surface-variant text-sm">Indicates the current page's location within a navigational hierarchy.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Chevron Separators -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm">
+<h3 class="text-sm font-label font-medium text-on-surface-variant mb-6 uppercase tracking-wider">Chevron Separators</h3>
+<nav aria-label="Breadcrumb" class="flex">
+<ol class="flex items-center space-x-4" role="list">
+<li>
+<div>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="home">home</span>
+<span class="sr-only">Home</span>
+</a>
+</div>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="chevron_right">chevron_right</span>
+<a class="ml-4 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Projects</a>
+</div>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="chevron_right">chevron_right</span>
+<a class="ml-4 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Apollo</a>
+</div>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="chevron_right">chevron_right</span>
+<span aria-current="page" class="ml-4 text-sm font-medium text-on-surface">Dashboard</span>
+</div>
+</li>
+</ol>
+</nav>
+</div>
+<!-- Slash Separators -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm">
+<h3 class="text-sm font-label font-medium text-on-surface-variant mb-6 uppercase tracking-wider">Slash Separators</h3>
+<nav aria-label="Breadcrumb" class="flex">
+<ol class="flex items-center space-x-4" role="list">
+<li>
+<div class="flex items-center">
+<a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Settings</a>
+</div>
+</li>
+<li>
+<div class="flex items-center">
+<span class="text-outline-variant text-sm font-medium">/</span>
+<a class="ml-4 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Profile</a>
+</div>
+</li>
+<li>
+<div class="flex items-center">
+<span class="text-outline-variant text-sm font-medium">/</span>
+<span aria-current="page" class="ml-4 text-sm font-medium text-on-surface">Security</span>
+</div>
+</li>
+</ol>
+</nav>
+</div>
+</div>
+</section>
+<!-- 3. Pagination -->
+<section class="space-y-8">
+<div class="space-y-2">
+<h2 class="text-2xl font-headline font-semibold text-on-surface">3. Pagination</h2>
+<p class="text-on-surface-variant text-sm">Allows navigation through large datasets spanning multiple pages.</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm">
+<!-- Standard Pagination -->
+<div class="flex items-center justify-between border-t border-outline-variant px-4 py-3 sm:px-6">
+<div class="flex flex-1 justify-between sm:hidden">
+<a class="relative inline-flex items-center rounded-md border border-outline-variant bg-surface-container-lowest px-4 py-2 text-sm font-medium text-on-surface-variant hover:bg-surface-container" href="#">Previous</a>
+<a class="relative ml-3 inline-flex items-center rounded-md border border-outline-variant bg-surface-container-lowest px-4 py-2 text-sm font-medium text-on-surface-variant hover:bg-surface-container" href="#">Next</a>
+</div>
+<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+<div>
+<p class="text-sm text-on-surface-variant">
+                                Showing <span class="font-medium text-on-surface">1</span> to <span class="font-medium text-on-surface">10</span> of <span class="font-medium text-on-surface">97</span> results
+                            </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md shadow-sm">
+<a class="relative inline-flex items-center rounded-l-md px-2 py-2 text-on-surface-variant ring-1 ring-inset ring-outline-variant hover:bg-surface-container focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed" href="#">
+<span class="sr-only">Previous</span>
+<span class="material-symbols-outlined text-xl" data-icon="chevron_left">chevron_left</span>
+</a>
+<!-- Active -->
+<a aria-current="page" class="relative z-10 inline-flex items-center bg-primary-container px-4 py-2 text-sm font-semibold text-on-primary-container focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" href="#">1</a>
+<a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-on-surface ring-1 ring-inset ring-outline-variant hover:bg-surface-container focus:z-20 focus:outline-offset-0" href="#">2</a>
+<a class="relative hidden items-center px-4 py-2 text-sm font-semibold text-on-surface ring-1 ring-inset ring-outline-variant hover:bg-surface-container focus:z-20 focus:outline-offset-0 md:inline-flex" href="#">3</a>
+<span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-on-surface-variant ring-1 ring-inset ring-outline-variant focus:outline-offset-0">...</span>
+<a class="relative hidden items-center px-4 py-2 text-sm font-semibold text-on-surface ring-1 ring-inset ring-outline-variant hover:bg-surface-container focus:z-20 focus:outline-offset-0 md:inline-flex" href="#">8</a>
+<a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-on-surface ring-1 ring-inset ring-outline-variant hover:bg-surface-container focus:z-20 focus:outline-offset-0" href="#">9</a>
+<a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-on-surface ring-1 ring-inset ring-outline-variant hover:bg-surface-container focus:z-20 focus:outline-offset-0" href="#">10</a>
+<a class="relative inline-flex items-center rounded-r-md px-2 py-2 text-on-surface-variant ring-1 ring-inset ring-outline-variant hover:bg-surface-container focus:z-20 focus:outline-offset-0" href="#">
+<span class="sr-only">Next</span>
+<span class="material-symbols-outlined text-xl" data-icon="chevron_right">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Vertical Sub-Navigation -->
+<section class="space-y-8">
+<div class="space-y-2">
+<h2 class="text-2xl font-headline font-semibold text-on-surface">4. Vertical Sub-Navigation</h2>
+<p class="text-on-surface-variant text-sm">Sidebar-style link lists for complex submodules like settings or profiles.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Settings Sidebar -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low">
+<h3 class="text-lg font-headline font-semibold text-on-surface">Account Settings</h3>
+</div>
+<nav aria-label="Sidebar" class="flex flex-col p-4 space-y-1">
+<!-- Active -->
+<a aria-current="page" class="bg-primary-container text-on-primary-container flex items-center px-3 py-2 text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3 text-lg fill" data-icon="person" data-weight="fill">person</span>
+                            Profile
+                        </a>
+<a class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="lock">lock</span>
+                            Security
+                        </a>
+<a class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="notifications">notifications</span>
+                            Notifications
+                            <span class="ml-auto bg-surface-variant text-on-surface-variant py-0.5 px-2 rounded-full text-xs font-medium">12</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="credit_card">credit_card</span>
+                            Billing
+                        </a>
+<a class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="integration_instructions">integration_instructions</span>
+                            Integrations
+                        </a>
+</nav>
+</div>
+</div>
+</section>
+<!-- 5. Dropdown Menus -->
+<section class="space-y-8">
+<div class="space-y-2">
+<h2 class="text-2xl font-headline font-semibold text-on-surface">5. Dropdown Menus</h2>
+<p class="text-on-surface-variant text-sm">Static representations of contextual menus and action lists.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+<!-- Action Dropdown -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant flex justify-center items-start min-h-[300px]">
+<div class="relative inline-block text-left w-full max-w-xs">
+<div class="absolute w-56 mt-2 origin-top-right rounded-xl bg-surface-container-lowest shadow-lg ring-1 ring-outline-variant focus:outline-none">
+<div class="py-1" role="none">
+<a class="text-on-surface group flex items-center px-4 py-2 text-sm hover:bg-surface-container transition-colors" href="#" role="menuitem">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary text-lg" data-icon="edit">edit</span>
+                                    Edit
+                                </a>
+<a class="text-on-surface group flex items-center px-4 py-2 text-sm hover:bg-surface-container transition-colors" href="#" role="menuitem">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary text-lg" data-icon="content_copy">content_copy</span>
+                                    Duplicate
+                                </a>
+<div class="my-1 border-t border-outline-variant"></div>
+<a class="text-on-surface group flex items-center px-4 py-2 text-sm hover:bg-surface-container transition-colors" href="#" role="menuitem">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary text-lg" data-icon="archive">archive</span>
+                                    Archive
+                                </a>
+<div class="my-1 border-t border-outline-variant"></div>
+<a class="text-error group flex items-center px-4 py-2 text-sm hover:bg-error-container transition-colors" href="#" role="menuitem">
+<span class="material-symbols-outlined mr-3 text-error text-lg" data-icon="delete">delete</span>
+                                    Delete
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- User Profile Dropdown -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant flex justify-center items-start min-h-[300px]">
+<div class="relative inline-block text-left w-full max-w-xs">
+<div class="absolute w-64 mt-2 origin-top-right rounded-xl bg-surface-container-lowest shadow-lg ring-1 ring-outline-variant focus:outline-none overflow-hidden">
+<div class="px-4 py-3 bg-surface-container border-b border-outline-variant">
+<p class="text-sm text-on-surface-variant">Signed in as</p>
+<p class="text-sm font-medium text-on-surface truncate">admin@tableui.com</p>
+</div>
+<div class="py-1" role="none">
+<a class="text-on-surface block px-4 py-2 text-sm hover:bg-surface-container transition-colors" href="#" role="menuitem">Account settings</a>
+<a class="text-on-surface block px-4 py-2 text-sm hover:bg-surface-container transition-colors" href="#" role="menuitem">Support</a>
+<a class="text-on-surface block px-4 py-2 text-sm hover:bg-surface-container transition-colors" href="#" role="menuitem">License</a>
+</div>
+<div class="py-1 border-t border-outline-variant bg-surface-container-low" role="none">
+<form action="#" method="POST">
+<button class="text-on-surface block w-full px-4 py-2 text-left text-sm hover:bg-surface-container transition-colors" role="menuitem" type="submit">
+                                        Sign out
+                                    </button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body></html>
+
+
+
+
+
