@@ -283,8 +283,8 @@ function initSidebarController() {
 
     // Mobile Sidebar Open (Slide-over drawer from -translate-x-full to translate-x-0)
     const openMobile = () => {
-        sidebar.classList.remove('-translate-x-full');
-        sidebar.classList.add('translate-x-0');
+        sidebar.classList.remove('-translate-x-full', 'w-0', 'md:w-0', 'border-r-0', 'md:border-r-0', 'opacity-0', 'md:opacity-0', 'pointer-events-none', 'md:pointer-events-none');
+        sidebar.classList.add('translate-x-0', 'w-64', 'border-r', 'opacity-100');
         if (backdrop) {
             backdrop.classList.remove('hidden', 'opacity-0');
             backdrop.classList.add('block', 'opacity-100', 'pointer-events-auto');
@@ -304,5 +304,16 @@ function initSidebarController() {
     if (mobileToggle) mobileToggle.addEventListener('click', openMobile);
     if (mobileClose) mobileClose.addEventListener('click', closeMobile);
     if (backdrop) backdrop.addEventListener('click', closeMobile);
+
+    // Responsive Breakpoint Reset on Window Resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebar.classList.remove('-translate-x-full', 'translate-x-0');
+            if (backdrop) {
+                backdrop.classList.remove('block', 'opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('hidden', 'opacity-0');
+            }
+        }
+    });
 }
 

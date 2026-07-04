@@ -5,7 +5,7 @@
 <script src="../app.js" defer></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Breeze UI Hub - Dashboard</title>
+<title>Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -52,17 +52,13 @@
 <!-- TopNavBar (Adapted from JSON) -->
 <header class="bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30 flex justify-between items-center h-16 px-6 w-full z-30 shrink-0">
 <div class="flex items-center gap-3">
-<div class="flex items-center md:hidden">
-<span class="text-xl font-headline font-black tracking-tight text-primary">Breeze UI Hub</span>
-</div>
-<!-- Desktop Sidebar Toggle Button with Small Logo -->
-<div class="relative hidden md:flex items-center gap-3">
+<!-- Small Logo and Separator (Responsive across all screen sizes) -->
 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f1f5f9'/%3E%3Cpath d='M10 16a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm12 6H10l4-5 2.5 3 2-2.5 3.5 4.5z' fill='%23cbd5e1'/%3E%3C/svg%3E" alt="Logo" class="w-8 h-8 rounded-lg object-cover border border-outline-variant/30 shadow-2xs shrink-0">
 <span class="text-outline-variant font-light select-none">|</span>
-<button id="desktop-sidebar-toggle" type="button" class="flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low focus:outline-none transition border border-outline-variant/30 shrink-0 min-w-[2.5rem] min-h-[2.5rem]" title="Close Sidebar">
+<!-- Desktop Sidebar Toggle Button -->
+<button id="desktop-sidebar-toggle" type="button" class="hidden md:flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low focus:outline-none transition border border-outline-variant/30 shrink-0 min-w-[2.5rem] min-h-[2.5rem]" title="Close Sidebar">
 <span class="material-symbols-outlined text-xl" id="sidebar-toggle-icon">menu_open</span>
 </button>
-</div>
 <!-- Mobile Sidebar Toggle Button -->
 <button id="mobile-sidebar-toggle" type="button" class="md:hidden flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low focus:outline-none transition border border-outline-variant/30 shrink-0 min-w-[2.5rem] min-h-[2.5rem]" title="Open Navigation">
 <span class="material-symbols-outlined text-xl">menu</span>
@@ -281,8 +277,8 @@
 <!-- Footer from JSON -->
 <footer class="mt-12 w-full py-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-label-sm">
 <div class="flex items-center gap-2">
-<span class="text-lg font-headline font-bold text-on-surface">Breeze UI Hub</span>
-<span class="text-on-surface-variant">ﾂｩ 2024 Breeze UI Hub. Built with Tailwind CSS and Laravel Breeze.</span>
+<span class="text-lg font-headline font-bold text-on-surface">Dashboard</span>
+<span class="text-on-surface-variant">© 2026 Dashboard Application. All rights reserved.</span>
 </div>
 <div class="flex gap-4">
 <a class="text-on-surface-variant hover:underline hover:text-primary transition-colors" href="#">Privacy Policy</a>
