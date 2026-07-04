@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en"><head>
-<link href="../app.css?v=2" rel="stylesheet"/>
-<script src="../app.js?v=4" defer></script>
+<link href="../app.css?v=3" rel="stylesheet"/>
+<script src="../subsystems.js?v=2" defer></script>
+<script src="../app.js?v=5" defer></script>
+<script src="dashboard.js?v=5" defer></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dashboard</title>
@@ -14,48 +16,34 @@
 <!-- Mobile Backdrop overlay -->
 <div id="sidebar-backdrop" class="fixed top-16 bottom-0 left-0 right-0 md:inset-0 bg-gray-900/50 backdrop-blur-md z-40 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 <!-- Left Sidebar (Collapsible on Desktop, Slide-over on Mobile) -->
-<aside id="app-sidebar" class="fixed md:static top-16 bottom-0 md:inset-y-0 left-0 z-50 bg-surface flex flex-col h-[calc(100vh-4rem)] md:h-full shrink-0 shadow-xl md:shadow-none transition-all duration-300 ease-in-out overflow-hidden w-64 border-r border-outline-variant/30 -translate-x-full md:translate-x-0 opacity-100">
-<div class="hidden md:flex py-6 px-4 flex-col items-center justify-center border-b border-outline-variant/30 shrink-0 relative">
-<button id="close-mobile-sidebar" type="button" class="md:hidden absolute top-3 right-3 text-on-surface-variant hover:text-on-surface p-1 transition-colors" title="Close Sidebar">
-<span class="material-symbols-outlined">close</span>
-</button>
-<!-- Logo Placeholder -->
-<div class="flex items-center justify-center py-2" title="Logo Placeholder">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='16' fill='%23f1f5f9'/%3E%3Cpath d='M30 36a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm22 14H28l8-10 5 6 4-5 5 6z' fill='%23cbd5e1'/%3E%3C/svg%3E" alt="Logo" class="w-20 h-20 rounded-2xl object-cover border border-outline-variant/30 shadow-sm">
-</div>
-</div>
-<nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container-low text-primary border-l-4 border-primary" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
-<span class="font-label font-medium text-sm">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors border-l-4 border-transparent" href="#">
-<span class="material-symbols-outlined">group</span>
-<span class="font-label font-medium text-sm">Users</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors border-l-4 border-transparent" href="#">
-<span class="material-symbols-outlined">insights</span>
-<span class="font-label font-medium text-sm">Analytics</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors border-l-4 border-transparent" href="#">
-<span class="material-symbols-outlined">description</span>
-<span class="font-label font-medium text-sm">Reports</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors border-l-4 border-transparent" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-label font-medium text-sm">Settings</span>
-</a>
-</nav>
-<!-- User Profile Summary at bottom of sidebar -->
-<div class="p-4 border-t border-outline-variant/30 shrink-0">
-<div class="flex items-center gap-3 p-2 rounded-xl bg-surface-container-low/50">
-<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;auto=format&amp;fit=crop&amp;q=80" alt="Admin" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30 shrink-0">
-<div class="overflow-hidden">
-<p class="text-sm font-label font-semibold text-on-surface truncate">Admin User</p>
-<p class="text-xs text-on-surface-variant truncate">admin@example.com</p>
-</div>
-</div>
-</div>
+<aside id="app-sidebar" class="dashboard-sidebar fixed md:static top-16 bottom-0 md:inset-y-0 left-0 z-50 bg-white flex flex-col h-[calc(100vh-4rem)] md:h-full shrink-0 shadow-xl md:shadow-none transition-all duration-300 ease-in-out overflow-hidden w-72 border-r border-slate-200 -translate-x-full md:translate-x-0 opacity-100">
+    <div class="px-5 pt-6 pb-5 border-b border-slate-200">
+        <div class="sidebar-brand-card rounded-[2rem] p-6 flex flex-col items-center text-center gap-3">
+            <span class="sidebar-brand-icon inline-flex items-center justify-center w-14 h-14 rounded-[1.75rem] bg-slate-100 text-primary text-2xl shadow-sm">
+                <span class="material-symbols-outlined">account_balance</span>
+            </span>
+            <p id="sidebar-brand-title" class="text-sm font-semibold text-slate-950 truncate">Subsystem</p>
+            <p id="sidebar-brand-category" class="text-xs text-slate-500 mt-1 truncate">Select a subsystem</p>
+        </div>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-5 py-6 space-y-3">
+        <a id="sidebar-dashboard-link" class="sidebar-main-link active" href="#">
+            <span class="sidebar-main-link-icon material-symbols-outlined">dashboard</span>
+            <span class="font-label font-medium text-sm">Dashboard</span>
+        </a>
+        <div id="sidebar-subsystem-nav-panel" class="sidebar-subsystem-nav-panel">
+            <nav id="sidebar-subsystem-modules-nav" class="sidebar-subsystem-modules"></nav>
+        </div>
+    </nav>
+    <div class="sidebar-profile-footer px-5 pb-6 pt-4 mt-auto">
+        <div class="sidebar-profile-card">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;auto=format&amp;fit=crop&amp;q=80" alt="Admin" class="w-11 h-11 rounded-2xl object-cover border border-slate-200">
+            <div class="ml-3 min-w-0">
+                <p class="text-sm font-semibold text-slate-950 truncate">Admin User</p>
+                <p class="text-xs text-slate-500 truncate">admin@example.com</p>
+            </div>
+        </div>
+    </div>
 </aside>
 <!-- Main Content Wrapper -->
 <div class="flex-1 flex flex-col h-full overflow-hidden relative">
@@ -116,225 +104,78 @@ AU
 <!-- Main Scrollable Area -->
 <main class="flex-1 overflow-y-auto bg-surface-container-lowest p-6 md:p-8">
 <div class="max-w-7xl mx-auto space-y-8">
-<!-- Welcome Header -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-<div>
-<h1 class="text-2xl font-headline font-bold text-on-surface">Welcome back, Admin</h1>
-<p class="text-on-surface-variant text-sm mt-1">Here's what's happening with your projects today.</p>
-</div>
-<div class="flex gap-3">
-<button class="px-4 py-2 text-sm font-label font-medium bg-surface-container-high text-on-surface hover:bg-surface-variant rounded-lg transition-colors shadow-sm">
-                             Secondary Action
-                         </button>
-<button class="px-4 py-2 text-sm font-label font-medium bg-primary-container text-on-primary hover:bg-primary rounded-lg transition-colors shadow-sm flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">add</span> Get Started
-                         </button>
-</div>
+<div class="flex flex-col gap-6">
+    <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-sm text-on-surface-variant">
+        <a href="../index.html" class="hover:text-primary transition-colors">UI Hubs</a>
+        <span>/</span>
+        <span id="breadcrumb-category">Financial Management</span>
+        <span>/</span>
+        <span class="text-primary font-semibold">Dashboard</span>
+    </nav>
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-3xl font-headline font-bold text-on-surface" id="dashboard-heading">Welcome back, Admin</h1>
+            <p class="text-on-surface-variant text-sm mt-2" id="dashboard-copy">Here’s what’s happening in Financial Management today.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+            <button id="export-report" class="btn-secondary dashboard-action-button">
+                <span class="material-symbols-outlined">file_download</span>
+                Export Report
+            </button>
+            <button id="new-transaction" class="btn-primary dashboard-action-button">
+                <span class="material-symbols-outlined">add</span>
+                New Transaction
+            </button>
+        </div>
+    </div>
 </div>
 <!-- Stat Cards Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="bg-surface rounded-xl p-5 shadow-sm border border-outline-variant/30 flex flex-col justify-between">
-<div class="flex justify-between items-start mb-4">
-<div>
-<p class="text-sm font-medium text-on-surface-variant">Total Users</p>
-<h3 class="text-2xl font-headline font-bold text-on-surface mt-1">12,450</h3>
+<div id="dashboard-stats-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+<div id="dashboard-charts" class="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-6">
+    <div id="dashboard-chart-overview" class="dashboard-card bg-white shadow-sm border border-slate-200"></div>
+    <div id="dashboard-chart-breakdown" class="dashboard-card bg-white shadow-sm border border-slate-200"></div>
 </div>
-<div class="p-2 bg-primary-container/10 rounded-lg text-primary">
-<span class="material-symbols-outlined">group</span>
-</div>
-</div>
-<div class="flex items-center text-sm">
-<span class="text-green-600 font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-xs">trending_up</span> +12.5%
-                            </span>
-<span class="text-on-surface-variant ml-2">from last month</span>
-</div>
-</div>
-<div class="bg-surface rounded-xl p-5 shadow-sm border border-outline-variant/30 flex flex-col justify-between">
-<div class="flex justify-between items-start mb-4">
-<div>
-<p class="text-sm font-medium text-on-surface-variant">Revenue</p>
-<h3 class="text-2xl font-headline font-bold text-on-surface mt-1">$45,231</h3>
-</div>
-<div class="p-2 bg-primary-container/10 rounded-lg text-primary">
-<span class="material-symbols-outlined">attach_money</span>
-</div>
-</div>
-<div class="flex items-center text-sm">
-<span class="text-green-600 font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-xs">trending_up</span> +8.2%
-                            </span>
-<span class="text-on-surface-variant ml-2">from last month</span>
-</div>
-</div>
-<div class="bg-surface rounded-xl p-5 shadow-sm border border-outline-variant/30 flex flex-col justify-between">
-<div class="flex justify-between items-start mb-4">
-<div>
-<p class="text-sm font-medium text-on-surface-variant">Active Sessions</p>
-<h3 class="text-2xl font-headline font-bold text-on-surface mt-1">1,204</h3>
-</div>
-<div class="p-2 bg-primary-container/10 rounded-lg text-primary">
-<span class="material-symbols-outlined">devices</span>
-</div>
-</div>
-<div class="flex items-center text-sm">
-<span class="text-error font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-xs">trending_down</span> -2.4%
-                            </span>
-<span class="text-on-surface-variant ml-2">from last hour</span>
-</div>
-</div>
-<div class="bg-surface rounded-xl p-5 shadow-sm border border-outline-variant/30 flex flex-col justify-between">
-<div class="flex justify-between items-start mb-4">
-<div>
-<p class="text-sm font-medium text-on-surface-variant">Server Load</p>
-<h3 class="text-2xl font-headline font-bold text-on-surface mt-1">34%</h3>
-</div>
-<div class="p-2 bg-primary-container/10 rounded-lg text-primary">
-<span class="material-symbols-outlined">dns</span>
-</div>
-</div>
-<div class="flex items-center text-sm">
-<span class="text-on-surface-variant font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-xs">horizontal_rule</span> 0%
-                            </span>
-<span class="text-on-surface-variant ml-2">stable</span>
-</div>
-</div>
-</div>
-<!-- Recent Activity Table -->
-<div class="bg-surface rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
-<div class="px-6 py-4 border-b border-outline-variant/30 flex justify-between items-center">
-<h2 class="text-lg font-headline font-semibold text-on-surface">Recent Activity</h2>
-<button class="text-sm font-medium text-primary hover:text-on-primary-fixed-variant transition-colors flex items-center gap-1">
-                            View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low/50">
-<th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30 cursor-pointer hover:bg-surface-container-low transition-colors group">
-<div class="flex items-center gap-1">User <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
-</th>
-<th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30 cursor-pointer hover:bg-surface-container-low transition-colors group">
-<div class="flex items-center gap-1">Status <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
-</th>
-<th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30 cursor-pointer hover:bg-surface-container-low transition-colors group">
-<div class="flex items-center gap-1">Date <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
-</th>
-<th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30">
-                                        Action
-                                    </th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant/20">
-<tr class="hover:bg-surface-container-lowest transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<img class="w-8 h-8 rounded-full object-cover" data-alt="A small avatar headshot of a smiling female professional in a bright modern office setting, soft natural light, clean minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA28Fy8E8eWJxIhaRvrdFXK6w4R2c_Gxi6cOra8EnzPK0ZaBIKlymTCGaAFAzlPRgnNBFh0iQnU7eJJ9XKGiRvODv5KtFBi3REoT57XO2P8xUecTt7bW3qa8ehDmAU0yNRAN-Pd1pzIOZ_VXHcdb_WsS0gqyGxyTCbLtXlchTbQydu1KQShn-gWc_VrVy4oh1IW2a0KKchroZGBBCgYkfl967zfQEhu5G4JbyzfqTqXxlvAZDilC4E-OWHlzueINcy3P5cxYbau3V4"/>
-<div>
-<p class="text-sm font-medium text-on-surface">Sarah Jenkins</p>
-<p class="text-xs text-on-surface-variant">sarah.j@example.com</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                            Active
-                                        </span>
-</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">
-                                        Oct 24, 2024
-                                    </td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-1">
-<button onclick="openDashboardModal('dash-delete-modal', 'Sarah Jenkins'); return false;" class="text-on-surface-variant hover:text-red-600 transition-colors p-1.5 rounded-md hover:bg-red-50 cursor-pointer" title="Delete User">
-<span class="material-symbols-outlined text-sm">delete</span>
-</button>
-<button class="text-on-surface-variant hover:text-primary transition-colors p-1.5 rounded-md hover:bg-surface-container-low cursor-pointer" title="More Options">
-<span class="material-symbols-outlined text-sm">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-surface-container-lowest transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<img class="w-8 h-8 rounded-full object-cover" data-alt="A small avatar headshot of a young male designer in a casual bright workspace, wearing a simple t-shirt, soft natural light, clear background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9TXXm5C_M6dx4x1MXhmtrKt0xdabguIHf7sJ6IglwSEeBJTqDL1EySLjevrJageImtvg98ImKakbxfPpT5LD38eIHyS35P-HaxuN5aw3QNyezPF_lgjtVpmjV9gX3Ceojx18DMdPFTp15C7nW4ph6FNuE8yFHwQdsrGZbviITQWVeOOK5Qe8_OjDE7_nWqPxBgjNjydEFFSQGPGtRRbvTfy_xzAhm_uaCLJRgB3oVG9FneoQvPbfHrMNXXJIsQF6tBIg8ZppSRy4"/>
-<div>
-<p class="text-sm font-medium text-on-surface">Michael Chen</p>
-<p class="text-xs text-on-surface-variant">m.chen@example.com</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                                            Pending
-                                        </span>
-</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">
-                                        Oct 23, 2024
-                                    </td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-1">
-<button onclick="openDashboardModal('dash-delete-modal', 'Michael Chen'); return false;" class="text-on-surface-variant hover:text-red-600 transition-colors p-1.5 rounded-md hover:bg-red-50 cursor-pointer" title="Delete User">
-<span class="material-symbols-outlined text-sm">delete</span>
-</button>
-<button class="text-on-surface-variant hover:text-primary transition-colors p-1.5 rounded-md hover:bg-surface-container-low cursor-pointer" title="More Options">
-<span class="material-symbols-outlined text-sm">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-surface-container-lowest transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant font-bold text-sm">
-                                                EJ
-                                            </div>
-<div>
-<p class="text-sm font-medium text-on-surface">Elena James</p>
-<p class="text-xs text-on-surface-variant">elena.j@example.com</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                                            Offline
-                                        </span>
-</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">
-                                        Oct 21, 2024
-                                    </td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-1">
-<button onclick="openDashboardModal('dash-delete-modal', 'Elena James'); return false;" class="text-on-surface-variant hover:text-red-600 transition-colors p-1.5 rounded-md hover:bg-red-50 cursor-pointer" title="Delete User">
-<span class="material-symbols-outlined text-sm">delete</span>
-</button>
-<button class="text-on-surface-variant hover:text-primary transition-colors p-1.5 rounded-md hover:bg-surface-container-low cursor-pointer" title="More Options">
-<span class="material-symbols-outlined text-sm">more_vert</span>
-</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination -->
-<div class="px-6 py-4 border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-low/30">
-<p class="text-sm text-on-surface-variant">
-                            Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">45</span> results
-                        </p>
-<div class="flex gap-2">
-<button class="px-3 py-1 rounded border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-50">
-                                Previous
-                            </button>
-<button class="px-3 py-1 rounded border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-variant transition-colors">
-                                Next
-                            </button>
-</div>
-</div>
+<div class="grid grid-cols-1 xl:grid-cols-[2.5fr_1fr] gap-6">
+    <div class="bg-white rounded-[1.75rem] shadow-sm border border-slate-200 overflow-hidden">
+        <div class="px-6 py-4 border-b border-outline-variant/30 flex justify-between items-center">
+            <h2 class="text-lg font-headline font-semibold text-on-surface">Recent Activity</h2>
+            <button class="text-sm font-medium text-primary hover:text-on-primary-fixed-variant transition-colors flex items-center gap-1">
+                View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-surface-container-low/50">
+                        <th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30 cursor-pointer hover:bg-surface-container-low transition-colors group">
+                            <div class="flex items-center gap-1">Activity <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+                        </th>
+                        <th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30 cursor-pointer hover:bg-surface-container-low transition-colors group">
+                            <div class="flex items-center gap-1">Status <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+                        </th>
+                        <th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30 cursor-pointer hover:bg-surface-container-low transition-colors group">
+                            <div class="flex items-center gap-1">Time <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">arrow_downward</span></div>
+                        </th>
+                        <th class="px-6 py-3 text-xs font-semibold text-on-surface-variant uppercase tracking-wider border-b border-outline-variant/30">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="dashboard-activity-tbody" class="divide-y divide-outline-variant/20"></tbody>
+            </table>
+        </div>
+        <div class="px-6 py-4 border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-low/30">
+            <p class="text-sm text-on-surface-variant">Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">45</span> results</p>
+            <div class="flex gap-2">
+                <button class="px-3 py-1 rounded border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-50">Previous</button>
+                <button class="px-3 py-1 rounded border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-variant transition-colors">Next</button>
+            </div>
+        </div>
+    </div>
+    <div id="dashboard-quick-actions" class="bg-surface rounded-xl shadow-sm border border-outline-variant/30 p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-headline font-semibold text-on-surface">Quick Actions</h2>
+        </div>
+        <div id="dashboard-quick-actions-list" class="space-y-3"></div>
+    </div>
 </div>
 </div>
 <!-- Footer from JSON -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breeze UI Hub & Standard Components (Pure CSS)</title>
+    <title>Breeze UI Hubs & Standard Components (Pure CSS)</title>
     <meta name="description" content="Centralized design system repository featuring authentication flows, component libraries, responsive layouts, and static prototypes. Pure CSS Architecture without JS or Tailwind.">
     <!-- Link to universal app.css design system and app.js interactivity -->
     <link rel="stylesheet" href="app.css">
@@ -23,18 +23,18 @@
                 <div class="brand-identity">
                     <div class="brand-logo">BZ</div>
                     <div class="brand-text">
-                        <h1><span>UI Hub</span></h1>
+                        <h1><span>UI Hubs</span></h1>
                     </div>
                     <span class="brand-badge">Pure CSS</span>
                 </div>
 
                 <div class="header-actions">
-                    <div class="search-box" style="position: relative; width: 260px;">
-                        <svg class="search-icon" style="position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-dim); pointer-events: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
-                        <input type="text" class="form-input" style="padding-left: 2.5rem; border-radius: 9999px; background: var(--bg-surface-low);" placeholder="Search modules...">
+                        <input type="text" class="search-input" placeholder="Search modules...">
                     </div>
                 </div>
             </div>
@@ -77,9 +77,37 @@
             </section>
 
             <!-- Components Grid Section -->
-            <section class="container">
+            <section class="container" id="components-grid-section">
                 <div class="components-grid">
-                    
+                    <!-- Module Selector Launch Card -->
+                    <article class="component-card" data-group="Layouts">
+                        <div class="card-thumb-wrapper">
+                            <div class="card-badge-container">
+                                <span class="card-badge badge-layouts">Module Selector</span>
+                            </div>
+                            <img src="module_selector/screen.png?v=3" alt="Module Selector Preview" class="card-thumb" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-banner" style="display: none;">
+                                <svg class="fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7a2 2 0 0 1 2-2h6l2 2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"></path><path d="M12 11v6"></path><path d="M9 14h6"></path></svg>
+                                <div class="fallback-text">Di pa tapos ISMERS Module Selector</div>
+                                <div class="fallback-subtext">Standalone Selection Tool</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">ISMERS Module Selector</h3>
+                            <p class="card-desc">Open the dedicated module selector page to browse ISMERS subsystems and view their dashboards.</p>
+                            <div class="card-footer">
+                                <span class="file-path-info" title="module_selector/code.html">📁 module_selector/code.html</span>
+                                <a href="module_selector/code.html" class="btn btn-view">
+                                    <span>View</span>
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
                     <!-- 1. Authentication Card Standard -->
                     <article class="component-card" data-group="Authentication">
                         <div class="card-thumb-wrapper">

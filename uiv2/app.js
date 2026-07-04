@@ -132,9 +132,11 @@ function initCatalogHub() {
 }
 
 /**
- * 2. Component Prototype Interactions (code.html files)
- * Enhances form usability, OTP verification auto-advance, and interactive button feedback.
+ * 1.5. Subsystem Module Selector & Dashboard
+ *
+ * Removed: the Module Selector is now a standalone page under module_selector/code.html.
  */
+
 function initComponentInteractions() {
     // A. Password Visibility Toggle
     const passwordInputs = document.querySelectorAll('input[type="password"]');
