@@ -1,4 +1,6 @@
-﻿<section>
+<!-- Start: Profile Information Section -->
+<section>
+    <!-- Start: Section Header -->
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             <?php echo e(__('Profile Information')); ?>
@@ -10,15 +12,20 @@
 
         </p>
     </header>
+    <!-- End: Section Header -->
 
+    <!-- Start: Resend Verification Form (Hidden helper form) -->
     <form id="send-verification" method="post" action="<?php echo e(route('verification.send')); ?>">
         <?php echo csrf_field(); ?>
     </form>
+    <!-- End: Resend Verification Form -->
 
+    <!-- Start: Profile Update Form -->
     <form method="post" action="<?php echo e(route('profile.update')); ?>" class="mt-6 space-y-6">
         <?php echo csrf_field(); ?>
         <?php echo method_field('patch'); ?>
 
+        <!-- Start: Name Field -->
         <div>
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -87,7 +94,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Name Field -->
 
+        <!-- Start: Email Field -->
         <div>
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -156,6 +165,7 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
 
+            <!-- Start: Unverified Email Notice -->
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail()): ?>
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
@@ -168,16 +178,21 @@
                         </button>
                     </p>
 
+                    <!-- Start: Verification Link Sent Status -->
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('status') === 'verification-link-sent'): ?>
                         <p class="mt-2 font-medium text-sm text-green-600">
                             <?php echo e(__('A new verification link has been sent to your email address.')); ?>
 
                         </p>
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    <!-- End: Verification Link Sent Status -->
                 </div>
             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            <!-- End: Unverified Email Notice -->
         </div>
+        <!-- End: Email Field -->
 
+        <!-- Start: Form Actions (Save Button & Status) -->
         <div class="flex items-center gap-4">
             <?php if (isset($component)) { $__componentOriginal54c5a1a52b6cf346236637a05b110723 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal54c5a1a52b6cf346236637a05b110723 = $attributes; } ?>
@@ -201,6 +216,7 @@
 <?php unset($__componentOriginal54c5a1a52b6cf346236637a05b110723); ?>
 <?php endif; ?>
 
+            <!-- Start: Saved Status Message -->
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('status') === 'profile-updated'): ?>
                 <p
                     x-data="{ show: true }"
@@ -210,7 +226,11 @@
                     class="text-sm text-gray-600"
                 ><?php echo e(__('Saved.')); ?></p>
             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            <!-- End: Saved Status Message -->
         </div>
+        <!-- End: Form Actions -->
     </form>
+    <!-- End: Profile Update Form -->
 </section>
+<!-- End: Profile Information Section -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/profile/partials/update-profile-information-form.blade.php ENDPATH**/ ?>

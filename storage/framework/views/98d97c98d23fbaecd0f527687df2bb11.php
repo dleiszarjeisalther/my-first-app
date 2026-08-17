@@ -38,6 +38,7 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
+<!-- Start: Prevent Double Submit Form -->
 <form
     action="<?php echo e($action); ?>"
     method="<?php echo e($method); ?>"
@@ -47,11 +48,14 @@ unset($__defined_vars, $__key, $__value); ?>
     <?php echo e($attributes); ?>
 
 >
+    <!-- Start: Multi Submit Redirect Input -->
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($multiSubmit): ?>
         <input type="hidden" name="redirect_to" :value="redirectTo">
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    <!-- End: Multi Submit Redirect Input -->
 
     <?php echo e($slot); ?>
 
 </form>
+<!-- End: Prevent Double Submit Form -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/form/prevent-double-submit.blade.php ENDPATH**/ ?>

@@ -6,7 +6,7 @@
     HOW IT WORKS:
     - It uses a 1/3 to 2/3 grid layout on larger screens.
     - It stacks vertically on mobile devices.
-    - It uses the `[x-ui.card>` internally for the input area.
+    - It uses the `<x-ui.card>` internally for the input area.
 
     DATA:
     - $title:       (string) The section heading.
@@ -19,8 +19,9 @@
 
 @props(['title', 'description' => ''])
 
+<!-- Start: Form Section Grid -->
 <div {{ $attributes->merge(['class' => 'md:grid md:grid-cols-3 md:gap-6 mb-8']) }}>
-    {{-- Sidebar: Title and Description --}}
+    <!-- Start: Sidebar Title & Description -->
     <div class="md:col-span-1">
         <div class="px-4 sm:px-0">
             <h3 class="text-lg font-medium text-gray-900">{{ $title }}</h3>
@@ -31,8 +32,9 @@
             @endif
         </div>
     </div>
+    <!-- End: Sidebar Title & Description -->
 
-    {{-- Main: Inputs inside a Card --}}
+    <!-- Start: Main Inputs Card -->
     <div class="mt-5 md:mt-0 md:col-span-2">
         <x-ui.card :shadow="true">
             <div class="grid grid-cols-6 gap-6">
@@ -40,4 +42,6 @@
             </div>
         </x-ui.card>
     </div>
+    <!-- End: Main Inputs Card -->
 </div>
+<!-- End: Form Section Grid -->

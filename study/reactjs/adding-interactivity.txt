@@ -1,0 +1,857 @@
+uid=62_0 RootWebArea "Adding Interactivity – React" url="https://react.dev/learn/adding-interactivity"
+  uid=62_1 navigation
+    uid=62_2 link "React" url="https://react.dev/"
+      uid=62_3 StaticText "React"
+    uid=62_4 link "v19.2" url="https://react.dev/versions"
+      uid=62_5 StaticText "v"
+      uid=62_6 StaticText "19.2"
+    uid=62_7 button "Search Ctrl K"
+    uid=62_8 link "Learn" url="https://react.dev/learn"
+      uid=62_9 StaticText "Learn"
+    uid=62_10 link "Reference" url="https://react.dev/reference/react"
+      uid=62_11 StaticText "Reference"
+    uid=62_12 link "Community" url="https://react.dev/community"
+      uid=62_13 StaticText "Community"
+    uid=62_14 link "Blog" url="https://react.dev/blog"
+      uid=62_15 StaticText "Blog"
+    uid=62_16 button "Use Light Mode"
+    uid=62_17 link "Translations" url="https://react.dev/community/translations"
+    uid=62_18 link "Open on GitHub" url="https://github.com/react/react/releases"
+  uid=62_19 complementary
+    uid=62_20 navigation
+      uid=62_21 heading "GET STARTED" level="3"
+      uid=62_22 link "Quick Start" url="https://react.dev/learn"
+        uid=62_23 StaticText "Quick Start"
+      uid=62_24 link "Installation" url="https://react.dev/learn/installation"
+        uid=62_25 StaticText "Installation"
+      uid=62_26 link "Setup" url="https://react.dev/learn/setup"
+        uid=62_27 StaticText "Setup"
+      uid=62_28 link "React Compiler" url="https://react.dev/learn/react-compiler"
+        uid=62_29 StaticText "React Compiler"
+      uid=62_30 heading "LEARN REACT" level="3"
+      uid=62_31 link "Describing the UI" url="https://react.dev/learn/describing-the-ui"
+        uid=62_32 StaticText "Describing the UI"
+      uid=62_33 link "Adding Interactivity" url="https://react.dev/learn/adding-interactivity"
+        uid=62_34 StaticText "Adding Interactivity"
+      uid=62_35 link "Responding to Events" url="https://react.dev/learn/responding-to-events"
+        uid=62_36 StaticText "Responding to Events"
+      uid=62_37 link "State: A Component's Memory" url="https://react.dev/learn/state-a-components-memory"
+        uid=62_38 StaticText "State: A Component's Memory"
+      uid=62_39 link "Render and Commit" url="https://react.dev/learn/render-and-commit"
+        uid=62_40 StaticText "Render and Commit"
+      uid=62_41 link "State as a Snapshot" url="https://react.dev/learn/state-as-a-snapshot"
+        uid=62_42 StaticText "State as a Snapshot"
+      uid=62_43 link "Queueing a Series of State Updates" url="https://react.dev/learn/queueing-a-series-of-state-updates"
+        uid=62_44 StaticText "Queueing a Series of State Updates"
+      uid=62_45 link "Updating Objects in State" url="https://react.dev/learn/updating-objects-in-state"
+        uid=62_46 StaticText "Updating Objects in State"
+      uid=62_47 link "Updating Arrays in State" url="https://react.dev/learn/updating-arrays-in-state"
+        uid=62_48 StaticText "Updating Arrays in State"
+      uid=62_49 link "Managing State" url="https://react.dev/learn/managing-state"
+        uid=62_50 StaticText "Managing State"
+      uid=62_51 link "Escape Hatches" url="https://react.dev/learn/escape-hatches"
+        uid=62_52 StaticText "Escape Hatches"
+  uid=62_53 main
+    uid=62_54 link "LEARN REACT" url="https://react.dev/learn"
+      uid=62_55 StaticText "LEARN REACT"
+    uid=62_56 button "Copy page"
+    uid=62_57 heading "Adding Interactivity" level="1"
+    uid=62_58 StaticText "Some things on the screen update in response to user input. For example, clicking an image gallery switches the active image. In React, data that changes over time is called "
+    uid=62_59 StaticText "state."
+    uid=62_60 StaticText " You can add state to any component, and update it as needed. In this chapter, you’ll learn how to write components that handle interactions, update their state, and display different output over time."
+    uid=62_61 heading "In this chapter" level="3"
+    uid=62_62 link "How to handle user-initiated events" url="https://react.dev/learn/responding-to-events"
+      uid=62_63 StaticText "How to handle user-initiated events"
+    uid=62_64 link "How to make components “remember” information with state" url="https://react.dev/learn/state-a-components-memory"
+      uid=62_65 StaticText "How to make components “remember” information with state"
+    uid=62_66 link "How React updates the UI in two phases" url="https://react.dev/learn/render-and-commit"
+      uid=62_67 StaticText "How React updates the UI in two phases"
+    uid=62_68 link "Why state doesn’t update right after you change it" url="https://react.dev/learn/state-as-a-snapshot"
+      uid=62_69 StaticText "Why state doesn’t update right after you change it"
+    uid=62_70 link "How to queue multiple state updates" url="https://react.dev/learn/queueing-a-series-of-state-updates"
+      uid=62_71 StaticText "How to queue multiple state updates"
+    uid=62_72 link "How to update an object in state" url="https://react.dev/learn/updating-objects-in-state"
+      uid=62_73 StaticText "How to update an object in state"
+    uid=62_74 link "How to update an array in state" url="https://react.dev/learn/updating-arrays-in-state"
+      uid=62_75 StaticText "How to update an array in state"
+    uid=62_76 StaticText "Responding to events "
+    uid=62_77 link "Link for Responding to events " description="Link for Responding to events" url="https://react.dev/learn/adding-interactivity#responding-to-events"
+    uid=62_78 StaticText "React lets you add "
+    uid=62_79 StaticText "event handlers"
+    uid=62_80 StaticText " to your JSX. Event handlers are your own functions that will be triggered in response to user interactions like clicking, hovering, focusing on form inputs, and so on."
+    uid=62_81 StaticText "Built-in components like "
+    uid=62_82 StaticText "<button>"
+    uid=62_83 StaticText " only support built-in browser events like "
+    uid=62_84 StaticText "onClick"
+    uid=62_85 StaticText ". However, you can also create your own components, and give their event handler props any application-specific names that you like."
+    uid=62_86 button "App.js" expandable haspopup="menu"
+    uid=63_0 button "Download" description="Download Sandbox"
+    uid=62_87 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_88 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_1 button "Fork" description="Open in CodeSandbox"
+    uid=62_91 textbox "Code Editor for App.js" autocomplete="list" multiline value="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+export default function App() {
+  return (
+    <Toolbar
+      onPlayMovie={() => alert('Playing!')}
+      onUploadImage={() => alert('Uploading!')}
+    />
+  );
+}
+
+
+function Toolbar({ onPlayMovie, onUploadImage }) {
+  return (
+    <div>
+      <Button onClick={onPlayMovie}>
+        Play Movie
+      </Button>
+      <Button onClick={onUploadImage}>
+        Upload Image
+      </Button>
+    </div>
+  );
+}
+
+
+function Button({ onClick, children }) {
+  return (
+    <button onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
+"
+    uid=62_92 Iframe "Sandbox Preview"
+      uid=63_2 RootWebArea "Sandpack Preview" url="https://786946de.sandpack-bundler-4bw.pages.dev/"
+    uid=62_94 button "Show more"
+    uid=62_95 heading "Ready to learn this topic?" level="2"
+    uid=62_96 StaticText "Read "
+    uid=62_97 link "Responding to Events" url="https://react.dev/learn/responding-to-events"
+      uid=62_98 StaticText "Responding to Events"
+    uid=62_99 StaticText " to learn how to add event handlers."
+    uid=62_100 link "Read More" url="https://react.dev/learn/responding-to-events"
+      uid=62_101 StaticText "Read More"
+    uid=62_102 StaticText "State: a component’s memory "
+    uid=62_103 link "Link for State: a component’s memory " description="Link for State: a component’s memory" url="https://react.dev/learn/adding-interactivity#state-a-components-memory"
+    uid=62_104 StaticText "Components often need to change what’s on the screen as a result of an interaction. Typing into the form should update the input field, clicking “next” on an image carousel should change which image is displayed, clicking “buy” puts a product in the shopping cart. Components need to “remember” things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called "
+    uid=62_105 StaticText "state."
+    uid=62_106 StaticText "You can add state to a component with a "
+    uid=62_107 link "useState" url="https://react.dev/reference/react/useState"
+      uid=62_108 StaticText "useState"
+    uid=62_109 StaticText " Hook. "
+    uid=62_110 StaticText "Hooks"
+    uid=62_111 StaticText " are special functions that let your components use React features (state is one of those features). The "
+    uid=62_112 StaticText "useState"
+    uid=62_113 StaticText " Hook lets you declare a state variable. It takes the initial state and returns a pair of values: the current state, and a state setter function that lets you update it."
+    uid=62_114 StaticText "const"
+    uid=62_115 StaticText " "
+    uid=62_116 StaticText "["
+    uid=62_117 StaticText "index"
+    uid=62_118 StaticText ","
+    uid=62_119 StaticText " "
+    uid=62_120 StaticText "setIndex"
+    uid=62_121 StaticText "]"
+    uid=62_122 StaticText " = "
+    uid=62_123 StaticText "useState"
+    uid=62_124 StaticText "("
+    uid=62_125 StaticText "0"
+    uid=62_126 StaticText ")"
+    uid=62_127 StaticText ";"
+    uid=62_128 LineBreak "
+"
+    uid=62_129 StaticText "const"
+    uid=62_130 StaticText " "
+    uid=62_131 StaticText "["
+    uid=62_132 StaticText "showMore"
+    uid=62_133 StaticText ","
+    uid=62_134 StaticText " "
+    uid=62_135 StaticText "setShowMore"
+    uid=62_136 StaticText "]"
+    uid=62_137 StaticText " = "
+    uid=62_138 StaticText "useState"
+    uid=62_139 StaticText "("
+    uid=62_140 StaticText "false"
+    uid=62_141 StaticText ")"
+    uid=62_142 StaticText ";"
+    uid=62_143 StaticText "Here is how an image gallery uses and updates state on click:"
+    uid=63_3 tab "App.js" description="/src/App.js" selectable selected
+    uid=63_4 tab "data.js" description="/src/data.js" selectable
+    uid=62_145 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_146 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_5 button "Fork" description="Open in CodeSandbox"
+    uid=62_149 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+import { sculptureList } from './data.js';
+
+export default function Gallery() {
+  const [index, setIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+  const hasNext = index < sculptureList.length - 1;
+
+  function handleNextClick() {
+    if (hasNext) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  }
+
+  function handleMoreClick() {
+    setShowMore(!showMore);
+  }
+
+  let sculpture = sculptureList[index];
+  return (
+    <>
+      <button onClick={handleNextClick}>
+        Next
+      </button>
+      <h2>
+        <i>{sculpture.name} </i>
+        by {sculpture.artist}
+      </h2>
+      <h3>
+        ({index + 1} of {sculptureList.length})
+      </h3>
+      <button onClick={handleMoreClick}>
+        {showMore ? 'Hide' : 'Show'} details
+      </button>
+      {showMore && <p>{sculpture.description}</p>}
+      <img
+        src={sculpture.url}
+        alt={sculpture.alt}
+      />
+    </>
+  );
+}
+
+"
+    uid=62_150 Iframe "Sandbox Preview"
+      uid=63_6 RootWebArea "Sandpack Preview" busy url="https://786946de.sandpack-bundler-4bw.pages.dev/"
+    uid=62_152 button "Show more"
+    uid=62_153 heading "Ready to learn this topic?" level="2"
+    uid=62_154 StaticText "Read "
+    uid=62_155 link "State: A Component’s Memory" url="https://react.dev/learn/state-a-components-memory"
+      uid=62_156 StaticText "State: A Component’s Memory"
+    uid=62_157 StaticText " to learn how to remember a value and update it on interaction."
+    uid=62_158 link "Read More" url="https://react.dev/learn/state-a-components-memory"
+      uid=62_159 StaticText "Read More"
+    uid=62_160 StaticText "Render and commit "
+    uid=62_161 link "Link for Render and commit " description="Link for Render and commit" url="https://react.dev/learn/adding-interactivity#render-and-commit"
+    uid=62_162 StaticText "Before your components are displayed on the screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior."
+    uid=62_163 StaticText "Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:"
+    uid=62_164 StaticText "Triggering"
+    uid=62_165 StaticText " a render (delivering the diner’s order to the kitchen)"
+    uid=62_166 StaticText "Rendering"
+    uid=62_167 StaticText " the component (preparing the order in the kitchen)"
+    uid=62_168 StaticText "Committing"
+    uid=62_169 StaticText " to the DOM (placing the order on the table)"
+    uid=62_170 image "React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." url="https://react.dev/images/docs/illustrations/i_render-and-commit1.png"
+    uid=62_171 StaticText "Trigger"
+    uid=62_172 image "The Card Chef gives React a fresh Card component." url="https://react.dev/images/docs/illustrations/i_render-and-commit2.png"
+    uid=62_173 StaticText "Render"
+    uid=62_174 image "React delivers the Card to the user at their table." url="https://react.dev/images/docs/illustrations/i_render-and-commit3.png"
+    uid=62_175 StaticText "Commit"
+    uid=62_176 StaticText "Illustrated by"
+    uid=62_177 link "Rachel Lee Nabors" url="https://nearestnabors.com/"
+      uid=62_178 StaticText "Rachel Lee Nabors"
+    uid=62_179 heading "Ready to learn this topic?" level="2"
+    uid=62_180 StaticText "Read "
+    uid=62_181 link "Render and Commit" url="https://react.dev/learn/render-and-commit"
+      uid=62_182 StaticText "Render and Commit"
+    uid=62_183 StaticText " to learn the lifecycle of a UI update."
+    uid=62_184 link "Read More" url="https://react.dev/learn/render-and-commit"
+      uid=62_185 StaticText "Read More"
+    uid=62_186 StaticText "State as a snapshot "
+    uid=62_187 link "Link for State as a snapshot " description="Link for State as a snapshot" url="https://react.dev/learn/adding-interactivity#state-as-a-snapshot"
+    uid=62_188 StaticText "Unlike regular JavaScript variables, React state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render. This can be surprising at first!"
+    uid=62_189 StaticText "console"
+    uid=62_190 StaticText "."
+    uid=62_191 StaticText "log"
+    uid=62_192 StaticText "("
+    uid=62_193 StaticText "count"
+    uid=62_194 StaticText ")"
+    uid=62_195 StaticText ";"
+    uid=62_196 StaticText "  "
+    uid=62_197 StaticText "// 0"
+    uid=62_198 LineBreak "
+"
+    uid=62_199 StaticText "setCount"
+    uid=62_200 StaticText "("
+    uid=62_201 StaticText "count"
+    uid=62_202 StaticText " + "
+    uid=62_203 StaticText "1"
+    uid=62_204 StaticText ")"
+    uid=62_205 StaticText ";"
+    uid=62_206 StaticText " "
+    uid=62_207 StaticText "// Request a re-render with 1"
+    uid=62_208 LineBreak "
+"
+    uid=62_209 StaticText "console"
+    uid=62_210 StaticText "."
+    uid=62_211 StaticText "log"
+    uid=62_212 StaticText "("
+    uid=62_213 StaticText "count"
+    uid=62_214 StaticText ")"
+    uid=62_215 StaticText ";"
+    uid=62_216 StaticText "  "
+    uid=62_217 StaticText "// Still 0!"
+    uid=62_218 StaticText "This behavior helps you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press “Send” first and "
+    uid=62_219 StaticText "then"
+    uid=62_220 StaticText " change the recipient to Bob. Whose name will appear in the "
+    uid=62_221 StaticText "alert"
+    uid=62_222 StaticText " five seconds later?"
+    uid=62_223 button "App.js" expandable haspopup="menu"
+    uid=63_7 button "Download" description="Download Sandbox"
+    uid=62_224 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_225 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_8 button "Fork" description="Open in CodeSandbox"
+    uid=62_228 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Form() {
+  const [to, setTo] = useState('Alice');
+  const [message, setMessage] = useState('Hello');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setTimeout(() => {
+      alert(`You said ${message} to ${to}`);
+    }, 5000);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        To:{' '}
+        <select
+          value={to}
+          onChange={e => setTo(e.target.value)}>
+          <option value="Alice">Alice</option>
+          <option value="Bob">Bob</option>
+        </select>
+      </label>
+      <textarea
+        placeholder="Message"
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+      />
+      <button type="submit">Send</button>
+    </form>
+  );
+}
+
+"
+    uid=62_229 Iframe "Sandbox Preview"
+      uid=62_230 RootWebArea url="about:blank"
+    uid=62_231 button "Show more"
+    uid=62_232 heading "Ready to learn this topic?" level="2"
+    uid=62_233 StaticText "Read "
+    uid=62_234 link "State as a Snapshot" url="https://react.dev/learn/state-as-a-snapshot"
+      uid=62_235 StaticText "State as a Snapshot"
+    uid=62_236 StaticText " to learn why state appears “fixed” and unchanging inside the event handlers."
+    uid=62_237 link "Read More" url="https://react.dev/learn/state-as-a-snapshot"
+      uid=62_238 StaticText "Read More"
+    uid=62_239 StaticText "Queueing a series of state updates "
+    uid=62_240 link "Link for Queueing a series of state updates " description="Link for Queueing a series of state updates" url="https://react.dev/learn/adding-interactivity#queueing-a-series-of-state-updates"
+    uid=62_241 StaticText "This component is buggy: clicking “+3” increments the score only once."
+    uid=62_242 button "App.js" expandable haspopup="menu"
+    uid=63_9 button "Download" description="Download Sandbox"
+    uid=62_243 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_244 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_10 button "Fork" description="Open in CodeSandbox"
+    uid=62_247 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Counter() {
+  const [score, setScore] = useState(0);
+
+  function increment() {
+    setScore(score + 1);
+  }
+
+  return (
+    <>
+      <button onClick={() => increment()}>+1</button>
+      <button onClick={() => {
+        increment();
+        increment();
+        increment();
+      }}>+3</button>
+      <h1>Score: {score}</h1>
+    </>
+  )
+}
+
+"
+    uid=62_248 Iframe "Sandbox Preview"
+      uid=62_249 RootWebArea url="about:blank"
+    uid=62_250 button "Show more"
+    uid=62_251 link "State as a Snapshot" url="https://react.dev/learn/state-as-a-snapshot"
+      uid=62_252 StaticText "State as a Snapshot"
+    uid=62_253 StaticText " explains why this is happening. Setting state requests a new re-render, but does not change it in the already running code. So "
+    uid=62_254 StaticText "score"
+    uid=62_255 StaticText " continues to be "
+    uid=62_256 StaticText "0"
+    uid=62_257 StaticText " right after you call "
+    uid=62_258 StaticText "setScore(score + 1)"
+    uid=62_259 StaticText "."
+    uid=62_260 StaticText "console"
+    uid=62_261 StaticText "."
+    uid=62_262 StaticText "log"
+    uid=62_263 StaticText "("
+    uid=62_264 StaticText "score"
+    uid=62_265 StaticText ")"
+    uid=62_266 StaticText ";"
+    uid=62_267 StaticText "  "
+    uid=62_268 StaticText "// 0"
+    uid=62_269 LineBreak "
+"
+    uid=62_270 StaticText "setScore"
+    uid=62_271 StaticText "("
+    uid=62_272 StaticText "score"
+    uid=62_273 StaticText " + "
+    uid=62_274 StaticText "1"
+    uid=62_275 StaticText ")"
+    uid=62_276 StaticText ";"
+    uid=62_277 StaticText " "
+    uid=62_278 StaticText "// setScore(0 + 1);"
+    uid=62_279 LineBreak "
+"
+    uid=62_280 StaticText "console"
+    uid=62_281 StaticText "."
+    uid=62_282 StaticText "log"
+    uid=62_283 StaticText "("
+    uid=62_284 StaticText "score"
+    uid=62_285 StaticText ")"
+    uid=62_286 StaticText ";"
+    uid=62_287 StaticText "  "
+    uid=62_288 StaticText "// 0"
+    uid=62_289 LineBreak "
+"
+    uid=62_290 StaticText "setScore"
+    uid=62_291 StaticText "("
+    uid=62_292 StaticText "score"
+    uid=62_293 StaticText " + "
+    uid=62_294 StaticText "1"
+    uid=62_295 StaticText ")"
+    uid=62_296 StaticText ";"
+    uid=62_297 StaticText " "
+    uid=62_298 StaticText "// setScore(0 + 1);"
+    uid=62_299 LineBreak "
+"
+    uid=62_300 StaticText "console"
+    uid=62_301 StaticText "."
+    uid=62_302 StaticText "log"
+    uid=62_303 StaticText "("
+    uid=62_304 StaticText "score"
+    uid=62_305 StaticText ")"
+    uid=62_306 StaticText ";"
+    uid=62_307 StaticText "  "
+    uid=62_308 StaticText "// 0"
+    uid=62_309 LineBreak "
+"
+    uid=62_310 StaticText "setScore"
+    uid=62_311 StaticText "("
+    uid=62_312 StaticText "score"
+    uid=62_313 StaticText " + "
+    uid=62_314 StaticText "1"
+    uid=62_315 StaticText ")"
+    uid=62_316 StaticText ";"
+    uid=62_317 StaticText " "
+    uid=62_318 StaticText "// setScore(0 + 1);"
+    uid=62_319 LineBreak "
+"
+    uid=62_320 StaticText "console"
+    uid=62_321 StaticText "."
+    uid=62_322 StaticText "log"
+    uid=62_323 StaticText "("
+    uid=62_324 StaticText "score"
+    uid=62_325 StaticText ")"
+    uid=62_326 StaticText ";"
+    uid=62_327 StaticText "  "
+    uid=62_328 StaticText "// 0"
+    uid=62_329 StaticText "You can fix this by passing an "
+    uid=62_330 StaticText "updater function"
+    uid=62_331 StaticText " when setting state. Notice how replacing "
+    uid=62_332 StaticText "setScore(score + 1)"
+    uid=62_333 StaticText " with "
+    uid=62_334 StaticText "setScore(s => s + 1)"
+    uid=62_335 StaticText " fixes the “+3” button. This lets you queue multiple state updates."
+    uid=62_336 button "App.js" expandable haspopup="menu"
+    uid=63_11 button "Download" description="Download Sandbox"
+    uid=62_337 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_338 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_12 button "Fork" description="Open in CodeSandbox"
+    uid=62_341 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Counter() {
+  const [score, setScore] = useState(0);
+
+  function increment() {
+    setScore(s => s + 1);
+  }
+
+  return (
+    <>
+      <button onClick={() => increment()}>+1</button>
+      <button onClick={() => {
+        increment();
+        increment();
+        increment();
+      }}>+3</button>
+      <h1>Score: {score}</h1>
+    </>
+  )
+}
+
+"
+    uid=62_342 Iframe "Sandbox Preview"
+      uid=62_343 RootWebArea url="about:blank"
+    uid=62_344 button "Show more"
+    uid=62_345 heading "Ready to learn this topic?" level="2"
+    uid=62_346 StaticText "Read "
+    uid=62_347 link "Queueing a Series of State Updates" url="https://react.dev/learn/queueing-a-series-of-state-updates"
+      uid=62_348 StaticText "Queueing a Series of State Updates"
+    uid=62_349 StaticText " to learn how to queue a sequence of state updates."
+    uid=62_350 link "Read More" url="https://react.dev/learn/queueing-a-series-of-state-updates"
+      uid=62_351 StaticText "Read More"
+    uid=62_352 StaticText "Updating objects in state "
+    uid=62_353 link "Link for Updating objects in state " description="Link for Updating objects in state" url="https://react.dev/learn/adding-interactivity#updating-objects-in-state"
+    uid=62_354 StaticText "State can hold any kind of JavaScript value, including objects. But you shouldn’t change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy."
+    uid=62_355 StaticText "Usually, you will use the "
+    uid=62_356 StaticText "..."
+    uid=62_357 StaticText " spread syntax to copy objects and arrays that you want to change. For example, updating a nested object could look like this:"
+    uid=62_358 button "App.js" expandable haspopup="menu"
+    uid=63_13 button "Download" description="Download Sandbox"
+    uid=62_359 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_360 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_14 button "Fork" description="Open in CodeSandbox"
+    uid=62_363 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Form() {
+  const [person, setPerson] = useState({
+    name: 'Niki de Saint Phalle',
+    artwork: {
+      title: 'Blue Nana',
+      city: 'Hamburg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
+    }
+  });
+
+  function handleNameChange(e) {
+    setPerson({
+      ...person,
+      name: e.target.value
+    });
+  }
+
+  function handleTitleChange(e) {
+    setPerson({
+      ...person,
+      artwork: {
+        ...person.artwork,
+        title: e.target.value
+      }
+    });
+  }
+
+  function handleCityChange(e) {
+    setPerson({
+      ...person,
+      artwork: {
+        ...person.artwork,
+        city: e.target.value
+      }
+    });
+  }
+
+  function handleImageChange(e) {
+    setPerson({
+      ...person,
+      artwork: {
+        ...person.artwork,
+        image: e.target.value
+      }
+    });
+  }
+
+  return (
+    <>
+      <label>
+        Name:
+        <input
+          value={person.name}
+          onChange={handleNameChange}
+        />
+      </label>
+      <label>
+        Title:
+        <input
+          value={person.artwork.title}
+          onChange={handleTitleChange}
+        />
+      </label>
+      <label>
+        City:
+        <input
+          value={person.artwork.city}
+          onChange={handleCityChange}
+        />
+      </label>
+      <label>
+        Image:
+        <input
+          value={person.artwork.image}
+          onChange={handleImageChange}
+        />
+      </label>
+      <p>
+        <i>{person.artwork.title}</i>
+        {' by '}
+        {person.name}
+        <br />
+        (located in {person.artwork.city})
+      </p>
+      <img
+        src={person.artwork.image}
+        alt={person.artwork.title}
+      />
+    </>
+  );
+}
+
+"
+    uid=62_364 Iframe "Sandbox Preview"
+      uid=62_365 RootWebArea url="about:blank"
+    uid=62_366 button "Show more"
+    uid=62_367 StaticText "If copying objects in code gets tedious, you can use a library like "
+    uid=62_368 link "Immer" url="https://github.com/immerjs/use-immer"
+      uid=62_369 StaticText "Immer"
+    uid=62_370 StaticText " to reduce repetitive code:"
+    uid=63_15 tab "package.json" description="/package.json" selectable selected
+    uid=63_16 tab "App.js" description="/src/App.js" selectable
+    uid=62_372 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_373 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_17 button "Fork" description="Open in CodeSandbox"
+    uid=62_376 textbox "Code Editor for package.json" autocomplete="list" multiline value="{
+  "dependencies": {
+    "immer": "1.7.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest",
+    "use-immer": "0.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {}
+}"
+    uid=62_377 Iframe "Sandbox Preview"
+      uid=62_378 RootWebArea url="about:blank"
+    uid=62_379 heading "Ready to learn this topic?" level="2"
+    uid=62_380 StaticText "Read "
+    uid=62_381 link "Updating Objects in State" url="https://react.dev/learn/updating-objects-in-state"
+      uid=62_382 StaticText "Updating Objects in State"
+    uid=62_383 StaticText " to learn how to update objects correctly."
+    uid=62_384 link "Read More" url="https://react.dev/learn/updating-objects-in-state"
+      uid=62_385 StaticText "Read More"
+    uid=62_386 StaticText "Updating arrays in state "
+    uid=62_387 link "Link for Updating arrays in state " description="Link for Updating arrays in state" url="https://react.dev/learn/adding-interactivity#updating-arrays-in-state"
+    uid=62_388 StaticText "Arrays are another type of mutable JavaScript objects you can store in state and should treat as read-only. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array:"
+    uid=62_389 button "App.js" expandable haspopup="menu"
+    uid=63_18 button "Download" description="Download Sandbox"
+    uid=62_390 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_391 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_19 button "Fork" description="Open in CodeSandbox"
+    uid=62_394 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+const initialList = [
+  { id: 0, title: 'Big Bellies', seen: false },
+  { id: 1, title: 'Lunar Landscape', seen: false },
+  { id: 2, title: 'Terracotta Army', seen: true },
+];
+
+export default function BucketList() {
+  const [list, setList] = useState(
+    initialList
+  );
+
+  function handleToggle(artworkId, nextSeen) {
+    setList(list.map(artwork => {
+      if (artwork.id === artworkId) {
+        return { ...artwork, seen: nextSeen };
+      } else {
+        return artwork;
+      }
+    }));
+  }
+
+  return (
+    <>
+      <h1>Art Bucket List</h1>
+      <h2>My list of art to see:</h2>
+      <ItemList
+        artworks={list}
+        onToggle={handleToggle} />
+    </>
+  );
+}
+
+function ItemList({ artworks, onToggle }) {
+  return (
+    <ul>
+      {artworks.map(artwork => (
+        <li key={artwork.id}>
+          <label>
+            <input
+              type="checkbox"
+              checked={artwork.seen}
+              onChange={e => {
+                onToggle(
+                  artwork.id,
+                  e.target.checked
+                );
+              }}
+            />
+            {artwork.title}
+          </label>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+"
+    uid=62_395 Iframe "Sandbox Preview"
+      uid=62_396 RootWebArea url="about:blank"
+    uid=62_397 button "Show more"
+    uid=62_398 StaticText "If copying arrays in code gets tedious, you can use a library like "
+    uid=62_399 link "Immer" url="https://github.com/immerjs/use-immer"
+      uid=62_400 StaticText "Immer"
+    uid=62_401 StaticText " to reduce repetitive code:"
+    uid=63_20 tab "package.json" description="/package.json" selectable selected
+    uid=63_21 tab "App.js" description="/src/App.js" selectable
+    uid=62_403 button "Reload" description="Keep your edits and reload sandbox"
+    uid=62_404 button "Clear" description="Clear all edits and reload sandbox"
+    uid=63_22 button "Fork" description="Open in CodeSandbox"
+    uid=62_407 textbox "Code Editor for package.json" autocomplete="list" multiline value="{
+  "dependencies": {
+    "immer": "1.7.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest",
+    "use-immer": "0.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {}
+}"
+    uid=62_408 Iframe "Sandbox Preview"
+      uid=62_409 RootWebArea url="about:blank"
+    uid=62_410 heading "Ready to learn this topic?" level="2"
+    uid=62_411 StaticText "Read "
+    uid=62_412 link "Updating Arrays in State" url="https://react.dev/learn/updating-arrays-in-state"
+      uid=62_413 StaticText "Updating Arrays in State"
+    uid=62_414 StaticText " to learn how to update arrays correctly."
+    uid=62_415 link "Read More" url="https://react.dev/learn/updating-arrays-in-state"
+      uid=62_416 StaticText "Read More"
+    uid=62_417 StaticText "What’s next? "
+    uid=62_418 link "Link for What’s next? " description="Link for What’s next?" url="https://react.dev/learn/adding-interactivity#whats-next"
+    uid=62_419 StaticText "Head over to "
+    uid=62_420 link "Responding to Events" url="https://react.dev/learn/responding-to-events"
+      uid=62_421 StaticText "Responding to Events"
+    uid=62_422 StaticText " to start reading this chapter page by page!"
+    uid=62_423 StaticText "Or, if you’re already familiar with these topics, why not read about "
+    uid=62_424 link "Managing State" url="https://react.dev/learn/managing-state"
+      uid=62_425 StaticText "Managing State"
+    uid=62_426 StaticText "?"
+    uid=62_427 link "PREVIOUS Your UI as a Tree" url="https://react.dev/learn/understanding-your-ui-as-a-tree"
+      uid=62_428 StaticText "PREVIOUS"
+      uid=62_429 StaticText "Your UI as a Tree"
+    uid=62_430 link "NEXT Responding to Events" url="https://react.dev/learn/responding-to-events"
+      uid=62_431 StaticText "NEXT"
+      uid=62_432 StaticText "Responding to Events"
+    uid=62_433 link "Meta Open Source" url="https://opensource.fb.com/"
+    uid=62_434 StaticText "Copyright © Meta Platforms, Inc"
+    uid=62_435 StaticText "uwu?"
+    uid=62_436 link "Learn React" url="https://react.dev/learn"
+      uid=62_437 StaticText "Learn React"
+    uid=62_438 link "Quick Start" url="https://react.dev/learn"
+      uid=62_439 StaticText "Quick Start"
+    uid=62_440 link "Installation" url="https://react.dev/learn/installation"
+      uid=62_441 StaticText "Installation"
+    uid=62_442 link "Describing the UI" url="https://react.dev/learn/describing-the-ui"
+      uid=62_443 StaticText "Describing the UI"
+    uid=62_444 link "Adding Interactivity" url="https://react.dev/learn/adding-interactivity"
+      uid=62_445 StaticText "Adding Interactivity"
+    uid=62_446 link "Managing State" url="https://react.dev/learn/managing-state"
+      uid=62_447 StaticText "Managing State"
+    uid=62_448 link "Escape Hatches" url="https://react.dev/learn/escape-hatches"
+      uid=62_449 StaticText "Escape Hatches"
+    uid=62_450 link "API Reference" url="https://react.dev/reference/react"
+      uid=62_451 StaticText "API Reference"
+    uid=62_452 link "React APIs" url="https://react.dev/reference/react"
+      uid=62_453 StaticText "React APIs"
+    uid=62_454 link "React DOM APIs" url="https://react.dev/reference/react-dom"
+      uid=62_455 StaticText "React DOM APIs"
+    uid=62_456 link "Community" url="https://react.dev/community"
+      uid=62_457 StaticText "Community"
+    uid=62_458 link "Code of Conduct" url="https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md"
+      uid=62_459 StaticText "Code of Conduct"
+    uid=62_460 link "Meet the Team" url="https://react.dev/community/team"
+      uid=62_461 StaticText "Meet the Team"
+    uid=62_462 link "Docs Contributors" url="https://react.dev/community/docs-contributors"
+      uid=62_463 StaticText "Docs Contributors"
+    uid=62_464 link "Acknowledgements" url="https://react.dev/community/acknowledgements"
+      uid=62_465 StaticText "Acknowledgements"
+    uid=62_466 StaticText "More"
+    uid=62_467 link "Blog" url="https://react.dev/blog"
+      uid=62_468 StaticText "Blog"
+    uid=62_469 link "React Native" url="https://reactnative.dev/"
+      uid=62_470 StaticText "React Native"
+    uid=62_471 link "Privacy" url="https://opensource.facebook.com/legal/privacy"
+      uid=62_472 StaticText "Privacy"
+    uid=62_473 link "Terms" url="https://opensource.fb.com/legal/terms/"
+      uid=62_474 StaticText "Terms"
+    uid=62_475 link "React on Facebook" url="https://www.facebook.com/react"
+    uid=62_476 link "React on Twitter" url="https://twitter.com/reactjs"
+    uid=62_477 link "React on Bluesky" url="https://bsky.app/profile/react.dev"
+      uid=62_478 image "Bluesky"
+    uid=62_479 link "React on Github" url="https://github.com/react/react"
+  uid=62_480 alert atomic live="assertive" relevant="additions text"

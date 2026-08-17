@@ -30,8 +30,9 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
+<!-- Start: Card Container -->
 <div <?php echo e($attributes->merge(['class' => 'bg-white overflow-hidden border border-gray-200 sm:rounded-lg' . ($shadow ? ' shadow-sm' : '')])); ?>>
-    
+    <!-- Start: Header Section -->
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(isset($header)): ?>
         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
             <h3 class="text-lg font-semibold text-gray-800">
@@ -40,19 +41,23 @@ unset($__defined_vars, $__key, $__value); ?>
             </h3>
         </div>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    <!-- End: Header Section -->
 
-    
+    <!-- Start: Body Section -->
     <div class="p-6 text-gray-900">
         <?php echo e($slot); ?>
 
     </div>
+    <!-- End: Body Section -->
 
-    
+    <!-- Start: Footer Section -->
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(isset($footer)): ?>
         <div class="px-6 py-4 border-t border-gray-100 bg-gray-50/50">
             <?php echo e($footer); ?>
 
         </div>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    <!-- End: Footer Section -->
 </div>
+<!-- End: Card Container -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/ui/card.blade.php ENDPATH**/ ?>

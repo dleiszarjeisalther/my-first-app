@@ -15,8 +15,10 @@
 
 @props(['disabled' => false])
 
+<!-- Start: Radio Input -->
 <input
     type="radio"
     {{ $disabled ? 'disabled' : '' }}
     {{ $attributes->merge(['class' => 'h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500']) }}
 >
+<!-- End: Radio Input -->

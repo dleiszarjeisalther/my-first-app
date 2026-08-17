@@ -1,3 +1,4 @@
+<!-- Start: Guest Layout -->
 <?php if (isset($component)) { $__componentOriginal69dc84650370d1d4dc1b42d016d7226b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal69dc84650370d1d4dc1b42d016d7226b = $attributes; } ?>
 <?php $component = App\View\Components\GuestLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -10,10 +11,11 @@
 <?php $component->withAttributes([]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
+    <!-- Start: Register Form -->
     <form method="POST" action="<?php echo e(route('register')); ?>">
         <?php echo csrf_field(); ?>
 
-        <!-- Name -->
+        <!-- Start: Name Field -->
         <div>
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -82,8 +84,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Name Field -->
 
-        <!-- Email Address -->
+        <!-- Start: Email Address Field -->
         <div class="mt-4">
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -152,8 +155,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Email Address Field -->
 
-        <!-- Password -->
+        <!-- Start: Password Field -->
         <div class="mt-4">
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -224,8 +228,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Password Field -->
 
-        <!-- Confirm Password -->
+        <!-- Start: Confirm Password Field -->
         <div class="mt-4">
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -296,7 +301,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Confirm Password Field -->
 
+        <!-- Start: Form Actions (Login Link & Register Button) -->
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="<?php echo e(route('login')); ?>">
                 <?php echo e(__('Already registered?')); ?>
@@ -328,7 +335,9 @@
 <?php unset($__componentOriginal54c5a1a52b6cf346236637a05b110723); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Form Actions -->
     </form>
+    <!-- End: Register Form -->
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal69dc84650370d1d4dc1b42d016d7226b)): ?>
@@ -339,4 +348,5 @@
 <?php $component = $__componentOriginal69dc84650370d1d4dc1b42d016d7226b; ?>
 <?php unset($__componentOriginal69dc84650370d1d4dc1b42d016d7226b); ?>
 <?php endif; ?>
+<!-- End: Guest Layout -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/auth/register.blade.php ENDPATH**/ ?>

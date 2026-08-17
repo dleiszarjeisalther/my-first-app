@@ -1,3 +1,4 @@
+<!-- Start: App Layout -->
 <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
 <?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -10,18 +11,21 @@
 <?php $component->withAttributes([]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
+    <!-- Start: Header Slot -->
      <?php $__env->slot('header', null, []); ?> 
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <?php echo e(__('Edit Category')); ?>
 
         </h2>
      <?php $__env->endSlot(); ?>
+    <!-- End: Header Slot -->
 
+    <!-- Start: Main Container -->
     <div class="py-12 bg-gray-50 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="max-w-xl mx-auto">
                 
-                <!-- Back Link -->
+                <!-- Start: Back Link -->
                 <div class="mb-6">
                     <a href="<?php echo e(route('category.index')); ?>" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-800 transition-colors">
                         <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -30,14 +34,18 @@
                         Back to Categories
                     </a>
                 </div>
+                <!-- End: Back Link -->
 
-                <!-- Form Card -->
+                <!-- Start: Form Card -->
                 <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
+                    <!-- Start: Form Header -->
                     <div class="mb-6 border-b border-gray-100 pb-5">
                         <h1 class="text-2xl font-extrabold text-gray-900">Edit Category</h1>
                         <p class="text-sm text-gray-500 mt-1">Make changes to the classification tag name.</p>
                     </div>
+                    <!-- End: Form Header -->
 
+                    <!-- Start: Error Alert Box -->
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($errors->any()): ?>
                         <?php if (isset($component)) { $__componentOriginal746de018ded8594083eb43be3f1332e1 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal746de018ded8594083eb43be3f1332e1 = $attributes; } ?>
@@ -67,7 +75,9 @@
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
                         </ul>
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    <!-- End: Error Alert Box -->
 
+                    <!-- Start: Edit Category Form -->
                     <?php if (isset($component)) { $__componentOriginalc6eccc84c547bc62667cd749f508b1a4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc6eccc84c547bc62667cd749f508b1a4 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.form.prevent-double-submit','data' => ['action' => route('category.update', $category->id)]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -83,6 +93,7 @@
                         <?php echo csrf_field(); ?>
                         <?php echo method_field('PUT'); ?>
                         
+                        <!-- Start: Category Name Field -->
                         <div class="mb-6">
                             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -129,7 +140,9 @@
 <?php unset($__componentOriginaldca3bb76b5bf0aaf83ee2266180b6d2c); ?>
 <?php endif; ?>
                         </div>
+                        <!-- End: Category Name Field -->
                         
+                        <!-- Start: Form Actions (Buttons) -->
                         <div class="flex items-center gap-3 pt-4 border-t border-gray-100 mt-8">
                             <?php if (isset($component)) { $__componentOriginal54c5a1a52b6cf346236637a05b110723 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal54c5a1a52b6cf346236637a05b110723 = $attributes; } ?>
@@ -178,6 +191,7 @@
 <?php unset($__componentOriginalb0083d113ecf7b04bfc3fa94a403051e); ?>
 <?php endif; ?>
                         </div>
+                        <!-- End: Form Actions -->
                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalc6eccc84c547bc62667cd749f508b1a4)): ?>
@@ -188,10 +202,13 @@
 <?php $component = $__componentOriginalc6eccc84c547bc62667cd749f508b1a4; ?>
 <?php unset($__componentOriginalc6eccc84c547bc62667cd749f508b1a4); ?>
 <?php endif; ?>
+                    <!-- End: Edit Category Form -->
                 </div>
+                <!-- End: Form Card -->
             </div>
         </div>
     </div>
+    <!-- End: Main Container -->
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
@@ -202,4 +219,5 @@
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
 <?php endif; ?>
+<!-- End: App Layout -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/category/edit.blade.php ENDPATH**/ ?>

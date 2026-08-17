@@ -1,0 +1,10 @@
+Files changed or added by AI:
+
+app/Http/Controllers/TaskController.php
+app/Http/Requests/UpdateTasksRequest.php
+app/Policies/TaskPolicy.php
+app/Providers/AppServiceProvider.php
+tests/Feature/TaskAuthorizationTest.php
+resources/views/components/ui/modal.blade.php
+resources/css/app.css
+ai_changed_files.txt

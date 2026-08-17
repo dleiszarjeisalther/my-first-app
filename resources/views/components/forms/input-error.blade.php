@@ -1,4 +1,4 @@
-﻿{{--
+{{--
     ============================================================
     COMPONENT: input-error
     SOURCE   : Laravel Breeze (auto-generated)
@@ -11,15 +11,15 @@
 
     PROPS:
         $messages  — (required) An array of error strings.
-                     Pass $errors->get('fieldName') from the
-                     Laravel $errors bag.
+                      Pass $errors->get('fieldName') from the
+                      Laravel $errors bag.
 
     HOW TO USE:
         Place it after the corresponding x-forms.text-input:
 
-        [x-forms.input-label for="email" value="Email" />
-        [x-forms.text-input id="email" name="email" type="email" />
-        [x-forms.input-error :messages="$errors->get('email')" class="mt-2" />
+        <x-forms.input-label for="email" value="Email" />
+        <x-forms.text-input id="email" name="email" type="email" />
+        <x-forms.input-error :messages="$errors->get('email')" class="mt-2" />
 
     HOW IT WORKS:
         Laravel's validation puts errors into the $errors
@@ -34,6 +34,7 @@
 --}}
 @props(['messages'])
 
+<!-- Start: Input Error Messages -->
 @if ($messages)
     {{-- Only renders when there is at least one error message --}}
     <ul {{ $attributes->merge(['class' => 'text-sm text-red-600 space-y-1']) }}>
@@ -42,3 +43,4 @@
         @endforeach
     </ul>
 @endif
+<!-- End: Input Error Messages -->

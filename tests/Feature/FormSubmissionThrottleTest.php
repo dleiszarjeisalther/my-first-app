@@ -30,7 +30,7 @@ test('category store is throttled on rapid duplicate submissions', function () {
 
 test('skill store succeeds on first submission', function () {
     $user = User::factory()->create();
-    $category = Category::create(['name' => 'Backend']);
+    $category = Category::create(['name' => 'Backend', 'user_id' => $user->id]);
 
     $response = $this->actingAs($user)->post(route('skills.store'), [
         'name' => 'Laravel',
@@ -47,7 +47,7 @@ test('skill store succeeds on first submission', function () {
 
 test('skill store is throttled on rapid duplicate submissions', function () {
     $user = User::factory()->create();
-    $category = Category::create(['name' => 'Backend']);
+    $category = Category::create(['name' => 'Backend', 'user_id' => $user->id]);
 
     $this->actingAs($user)->post(route('skills.store'), [
         'name' => 'Laravel',

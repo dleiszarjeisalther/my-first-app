@@ -32,10 +32,14 @@
     $initials = strtoupper(substr($words[0] ?? '', 0, 1) . substr($words[1] ?? '', 0, 1));
 @endphp
 
+<!-- Start: Avatar Container -->
 <div {{ $attributes->merge(['class' => "relative inline-flex items-center justify-center rounded-full overflow-hidden bg-indigo-100 {$sizeClass}"]) }}>
+    <!-- Start: Avatar Image / Initials Fallback -->
     @if ($src)
         <img class="h-full w-full object-cover" src="{{ $src }}" alt="{{ $name }}">
     @else
         <span class="font-medium leading-none text-indigo-700">{{ $initials }}</span>
     @endif
+    <!-- End: Avatar Image / Initials Fallback -->
 </div>
+<!-- End: Avatar Container -->

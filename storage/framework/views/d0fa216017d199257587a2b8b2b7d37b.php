@@ -1,3 +1,4 @@
+<!-- Start: App Layout -->
 <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
 <?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -10,21 +11,28 @@
 <?php $component->withAttributes([]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
+    <!-- Start: Header Slot -->
      <?php $__env->slot('header', null, []); ?> 
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <?php echo e(__('Categories')); ?>
 
         </h2>
      <?php $__env->endSlot(); ?>
+    <!-- End: Header Slot -->
 
+    <!-- Start: Main Container -->
     <div class="py-12 bg-gray-50 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Header Section -->
+            <!-- Start: Header Section (Title & Add Category Button) -->
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <!-- Start: Header Titles -->
                 <div>
                     <h1 class="text-3xl font-extrabold text-gray-950 tracking-tight">Category Directory</h1>
                     <p class="text-sm text-gray-500 mt-1">Manage categories used to classify your skills.</p>
                 </div>
+                <!-- End: Header Titles -->
+
+                <!-- Start: Add Category Button -->
                 <?php if (isset($component)) { $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.button-link','data' => ['href' => ''.e(route('category.create')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -51,8 +59,11 @@
 <?php $component = $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e; ?>
 <?php unset($__componentOriginalb0083d113ecf7b04bfc3fa94a403051e); ?>
 <?php endif; ?>
+                <!-- End: Add Category Button -->
             </div>
+            <!-- End: Header Section -->
 
+            <!-- Start: Flash Alert Message -->
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('success')): ?>
                 <?php if (isset($component)) { $__componentOriginal746de018ded8594083eb43be3f1332e1 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal746de018ded8594083eb43be3f1332e1 = $attributes; } ?>
@@ -77,12 +88,17 @@
 <?php unset($__componentOriginal746de018ded8594083eb43be3f1332e1); ?>
 <?php endif; ?>
             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            <!-- End: Flash Alert Message -->
 
-            <!-- Categories List -->
+            <!-- Start: Categories List Container -->
             <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <!-- Start: Categories List -->
                 <ul class="divide-y divide-gray-100">
+                    <!-- Start: Category Item Loop -->
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                        <!-- Start: Category List Item -->
                         <li class="flex justify-between items-center p-5 hover:bg-gray-50/50 transition-colors group">
+                            <!-- Start: Category Info (Icon, Name, ID) -->
                             <div class="flex items-center space-x-3.5">
                                 <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:scale-105 transition-transform">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -94,8 +110,11 @@
                                     <span class="block text-xs text-gray-400 mt-0.5">ID: <?php echo e($category->id); ?></span>
                                 </div>
                             </div>
+                            <!-- End: Category Info -->
                             
+                            <!-- Start: Category Actions (Edit & Delete) -->
                             <div class="flex items-center space-x-2">
+                                <!-- Start: Edit Button -->
                                 <?php if (isset($component)) { $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.button-link','data' => ['href' => ''.e(route('category.edit', $category->id)).'','class' => 'bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -122,30 +141,34 @@
 <?php $component = $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e; ?>
 <?php unset($__componentOriginalb0083d113ecf7b04bfc3fa94a403051e); ?>
 <?php endif; ?>
+                                <!-- End: Edit Button -->
+
+                                <!-- Start: Delete Form & Modal -->
                                 <?php if (isset($component)) { $__componentOriginalc6eccc84c547bc62667cd749f508b1a4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc6eccc84c547bc62667cd749f508b1a4 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.form.prevent-double-submit','data' => ['action' => route('category.destroy', $category->id),'confirm' => 'Are you sure you want to delete this category? This might affect skills categorized under it.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.form.prevent-double-submit','data' => ['action' => route('category.destroy', $category->id)]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('form.prevent-double-submit'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['action' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('category.destroy', $category->id)),'confirm' => 'Are you sure you want to delete this category? This might affect skills categorized under it.']); ?>
+<?php $component->withAttributes(['action' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('category.destroy', $category->id))]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
                                     <?php echo csrf_field(); ?>
                                     <?php echo method_field('DELETE'); ?>
+                                    <!-- Start: Delete Trigger Button -->
                                     <?php if (isset($component)) { $__componentOriginald684f3bbff7e9f78d50f7cca93f6817d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald684f3bbff7e9f78d50f7cca93f6817d = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.danger-button','data' => ['type' => 'submit','xBind:disabled' => 'submitting','xBind:class' => '{ \'opacity-50 cursor-not-allowed\': submitting }']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.danger-button','data' => ['type' => 'button','@click' => '$dispatch(\'open-modal\', \'confirm-delete-category-'.e($category->id).'\')']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('buttons.danger-button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['type' => 'submit','x-bind:disabled' => 'submitting','x-bind:class' => '{ \'opacity-50 cursor-not-allowed\': submitting }']); ?>
+<?php $component->withAttributes(['type' => 'button','@click' => '$dispatch(\'open-modal\', \'confirm-delete-category-'.e($category->id).'\')']); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
                                         <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -162,6 +185,88 @@
 <?php $component = $__componentOriginald684f3bbff7e9f78d50f7cca93f6817d; ?>
 <?php unset($__componentOriginald684f3bbff7e9f78d50f7cca93f6817d); ?>
 <?php endif; ?>
+                                    <!-- End: Delete Trigger Button -->
+
+                                    <!-- Start: Confirmation Modal -->
+                                    <?php if (isset($component)) { $__componentOriginal7762953202be6518eecd1cfbd075bf2f = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7762953202be6518eecd1cfbd075bf2f = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.ui.modal','data' => ['name' => 'confirm-delete-category-'.e($category->id).'','show' => false,'maxWidth' => 'sm']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('ui.modal'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'confirm-delete-category-'.e($category->id).'','show' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(false),'maxWidth' => 'sm']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+                                        <div class="p-6">
+                                            <h2 class="text-lg font-bold text-gray-900">Are you sure?</h2>
+                                            <p class="mt-2 text-sm text-gray-600">
+                                                Are you sure you want to delete this category? This might affect skills categorized under it.
+                                            </p>
+                                            <!-- Start: Modal Buttons -->
+                                            <div class="mt-6 flex justify-end gap-3">
+                                                <?php if (isset($component)) { $__componentOriginal0572c7df6c527340ebe5adcba5081ea6 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal0572c7df6c527340ebe5adcba5081ea6 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.secondary-button','data' => ['type' => 'button','@click' => '$dispatch(\'close-modal\', \'confirm-delete-category-'.e($category->id).'\')']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('buttons.secondary-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'button','@click' => '$dispatch(\'close-modal\', \'confirm-delete-category-'.e($category->id).'\')']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+                                                    Cancel
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal0572c7df6c527340ebe5adcba5081ea6)): ?>
+<?php $attributes = $__attributesOriginal0572c7df6c527340ebe5adcba5081ea6; ?>
+<?php unset($__attributesOriginal0572c7df6c527340ebe5adcba5081ea6); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal0572c7df6c527340ebe5adcba5081ea6)): ?>
+<?php $component = $__componentOriginal0572c7df6c527340ebe5adcba5081ea6; ?>
+<?php unset($__componentOriginal0572c7df6c527340ebe5adcba5081ea6); ?>
+<?php endif; ?>
+                                                <?php if (isset($component)) { $__componentOriginald684f3bbff7e9f78d50f7cca93f6817d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginald684f3bbff7e9f78d50f7cca93f6817d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.danger-button','data' => ['type' => 'submit','xBind:disabled' => 'submitting','xBind:class' => '{ \'opacity-50 cursor-not-allowed\': submitting }']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('buttons.danger-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'submit','x-bind:disabled' => 'submitting','x-bind:class' => '{ \'opacity-50 cursor-not-allowed\': submitting }']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+                                                    Yes, Delete
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginald684f3bbff7e9f78d50f7cca93f6817d)): ?>
+<?php $attributes = $__attributesOriginald684f3bbff7e9f78d50f7cca93f6817d; ?>
+<?php unset($__attributesOriginald684f3bbff7e9f78d50f7cca93f6817d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginald684f3bbff7e9f78d50f7cca93f6817d)): ?>
+<?php $component = $__componentOriginald684f3bbff7e9f78d50f7cca93f6817d; ?>
+<?php unset($__componentOriginald684f3bbff7e9f78d50f7cca93f6817d); ?>
+<?php endif; ?>
+                                            </div>
+                                            <!-- End: Modal Buttons -->
+                                        </div>
+                                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7762953202be6518eecd1cfbd075bf2f)): ?>
+<?php $attributes = $__attributesOriginal7762953202be6518eecd1cfbd075bf2f; ?>
+<?php unset($__attributesOriginal7762953202be6518eecd1cfbd075bf2f); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7762953202be6518eecd1cfbd075bf2f)): ?>
+<?php $component = $__componentOriginal7762953202be6518eecd1cfbd075bf2f; ?>
+<?php unset($__componentOriginal7762953202be6518eecd1cfbd075bf2f); ?>
+<?php endif; ?>
+                                    <!-- End: Confirmation Modal -->
                                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalc6eccc84c547bc62667cd749f508b1a4)): ?>
@@ -172,10 +277,15 @@
 <?php $component = $__componentOriginalc6eccc84c547bc62667cd749f508b1a4; ?>
 <?php unset($__componentOriginalc6eccc84c547bc62667cd749f508b1a4); ?>
 <?php endif; ?>
+                                <!-- End: Delete Form & Modal -->
                             </div>
+                            <!-- End: Category Actions -->
                         </li>
+                        <!-- End: Category List Item -->
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+                    <!-- End: Category Item Loop -->
 
+                    <!-- Start: Empty State -->
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($categories->isEmpty()): ?>
                         <li class="p-8 text-center">
                             <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -185,10 +295,14 @@
                             <span class="block text-xs text-gray-400 mt-1">Get started by adding your first skill category.</span>
                         </li>
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    <!-- End: Empty State -->
                 </ul>
+                <!-- End: Categories List -->
             </div>
+            <!-- End: Categories List Container -->
         </div>
     </div>
+    <!-- End: Main Container -->
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
@@ -199,4 +313,5 @@
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
 <?php endif; ?>
+<!-- End: App Layout -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/category/index.blade.php ENDPATH**/ ?>

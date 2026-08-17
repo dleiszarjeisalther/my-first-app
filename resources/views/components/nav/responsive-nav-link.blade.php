@@ -1,4 +1,4 @@
-﻿{{--
+{{--
     ============================================================
     COMPONENT: responsive-nav-link
     SOURCE   : Laravel Breeze (auto-generated)
@@ -18,13 +18,13 @@
     HOW TO USE:
         Used inside the responsive section of layouts/navigation.blade.php:
 
-        [x-nav.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <x-nav.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             Dashboard
-        [/x-nav.responsive-nav-link>
+        </x-nav.responsive-nav-link>
 
-        [x-nav.responsive-nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
+        <x-nav.responsive-nav-link :href="route('skills.index')" :active="request()->routeIs('skills.*')">
             Skills
-        [/x-nav.responsive-nav-link>
+        </x-nav.responsive-nav-link>
 
     NOTE:
         This is the MOBILE link (only visible on sm: and below).
@@ -40,6 +40,8 @@ $classes = ($active ?? false)
             : 'block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out';
 @endphp
 
+<!-- Start: Mobile Responsive Navigation Link -->
 <a {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
 </a>
+<!-- End: Mobile Responsive Navigation Link -->

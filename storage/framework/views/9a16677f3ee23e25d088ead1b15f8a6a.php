@@ -28,8 +28,9 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
+<!-- Start: Password Input Wrapper -->
 <div x-data="{ shown: false }" class="relative">
-    
+    <!-- Start: Actual Input Field -->
     <input
         :type="shown ? 'text' : 'password'"
         name="<?php echo e($name); ?>"
@@ -40,8 +41,9 @@ unset($__defined_vars, $__key, $__value); ?>
         <?php echo e($attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full pr-10'])); ?>
 
     >
+    <!-- End: Actual Input Field -->
 
-    
+    <!-- Start: Eye Toggle Button -->
     <button
         type="button"
         @click="shown = !shown"
@@ -96,5 +98,7 @@ unset($__defined_vars, $__key, $__value); ?>
 <?php unset($__componentOriginal6e13e76b4f7df23b26faba08c8dd7d44); ?>
 <?php endif; ?>
     </button>
+    <!-- End: Eye Toggle Button -->
 </div>
+<!-- End: Password Input Wrapper -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/forms/password-input.blade.php ENDPATH**/ ?>

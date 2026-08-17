@@ -1,4 +1,4 @@
-﻿{{--
+{{--
     ============================================================
     LAYOUT: layouts/guest.blade.php  →  used as x-layouts.guest
     SOURCE : Laravel Breeze (auto-generated)
@@ -36,8 +36,10 @@
         - Max width: sm:max-w-md
     ============================================================
 --}}
+<!-- Start: HTML Document -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <!-- Start: Document Head -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,27 +47,37 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts: Figtree from Bunny Fonts (privacy-friendly Google Fonts mirror) -->
+        <!-- Start: Fonts (Figtree from Bunny Fonts) -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- End: Fonts -->
 
-        <!-- Scripts: Vite compiles resources/css/app.css + resources/js/app.js -->
+        <!-- Start: Scripts & Styles (Vite) -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- End: Scripts & Styles (Vite) -->
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+    <!-- End: Document Head -->
 
-            <!-- App logo — links back to the homepage -->
+    <!-- Start: Document Body -->
+    <body class="font-sans text-gray-900 antialiased">
+        <!-- Start: Centered Layout Container -->
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+            <!-- Start: App Logo Section -->
             <div>
                 <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
             </div>
+            <!-- End: App Logo Section -->
 
-            <!-- White card that wraps the auth form ($slot) -->
+            <!-- Start: Auth Card Container ($slot) -->
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
+            <!-- End: Auth Card Container -->
         </div>
+        <!-- End: Centered Layout Container -->
     </body>
+    <!-- End: Document Body -->
 </html>
+<!-- End: HTML Document -->

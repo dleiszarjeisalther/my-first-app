@@ -1,0 +1,305 @@
+===============================================================================
+LARAVEL BEGINNER GUIDE: CONTROLLERS, CHECKBOXES & DROPDOWNS
+Folder: resources/views/tasks/
+File: guide.txt
+===============================================================================
+
+This guide explains step-by-step:
+1. How to create and register a Controller
+2. How HTML Checkboxes work in Laravel & how to handle the "unchecked" issue
+3. How to build an Update button with a Checkbox (inline & edit forms)
+4. How to build and populate Dropdown (<select>) menus
+5. Complete copy-paste examples for Controller, Model, Routes, and Blade
+
+-------------------------------------------------------------------------------
+PART 1: HOW TO CREATE AND REGISTER A CONTROLLER
+-------------------------------------------------------------------------------
+
+Step 1.1: Generate Controller with Artisan
+Run the following command in your terminal:
+    php artisan make:controller TaskController --resource
+
+    * The `--resource` flag automatically generates standard CRUD methods:
+      - index()   -> GET /tasks         (Show list of tasks)
+      - create()  -> GET /tasks/create  (Show form to add new task)
+      - store()   -> POST /tasks        (Save new task to database)
+      - show()    -> GET /tasks/{id}    (View single task)
+      - edit()    -> GET /tasks/{id}/edit (Show edit form)
+      - update()  -> PUT/PATCH /tasks/{id} (Save updated task)
+      - destroy() -> DELETE /tasks/{id} (Delete task)
+
+Step 1.2: Register Routes in routes/web.php
+Add this line to your routes/web.php file:
+
+    use App\Http\Controllers\TaskController;
+
+    Route::middleware(['auth'])->group(function () {
+        Route::resource('tasks', TaskController::class);
+    });
+
+-------------------------------------------------------------------------------
+PART 2: HOW CHECKBOXES WORK IN HTML & LARAVEL
+-------------------------------------------------------------------------------
+
+IMPORTANT HTML RULE:
+If a checkbox is UNCHECKED, the browser does NOT send it in the form request.
+If a checkbox is CHECKED, the browser sends its `value` (usually "1" or "on").
+
+Because of this, in Laravel you should use ONE of these two best practices:
+
+Approach A (Recommended with Hidden Input Fallback):
+Place a hidden input with value="0" immediately BEFORE the checkbox input with the SAME name:
+
+    <input type="hidden" name="done" value="0">
+    <input type="checkbox" name="done" value="1" {{ old('done', $task->done ?? false) ? 'checked' : '' }}>
+
+    * If unchecked -> hidden input value "0" is sent.
+    * If checked   -> checkbox input value "1" overrides the hidden input.
+
+Approach B (Controller-level boolean helper):
+In your controller, use `$request->boolean('done')`:
+
+    $done = $request->boolean('done'); // Returns true if checked, false if missing/unchecked
+
+-------------------------------------------------------------------------------
+PART 3: HOW TO BUILD AN UPDATE BUTTON WITH A CHECKBOX
+-------------------------------------------------------------------------------
+
+Example 3.1: Inline Quick Toggle (Update Status Directly in the List)
+Use this inside your @foreach ($tasks as $task) loop:
+
+<!-- Start: Inline Task Checkbox Update Form -->
+<form action="{{ route('tasks.update', $task->id) }}" method="POST" class="flex items-center gap-2">
+    @csrf
+    @method('PATCH')
+
+    <!-- Hidden fallback for unchecked state -->
+    <input type="hidden" name="done" value="0">
+
+    <!-- The Checkbox -->
+    <input 
+        type="checkbox" 
+        name="done" 
+        value="1" 
+        id="task_done_{{ $task->id }}"
+        {{ old('done', $task->done) ? 'checked' : '' }}
+        class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+    >
+
+    <label for="task_done_{{ $task->id }}" class="text-sm text-gray-700">
+        {{ $task->done ? 'Completed' : 'Pending' }}
+    </label>
+
+    <!-- Update Button -->
+    <button type="submit" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-md shadow-sm">
+        Update Status
+    </button>
+</form>
+<!-- End: Inline Task Checkbox Update Form -->
+
+Example 3.2: Full Edit Form (Name + Checkbox + Update Button)
+
+<!-- Start: Task Edit Form -->
+<form action="{{ route('tasks.update', $task->id) }}" method="POST" class="space-y-4">
+    @csrf
+    @method('PATCH')
+
+    <!-- Task Name Field -->
+    <div>
+        <label for="name" class="block text-sm font-medium text-gray-700">Task Name:</label>
+        <input 
+            type="text" 
+            name="name" 
+            id="name" 
+            value="{{ old('name', $task->name) }}" 
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            required
+        >
+        @error('name')
+            <span class="text-red-500 text-xs">{{ $message }}</span>
+        @enderror
+    </div>
+
+    <!-- Done Checkbox Field -->
+    <div class="flex items-center">
+        <input type="hidden" name="done" value="0">
+        <input 
+            type="checkbox" 
+            name="done" 
+            id="done" 
+            value="1"
+            {{ old('done', $task->done) ? 'checked' : '' }}
+            class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+        >
+        <label for="done" class="ml-2 text-sm text-gray-700">Mark as completed</label>
+    </div>
+
+    <!-- Update Button -->
+    <div>
+        <button type="submit" class="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 focus:outline-none">
+            Update Task
+        </button>
+    </div>
+</form>
+<!-- End: Task Edit Form -->
+
+-------------------------------------------------------------------------------
+PART 4: HOW TO BUILD AND POPULATE DROPDOWNS (<select>)
+-------------------------------------------------------------------------------
+
+Example 4.1: Static Dropdown (Hardcoded options like Priority or Status)
+
+<label for="priority" class="block text-sm font-medium text-gray-700">Priority:</label>
+<select name="priority" id="priority" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+    <option value="low" {{ old('priority', $task->priority ?? '') == 'low' ? 'selected' : '' }}>Low Priority</option>
+    <option value="medium" {{ old('priority', $task->priority ?? '') == 'medium' ? 'selected' : '' }}>Medium Priority</option>
+    <option value="high" {{ old('priority', $task->priority ?? '') == 'high' ? 'selected' : '' }}>High Priority</option>
+</select>
+
+Example 4.2: Dynamic Dropdown from Database (Categories / Projects)
+
+In Controller:
+    public function create()
+    {
+        $categories = Category::all();
+        return view('tasks.create', compact('categories'));
+    }
+
+In Blade View:
+    <label for="category_id" class="block text-sm font-medium text-gray-700">Category:</label>
+    <select name="category_id" id="category_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+        <option value="">-- Choose Category --</option>
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}" {{ old('category_id', $task->category_id ?? '') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
+        @endforeach
+    </select>
+
+-------------------------------------------------------------------------------
+PART 5: COMPLETE CONTROLLER CODE EXAMPLE (TaskController.php)
+-------------------------------------------------------------------------------
+
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Task;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class TaskController extends Controller
+{
+    /**
+     * Display all tasks.
+     */
+    public function index()
+    {
+        $tasks = Task::latest()->get();
+
+        return view('tasks.index', [
+            'user_name' => Auth::user()?->name ?? 'Guest',
+            'names'     => $tasks,
+        ]);
+    }
+
+    /**
+     * Show form to create a new task.
+     */
+    public function create()
+    {
+        $categories = Category::all();
+        return view('tasks.create', compact('categories'));
+    }
+
+    /**
+     * Store new task in database.
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name'        => 'required|string|max:255',
+            'done'        => 'nullable|boolean',
+            'category_id' => 'nullable|exists:categories,id',
+        ]);
+
+        // Ensure boolean conversion:
+        $validated['done'] = $request->boolean('done');
+
+        Task::create($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
+    }
+
+    /**
+     * Show form to edit task.
+     */
+    public function edit(Task $task)
+    {
+        $categories = Category::all();
+        return view('tasks.edit', compact('task', 'categories'));
+    }
+
+    /**
+     * Update task with checkbox and dropdown values.
+     */
+    public function update(Request $request, Task $task)
+    {
+        $validated = $request->validate([
+            'name'        => 'sometimes|required|string|max:255',
+            'done'        => 'required|boolean',
+            'category_id' => 'nullable|exists:categories,id',
+        ]);
+
+        // Convert checkbox to true/false:
+        $validated['done'] = $request->boolean('done');
+
+        $task->update($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
+    }
+
+    /**
+     * Delete a task.
+     */
+    public function destroy(Task $task)
+    {
+        $task->delete();
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
+    }
+}
+
+-------------------------------------------------------------------------------
+PART 6: ELOQUENT MODEL CHECKLIST (Task.php)
+-------------------------------------------------------------------------------
+
+Ensure your Task model has `$fillable` and `$casts` for clean boolean handling:
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    protected $fillable = [
+        'name',
+        'done',
+        'category_id',
+    ];
+
+    protected $casts = [
+        'done' => 'boolean',
+    ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+}
+
+===============================================================================
+END OF GUIDE
+===============================================================================

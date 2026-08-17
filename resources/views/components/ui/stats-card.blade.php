@@ -19,13 +19,19 @@
 
 @props(['label', 'value'])
 
+<!-- Start: Stats Card Container -->
 <div {{ $attributes->merge(['class' => 'bg-white overflow-hidden shadow sm:rounded-lg p-5']) }}>
+    <!-- Start: Stats Card Content Flex -->
     <div class="flex items-center">
+        <!-- Start: Stats Card Icon -->
         @if (isset($icon))
             <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3 text-white">
                 {{ $icon }}
             </div>
         @endif
+        <!-- End: Stats Card Icon -->
+
+        <!-- Start: Stats Card Data Details -->
         <div class="{{ isset($icon) ? 'ml-5' : '' }} w-0 flex-1">
             <dl>
                 <dt class="text-sm font-medium text-gray-500 truncate">
@@ -38,5 +44,8 @@
                 </dd>
             </dl>
         </div>
+        <!-- End: Stats Card Data Details -->
     </div>
+    <!-- End: Stats Card Content Flex -->
 </div>
+<!-- End: Stats Card Container -->

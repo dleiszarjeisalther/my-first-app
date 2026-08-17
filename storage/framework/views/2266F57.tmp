@@ -1,0 +1,112 @@
+<!-- Start: App Layout -->
+<?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
+<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+    <!-- Start: Header Slot -->
+     <?php $__env->slot('header', null, []); ?> 
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <?php echo e(__('Tasks')); ?>
+
+        </h2>
+     <?php $__env->endSlot(); ?>
+    <!-- End: Header Slot -->
+
+    <!-- Start: Tasks Container -->
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <!-- Start: Header Section (Greeting & Add Skill Button) -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Hello, <?php echo e($user_name); ?>!</h1>
+                <?php if (isset($component)) { $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.button-link','data' => ['href' => ''.e(route('tasks.create')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('buttons.button-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => ''.e(route('tasks.create')).'']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+                    Add Task
+                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e)): ?>
+<?php $attributes = $__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e; ?>
+<?php unset($__attributesOriginalb0083d113ecf7b04bfc3fa94a403051e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalb0083d113ecf7b04bfc3fa94a403051e)): ?>
+<?php $component = $__componentOriginalb0083d113ecf7b04bfc3fa94a403051e; ?>
+<?php unset($__componentOriginalb0083d113ecf7b04bfc3fa94a403051e); ?>
+<?php endif; ?>
+            </div>
+            <!-- End: Header Section -->
+
+            <!-- Start: Task List -->
+            <ul class="mt-2 space-y-2">
+                <!-- Start: Task Item Loop -->
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $names; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $name): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
+                    <!-- Start: Task Card -->
+                    <?php if (isset($component)) { $__componentOriginaldae4cd48acb67888a4631e1ba48f2f93 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginaldae4cd48acb67888a4631e1ba48f2f93 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.ui.card','data' => ['class' => 'flex justify-between items-center mb-2 border-l-4 border-red-500']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('ui.card'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'flex justify-between items-center mb-2 border-l-4 border-red-500']); ?>
+<?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
+
+                        <!-- Start: Task Name -->
+                        <div>
+                            <span class="font-bold text-gray-800">
+                                
+                                <?php echo e($name->name); ?></span>
+                        </div>
+                        <!-- End: Task Name -->
+
+                        <!-- Start: Task Action Space -->
+                        <div class="flex items-center space-x-4">
+                        </div>
+                        <!-- End: Task Action Space -->
+                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginaldae4cd48acb67888a4631e1ba48f2f93)): ?>
+<?php $attributes = $__attributesOriginaldae4cd48acb67888a4631e1ba48f2f93; ?>
+<?php unset($__attributesOriginaldae4cd48acb67888a4631e1ba48f2f93); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginaldae4cd48acb67888a4631e1ba48f2f93)): ?>
+<?php $component = $__componentOriginaldae4cd48acb67888a4631e1ba48f2f93; ?>
+<?php unset($__componentOriginaldae4cd48acb67888a4631e1ba48f2f93); ?>
+<?php endif; ?>
+                    <!-- End: Task Card -->
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
+                <!-- End: Task Item Loop -->
+            </ul>
+            <!-- End: Task List -->
+        </div>
+    </div>
+    <!-- End: Tasks Container -->
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
+<?php $attributes = $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
+<?php unset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
+<?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
+<?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
+<?php endif; ?>
+<!-- End: App Layout --><?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/tasks/index.blade.php ENDPATH**/ ?>

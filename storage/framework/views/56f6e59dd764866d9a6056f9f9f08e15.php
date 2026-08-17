@@ -1,4 +1,6 @@
-﻿<section class="space-y-6">
+<!-- Start: Delete Account Section -->
+<section class="space-y-6">
+    <!-- Start: Section Header -->
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             <?php echo e(__('Delete Account')); ?>
@@ -10,7 +12,9 @@
 
         </p>
     </header>
+    <!-- End: Section Header -->
 
+    <!-- Start: Trigger Button for Modal -->
     <?php if (isset($component)) { $__componentOriginald684f3bbff7e9f78d50f7cca93f6817d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald684f3bbff7e9f78d50f7cca93f6817d = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.buttons.danger-button','data' => ['xData' => '','xOn:click.prevent' => '$dispatch(\'open-modal\', \'confirm-user-deletion\')']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -32,7 +36,9 @@
 <?php $component = $__componentOriginald684f3bbff7e9f78d50f7cca93f6817d; ?>
 <?php unset($__componentOriginald684f3bbff7e9f78d50f7cca93f6817d); ?>
 <?php endif; ?>
+    <!-- End: Trigger Button for Modal -->
 
+    <!-- Start: Delete Confirmation Modal -->
     <?php if (isset($component)) { $__componentOriginal7762953202be6518eecd1cfbd075bf2f = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7762953202be6518eecd1cfbd075bf2f = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.ui.modal','data' => ['name' => 'confirm-user-deletion','show' => $errors->userDeletion->isNotEmpty(),'focusable' => true]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -45,6 +51,7 @@
 <?php $component->withAttributes(['name' => 'confirm-user-deletion','show' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->userDeletion->isNotEmpty()),'focusable' => true]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
+        <!-- Start: Delete Account Form -->
         <form method="post" action="<?php echo e(route('profile.destroy')); ?>" class="p-6">
             <?php echo csrf_field(); ?>
             <?php echo method_field('delete'); ?>
@@ -59,6 +66,7 @@
 
             </p>
 
+            <!-- Start: Password Input Field -->
             <div class="mt-6">
                 <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -129,7 +137,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
             </div>
+            <!-- End: Password Input Field -->
 
+            <!-- Start: Modal Action Buttons -->
             <div class="mt-6 flex justify-end">
                 <?php if (isset($component)) { $__componentOriginal0572c7df6c527340ebe5adcba5081ea6 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal0572c7df6c527340ebe5adcba5081ea6 = $attributes; } ?>
@@ -181,7 +191,9 @@
 <?php unset($__componentOriginald684f3bbff7e9f78d50f7cca93f6817d); ?>
 <?php endif; ?>
             </div>
+            <!-- End: Modal Action Buttons -->
         </form>
+        <!-- End: Delete Account Form -->
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal7762953202be6518eecd1cfbd075bf2f)): ?>
@@ -192,5 +204,7 @@
 <?php $component = $__componentOriginal7762953202be6518eecd1cfbd075bf2f; ?>
 <?php unset($__componentOriginal7762953202be6518eecd1cfbd075bf2f); ?>
 <?php endif; ?>
+    <!-- End: Delete Confirmation Modal -->
 </section>
+<!-- End: Delete Account Section -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/profile/partials/delete-user-form.blade.php ENDPATH**/ ?>

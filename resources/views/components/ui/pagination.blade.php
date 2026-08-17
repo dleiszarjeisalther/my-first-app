@@ -16,9 +16,12 @@
 
 @props(['paginator'])
 
+<!-- Start: Pagination Navigation -->
 @if ($paginator->hasPages())
     <nav {{ $attributes->merge(['class' => 'flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6']) }} aria-label="Pagination">
+        <!-- Start: Desktop Pagination Bar -->
         <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+            <!-- Start: Result Counts -->
             <div>
                 <p class="text-sm text-gray-700">
                     Showing
@@ -30,15 +33,22 @@
                     results
                 </p>
             </div>
+            <!-- End: Result Counts -->
+
+            <!-- Start: Page Number Links -->
             <div>
                 {{ $paginator->links() }}
             </div>
+            <!-- End: Page Number Links -->
         </div>
+        <!-- End: Desktop Pagination Bar -->
 
-        {{-- Mobile View --}}
+        <!-- Start: Mobile Pagination Controls -->
         <div class="flex flex-1 justify-between sm:hidden">
             <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
             <a href="{{ $paginator->nextPageUrl() }}" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
         </div>
+        <!-- End: Mobile Pagination Controls -->
     </nav>
 @endif
+<!-- End: Pagination Navigation -->

@@ -48,7 +48,9 @@ $maxWidth = [
 ][$maxWidth];
 ?>
 
+<!-- Start: Modal Overlay Container -->
 <div
+    x-cloak
     x-data="{
         show: <?php echo \Illuminate\Support\Js::from($show)->toHtml() ?>,
         
@@ -62,7 +64,7 @@ $maxWidth = [
         nextFocusable()  { return this.focusables()[this.nextFocusableIndex()] || this.firstFocusable() },
         prevFocusable()  { return this.focusables()[this.prevFocusableIndex()] || this.lastFocusable() },
         nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
-        prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) -1 },
+        prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) - 1 },
     }"
     
     x-init="$watch('show', value => {
@@ -86,7 +88,7 @@ $maxWidth = [
     class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
     
 >
-    
+    <!-- Start: Dark Backdrop -->
     <div
         x-show="show"
         class="fixed inset-0 transform transition-all"
@@ -100,8 +102,9 @@ $maxWidth = [
     >
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     </div>
+    <!-- End: Dark Backdrop -->
 
-    
+    <!-- Start: Modal Dialog Box -->
     <div
         x-show="show"
         class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full <?php echo e($maxWidth); ?> sm:mx-auto"
@@ -115,5 +118,7 @@ $maxWidth = [
         <?php echo e($slot); ?>
 
     </div>
+    <!-- End: Modal Dialog Box -->
 </div>
+<!-- End: Modal Overlay Container -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/ui/modal.blade.php ENDPATH**/ ?>

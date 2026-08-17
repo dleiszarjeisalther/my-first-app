@@ -11,12 +11,12 @@
 
     PROPS:
         $status  (required) — The message string to display.
-                              If null/empty, nothing is rendered.
+                               If null/empty, nothing is rendered.
 
     HOW TO USE:
         Typically placed at the top of a login/auth form:
 
-        [x-auth-session-status :status="session('status')" />
+        <x-auth-session-status :status="session('status')" />
 
     REAL EXAMPLE (in auth/login.blade.php):
         session('status') returns "Password reset link sent!"
@@ -26,13 +26,15 @@
         You can pass extra classes via $attributes to override
         or extend the default green styling:
 
-        [x-auth-session-status class="mb-4" :status="session('status')" />
+        <x-auth-session-status class="mb-4" :status="session('status')" />
     ============================================================
 --}}
 @props(['status'])
 
+<!-- Start: Auth Session Status -->
 @if ($status)
     <div {{ $attributes->merge(['class' => 'font-medium text-sm text-green-600']) }}>
         {{ $status }}
     </div>
 @endif
+<!-- End: Auth Session Status -->

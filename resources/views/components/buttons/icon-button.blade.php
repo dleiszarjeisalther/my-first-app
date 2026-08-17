@@ -28,6 +28,8 @@
     $variantClass = $variants[$variant] ?? $variants['gray'];
 @endphp
 
+<!-- Start: Icon Button -->
 <button {{ $attributes->merge(['class' => "inline-flex items-center p-2 border border-transparent rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-150 {$variantClass}"]) }}>
     {{ $slot }}
 </button>
+<!-- End: Icon Button -->

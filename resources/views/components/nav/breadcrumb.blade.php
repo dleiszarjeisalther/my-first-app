@@ -17,16 +17,22 @@
 
 @props(['items' => []])
 
+<!-- Start: Breadcrumb Navigation -->
 <nav class="flex mb-4" aria-label="Breadcrumb">
+    <!-- Start: Breadcrumb List -->
     <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <!-- Start: Breadcrumb Item Loop -->
         @foreach ($items as $label => $url)
             <li class="inline-flex items-center">
+                <!-- Start: Separator Icon -->
                 @if (!$loop->first)
                     <svg class="w-4 h-4 text-gray-400 mx-1" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                     </svg>
                 @endif
+                <!-- End: Separator Icon -->
 
+                <!-- Start: Item Link / Active Label -->
                 @if ($loop->last)
                     <span class="text-sm font-medium text-gray-500 md:ml-2">{{ $label }}</span>
                 @else
@@ -34,7 +40,11 @@
                         {{ $label }}
                     </a>
                 @endif
+                <!-- End: Item Link / Active Label -->
             </li>
         @endforeach
+        <!-- End: Breadcrumb Item Loop -->
     </ol>
+    <!-- End: Breadcrumb List -->
 </nav>
+<!-- End: Breadcrumb Navigation -->

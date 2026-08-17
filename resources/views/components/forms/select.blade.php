@@ -18,10 +18,12 @@
 
 @props(['disabled' => false, 'options' => [], 'selected' => null])
 
+<!-- Start: Select Dropdown -->
 <select
     {{ $disabled ? 'disabled' : '' }}
     {{ $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full']) }}
 >
+    <!-- Start: Options List -->
     @if (!empty($options))
         @foreach ($options as $value => $label)
             <option value="{{ $value }}" {{ $value == $selected ? 'selected' : '' }}>
@@ -31,5 +33,6 @@
     @else
         {{ $slot }}
     @endif
+    <!-- End: Options List -->
 </select>
-
+<!-- End: Select Dropdown -->

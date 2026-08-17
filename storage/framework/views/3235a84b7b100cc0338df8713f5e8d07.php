@@ -42,8 +42,10 @@ unset($__defined_vars, $__key, $__value); ?>
     $colorClass = $colors[$color] ?? $colors['gray'];
 ?>
 
+<!-- Start: Badge -->
 <span <?php echo e($attributes->merge(['class' => "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {$colorClass}"])); ?>>
     <?php echo e($slot); ?>
 
 </span>
+<!-- End: Badge -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/ui/badge.blade.php ENDPATH**/ ?>

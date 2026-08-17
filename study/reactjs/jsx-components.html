@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02. JSX, Components & Props - React Offline Guide</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background-color: #0a0e17; color: #f9fafb; margin: 0; padding-bottom: 3rem; }
+    .content { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; line-height: 1.7; }
+    h1 { color: #ffffff; border-bottom: 2px solid #374151; padding-bottom: 0.5rem; }
+    h2 { color: #61dafb; margin-top: 2rem; }
+    h3 { color: #9ca3af; }
+    code { background: #030712; color: #61dafb; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+    pre { background: #030712; border: 1px solid #374151; padding: 1.25rem; border-radius: 8px; overflow-x: auto; }
+    pre code { background: transparent; color: #e5e7eb; padding: 0; }
+    a { color: #38bdf8; }
+  </style>
+</head>
+<body>
+
+<div id="offline-nav-header" style="position: sticky; top: 0; z-index: 999999; background: #0b0f19; border-bottom: 2px solid #61dafb; padding: 10px 16px; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
+  <a href="index.html" style="background: #61dafb; color: #0b0f19; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px;">⚛️ React Hub</a>
+  <span style="color: #475569; font-weight: bold;">|</span>
+  <a href="describing-the-ui.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Describing UI</a>
+  <a href="adding-interactivity.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Interactivity</a>
+  <a href="managing-state.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Managing State</a>
+  <a href="escape-hatches.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Escape Hatches</a>
+  <a href="hooks.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Hooks API</a>
+  <a href="installation.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Installation</a>
+  <a href="server-components.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Server Components</a>
+</div>
+
+
+<div id="offline-nav-header" style="position: sticky; top: 0; z-index: 999999; background: #0a0e17; border-bottom: 2px solid #61dafb; padding: 10px 16px; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+  <a href="index.html" style="background: #61dafb; color: #000; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px;">🏠 Offline Hub</a>
+  <span style="color: #475569; font-weight: bold;">|</span>
+  <a href="overview.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Overview</a>
+  <a href="jsx-components.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">JSX & Props</a>
+  <a href="state-hooks.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">State & Hooks</a>
+  <a href="effects-refs.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Effects & Refs</a>
+  <a href="context.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Context</a>
+  <a href="rsc-actions.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">RSC & Actions</a>
+  <a href="compiler.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Compiler</a>
+  <a href="testing.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Testing</a>
+</div>
+
+<div class="content">
+<h1>02. JSX, Components & Props</h1>
+
+<h2>1. JSX (JavaScript XML) Syntax</h2>
+JSX is a syntax extension for JavaScript that looks similar to HTML. It compiles down to standard React <code>createElement</code> calls.
+
+<pre><code>
+interface UserProps {
+  name: string;
+  avatarUrl: string;
+  isOnline?: boolean;
+}
+
+export function UserAvatar({ name, avatarUrl, isOnline = false }: UserProps) {
+  return (
+    <div className="user-avatar-container">
+      <img src={avatarUrl} alt={<code>${name}'s avatar</code>} className="avatar-img" />
+      <span className={isOnline ? 'badge online' : 'badge offline'}>
+        {isOnline ? 'Active' : 'Offline'}
+      </span>
+    </div>
+  );
+}
+</code></pre>
+
+---
+
+<h2>2. Children & Component Composition</h2>
+The <code>children</code> prop allows passing elements or components directly inside another component.
+
+<pre><code>
+import { ReactNode } from 'react';
+
+interface CardProps {
+  title: string;
+  children: ReactNode;
+}
+
+export function Card({ title, children }: CardProps) {
+  return (
+    <div className="card">
+      <header className="card-header">
+        <h2>{title}</h2>
+      </header>
+      <div className="card-body">
+        {children}
+      </div>
+    </div>
+  );
+}
+</code></pre>
+
+---
+
+<h2>3. Conditional Rendering & List Mapping</h2>
+
+<pre><code>
+interface TodoItem {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+export function TodoList({ items }: { items: TodoItem[] }) {
+  return (
+    <ul className="todo-list">
+      {items.length === 0 ? (
+        <li className="empty">No tasks available.</li>
+      ) : (
+        items.map((todo) => (
+          <li key={todo.id} className={todo.completed ? 'done' : ''}>
+            <span>{todo.text}</span>
+            {todo.completed && <span className="checkmark">✓</span>}
+          </li>
+        ))
+      )}
+    </ul>
+  );
+}
+</code></pre>
+
+</div>
+</body>
+</html>

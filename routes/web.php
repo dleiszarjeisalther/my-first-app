@@ -3,9 +3,9 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\trialController;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -89,6 +89,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/skills', SkillController::class)->middleware(['auth', 'verified']);
 Route::resource('/category', CategoryController::class)->middleware(['auth', 'verified']);
+Route::resource('/tasks', TaskController::class)->middleware(['auth', 'verified']);
 
 Route::resource('/trial', trialController::class);
 

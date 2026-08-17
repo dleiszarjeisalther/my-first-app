@@ -1,0 +1,170 @@
+/* Floating Controls Container */
+.reader-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10000;
+}
+
+/* Base Button Style */
+.reader-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px; /* Slightly rounded corners for modern look */
+    background: #ff2d20; /* Laravel Red */
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 25px -5px rgba(255, 45, 32, 0.4), 0 8px 10px -6px rgba(255, 45, 32, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+}
+
+.reader-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: #e02a1e;
+    box-shadow: 0 20px 25px -5px rgba(255, 45, 32, 0.5);
+}
+
+.reader-btn:active {
+    transform: scale(0.95);
+}
+
+.reader-btn svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Reader Mode Layout Overrides */
+body.reader-mode {
+    background-color: #fcfcfc !important;
+}
+
+html.dark body.reader-mode {
+    background-color: #0f172a !important; /* Sleek dark mode background */
+}
+
+/* Hide everything except content in Reader Mode */
+body.reader-mode nav,
+body.reader-mode aside,
+body.reader-mode footer,
+body.reader-mode .sticky-nav,
+body.reader-mode #nav-trigger,
+body.reader-mode #skip-to-content-link,
+body.reader-mode .xl\:block {
+    display: none !important;
+}
+
+body.reader-mode .mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+body.reader-mode .max-w-\[1400px\] {
+    max-width: 850px !important;
+    border-left: none !important;
+}
+
+body.reader-mode .lg\:col-span-9,
+body.reader-mode .xl\:col-span-6 {
+    grid-column: span 12 / span 12 !important;
+}
+
+body.reader-mode .docs_main {
+    padding: 40px 20px !important;
+}
+
+body.reader-mode #main-content {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #1e293b;
+}
+
+html.dark body.reader-mode #main-content {
+    color: #e2e8f0;
+}
+
+/* Navigation Buttons (Back/Next) */
+.reader-nav-controls {
+    display: none; /* Hidden by default, shown in reader mode */
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+body.reader-mode .reader-nav-controls {
+    display: flex;
+}
+
+.reader-btn-small {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+}
+
+.reader-btn-auto-next.active {
+    background: #ff2d20;
+    color: white;
+    border-color: #ff2d20;
+    box-shadow: 0 4px 12px rgba(255, 45, 32, 0.4);
+}
+
+.reader-btn-auto-next.active svg {
+    stroke: white;
+}
+
+/* Active State for Reader Button */
+body.reader-mode .reader-btn-toggle {
+    background: #1e293b;
+    box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.4);
+}
+
+html.dark body.reader-mode .reader-btn-toggle {
+    background: #334155;
+}
+
+/* Paragraph Selection & Highlighting */
+body.reader-mode #main-content p,
+body.reader-mode #main-content h1,
+body.reader-mode #main-content h2,
+body.reader-mode #main-content h3,
+body.reader-mode #main-content li {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 8px;
+    padding: 4px 8px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+body.reader-mode #main-content p:hover,
+body.reader-mode #main-content h1:hover,
+body.reader-mode #main-content h2:hover,
+body.reader-mode #main-content h3:hover,
+body.reader-mode #main-content li:hover {
+    background: rgba(255, 45, 32, 0.05);
+}
+
+body.reader-mode .tts-active-node {
+    background: rgba(255, 45, 32, 0.1) !important;
+    box-shadow: inset 4px 0 0 #ff2d20;
+}
+
+/* TTS Highlighting (for words if supported, but here for blocks) */
+.tts-reading {
+    background: rgba(255, 45, 32, 0.1);
+    border-radius: 4px;
+    transition: background 0.3s;
+}

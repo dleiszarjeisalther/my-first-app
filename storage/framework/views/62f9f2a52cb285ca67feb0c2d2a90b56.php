@@ -1,4 +1,5 @@
-﻿<?php if (isset($component)) { $__componentOriginal69dc84650370d1d4dc1b42d016d7226b = $component; } ?>
+<!-- Start: Guest Layout -->
+<?php if (isset($component)) { $__componentOriginal69dc84650370d1d4dc1b42d016d7226b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal69dc84650370d1d4dc1b42d016d7226b = $attributes; } ?>
 <?php $component = App\View\Components\GuestLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('guest-layout'); ?>
@@ -10,12 +11,14 @@
 <?php $component->withAttributes([]); ?>
 <?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::processComponentKey($component); ?>
 
+    <!-- Start: Information Text -->
     <div class="mb-4 text-sm text-gray-600">
         <?php echo e(__('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.')); ?>
 
     </div>
+    <!-- End: Information Text -->
 
-    <!-- Session Status -->
+    <!-- Start: Session Status Alert -->
     <?php if (isset($component)) { $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.auth-session-status','data' => ['class' => 'mb-4','status' => session('status')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -38,11 +41,13 @@
 <?php $component = $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5; ?>
 <?php unset($__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5); ?>
 <?php endif; ?>
+    <!-- End: Session Status Alert -->
 
+    <!-- Start: Forgot Password Form -->
     <form method="POST" action="<?php echo e(route('password.email')); ?>">
         <?php echo csrf_field(); ?>
 
-        <!-- Email Address -->
+        <!-- Start: Email Address Field -->
         <div>
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -111,7 +116,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Email Address Field -->
 
+        <!-- Start: Form Actions (Submit Button) -->
         <div class="flex items-center justify-end mt-4">
             <?php if (isset($component)) { $__componentOriginal54c5a1a52b6cf346236637a05b110723 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal54c5a1a52b6cf346236637a05b110723 = $attributes; } ?>
@@ -138,7 +145,9 @@
 <?php unset($__componentOriginal54c5a1a52b6cf346236637a05b110723); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Form Actions -->
     </form>
+    <!-- End: Forgot Password Form -->
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal69dc84650370d1d4dc1b42d016d7226b)): ?>
@@ -149,4 +158,5 @@
 <?php $component = $__componentOriginal69dc84650370d1d4dc1b42d016d7226b; ?>
 <?php unset($__componentOriginal69dc84650370d1d4dc1b42d016d7226b); ?>
 <?php endif; ?>
+<!-- End: Guest Layout -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/auth/forgot-password.blade.php ENDPATH**/ ?>

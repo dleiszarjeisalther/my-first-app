@@ -1,6 +1,8 @@
-﻿
+
+<!-- Start: HTML Document -->
 <!DOCTYPE html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+    <!-- Start: Document Head -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,17 +10,22 @@
 
         <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
-        <!-- Fonts: Figtree from Bunny Fonts (privacy-friendly Google Fonts mirror) -->
+        <!-- Start: Fonts (Figtree from Bunny Fonts) -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- End: Fonts -->
 
-        <!-- Scripts: Vite compiles resources/css/app.css + resources/js/app.js -->
+        <!-- Start: Scripts & Styles (Vite) -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+        <!-- End: Scripts & Styles (Vite) -->
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+    <!-- End: Document Head -->
 
-            <!-- App logo — links back to the homepage -->
+    <!-- Start: Document Body -->
+    <body class="font-sans text-gray-900 antialiased">
+        <!-- Start: Centered Layout Container -->
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+            <!-- Start: App Logo Section -->
             <div>
                 <a href="/">
                     <?php if (isset($component)) { $__componentOriginal8892e718f3d0d7a916180885c6f012e7 = $component; } ?>
@@ -45,13 +52,18 @@
 <?php endif; ?>
                 </a>
             </div>
+            <!-- End: App Logo Section -->
 
-            <!-- White card that wraps the auth form ($slot) -->
+            <!-- Start: Auth Card Container ($slot) -->
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 <?php echo e($slot); ?>
 
             </div>
+            <!-- End: Auth Card Container -->
         </div>
+        <!-- End: Centered Layout Container -->
     </body>
+    <!-- End: Document Body -->
 </html>
+<!-- End: HTML Document -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/layouts/guest.blade.php ENDPATH**/ ?>

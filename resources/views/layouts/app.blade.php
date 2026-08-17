@@ -1,4 +1,4 @@
-﻿{{--
+{{--
     ============================================================
     LAYOUT: layouts/app.blade.php  →  used as x-layouts.app
     SOURCE : Laravel Breeze (auto-generated)
@@ -39,8 +39,10 @@
         components/layouts/capp.blade.php — custom c-prefixed version
     ============================================================
 --}}
+<!-- Start: HTML Document -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <!-- Start: Document Head -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,19 +50,26 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts: Figtree from Bunny Fonts (privacy-friendly Google Fonts mirror) -->
+        <!-- Start: Fonts (Figtree from Bunny Fonts) -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- End: Fonts -->
 
-        <!-- Scripts: Vite compiles resources/css/app.css + resources/js/app.js -->
+        <!-- Start: Scripts & Styles (Vite) -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- End: Scripts & Styles (Vite) -->
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            <!-- Top navigation bar (logo + links + user dropdown) -->
-            @include('layouts.navigation')
+    <!-- End: Document Head -->
 
-            <!-- Page Heading — only rendered if $header slot is provided -->
+    <!-- Start: Document Body -->
+    <body class="font-sans antialiased">
+        <!-- Start: Page Background Wrapper -->
+        <div class="min-h-screen bg-gray-100">
+            <!-- Start: Top Navigation Bar (Logo + Links + User Dropdown) -->
+            @include('layouts.navigation')
+            <!-- End: Top Navigation Bar -->
+
+            <!-- Start: Page Heading Banner (Rendered only if $header slot provided) -->
             @isset($header)
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -68,11 +77,16 @@
                     </div>
                 </header>
             @endisset
+            <!-- End: Page Heading Banner -->
 
-            <!-- Main page content — goes into $slot -->
+            <!-- Start: Main Page Content Slot -->
             <main>
                 {{ $slot }}
             </main>
+            <!-- End: Main Page Content Slot -->
         </div>
+        <!-- End: Page Background Wrapper -->
     </body>
+    <!-- End: Document Body -->
 </html>
+<!-- End: HTML Document -->

@@ -19,11 +19,13 @@
 
 @props(['name', 'label' => '', 'value' => false])
 
+<!-- Start: Toggle Switch Container -->
 <div x-data="{ on: {{ $value ? 'true' : 'false' }} }" class="flex items-center">
-    {{-- The actual hidden checkbox for the form --}}
+    <!-- Start: Hidden Form Checkbox -->
     <input type="checkbox" name="{{ $name }}" class="hidden" :checked="on" value="1">
+    <!-- End: Hidden Form Checkbox -->
 
-    {{-- The Toggle Button --}}
+    <!-- Start: Toggle Button -->
     <button
         type="button"
         @click="on = !on"
@@ -32,14 +34,20 @@
         role="switch"
         :aria-checked="on"
     >
+        <!-- Start: Sliding Switch Knob -->
         <span
             aria-hidden="true"
             :class="on ? 'translate-x-5' : 'translate-x-0'"
             class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
         ></span>
+        <!-- End: Sliding Switch Knob -->
     </button>
+    <!-- End: Toggle Button -->
 
+    <!-- Start: Toggle Label -->
     @if ($label)
         <span class="ml-3 text-sm font-medium text-gray-900">{{ $label }}</span>
     @endif
+    <!-- End: Toggle Label -->
 </div>
+<!-- End: Toggle Switch Container -->

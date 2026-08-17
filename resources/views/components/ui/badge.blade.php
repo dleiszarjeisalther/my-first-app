@@ -30,6 +30,8 @@
     $colorClass = $colors[$color] ?? $colors['gray'];
 @endphp
 
+<!-- Start: Badge -->
 <span {{ $attributes->merge(['class' => "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {$colorClass}"]) }}>
     {{ $slot }}
 </span>
+<!-- End: Badge -->

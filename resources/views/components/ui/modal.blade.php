@@ -71,7 +71,9 @@ $maxWidth = [
 ][$maxWidth];
 @endphp
 
+<!-- Start: Modal Overlay Container -->
 <div
+    x-cloak
     x-data="{
         show: @js($show),
         {{-- Returns all focusable elements inside this modal --}}
@@ -85,7 +87,7 @@ $maxWidth = [
         nextFocusable()  { return this.focusables()[this.nextFocusableIndex()] || this.firstFocusable() },
         prevFocusable()  { return this.focusables()[this.prevFocusableIndex()] || this.lastFocusable() },
         nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
-        prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) -1 },
+        prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) - 1 },
     }"
     {{-- Watch show state: lock/unlock body scroll --}}
     x-init="$watch('show', value => {
@@ -108,7 +110,7 @@ $maxWidth = [
     class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
     {{-- x-show handles display automatically; no style attribute needed --}}
 >
-    {{-- Dark translucent backdrop — clicking it closes the modal --}}
+    <!-- Start: Dark Backdrop -->
     <div
         x-show="show"
         class="fixed inset-0 transform transition-all"
@@ -122,8 +124,9 @@ $maxWidth = [
     >
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     </div>
+    <!-- End: Dark Backdrop -->
 
-    {{-- Dialog box — slides and scales in/out --}}
+    <!-- Start: Modal Dialog Box -->
     <div
         x-show="show"
         class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full {{ $maxWidth }} sm:mx-auto"
@@ -136,4 +139,6 @@ $maxWidth = [
     >
         {{ $slot }}
     </div>
+    <!-- End: Modal Dialog Box -->
 </div>
+<!-- End: Modal Overlay Container -->

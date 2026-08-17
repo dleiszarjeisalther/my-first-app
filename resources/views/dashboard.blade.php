@@ -1,4 +1,3 @@
-
 {{--
     ============================================================
     VIEW: dashboard.blade.php
@@ -22,18 +21,24 @@
     ============================================================
 --}}
 
+<!-- Start: App Layout -->
 <x-app-layout>
+    <!-- Start: Header Slot -->
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    <!-- End: Header Slot -->
 
+    <!-- Start: Main Content Container -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <!-- Start: Dashboard Card -->
             <x-ui.card>
                 {{ __("You're logged in!") }}
                 
+                <!-- Start: Action Buttons -->
                 <div class="mt-4 space-x-2">
                     <x-buttons.button-link href="{{ route('skills.index') }}">
                         View Skills
@@ -42,7 +47,11 @@
                         View Categories
                     </x-buttons.button-link>
                 </div>
+                <!-- End: Action Buttons -->
             </x-ui.card>
+            <!-- End: Dashboard Card -->
         </div>
     </div>
+    <!-- End: Main Content Container -->
 </x-app-layout>
+<!-- End: App Layout -->

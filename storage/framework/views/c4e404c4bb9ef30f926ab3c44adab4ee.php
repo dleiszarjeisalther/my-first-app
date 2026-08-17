@@ -1,4 +1,4 @@
-﻿
+
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
@@ -29,8 +29,10 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
+<!-- Start: Input Label -->
 <label <?php echo e($attributes->merge(['class' => 'block font-medium text-sm text-gray-700'])); ?>>
     <?php echo e($value ?? $slot); ?>
 
 </label>
+<!-- End: Input Label -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/forms/input-label.blade.php ENDPATH**/ ?>

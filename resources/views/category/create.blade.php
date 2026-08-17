@@ -1,15 +1,19 @@
+<!-- Start: App Layout -->
 <x-app-layout>
+    <!-- Start: Header Slot -->
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Add Category') }}
         </h2>
     </x-slot>
+    <!-- End: Header Slot -->
 
+    <!-- Start: Main Container -->
     <div class="py-12 bg-gray-50 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="max-w-xl mx-auto">
                 
-                <!-- Back Link -->
+                <!-- Start: Back Link -->
                 <div class="mb-6">
                     <a href="{{ route('category.index') }}" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-800 transition-colors">
                         <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -18,14 +22,18 @@
                         Back to Categories
                     </a>
                 </div>
+                <!-- End: Back Link -->
 
-                <!-- Form Card -->
+                <!-- Start: Form Card -->
                 <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
+                    <!-- Start: Form Header -->
                     <div class="mb-6 border-b border-gray-100 pb-5">
                         <h1 class="text-2xl font-extrabold text-gray-900">Add a New Category</h1>
                         <p class="text-sm text-gray-500 mt-1">Define a classification tag that can be applied to your skills library.</p>
                     </div>
+                    <!-- End: Form Header -->
 
+                    <!-- Start: Error Alert Box -->
                     @if ($errors->any())
                         <x-ui.alert type="error" message="Please fix the errors below." />
                         <ul class="text-red-500 mb-4 list-disc pl-5">
@@ -34,14 +42,20 @@
                             @endforeach
                         </ul>
                     @endif
+                    <!-- End: Error Alert Box -->
 
+                    <!-- Start: Create Category Form -->
                     <x-form.prevent-double-submit :action="route('category.store')" multi-submit>
                         @csrf
+
+                        <!-- Start: Category Name Field -->
                         <div class="mb-6">
                             <x-forms.input-label for="name" value="Category Name" />
                             <x-forms.text-input id="name" type="text" name="name" value="{{ old('name') }}" class="w-full mt-1" placeholder="e.g. Graphic Design" required />
                         </div>
+                        <!-- End: Category Name Field -->
                         
+                        <!-- Start: Form Actions (Buttons) -->
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-gray-100 mt-8">
                             <div class="flex items-center gap-3 flex-wrap">
                                 <x-buttons.primary-button type="submit" @click="redirectTo = 'skills.create'" x-bind:disabled="submitting" x-bind:class="{ 'opacity-50 cursor-not-allowed': submitting }">
@@ -55,9 +69,14 @@
                                 </x-buttons.button-link>
                             </div>
                         </div>
+                        <!-- End: Form Actions -->
                     </x-form.prevent-double-submit>
+                    <!-- End: Create Category Form -->
                 </div>
+                <!-- End: Form Card -->
             </div>
         </div>
     </div>
+    <!-- End: Main Container -->
 </x-app-layout>
+<!-- End: App Layout -->

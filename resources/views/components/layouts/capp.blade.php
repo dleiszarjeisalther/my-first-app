@@ -1,6 +1,6 @@
 {{--
     ============================================================
-    LAYOUT: components/layouts/capp.blade.php  →  [x-layouts.capp>
+    LAYOUT: components/layouts/capp.blade.php  →  <x-layouts.capp>
     SOURCE : Custom (hand-crafted, not from Breeze)
     FILE   : resources/views/components/layouts/capp.blade.php
 
@@ -16,12 +16,12 @@
         $slot    — (required) The main page content.
 
     HOW TO USE:
-        [x-layouts.capp>
-            [x-slot name="header">
+        <x-layouts.capp>
+            <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     My Page Title
                 </h2>
-            [/x-slot>
+            </x-slot>
 
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -42,8 +42,10 @@
         Customise cnavigation without affecting the Breeze original.
     ============================================================
 --}}
+<!-- Start: HTML Document -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <!-- Start: Document Head -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,19 +53,26 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts: Figtree from Bunny Fonts (privacy-friendly Google Fonts mirror) -->
+        <!-- Start: Fonts (Figtree from Bunny Fonts) -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- End: Fonts -->
 
-        <!-- Scripts: Vite compiles resources/css/app.css + resources/js/app.js -->
+        <!-- Start: Scripts & Styles (Vite) -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- End: Scripts & Styles (Vite) -->
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            {{-- Custom navigation bar — edit layouts/cnavigation.blade.php to add links --}}
-            @include('layouts.cnavigation')
+    <!-- End: Document Head -->
 
-            <!-- Page Heading — only rendered if $header slot is provided -->
+    <!-- Start: Document Body -->
+    <body class="font-sans antialiased">
+        <!-- Start: Page Background Wrapper -->
+        <div class="min-h-screen bg-gray-100">
+            <!-- Start: Custom Navigation Bar -->
+            @include('layouts.cnavigation')
+            <!-- End: Custom Navigation Bar -->
+
+            <!-- Start: Page Heading Banner -->
             @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -71,11 +80,16 @@
                     </div>
                 </header>
             @endif
+            <!-- End: Page Heading Banner -->
 
-            <!-- Main page content — goes into $slot -->
+            <!-- Start: Main Page Content Slot -->
             <main>
                 {{ $slot }}
             </main>
+            <!-- End: Main Page Content Slot -->
         </div>
+        <!-- End: Page Background Wrapper -->
     </body>
+    <!-- End: Document Body -->
 </html>
+<!-- End: HTML Document -->

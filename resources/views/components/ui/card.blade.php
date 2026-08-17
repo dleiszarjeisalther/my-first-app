@@ -21,8 +21,9 @@
 
 @props(['shadow' => true])
 
+<!-- Start: Card Container -->
 <div {{ $attributes->merge(['class' => 'bg-white overflow-hidden border border-gray-200 sm:rounded-lg' . ($shadow ? ' shadow-sm' : '')]) }}>
-    {{-- Header Section --}}
+    <!-- Start: Header Section -->
     @if (isset($header))
         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
             <h3 class="text-lg font-semibold text-gray-800">
@@ -30,16 +31,20 @@
             </h3>
         </div>
     @endif
+    <!-- End: Header Section -->
 
-    {{-- Body Section --}}
+    <!-- Start: Body Section -->
     <div class="p-6 text-gray-900">
         {{ $slot }}
     </div>
+    <!-- End: Body Section -->
 
-    {{-- Footer Section --}}
+    <!-- Start: Footer Section -->
     @if (isset($footer))
         <div class="px-6 py-4 border-t border-gray-100 bg-gray-50/50">
             {{ $footer }}
         </div>
     @endif
+    <!-- End: Footer Section -->
 </div>
+<!-- End: Card Container -->

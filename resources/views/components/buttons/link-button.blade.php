@@ -15,6 +15,8 @@
     - Change `text-indigo-600` to `text-gray-600` for even more subtle actions.
 --}}
 
+<!-- Start: Link Button -->
 <button {{ $attributes->merge(['class' => 'inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-indigo-600 hover:text-indigo-900 hover:underline focus:outline-none transition duration-150 ease-in-out']) }}>
     {{ $slot }}
 </button>
+<!-- End: Link Button -->

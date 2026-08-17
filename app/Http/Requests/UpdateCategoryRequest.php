@@ -4,11 +4,22 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
+/**
+ * UpdateCategoryRequest
+ *
+ * Validates and authorizes updates to an existing Category.
+ *
+ * Authorization: only the category owner can update it (delegated to CategoryPolicy).
+ */
 class UpdateCategoryRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Only the category owner may update it.
+     *
+     * Delegates to CategoryPolicy::update() via the can() helper.
+     * The route model binding provides the $category instance.
      */
     public function authorize(): bool
     {
@@ -18,14 +29,26 @@ class UpdateCategoryRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Validation rules for updating a category.
+     *
+     * The unique rule ignores the current category's own name so users can
+     * "save" without changing the name and not get a duplicate error.
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
+        $category = $this->route('category');
+
         return [
-            'name' => 'required|min:2|unique:categories,name,'.$this->route('category')->id,
+            // A category name only needs to be unique for this user.
+            'name' => [
+                'required',
+                'min:2',
+                Rule::unique('categories', 'name')
+                    ->ignore($category->id)
+                    ->where(fn ($query) => $query->where('user_id', $this->user()->id)),
+            ],
         ];
     }
 }

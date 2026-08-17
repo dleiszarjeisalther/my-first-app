@@ -1,0 +1,615 @@
+uid=56_0 RootWebArea "Describing the UI – React" url="https://react.dev/learn/describing-the-ui"
+  uid=56_1 navigation
+    uid=56_2 link "React" url="https://react.dev/"
+      uid=56_3 StaticText "React"
+    uid=56_4 link "v19.2" url="https://react.dev/versions"
+      uid=56_5 StaticText "v"
+      uid=56_6 StaticText "19.2"
+    uid=56_7 button "Search Ctrl K"
+    uid=56_8 link "Learn" url="https://react.dev/learn"
+      uid=56_9 StaticText "Learn"
+    uid=56_10 link "Reference" url="https://react.dev/reference/react"
+      uid=56_11 StaticText "Reference"
+    uid=56_12 link "Community" url="https://react.dev/community"
+      uid=56_13 StaticText "Community"
+    uid=56_14 link "Blog" url="https://react.dev/blog"
+      uid=56_15 StaticText "Blog"
+    uid=56_16 button "Use Light Mode"
+    uid=56_17 link "Translations" url="https://react.dev/community/translations"
+    uid=56_18 link "Open on GitHub" url="https://github.com/react/react/releases"
+  uid=56_19 complementary
+    uid=56_20 navigation
+      uid=56_21 heading "GET STARTED" level="3"
+      uid=56_22 link "Quick Start" url="https://react.dev/learn"
+        uid=56_23 StaticText "Quick Start"
+      uid=56_24 link "Installation" url="https://react.dev/learn/installation"
+        uid=56_25 StaticText "Installation"
+      uid=56_26 link "Setup" url="https://react.dev/learn/setup"
+        uid=56_27 StaticText "Setup"
+      uid=56_28 link "React Compiler" url="https://react.dev/learn/react-compiler"
+        uid=56_29 StaticText "React Compiler"
+      uid=56_30 heading "LEARN REACT" level="3"
+      uid=56_31 link "Describing the UI" url="https://react.dev/learn/describing-the-ui"
+        uid=56_32 StaticText "Describing the UI"
+      uid=56_33 link "Your First Component" url="https://react.dev/learn/your-first-component"
+        uid=56_34 StaticText "Your First Component"
+      uid=56_35 link "Importing and Exporting Components" url="https://react.dev/learn/importing-and-exporting-components"
+        uid=56_36 StaticText "Importing and Exporting Components"
+      uid=56_37 link "Writing Markup with JSX" url="https://react.dev/learn/writing-markup-with-jsx"
+        uid=56_38 StaticText "Writing Markup with JSX"
+      uid=56_39 link "JavaScript in JSX with Curly Braces" url="https://react.dev/learn/javascript-in-jsx-with-curly-braces"
+        uid=56_40 StaticText "JavaScript in JSX with Curly Braces"
+      uid=56_41 link "Passing Props to a Component" url="https://react.dev/learn/passing-props-to-a-component"
+        uid=56_42 StaticText "Passing Props to a Component"
+      uid=56_43 link "Conditional Rendering" url="https://react.dev/learn/conditional-rendering"
+        uid=56_44 StaticText "Conditional Rendering"
+      uid=56_45 link "Rendering Lists" url="https://react.dev/learn/rendering-lists"
+        uid=56_46 StaticText "Rendering Lists"
+      uid=56_47 link "Keeping Components Pure" url="https://react.dev/learn/keeping-components-pure"
+        uid=56_48 StaticText "Keeping Components Pure"
+      uid=56_49 link "Your UI as a Tree" url="https://react.dev/learn/understanding-your-ui-as-a-tree"
+        uid=56_50 StaticText "Your UI as a Tree"
+      uid=56_51 link "Adding Interactivity" url="https://react.dev/learn/adding-interactivity"
+        uid=56_52 StaticText "Adding Interactivity"
+      uid=56_53 link "Managing State" url="https://react.dev/learn/managing-state"
+        uid=56_54 StaticText "Managing State"
+      uid=56_55 link "Escape Hatches" url="https://react.dev/learn/escape-hatches"
+        uid=56_56 StaticText "Escape Hatches"
+  uid=56_57 main
+    uid=56_58 link "LEARN REACT" url="https://react.dev/learn"
+      uid=56_59 StaticText "LEARN REACT"
+    uid=56_60 button "Copy page"
+    uid=56_61 heading "Describing the UI" level="1"
+    uid=56_62 StaticText "React is a JavaScript library for rendering user interfaces (UI). UI is built from small units like buttons, text, and images. React lets you combine them into reusable, nestable "
+    uid=56_63 StaticText "components."
+    uid=56_64 StaticText " From web sites to phone apps, everything on the screen can be broken down into components. In this chapter, you’ll learn to create, customize, and conditionally display React components."
+    uid=56_65 heading "In this chapter" level="3"
+    uid=56_66 link "How to write your first React component" url="https://react.dev/learn/your-first-component"
+      uid=56_67 StaticText "How to write your first React component"
+    uid=56_68 link "When and how to create multi-component files" url="https://react.dev/learn/importing-and-exporting-components"
+      uid=56_69 StaticText "When and how to create multi-component files"
+    uid=56_70 link "How to add markup to JavaScript with JSX" url="https://react.dev/learn/writing-markup-with-jsx"
+      uid=56_71 StaticText "How to add markup to JavaScript with JSX"
+    uid=56_72 link "How to use curly braces with JSX to access JavaScript functionality from your components" url="https://react.dev/learn/javascript-in-jsx-with-curly-braces"
+      uid=56_73 StaticText "How to use curly braces with JSX to access JavaScript functionality from your components"
+    uid=56_74 link "How to configure components with props" url="https://react.dev/learn/passing-props-to-a-component"
+      uid=56_75 StaticText "How to configure components with props"
+    uid=56_76 link "How to conditionally render components" url="https://react.dev/learn/conditional-rendering"
+      uid=56_77 StaticText "How to conditionally render components"
+    uid=56_78 link "How to render multiple components at a time" url="https://react.dev/learn/rendering-lists"
+      uid=56_79 StaticText "How to render multiple components at a time"
+    uid=56_80 link "How to avoid confusing bugs by keeping components pure" url="https://react.dev/learn/keeping-components-pure"
+      uid=56_81 StaticText "How to avoid confusing bugs by keeping components pure"
+    uid=56_82 link "Why understanding your UI as trees is useful" url="https://react.dev/learn/understanding-your-ui-as-a-tree"
+      uid=56_83 StaticText "Why understanding your UI as trees is useful"
+    uid=56_84 StaticText "Your first component "
+    uid=56_85 link "Link for Your first component " description="Link for Your first component" url="https://react.dev/learn/describing-the-ui#your-first-component"
+    uid=56_86 StaticText "React applications are built from isolated pieces of UI called "
+    uid=56_87 StaticText "components"
+    uid=56_88 StaticText ". A React component is a JavaScript function that you can sprinkle with markup. Components can be as small as a button, or as large as an entire page. Here is a "
+    uid=56_89 StaticText "Gallery"
+    uid=56_90 StaticText " component rendering three "
+    uid=56_91 StaticText "Profile"
+    uid=56_92 StaticText " components:"
+    uid=56_93 button "App.js" expandable haspopup="menu"
+    uid=57_0 button "Download" description="Download Sandbox"
+    uid=56_94 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_95 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_1 button "Fork" description="Open in CodeSandbox"
+    uid=56_98 textbox "Code Editor for App.js" autocomplete="list" multiline value="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+function Profile() {
+  return (
+    <img
+      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+    />
+  );
+}
+
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+
+"
+    uid=56_99 Iframe "Sandbox Preview"
+      uid=57_2 RootWebArea "Sandpack Preview" url="https://786946de.sandpack-bundler-4bw.pages.dev/"
+        uid=57_3 heading "Amazing scientists" level="1"
+        uid=57_4 image "Katherine Johnson" url="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+        uid=57_5 image "Katherine Johnson" url="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+        uid=57_6 image "Katherine Johnson" url="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+    uid=56_101 button "Show more"
+    uid=56_102 heading "Ready to learn this topic?" level="2"
+    uid=56_103 StaticText "Read "
+    uid=56_104 link "Your First Component" url="https://react.dev/learn/your-first-component"
+      uid=56_105 StaticText "Your First Component"
+    uid=56_106 StaticText " to learn how to declare and use React components."
+    uid=56_107 link "Read More" url="https://react.dev/learn/your-first-component"
+      uid=56_108 StaticText "Read More"
+    uid=56_109 StaticText "Importing and exporting components "
+    uid=56_110 link "Link for Importing and exporting components " description="Link for Importing and exporting components" url="https://react.dev/learn/describing-the-ui#importing-and-exporting-components"
+    uid=56_111 StaticText "You can declare many components in one file, but large files can get difficult to navigate. To solve this, you can "
+    uid=56_112 StaticText "export"
+    uid=56_113 StaticText " a component into its own file, and then "
+    uid=56_114 StaticText "import"
+    uid=56_115 StaticText " that component from another file:"
+    uid=57_7 tab "Gallery.js" description="/src/Gallery.js" selectable selected
+    uid=57_8 tab "Profile.js" description="/src/Profile.js" selectable
+    uid=56_117 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_118 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_9 button "Fork" description="Open in CodeSandbox"
+    uid=56_121 textbox "Code Editor for Gallery.js" autocomplete="list" multiline value="import Profile from './Profile.js';
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+
+"
+    uid=56_122 Iframe "Sandbox Preview"
+      uid=56_123 RootWebArea url="about:blank"
+    uid=56_124 heading "Ready to learn this topic?" level="2"
+    uid=56_125 StaticText "Read "
+    uid=56_126 link "Importing and Exporting Components" url="https://react.dev/learn/importing-and-exporting-components"
+      uid=56_127 StaticText "Importing and Exporting Components"
+    uid=56_128 StaticText " to learn how to split components into their own files."
+    uid=56_129 link "Read More" url="https://react.dev/learn/importing-and-exporting-components"
+      uid=56_130 StaticText "Read More"
+    uid=56_131 StaticText "Writing markup with JSX "
+    uid=56_132 link "Link for Writing markup with JSX " description="Link for Writing markup with JSX" url="https://react.dev/learn/describing-the-ui#writing-markup-with-jsx"
+    uid=56_133 StaticText "Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information."
+    uid=56_134 StaticText "If we paste existing HTML markup into a React component, it won’t always work:"
+    uid=56_135 button "App.js" expandable haspopup="menu"
+    uid=57_10 button "Download" description="Download Sandbox"
+    uid=56_136 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_137 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_11 button "Fork" description="Open in CodeSandbox"
+    uid=56_140 textbox "Code Editor for App.js" autocomplete="list" multiline value="export default function TodoList() {
+  return (
+    // This doesn't quite work!
+    <h1>Hedy Lamarr's Todos</h1>
+    <img
+      src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+      alt="Hedy Lamarr"
+      class="photo"
+    >
+    <ul>
+      <li>Invent new traffic lights
+      <li>Rehearse a movie scene
+      <li>Improve spectrum technology
+    </ul>
+
+"
+    uid=56_141 Iframe "Sandbox Preview"
+      uid=56_142 RootWebArea url="about:blank"
+    uid=56_143 button "Show more"
+    uid=56_144 StaticText "If you have existing HTML like this, you can fix it using a "
+    uid=56_145 link "converter" url="https://transform.tools/html-to-jsx"
+      uid=56_146 StaticText "converter"
+    uid=56_147 StaticText ":"
+    uid=56_148 button "App.js" expandable haspopup="menu"
+    uid=57_12 button "Download" description="Download Sandbox"
+    uid=56_149 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_150 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_13 button "Fork" description="Open in CodeSandbox"
+    uid=56_153 textbox "Code Editor for App.js" autocomplete="list" multiline value="export default function TodoList() {
+  return (
+    <>
+      <h1>Hedy Lamarr's Todos</h1>
+      <img
+        src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
+        alt="Hedy Lamarr"
+        className="photo"
+      />
+      <ul>
+        <li>Invent new traffic lights</li>
+        <li>Rehearse a movie scene</li>
+        <li>Improve spectrum technology</li>
+      </ul>
+    </>
+  );
+}
+
+"
+    uid=56_154 Iframe "Sandbox Preview"
+      uid=56_155 RootWebArea url="about:blank"
+    uid=56_156 button "Show more"
+    uid=56_157 heading "Ready to learn this topic?" level="2"
+    uid=56_158 StaticText "Read "
+    uid=56_159 link "Writing Markup with JSX" url="https://react.dev/learn/writing-markup-with-jsx"
+      uid=56_160 StaticText "Writing Markup with JSX"
+    uid=56_161 StaticText " to learn how to write valid JSX."
+    uid=56_162 link "Read More" url="https://react.dev/learn/writing-markup-with-jsx"
+      uid=56_163 StaticText "Read More"
+    uid=56_164 StaticText "JavaScript in JSX with curly braces "
+    uid=56_165 link "Link for JavaScript in JSX with curly braces " description="Link for JavaScript in JSX with curly braces" url="https://react.dev/learn/describing-the-ui#javascript-in-jsx-with-curly-braces"
+    uid=56_166 StaticText "JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to “open a window” to JavaScript:"
+    uid=56_167 button "App.js" expandable haspopup="menu"
+    uid=57_14 button "Download" description="Download Sandbox"
+    uid=56_168 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_169 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_15 button "Fork" description="Open in CodeSandbox"
+    uid=56_172 textbox "Code Editor for App.js" autocomplete="list" multiline value="const person = {
+  name: 'Gregorio Y. Zara',
+  theme: {
+    backgroundColor: 'black',
+    color: 'pink'
+  }
+};
+
+export default function TodoList() {
+  return (
+    <div style={person.theme}>
+      <h1>{person.name}'s Todos</h1>
+      <img
+        className="avatar"
+        src="https://react.dev/images/docs/scientists/7vQD0fPs.jpg"
+        alt="Gregorio Y. Zara"
+      />
+      <ul>
+        <li>Improve the videophone</li>
+        <li>Prepare aeronautics lectures</li>
+        <li>Work on the alcohol-fuelled engine</li>
+      </ul>
+    </div>
+  );
+}
+
+"
+    uid=56_173 Iframe "Sandbox Preview"
+      uid=56_174 RootWebArea url="about:blank"
+    uid=56_175 button "Show more"
+    uid=56_176 heading "Ready to learn this topic?" level="2"
+    uid=56_177 StaticText "Read "
+    uid=56_178 link "JavaScript in JSX with Curly Braces" url="https://react.dev/learn/javascript-in-jsx-with-curly-braces"
+      uid=56_179 StaticText "JavaScript in JSX with Curly Braces"
+    uid=56_180 StaticText " to learn how to access JavaScript data from JSX."
+    uid=56_181 link "Read More" url="https://react.dev/learn/javascript-in-jsx-with-curly-braces"
+      uid=56_182 StaticText "Read More"
+    uid=56_183 StaticText "Passing props to a component "
+    uid=56_184 link "Link for Passing props to a component " description="Link for Passing props to a component" url="https://react.dev/learn/describing-the-ui#passing-props-to-a-component"
+    uid=56_185 StaticText "React components use "
+    uid=56_186 StaticText "props"
+    uid=56_187 StaticText " to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, functions, and even JSX!"
+    uid=57_16 tab "App.js" description="/src/App.js" selectable selected
+    uid=57_17 tab "utils.js" description="/src/utils.js" selectable
+    uid=56_189 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_190 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_18 button "Fork" description="Open in CodeSandbox"
+    uid=56_193 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { getImageUrl } from './utils.js'
+
+export default function Profile() {
+  return (
+    <Card>
+      <Avatar
+        size={100}
+        person={{
+          name: 'Katsuko Saruhashi',
+          imageId: 'YfeOqp2'
+        }}
+      />
+    </Card>
+  );
+}
+
+function Avatar({ person, size }) {
+  return (
+    <img
+      className="avatar"
+      src={getImageUrl(person)}
+      alt={person.name}
+      width={size}
+      height={size}
+    />
+  );
+}
+
+function Card({ children }) {
+  return (
+    <div className="card">
+      {children}
+    </div>
+  );
+}
+
+"
+    uid=56_194 Iframe "Sandbox Preview"
+      uid=56_195 RootWebArea url="about:blank"
+    uid=56_196 button "Show more"
+    uid=56_197 heading "Ready to learn this topic?" level="2"
+    uid=56_198 StaticText "Read "
+    uid=56_199 link "Passing Props to a Component" url="https://react.dev/learn/passing-props-to-a-component"
+      uid=56_200 StaticText "Passing Props to a Component"
+    uid=56_201 StaticText " to learn how to pass and read props."
+    uid=56_202 link "Read More" url="https://react.dev/learn/passing-props-to-a-component"
+      uid=56_203 StaticText "Read More"
+    uid=56_204 StaticText "Conditional rendering "
+    uid=56_205 link "Link for Conditional rendering " description="Link for Conditional rendering" url="https://react.dev/learn/describing-the-ui#conditional-rendering"
+    uid=56_206 StaticText "Your components will often need to display different things depending on different conditions. In React, you can conditionally render JSX using JavaScript syntax like "
+    uid=56_207 StaticText "if"
+    uid=56_208 StaticText " statements, "
+    uid=56_209 StaticText "&&"
+    uid=56_210 StaticText ", and "
+    uid=56_211 StaticText "? :"
+    uid=56_212 StaticText " operators."
+    uid=56_213 StaticText "In this example, the JavaScript "
+    uid=56_214 StaticText "&&"
+    uid=56_215 StaticText " operator is used to conditionally render a checkmark:"
+    uid=56_216 button "App.js" expandable haspopup="menu"
+    uid=57_19 button "Download" description="Download Sandbox"
+    uid=56_217 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_218 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_20 button "Fork" description="Open in CodeSandbox"
+    uid=56_221 textbox "Code Editor for App.js" autocomplete="list" multiline value="function Item({ name, isPacked }) {
+  return (
+    <li className="item">
+      {name} {isPacked && '✅'}
+    </li>
+  );
+}
+
+export default function PackingList() {
+  return (
+    <section>
+      <h1>Sally Ride's Packing List</h1>
+      <ul>
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+        />
+      </ul>
+    </section>
+  );
+}
+
+"
+    uid=56_222 Iframe "Sandbox Preview"
+      uid=56_223 RootWebArea url="about:blank"
+    uid=56_224 button "Show more"
+    uid=56_225 heading "Ready to learn this topic?" level="2"
+    uid=56_226 StaticText "Read "
+    uid=56_227 link "Conditional Rendering" url="https://react.dev/learn/conditional-rendering"
+      uid=56_228 StaticText "Conditional Rendering"
+    uid=56_229 StaticText " to learn the different ways to render content conditionally."
+    uid=56_230 link "Read More" url="https://react.dev/learn/conditional-rendering"
+      uid=56_231 StaticText "Read More"
+    uid=56_232 StaticText "Rendering lists "
+    uid=56_233 link "Link for Rendering lists " description="Link for Rendering lists" url="https://react.dev/learn/describing-the-ui#rendering-lists"
+    uid=56_234 StaticText "You will often want to display multiple similar components from a collection of data. You can use JavaScript’s "
+    uid=56_235 StaticText "filter()"
+    uid=56_236 StaticText " and "
+    uid=56_237 StaticText "map()"
+    uid=56_238 StaticText " with React to filter and transform your array of data into an array of components."
+    uid=56_239 StaticText "For each array item, you will need to specify a "
+    uid=56_240 StaticText "key"
+    uid=56_241 StaticText ". Usually, you will want to use an ID from the database as a "
+    uid=56_242 StaticText "key"
+    uid=56_243 StaticText ". Keys let React keep track of each item’s place in the list even if the list changes."
+    uid=57_21 tab "App.js" description="/src/App.js" selectable selected
+    uid=57_22 tab "data.js" description="/src/data.js" selectable
+    uid=57_23 tab "utils.js" description="/src/utils.js" selectable
+    uid=56_245 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_246 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_24 button "Fork" description="Open in CodeSandbox"
+    uid=56_249 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { people } from './data.js';
+import { getImageUrl } from './utils.js';
+
+export default function List() {
+  const listItems = people.map(person =>
+    <li key={person.id}>
+      <img
+        src={getImageUrl(person)}
+        alt={person.name}
+      />
+      <p>
+        <b>{person.name}:</b>
+        {' ' + person.profession + ' '}
+        known for {person.accomplishment}
+      </p>
+    </li>
+  );
+  return (
+    <article>
+      <h1>Scientists</h1>
+      <ul>{listItems}</ul>
+    </article>
+  );
+}
+
+"
+    uid=56_250 Iframe "Sandbox Preview"
+      uid=56_251 RootWebArea url="about:blank"
+    uid=56_252 button "Show more"
+    uid=56_253 heading "Ready to learn this topic?" level="2"
+    uid=56_254 StaticText "Read "
+    uid=56_255 link "Rendering Lists" url="https://react.dev/learn/rendering-lists"
+      uid=56_256 StaticText "Rendering Lists"
+    uid=56_257 StaticText " to learn how to render a list of components, and how to choose a key."
+    uid=56_258 link "Read More" url="https://react.dev/learn/rendering-lists"
+      uid=56_259 StaticText "Read More"
+    uid=56_260 StaticText "Keeping components pure "
+    uid=56_261 link "Link for Keeping components pure " description="Link for Keeping components pure" url="https://react.dev/learn/describing-the-ui#keeping-components-pure"
+    uid=56_262 StaticText "Some JavaScript functions are "
+    uid=56_263 StaticText "pure."
+    uid=56_264 StaticText " A pure function:"
+    uid=56_265 StaticText "Minds its own business."
+    uid=56_266 StaticText " It does not change any objects or variables that existed before it was called."
+    uid=56_267 StaticText "Same inputs, same output."
+    uid=56_268 StaticText " Given the same inputs, a pure function should always return the same result."
+    uid=56_269 StaticText "By strictly only writing your components as pure functions, you can avoid an entire class of baffling bugs and unpredictable behavior as your codebase grows. Here is an example of an impure component:"
+    uid=56_270 button "App.js" expandable haspopup="menu"
+    uid=57_25 button "Download" description="Download Sandbox"
+    uid=56_271 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_272 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_26 button "Fork" description="Open in CodeSandbox"
+    uid=56_275 textbox "Code Editor for App.js" autocomplete="list" multiline value="let guest = 0;
+
+function Cup() {
+  // Bad: changing a preexisting variable!
+  guest = guest + 1;
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaSet() {
+  return (
+    <>
+      <Cup />
+      <Cup />
+      <Cup />
+    </>
+  );
+}
+
+"
+    uid=56_276 Iframe "Sandbox Preview"
+      uid=56_277 RootWebArea url="about:blank"
+    uid=56_278 button "Show more"
+    uid=56_279 StaticText "You can make this component pure by passing a prop instead of modifying a preexisting variable:"
+    uid=56_280 button "App.js" expandable haspopup="menu"
+    uid=57_27 button "Download" description="Download Sandbox"
+    uid=56_281 button "Reload" description="Keep your edits and reload sandbox"
+    uid=56_282 button "Clear" description="Clear all edits and reload sandbox"
+    uid=57_28 button "Fork" description="Open in CodeSandbox"
+    uid=56_285 textbox "Code Editor for App.js" autocomplete="list" multiline value="function Cup({ guest }) {
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaSet() {
+  return (
+    <>
+      <Cup guest={1} />
+      <Cup guest={2} />
+      <Cup guest={3} />
+    </>
+  );
+}
+
+"
+    uid=56_286 Iframe "Sandbox Preview"
+      uid=56_287 RootWebArea url="about:blank"
+    uid=56_288 heading "Ready to learn this topic?" level="2"
+    uid=56_289 StaticText "Read "
+    uid=56_290 link "Keeping Components Pure" url="https://react.dev/learn/keeping-components-pure"
+      uid=56_291 StaticText "Keeping Components Pure"
+    uid=56_292 StaticText " to learn how to write components as pure, predictable functions."
+    uid=56_293 link "Read More" url="https://react.dev/learn/keeping-components-pure"
+      uid=56_294 StaticText "Read More"
+    uid=56_295 StaticText "Your UI as a tree "
+    uid=56_296 link "Link for Your UI as a tree " description="Link for Your UI as a tree" url="https://react.dev/learn/describing-the-ui#your-ui-as-a-tree"
+    uid=56_297 StaticText "React uses trees to model the relationships between components and modules."
+    uid=56_298 StaticText "A React render tree is a representation of the parent and child relationship between components."
+    uid=56_299 image "A tree graph with five nodes, with each node representing a component. The root node is located at the top the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'." url="https://react.dev/_next/image?url=%2Fimages%2Fdocs%2Fdiagrams%2Fgeneric_render_tree.dark.png&w=640&q=75"
+    uid=56_300 StaticText "An example React render tree."
+    uid=56_301 StaticText "Components near the top of the tree, near the root component, are considered top-level components. Components with no child components are leaf components. This categorization of components is useful for understanding data flow and rendering performance."
+    uid=56_302 StaticText "Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree."
+    uid=56_303 image "A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'." url="https://react.dev/_next/image?url=%2Fimages%2Fdocs%2Fdiagrams%2Fgeneric_dependency_tree.dark.png&w=640&q=75"
+    uid=56_304 StaticText "An example module dependency tree."
+    uid=56_305 StaticText "A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues."
+    uid=56_306 heading "Ready to learn this topic?" level="2"
+    uid=56_307 StaticText "Read "
+    uid=56_308 link "Your UI as a Tree" url="https://react.dev/learn/understanding-your-ui-as-a-tree"
+      uid=56_309 StaticText "Your UI as a Tree"
+    uid=56_310 StaticText " to learn how to create a render and module dependency trees for a React app and how they’re useful mental models for improving user experience and performance."
+    uid=56_311 link "Read More" url="https://react.dev/learn/understanding-your-ui-as-a-tree"
+      uid=56_312 StaticText "Read More"
+    uid=56_313 StaticText "What’s next? "
+    uid=56_314 link "Link for What’s next? " description="Link for What’s next?" url="https://react.dev/learn/describing-the-ui#whats-next"
+    uid=56_315 StaticText "Head over to "
+    uid=56_316 link "Your First Component" url="https://react.dev/learn/your-first-component"
+      uid=56_317 StaticText "Your First Component"
+    uid=56_318 StaticText " to start reading this chapter page by page!"
+    uid=56_319 StaticText "Or, if you’re already familiar with these topics, why not read about "
+    uid=56_320 link "Adding Interactivity" url="https://react.dev/learn/adding-interactivity"
+      uid=56_321 StaticText "Adding Interactivity"
+    uid=56_322 StaticText "?"
+    uid=56_323 link "NEXT Your First Component" url="https://react.dev/learn/your-first-component"
+      uid=56_324 StaticText "NEXT"
+      uid=56_325 StaticText "Your First Component"
+    uid=56_326 link "Meta Open Source" url="https://opensource.fb.com/"
+    uid=56_327 StaticText "Copyright © Meta Platforms, Inc"
+    uid=56_328 StaticText "uwu?"
+    uid=56_329 link "Learn React" url="https://react.dev/learn"
+      uid=56_330 StaticText "Learn React"
+    uid=56_331 link "Quick Start" url="https://react.dev/learn"
+      uid=56_332 StaticText "Quick Start"
+    uid=56_333 link "Installation" url="https://react.dev/learn/installation"
+      uid=56_334 StaticText "Installation"
+    uid=56_335 link "Describing the UI" url="https://react.dev/learn/describing-the-ui"
+      uid=56_336 StaticText "Describing the UI"
+    uid=56_337 link "Adding Interactivity" url="https://react.dev/learn/adding-interactivity"
+      uid=56_338 StaticText "Adding Interactivity"
+    uid=56_339 link "Managing State" url="https://react.dev/learn/managing-state"
+      uid=56_340 StaticText "Managing State"
+    uid=56_341 link "Escape Hatches" url="https://react.dev/learn/escape-hatches"
+      uid=56_342 StaticText "Escape Hatches"
+    uid=56_343 link "API Reference" url="https://react.dev/reference/react"
+      uid=56_344 StaticText "API Reference"
+    uid=56_345 link "React APIs" url="https://react.dev/reference/react"
+      uid=56_346 StaticText "React APIs"
+    uid=56_347 link "React DOM APIs" url="https://react.dev/reference/react-dom"
+      uid=56_348 StaticText "React DOM APIs"
+    uid=56_349 link "Community" url="https://react.dev/community"
+      uid=56_350 StaticText "Community"
+    uid=56_351 link "Code of Conduct" url="https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md"
+      uid=56_352 StaticText "Code of Conduct"
+    uid=56_353 link "Meet the Team" url="https://react.dev/community/team"
+      uid=56_354 StaticText "Meet the Team"
+    uid=56_355 link "Docs Contributors" url="https://react.dev/community/docs-contributors"
+      uid=56_356 StaticText "Docs Contributors"
+    uid=56_357 link "Acknowledgements" url="https://react.dev/community/acknowledgements"
+      uid=56_358 StaticText "Acknowledgements"
+    uid=56_359 StaticText "More"
+    uid=56_360 link "Blog" url="https://react.dev/blog"
+      uid=56_361 StaticText "Blog"
+    uid=56_362 link "React Native" url="https://reactnative.dev/"
+      uid=56_363 StaticText "React Native"
+    uid=56_364 link "Privacy" url="https://opensource.facebook.com/legal/privacy"
+      uid=56_365 StaticText "Privacy"
+    uid=56_366 link "Terms" url="https://opensource.fb.com/legal/terms/"
+      uid=56_367 StaticText "Terms"
+    uid=56_368 link "React on Facebook" url="https://www.facebook.com/react"
+    uid=56_369 link "React on Twitter" url="https://twitter.com/reactjs"
+    uid=56_370 link "React on Bluesky" url="https://bsky.app/profile/react.dev"
+      uid=56_371 image "Bluesky"
+    uid=56_372 link "React on Github" url="https://github.com/react/react"
+  uid=56_373 alert atomic live="assertive" relevant="additions text"

@@ -3,119 +3,67 @@
 use App\Models\Category;
 use App\Models\User;
 
-test('admin can view any categories', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-
-    $response = $admin->can('viewAny', Category::class);
-
-    expect($response)->toBeTrue();
-});
-
-test('non-admin can view any categories', function () {
-    $user = User::factory()->create();
-
-    $response = $user->can('viewAny', Category::class);
-
-    expect($response)->toBeTrue();
-});
-
-test('non-admin cannot view others category', function () {
-    $user1 = User::factory()->create();
-    $user2 = User::factory()->create();
-    $category = Category::factory()->create(['user_id' => $user1->id]);
-
-    $response = $user2->can('view', $category);
-
-    expect($response)->toBeFalse();
-});
-
+/**
+ * CategoryAuthorizationTest
+ *
+ * Verifies that CategoryPolicy correctly gates access by ownership.
+ *
+ * Rule: only the owner of a category may view/edit/delete it.
+ * Any authenticated user may create or list categories.
+ */
 test('owner can view their own category', function () {
     $owner = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = $owner->can('view', $category);
-
-    expect($response)->toBeTrue();
+    expect($owner->can('view', $category))->toBeTrue();
 });
 
-test('admin can view any category', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-    $otherUser = User::factory()->create();
-    $category = Category::factory()->create(['user_id' => $otherUser->id]);
+test('non-owner cannot view another user\'s category', function () {
+    $owner = User::factory()->create();
+    $other = User::factory()->create();
+    $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = $admin->can('view', $category);
-
-    expect($response)->toBeTrue();
+    expect($other->can('view', $category))->toBeFalse();
 });
 
-test('admin can create categories', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-
-    $response = $admin->can('create', Category::class);
-
-    expect($response)->toBeTrue();
-});
-
-test('non-admin cannot create categories', function () {
+test('any authenticated user can view any categories (index)', function () {
     $user = User::factory()->create();
 
-    $response = $user->can('create', Category::class);
-
-    expect($response)->toBeFalse();
+    expect($user->can('viewAny', Category::class))->toBeTrue();
 });
 
-test('admin can update any category', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-    $category = Category::factory()->create(['user_id' => 1]);
+test('any authenticated user can create a category', function () {
+    $user = User::factory()->create();
 
-    $response = $admin->can('update', $category);
-
-    expect($response)->toBeTrue();
+    expect($user->can('create', Category::class))->toBeTrue();
 });
 
 test('owner can update their own category', function () {
     $owner = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = $owner->can('update', $category);
-
-    expect($response)->toBeTrue();
+    expect($owner->can('update', $category))->toBeTrue();
 });
 
-test('non-owner cannot update others category', function () {
+test('non-owner cannot update another user\'s category', function () {
     $owner = User::factory()->create();
-    $otherUser = User::factory()->create();
+    $other = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = $otherUser->can('update', $category);
-
-    expect($response)->toBeFalse();
-});
-
-test('admin can delete any category', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-    $category = Category::factory()->create(['user_id' => 1]);
-
-    $response = $admin->can('delete', $category);
-
-    expect($response)->toBeTrue();
+    expect($other->can('update', $category))->toBeFalse();
 });
 
 test('owner can delete their own category', function () {
     $owner = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = $owner->can('delete', $category);
-
-    expect($response)->toBeTrue();
+    expect($owner->can('delete', $category))->toBeTrue();
 });
 
-test('non-owner cannot delete others category', function () {
+test('non-owner cannot delete another user\'s category', function () {
     $owner = User::factory()->create();
-    $otherUser = User::factory()->create();
+    $other = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = $otherUser->can('delete', $category);
-
-    expect($response)->toBeFalse();
+    expect($other->can('delete', $category))->toBeFalse();
 });

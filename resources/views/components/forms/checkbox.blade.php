@@ -1,22 +1,21 @@
-{{--
-    WHAT IT IS:
-    A styled checkbox input for boolean (Yes/No) options.
 
-    HOW IT WORKS:
-    - It uses the Tailwind `@tailwindcss/forms` plugin styles (if installed) or standard border/ring classes.
-    - It is designed to be placed next to an `[x-forms.input-label>`.
-
-    DATA:
-    - $attributes: (bag) Standard attributes like `name`, `id`, `checked`, `value`.
-
-    HOW TO CUSTOMIZE:
-    - Change `text-indigo-600` to your primary brand color.
+{{-- 
+WHAT IT IS: Boolean checkbox that sends 1 when checked, 0 when unchecked.
+HOW TO USE: 
+<x-forms.checkbox name="done" :checked="old('done', $task->done)" />
 --}}
 
 @props(['disabled' => false])
 
-<input
+<!-- Hidden input sends 0 when unchecked -->
+<input type="hidden" name="{{ $attributes->get('name') }}" value="0">
+
+<!-- Checkbox sends 1 when checked and overrides the hidden 0 -->
+<input 
     type="checkbox"
+    value="1"
     {{ $disabled ? 'disabled' : '' }}
-    {{ $attributes->merge(['class' => 'rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500']) }}
->
+    {{ $attributes->merge(['class' => 'rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500']) }}>
+
+
+

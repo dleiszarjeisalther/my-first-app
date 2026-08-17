@@ -5,16 +5,31 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
-use App\Models\User;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+/**
+ * CategoryController
+ *
+ * Handles all CRUD operations for categories.
+ *
+ * Access model:
+ *   - Index / Create / Store: any authenticated user (scoped to their own data).
+ *   - Edit / Update / Destroy: only the category owner (enforced via Gate/Policy).
+ *
+ * NOTE (for Tasks): categories are used as organizational labels when creating tasks.
+ * When you build the task feature, you can load this user's categories via:
+ *   Category::where('user_id', Auth::id())->get()
+ * to pre-populate dropdowns or filter options.
+ */
 class CategoryController extends Controller implements HasMiddleware
 {
     /**
-     * Get the middleware that should be assigned to the controller.
+     * Per-route middleware assignments.
+     *
+     * Throttle limits prevent rapid-fire create/update/delete submissions.
      */
     public static function middleware(): array
     {
@@ -26,23 +41,21 @@ class CategoryController extends Controller implements HasMiddleware
     }
 
     /**
-     * Display a listing of the resource.
+     * Show a list of the current user's categories.
+     *
+     * Only returns categories owned by the logged-in user — other users'
+     * categories are never exposed here.
      */
     public function index()
     {
-        /** @var User $user */
-        $user = Auth::user();
-
-        // Admins see all categories, others see only their own
-        $categories = $user->isAdmin()
-            ? Category::all()
-            : Category::query()->where('user_id', $user->id)->get();
+        // Scope categories to the authenticated user's own records.
+        $categories = Category::where('user_id', Auth::id())->get();
 
         return view('category.index', compact('categories'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form to create a new category.
      */
     public function create()
     {
@@ -50,14 +63,19 @@ class CategoryController extends Controller implements HasMiddleware
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Persist a new category owned by the current user.
+     *
+     * The StoreCategoryRequest validates the input and automatically
+     * merges user_id (via prepareForValidation) so ownership is set at save time.
      */
     public function store(StoreCategoryRequest $request)
     {
         $validated = $request->validated();
 
+        // user_id is set in StoreCategoryRequest::prepareForValidation()
         Category::create($validated);
 
+        // If the form was submitted from the skill-create flow, send the user back there.
         if ($request->input('redirect_to') === 'skills.create') {
             return redirect()->route('skills.create')->with('success', 'Category created successfully!');
         }
@@ -66,7 +84,9 @@ class CategoryController extends Controller implements HasMiddleware
     }
 
     /**
-     * Display the specified resource.
+     * Show the detail page for a single category.
+     *
+     * Enforces ownership: throws 403 if the user doesn't own this category.
      */
     public function show(Category $category)
     {
@@ -74,7 +94,9 @@ class CategoryController extends Controller implements HasMiddleware
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the edit form for a category.
+     *
+     * Enforces ownership: only the category's creator can access this.
      */
     public function edit(Category $category)
     {
@@ -84,7 +106,9 @@ class CategoryController extends Controller implements HasMiddleware
     }
 
     /**
-     * Update the specified resource in storage.
+     * Apply validated changes to the category.
+     *
+     * Authorization is handled in UpdateCategoryRequest::authorize().
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
@@ -97,7 +121,10 @@ class CategoryController extends Controller implements HasMiddleware
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a category.
+     *
+     * Enforces ownership: only the category's creator can delete it.
+     * Note: any skills under this category will have their category_id set to null.
      */
     public function destroy(Category $category)
     {

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. React Overview & Architecture - React Offline Guide</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background-color: #0a0e17; color: #f9fafb; margin: 0; padding-bottom: 3rem; }
+    .content { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; line-height: 1.7; }
+    h1 { color: #ffffff; border-bottom: 2px solid #374151; padding-bottom: 0.5rem; }
+    h2 { color: #61dafb; margin-top: 2rem; }
+    h3 { color: #9ca3af; }
+    code { background: #030712; color: #61dafb; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+    pre { background: #030712; border: 1px solid #374151; padding: 1.25rem; border-radius: 8px; overflow-x: auto; }
+    pre code { background: transparent; color: #e5e7eb; padding: 0; }
+    a { color: #38bdf8; }
+  </style>
+</head>
+<body>
+
+<div id="offline-nav-header" style="position: sticky; top: 0; z-index: 999999; background: #0b0f19; border-bottom: 2px solid #61dafb; padding: 10px 16px; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
+  <a href="index.html" style="background: #61dafb; color: #0b0f19; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px;">⚛️ React Hub</a>
+  <span style="color: #475569; font-weight: bold;">|</span>
+  <a href="describing-the-ui.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Describing UI</a>
+  <a href="adding-interactivity.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Interactivity</a>
+  <a href="managing-state.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Managing State</a>
+  <a href="escape-hatches.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Escape Hatches</a>
+  <a href="hooks.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Hooks API</a>
+  <a href="installation.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Installation</a>
+  <a href="server-components.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Server Components</a>
+</div>
+
+
+<div id="offline-nav-header" style="position: sticky; top: 0; z-index: 999999; background: #0a0e17; border-bottom: 2px solid #61dafb; padding: 10px 16px; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+  <a href="index.html" style="background: #61dafb; color: #000; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px;">🏠 Offline Hub</a>
+  <span style="color: #475569; font-weight: bold;">|</span>
+  <a href="overview.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Overview</a>
+  <a href="jsx-components.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">JSX & Props</a>
+  <a href="state-hooks.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">State & Hooks</a>
+  <a href="effects-refs.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Effects & Refs</a>
+  <a href="context.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Context</a>
+  <a href="rsc-actions.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">RSC & Actions</a>
+  <a href="compiler.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Compiler</a>
+  <a href="testing.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Testing</a>
+</div>
+
+<div class="content">
+<h1>01. React Overview & Architecture</h1>
+
+<h2>1. Introduction to React 19</h2>
+React is a popular open-source JavaScript library developed by Meta for building user interfaces based on components. Modern React (v19+) introduces React Server Components (RSC), Server Actions, the React Compiler (automatic memoization), and new hooks (<code>use</code>, <code>useActionState</code>, <code>useFormStatus</code>, <code>useOptimistic</code>).
+
+<h3>Core Highlights</h3>
+- **Declarative Paradigm**: Define UI states; React automatically updates and renders the right components when data changes.
+- **Component-Driven**: Build isolated, reusable components that manage their own state and compose them to make complex UIs.
+- **Virtual DOM & Fiber Engine**: Fiber architecture breaks rendering work into incremental units for fluid 60/120fps UI responsiveness.
+- **React Server Components (RSC)**: Execute components on the server to reduce client bundle size and fetch data zero-waterfall.
+- **Automatic Memoization (React Compiler)**: Eliminates manual <code>useMemo</code> and <code>useCallback</code> boilerplate across codebases.
+
+---
+
+<h2>2. Component Mental Model & Data Flow</h2>
+
+Data in React flows **unidirectionally** (top-down) from parent to child via <code>props</code>.
+
+<pre><code>
+                   +------------------------+
+                   |    Parent Component    |
+                   |   (Holds State: data)  |
+                   +-----------+------------+
+                               |
+                               | (passes props)
+                               v
+                   +-----------+------------+
+                   |    Child Component     |
+                   |   (Receives Props)     |
+                   +------------------------+
+</code></pre>
+
+---
+
+<h2>3. Directory Architecture</h2>
+
+<pre><code>
+src/
+├── assets/                  # Static assets (images, icons, fonts)
+├── components/              # Shared/Reusable UI components (Button, Input, Card)
+│   ├── Button/
+│   │   ├── Button.tsx
+│   │   └── Button.module.css
+├── features/                # Domain-specific feature modules
+│   ├── auth/
+│   └── dashboard/
+├── hooks/                   # Custom React hooks (useAuth, useLocalStorage)
+├── services/                # API queries & HTTP client instances
+├── store/                   # Global state management (Zustand / Jotai / Redux)
+├── types/                   # TypeScript interface definitions
+├── App.tsx                  # Root application component
+└── main.tsx                 # Entry point & DOM mounting
+</code></pre>
+
+</div>
+</body>
+</html>

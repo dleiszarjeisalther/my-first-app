@@ -24,11 +24,16 @@
                 : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md';
 @endphp
 
+<!-- Start: Sidebar Link -->
 <a {{ $attributes->merge(['class' => $classes]) }}>
+    <!-- Start: Sidebar Link Icon -->
     @if (isset($icon))
         <div class="{{ ($active ?? false) ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500' }} mr-3 flex-shrink-0 h-6 w-6">
             {{ $icon }}
         </div>
     @endif
+    <!-- End: Sidebar Link Icon -->
+
     {{ $slot }}
 </a>
+<!-- End: Sidebar Link -->

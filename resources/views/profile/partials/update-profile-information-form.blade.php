@@ -1,4 +1,6 @@
-﻿<section>
+<!-- Start: Profile Information Section -->
+<section>
+    <!-- Start: Section Header -->
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
@@ -8,26 +10,34 @@
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
+    <!-- End: Section Header -->
 
+    <!-- Start: Resend Verification Form (Hidden helper form) -->
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
+    <!-- End: Resend Verification Form -->
 
+    <!-- Start: Profile Update Form -->
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
+        <!-- Start: Name Field -->
         <div>
             <x-forms.input-label for="name" :value="__('Name')" />
             <x-forms.text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-forms.input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+        <!-- End: Name Field -->
 
+        <!-- Start: Email Field -->
         <div>
             <x-forms.input-label for="email" :value="__('Email')" />
             <x-forms.text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-forms.input-error class="mt-2" :messages="$errors->get('email')" />
 
+            <!-- Start: Unverified Email Notice -->
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
@@ -38,18 +48,24 @@
                         </button>
                     </p>
 
+                    <!-- Start: Verification Link Sent Status -->
                     @if (session('status') === 'verification-link-sent')
                         <p class="mt-2 font-medium text-sm text-green-600">
                             {{ __('A new verification link has been sent to your email address.') }}
                         </p>
                     @endif
+                    <!-- End: Verification Link Sent Status -->
                 </div>
             @endif
+            <!-- End: Unverified Email Notice -->
         </div>
+        <!-- End: Email Field -->
 
+        <!-- Start: Form Actions (Save Button & Status) -->
         <div class="flex items-center gap-4">
             <x-buttons.primary-button>{{ __('Save') }}</x-buttons.primary-button>
 
+            <!-- Start: Saved Status Message -->
             @if (session('status') === 'profile-updated')
                 <p
                     x-data="{ show: true }"
@@ -59,6 +75,10 @@
                     class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
             @endif
+            <!-- End: Saved Status Message -->
         </div>
+        <!-- End: Form Actions -->
     </form>
+    <!-- End: Profile Update Form -->
 </section>
+<!-- End: Profile Information Section -->

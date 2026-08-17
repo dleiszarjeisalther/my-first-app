@@ -19,11 +19,14 @@
 
 @props(['options' => [], 'selected' => null, 'name' => ''])
 
+<!-- Start: Radio Group Container -->
 <div {{ $attributes->merge(['class' => 'space-y-2']) }}>
+    <!-- Start: Radio Options Loop -->
     @foreach ($options as $value => $label)
         @php
             $id = $name . '_' . $value;
         @endphp
+        <!-- Start: Radio Option Row -->
         <div class="flex items-center">
             <x-forms.radio
                 name="{{ $name }}"
@@ -33,5 +36,8 @@
             />
             <x-forms.input-label for="{{ $id }}" :value="$label" class="ml-2" />
         </div>
+        <!-- End: Radio Option Row -->
     @endforeach
+    <!-- End: Radio Options Loop -->
 </div>
+<!-- End: Radio Group Container -->

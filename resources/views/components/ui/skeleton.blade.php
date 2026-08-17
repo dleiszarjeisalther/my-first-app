@@ -15,4 +15,6 @@
     - Change `bg-gray-200` to a darker gray for different themes.
 --}}
 
+<!-- Start: Skeleton Placeholder -->
 <div {{ $attributes->merge(['class' => 'animate-pulse bg-gray-200 rounded']) }}></div>
+<!-- End: Skeleton Placeholder -->

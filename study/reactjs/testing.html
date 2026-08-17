@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08. Testing & Tooling - React Offline Guide</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background-color: #0a0e17; color: #f9fafb; margin: 0; padding-bottom: 3rem; }
+    .content { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; line-height: 1.7; }
+    h1 { color: #ffffff; border-bottom: 2px solid #374151; padding-bottom: 0.5rem; }
+    h2 { color: #61dafb; margin-top: 2rem; }
+    h3 { color: #9ca3af; }
+    code { background: #030712; color: #61dafb; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+    pre { background: #030712; border: 1px solid #374151; padding: 1.25rem; border-radius: 8px; overflow-x: auto; }
+    pre code { background: transparent; color: #e5e7eb; padding: 0; }
+    a { color: #38bdf8; }
+  </style>
+</head>
+<body>
+
+<div id="offline-nav-header" style="position: sticky; top: 0; z-index: 999999; background: #0b0f19; border-bottom: 2px solid #61dafb; padding: 10px 16px; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
+  <a href="index.html" style="background: #61dafb; color: #0b0f19; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px;">⚛️ React Hub</a>
+  <span style="color: #475569; font-weight: bold;">|</span>
+  <a href="describing-the-ui.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Describing UI</a>
+  <a href="adding-interactivity.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Interactivity</a>
+  <a href="managing-state.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Managing State</a>
+  <a href="escape-hatches.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Escape Hatches</a>
+  <a href="hooks.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Hooks API</a>
+  <a href="installation.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Installation</a>
+  <a href="server-components.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Server Components</a>
+</div>
+
+
+<div id="offline-nav-header" style="position: sticky; top: 0; z-index: 999999; background: #0a0e17; border-bottom: 2px solid #61dafb; padding: 10px 16px; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+  <a href="index.html" style="background: #61dafb; color: #000; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px;">🏠 Offline Hub</a>
+  <span style="color: #475569; font-weight: bold;">|</span>
+  <a href="overview.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Overview</a>
+  <a href="jsx-components.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">JSX & Props</a>
+  <a href="state-hooks.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">State & Hooks</a>
+  <a href="effects-refs.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Effects & Refs</a>
+  <a href="context.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Context</a>
+  <a href="rsc-actions.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">RSC & Actions</a>
+  <a href="compiler.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Compiler</a>
+  <a href="testing.html" style="color: #61dafb; text-decoration: none; font-size: 13px; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.06);">Testing</a>
+</div>
+
+<div class="content">
+<h1>08. Testing & Tooling (Vitest, React Testing Library, Playwright)</h1>
+
+<h2>1. Unit Testing Components (React Testing Library & Vitest)</h2>
+
+React Testing Library tests components from the user's perspective by interacting with visible text and accessible roles.
+
+<pre><code>
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import { Counter } from './Counter';
+
+describe('Counter Component', () => {
+  it('renders initial count of zero', () => {
+    render(<Counter />);
+    expect(screen.getByText(/Current Count: 0/i)).toBeInTheDocument();
+  });
+
+  it('increments count when button clicked', () => {
+    render(<Counter />);
+    const incrementBtn = screen.getByRole('button', { name: /Increment/i });
+    
+    fireEvent.click(incrementBtn);
+    expect(screen.getByText(/Current Count: 1/i)).toBeInTheDocument();
+  });
+});
+</code></pre>
+
+---
+
+<h2>2. Testing Custom Hooks (<code>renderHook</code>)</h2>
+
+<pre><code>
+import { renderHook, act } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import { useCounter } from './useCounter';
+
+describe('useCounter Custom Hook', () => {
+  it('should initialize and update count', () => {
+    const { result } = renderHook(() => useCounter(5));
+
+    expect(result.current.count).toBe(5);
+
+    act(() => {
+      result.current.increment();
+    });
+
+    expect(result.current.count).toBe(6);
+  });
+});
+</code></pre>
+
+---
+
+<h2>3. End-to-End E2E Testing (Playwright)</h2>
+
+<pre><code>
+import { test, expect } from '@playwright/test';
+
+test('user can log in successfully', async ({ page }) => {
+  await page.goto('http://localhost:3000/login');
+
+  await page.fill('input[name="email"]', 'user@example.com');
+  await page.fill('input[name="password"]', 'secret123');
+  await page.click('button[type="submit"]');
+
+  await expect(page).toHaveURL('http://localhost:3000/dashboard');
+  await expect(page.locator('h1')).toContainText('Welcome back');
+});
+</code></pre>
+
+</div>
+</body>
+</html>

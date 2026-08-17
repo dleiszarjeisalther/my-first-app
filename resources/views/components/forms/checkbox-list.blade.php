@@ -19,11 +19,14 @@
 
 @props(['options' => [], 'selected' => [], 'name' => ''])
 
+<!-- Start: Checkbox List Group -->
 <div {{ $attributes->merge(['class' => 'space-y-2']) }}>
+    <!-- Start: Checkbox Items Loop -->
     @foreach ($options as $value => $label)
         @php
             $id = $name . '_' . $value;
         @endphp
+        <!-- Start: Checkbox Item Row -->
         <div class="flex items-center">
             <x-forms.checkbox
                 name="{{ $name }}"
@@ -33,5 +36,8 @@
             />
             <x-forms.input-label for="{{ $id }}" :value="$label" class="ml-2" />
         </div>
+        <!-- End: Checkbox Item Row -->
     @endforeach
+    <!-- End: Checkbox Items Loop -->
 </div>
+<!-- End: Checkbox List Group -->

@@ -29,13 +29,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    /**
-     * Determine if the user is an administrator.
-     * (Mocked without DB migration)
-     */
-    public function isAdmin(): bool
-    {
-        return $this->email === 'dleiszarjeisaltherlagariza@gmail.com';
-    }
 }

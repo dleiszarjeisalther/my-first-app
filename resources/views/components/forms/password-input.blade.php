@@ -1,7 +1,8 @@
 @props(['name' => 'password', 'placeholder' => '', 'required' => false])
 
+<!-- Start: Password Input Wrapper -->
 <div x-data="{ shown: false }" class="relative">
-    {{-- The actual input --}}
+    <!-- Start: Actual Input Field -->
     <input
         :type="shown ? 'text' : 'password'"
         name="{{ $name }}"
@@ -10,8 +11,9 @@
         {{ $required ? 'required' : '' }}
         {{ $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full pr-10']) }}
     >
+    <!-- End: Actual Input Field -->
 
-    {{-- The Eye Toggle Button --}}
+    <!-- Start: Eye Toggle Button -->
     <button
         type="button"
         @click="shown = !shown"
@@ -24,4 +26,6 @@
         {{-- Eye-Off Icon: shown when password is VISIBLE (click to hide) --}}
         <x-icons.eye-off x-show="shown" class="w-5 h-5" />
     </button>
+    <!-- End: Eye Toggle Button -->
 </div>
+<!-- End: Password Input Wrapper -->

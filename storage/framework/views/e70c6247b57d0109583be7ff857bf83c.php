@@ -1,4 +1,6 @@
-﻿<section>
+<!-- Start: Update Password Section -->
+<section>
+    <!-- Start: Section Header -->
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             <?php echo e(__('Update Password')); ?>
@@ -10,11 +12,14 @@
 
         </p>
     </header>
+    <!-- End: Section Header -->
 
+    <!-- Start: Password Update Form -->
     <form method="post" action="<?php echo e(route('password.update')); ?>" class="mt-6 space-y-6">
         <?php echo csrf_field(); ?>
         <?php echo method_field('put'); ?>
 
+        <!-- Start: Current Password Field -->
         <div>
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -83,7 +88,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Current Password Field -->
 
+        <!-- Start: New Password Field -->
         <div>
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -152,7 +159,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: New Password Field -->
 
+        <!-- Start: Confirm Password Field -->
         <div>
             <?php if (isset($component)) { $__componentOriginalabddde62786fb871e8a66d2206a4e797 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalabddde62786fb871e8a66d2206a4e797 = $attributes; } ?>
@@ -221,7 +230,9 @@
 <?php unset($__componentOriginalcfef9ae9d181bd9f9c23f131244452e1); ?>
 <?php endif; ?>
         </div>
+        <!-- End: Confirm Password Field -->
 
+        <!-- Start: Form Actions (Save Button & Status) -->
         <div class="flex items-center gap-4">
             <?php if (isset($component)) { $__componentOriginal54c5a1a52b6cf346236637a05b110723 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal54c5a1a52b6cf346236637a05b110723 = $attributes; } ?>
@@ -245,6 +256,7 @@
 <?php unset($__componentOriginal54c5a1a52b6cf346236637a05b110723); ?>
 <?php endif; ?>
 
+            <!-- Start: Saved Status Message -->
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('status') === 'password-updated'): ?>
                 <p
                     x-data="{ show: true }"
@@ -254,7 +266,11 @@
                     class="text-sm text-gray-600"
                 ><?php echo e(__('Saved.')); ?></p>
             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            <!-- End: Saved Status Message -->
         </div>
+        <!-- End: Form Actions -->
     </form>
+    <!-- End: Password Update Form -->
 </section>
+<!-- End: Update Password Section -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/profile/partials/update-password-form.blade.php ENDPATH**/ ?>

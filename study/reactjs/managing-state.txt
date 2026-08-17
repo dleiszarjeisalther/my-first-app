@@ -1,0 +1,696 @@
+uid=65_0 RootWebArea "Managing State – React" url="https://react.dev/learn/managing-state"
+  uid=65_1 navigation
+    uid=65_2 link "React" url="https://react.dev/"
+      uid=65_3 StaticText "React"
+    uid=65_4 link "v19.2" url="https://react.dev/versions"
+      uid=65_5 StaticText "v"
+      uid=65_6 StaticText "19.2"
+    uid=65_7 button "Search Ctrl K"
+    uid=65_8 link "Learn" url="https://react.dev/learn"
+      uid=65_9 StaticText "Learn"
+    uid=65_10 link "Reference" url="https://react.dev/reference/react"
+      uid=65_11 StaticText "Reference"
+    uid=65_12 link "Community" url="https://react.dev/community"
+      uid=65_13 StaticText "Community"
+    uid=65_14 link "Blog" url="https://react.dev/blog"
+      uid=65_15 StaticText "Blog"
+    uid=65_16 button "Use Light Mode"
+    uid=65_17 link "Translations" url="https://react.dev/community/translations"
+    uid=65_18 link "Open on GitHub" url="https://github.com/react/react/releases"
+  uid=65_19 complementary
+    uid=65_20 navigation
+      uid=65_21 heading "GET STARTED" level="3"
+      uid=65_22 link "Quick Start" url="https://react.dev/learn"
+        uid=65_23 StaticText "Quick Start"
+      uid=65_24 link "Installation" url="https://react.dev/learn/installation"
+        uid=65_25 StaticText "Installation"
+      uid=65_26 link "Setup" url="https://react.dev/learn/setup"
+        uid=65_27 StaticText "Setup"
+      uid=65_28 link "React Compiler" url="https://react.dev/learn/react-compiler"
+        uid=65_29 StaticText "React Compiler"
+      uid=65_30 heading "LEARN REACT" level="3"
+      uid=65_31 link "Describing the UI" url="https://react.dev/learn/describing-the-ui"
+        uid=65_32 StaticText "Describing the UI"
+      uid=65_33 link "Adding Interactivity" url="https://react.dev/learn/adding-interactivity"
+        uid=65_34 StaticText "Adding Interactivity"
+      uid=65_35 link "Managing State" url="https://react.dev/learn/managing-state"
+        uid=65_36 StaticText "Managing State"
+      uid=65_37 link "Reacting to Input with State" url="https://react.dev/learn/reacting-to-input-with-state"
+        uid=65_38 StaticText "Reacting to Input with State"
+      uid=65_39 link "Choosing the State Structure" url="https://react.dev/learn/choosing-the-state-structure"
+        uid=65_40 StaticText "Choosing the State Structure"
+      uid=65_41 link "Sharing State Between Components" url="https://react.dev/learn/sharing-state-between-components"
+        uid=65_42 StaticText "Sharing State Between Components"
+      uid=65_43 link "Preserving and Resetting State" url="https://react.dev/learn/preserving-and-resetting-state"
+        uid=65_44 StaticText "Preserving and Resetting State"
+      uid=65_45 link "Extracting State Logic into a Reducer" url="https://react.dev/learn/extracting-state-logic-into-a-reducer"
+        uid=65_46 StaticText "Extracting State Logic into a Reducer"
+      uid=65_47 link "Passing Data Deeply with Context" url="https://react.dev/learn/passing-data-deeply-with-context"
+        uid=65_48 StaticText "Passing Data Deeply with Context"
+      uid=65_49 link "Scaling Up with Reducer and Context" url="https://react.dev/learn/scaling-up-with-reducer-and-context"
+        uid=65_50 StaticText "Scaling Up with Reducer and Context"
+      uid=65_51 link "Escape Hatches" url="https://react.dev/learn/escape-hatches"
+        uid=65_52 StaticText "Escape Hatches"
+  uid=65_53 main
+    uid=65_54 link "LEARN REACT" url="https://react.dev/learn"
+      uid=65_55 StaticText "LEARN REACT"
+    uid=65_56 button "Copy page"
+    uid=65_57 heading "Managing State" level="1"
+    uid=65_58 StaticText "INTERMEDIATE"
+    uid=65_59 StaticText "As your application grows, it helps to be more intentional about how your state is organized and how the data flows between your components. Redundant or duplicate state is a common source of bugs. In this chapter, you’ll learn how to structure your state well, how to keep your state update logic maintainable, and how to share state between distant components."
+    uid=65_60 heading "In this chapter" level="3"
+    uid=65_61 link "How to think about UI changes as state changes" url="https://react.dev/learn/reacting-to-input-with-state"
+      uid=65_62 StaticText "How to think about UI changes as state changes"
+    uid=65_63 link "How to structure state well" url="https://react.dev/learn/choosing-the-state-structure"
+      uid=65_64 StaticText "How to structure state well"
+    uid=65_65 link "How to “lift state up” to share it between components" url="https://react.dev/learn/sharing-state-between-components"
+      uid=65_66 StaticText "How to “lift state up” to share it between components"
+    uid=65_67 link "How to control whether the state gets preserved or reset" url="https://react.dev/learn/preserving-and-resetting-state"
+      uid=65_68 StaticText "How to control whether the state gets preserved or reset"
+    uid=65_69 link "How to consolidate complex state logic in a function" url="https://react.dev/learn/extracting-state-logic-into-a-reducer"
+      uid=65_70 StaticText "How to consolidate complex state logic in a function"
+    uid=65_71 link "How to pass information without “prop drilling”" url="https://react.dev/learn/passing-data-deeply-with-context"
+      uid=65_72 StaticText "How to pass information without “prop drilling”"
+    uid=65_73 link "How to scale state management as your app grows" url="https://react.dev/learn/scaling-up-with-reducer-and-context"
+      uid=65_74 StaticText "How to scale state management as your app grows"
+    uid=65_75 StaticText "Reacting to input with state "
+    uid=65_76 link "Link for Reacting to input with state " description="Link for Reacting to input with state" url="https://react.dev/learn/managing-state#reacting-to-input-with-state"
+    uid=65_77 StaticText "With React, you won’t modify the UI from code directly. For example, you won’t write commands like “disable the button”, “enable the button”, “show the success message”, etc. Instead, you will describe the UI you want to see for the different visual states of your component (“initial state”, “typing state”, “success state”), and then trigger the state changes in response to user input. This is similar to how designers think about UI."
+    uid=65_78 StaticText "Here is a quiz form built using React. Note how it uses the "
+    uid=65_79 StaticText "status"
+    uid=65_80 StaticText " state variable to determine whether to enable or disable the submit button, and whether to show the success message instead."
+    uid=65_81 button "App.js" expandable haspopup="menu"
+    uid=66_0 button "Download" description="Download Sandbox"
+    uid=65_82 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_83 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_1 button "Fork" description="Open in CodeSandbox"
+    uid=65_86 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Form() {
+  const [answer, setAnswer] = useState('');
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('typing');
+
+  if (status === 'success') {
+    return <h1>That's right!</h1>
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus('submitting');
+    try {
+      await submitForm(answer);
+      setStatus('success');
+    } catch (err) {
+      setStatus('typing');
+      setError(err);
+    }
+  }
+
+  function handleTextareaChange(e) {
+    setAnswer(e.target.value);
+  }
+
+  return (
+    <>
+      <h2>City quiz</h2>
+      <p>
+        In which city is there a billboard that turns air into drinkable water?
+      </p>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={answer}
+          onChange={handleTextareaChange}
+          disabled={status === 'submitting'}
+        />
+        <br />
+        <button disabled={
+          answer.length === 0 ||
+          status === 'submitting'
+        }>
+          Submit
+        </button>
+        {error !== null &&
+          <p className="Error">
+            {error.message}
+          </p>
+        }
+      </form>
+    </>
+  );
+}
+
+function submitForm(answer) {
+  // Pretend it's hitting the network.
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let shouldError = answer.toLowerCase() !== 'lima'
+      if (shouldError) {
+        reject(new Error('Good guess but a wrong answer. Try again!'));
+      } else {
+        resolve();
+      }
+    }, 1500);
+  });
+}
+
+"
+    uid=65_87 Iframe "Sandbox Preview"
+    uid=65_89 button "Show more"
+    uid=65_90 heading "Ready to learn this topic?" level="2"
+    uid=65_91 StaticText "Read "
+    uid=65_92 link "Reacting to Input with State" url="https://react.dev/learn/reacting-to-input-with-state"
+      uid=65_93 StaticText "Reacting to Input with State"
+    uid=65_94 StaticText " to learn how to approach interactions with a state-driven mindset."
+    uid=65_95 link "Read More" url="https://react.dev/learn/reacting-to-input-with-state"
+      uid=65_96 StaticText "Read More"
+    uid=65_97 StaticText "Choosing the state structure "
+    uid=65_98 link "Link for Choosing the state structure " description="Link for Choosing the state structure" url="https://react.dev/learn/managing-state#choosing-the-state-structure"
+    uid=65_99 StaticText "Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. The most important principle is that state shouldn’t contain redundant or duplicated information. If there’s unnecessary state, it’s easy to forget to update it, and introduce bugs!"
+    uid=65_100 StaticText "For example, this form has a "
+    uid=65_101 StaticText "redundant"
+    uid=65_102 StaticText " "
+    uid=65_103 StaticText "fullName"
+    uid=65_104 StaticText " state variable:"
+    uid=65_105 button "App.js" expandable haspopup="menu"
+    uid=66_2 button "Download" description="Download Sandbox"
+    uid=65_106 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_107 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_3 button "Fork" description="Open in CodeSandbox"
+    uid=65_110 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Form() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [fullName, setFullName] = useState('');
+
+  function handleFirstNameChange(e) {
+    setFirstName(e.target.value);
+    setFullName(e.target.value + ' ' + lastName);
+  }
+
+  function handleLastNameChange(e) {
+    setLastName(e.target.value);
+    setFullName(firstName + ' ' + e.target.value);
+  }
+
+  return (
+    <>
+      <h2>Let’s check you in</h2>
+      <label>
+        First name:{' '}
+        <input
+          value={firstName}
+          onChange={handleFirstNameChange}
+        />
+      </label>
+      <label>
+        Last name:{' '}
+        <input
+          value={lastName}
+          onChange={handleLastNameChange}
+        />
+      </label>
+      <p>
+        Your ticket will be issued to: <b>{fullName}</b>
+      </p>
+    </>
+  );
+}
+
+"
+    uid=65_111 Iframe "Sandbox Preview"
+      uid=65_112 RootWebArea url="about:blank"
+    uid=65_113 button "Show more"
+    uid=65_114 StaticText "You can remove it and simplify the code by calculating "
+    uid=65_115 StaticText "fullName"
+    uid=65_116 StaticText " while the component is rendering:"
+    uid=65_117 button "App.js" expandable haspopup="menu"
+    uid=66_4 button "Download" description="Download Sandbox"
+    uid=65_118 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_119 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_5 button "Fork" description="Open in CodeSandbox"
+    uid=65_122 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Form() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const fullName = firstName + ' ' + lastName;
+
+  function handleFirstNameChange(e) {
+    setFirstName(e.target.value);
+  }
+
+  function handleLastNameChange(e) {
+    setLastName(e.target.value);
+  }
+
+  return (
+    <>
+      <h2>Let’s check you in</h2>
+      <label>
+        First name:{' '}
+        <input
+          value={firstName}
+          onChange={handleFirstNameChange}
+        />
+      </label>
+      <label>
+        Last name:{' '}
+        <input
+          value={lastName}
+          onChange={handleLastNameChange}
+        />
+      </label>
+      <p>
+        Your ticket will be issued to: <b>{fullName}</b>
+      </p>
+    </>
+  );
+}
+
+"
+    uid=65_123 Iframe "Sandbox Preview"
+      uid=65_124 RootWebArea url="about:blank"
+    uid=65_125 button "Show more"
+    uid=65_126 StaticText "This might seem like a small change, but many bugs in React apps are fixed this way."
+    uid=65_127 heading "Ready to learn this topic?" level="2"
+    uid=65_128 StaticText "Read "
+    uid=65_129 link "Choosing the State Structure" url="https://react.dev/learn/choosing-the-state-structure"
+      uid=65_130 StaticText "Choosing the State Structure"
+    uid=65_131 StaticText " to learn how to design the state shape to avoid bugs."
+    uid=65_132 link "Read More" url="https://react.dev/learn/choosing-the-state-structure"
+      uid=65_133 StaticText "Read More"
+    uid=65_134 StaticText "Sharing state between components "
+    uid=65_135 link "Link for Sharing state between components " description="Link for Sharing state between components" url="https://react.dev/learn/managing-state#sharing-state-between-components"
+    uid=65_136 StaticText "Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as “lifting state up”, and it’s one of the most common things you will do writing React code."
+    uid=65_137 StaticText "In this example, only one panel should be active at a time. To achieve this, instead of keeping the active state inside each individual panel, the parent component holds the state and specifies the props for its children."
+    uid=65_138 button "App.js" expandable haspopup="menu"
+    uid=66_6 button "Download" description="Download Sandbox"
+    uid=65_139 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_140 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_7 button "Fork" description="Open in CodeSandbox"
+    uid=65_143 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+
+export default function Accordion() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  return (
+    <>
+      <h2>Almaty, Kazakhstan</h2>
+      <Panel
+        title="About"
+        isActive={activeIndex === 0}
+        onShow={() => setActiveIndex(0)}
+      >
+        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+      </Panel>
+      <Panel
+        title="Etymology"
+        isActive={activeIndex === 1}
+        onShow={() => setActiveIndex(1)}
+      >
+        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+      </Panel>
+    </>
+  );
+}
+
+function Panel({
+  title,
+  children,
+  isActive,
+  onShow
+}) {
+  return (
+    <section className="panel">
+      <h3>{title}</h3>
+      {isActive ? (
+        <p>{children}</p>
+      ) : (
+        <button onClick={onShow}>
+          Show
+        </button>
+      )}
+    </section>
+  );
+}
+
+"
+    uid=65_144 Iframe "Sandbox Preview"
+      uid=65_145 RootWebArea url="about:blank"
+    uid=65_146 button "Show more"
+    uid=65_147 heading "Ready to learn this topic?" level="2"
+    uid=65_148 StaticText "Read "
+    uid=65_149 link "Sharing State Between Components" url="https://react.dev/learn/sharing-state-between-components"
+      uid=65_150 StaticText "Sharing State Between Components"
+    uid=65_151 StaticText " to learn how to lift state up and keep components in sync."
+    uid=65_152 link "Read More" url="https://react.dev/learn/sharing-state-between-components"
+      uid=65_153 StaticText "Read More"
+    uid=65_154 StaticText "Preserving and resetting state "
+    uid=65_155 link "Link for Preserving and resetting state " description="Link for Preserving and resetting state" url="https://react.dev/learn/managing-state#preserving-and-resetting-state"
+    uid=65_156 StaticText "When you re-render a component, React needs to decide which parts of the tree to keep (and update), and which parts to discard or re-create from scratch. In most cases, React’s automatic behavior works well enough. By default, React preserves the parts of the tree that “match up” with the previously rendered component tree."
+    uid=65_157 StaticText "However, sometimes this is not what you want. In this chat app, typing a message and then switching the recipient does not reset the input. This can make the user accidentally send a message to the wrong person:"
+    uid=66_8 tab "App.js" description="/src/App.js" selectable selected
+    uid=66_9 tab "ContactList.js" description="/src/ContactList.js" selectable
+    uid=66_10 tab "Chat.js" description="/src/Chat.js" selectable
+    uid=65_159 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_160 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_11 button "Fork" description="Open in CodeSandbox"
+    uid=65_163 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+import Chat from './Chat.js';
+import ContactList from './ContactList.js';
+
+export default function Messenger() {
+  const [to, setTo] = useState(contacts[0]);
+  return (
+    <div>
+      <ContactList
+        contacts={contacts}
+        selectedContact={to}
+        onSelect={contact => setTo(contact)}
+      />
+      <Chat contact={to} />
+    </div>
+  )
+}
+
+const contacts = [
+  { name: 'Taylor', email: 'taylor@mail.com' },
+  { name: 'Alice', email: 'alice@mail.com' },
+  { name: 'Bob', email: 'bob@mail.com' }
+];
+
+"
+    uid=65_164 Iframe "Sandbox Preview"
+      uid=65_165 RootWebArea url="about:blank"
+    uid=65_166 button "Show more"
+    uid=65_167 StaticText "React lets you override the default behavior, and "
+    uid=65_168 StaticText "force"
+    uid=65_169 StaticText " a component to reset its state by passing it a different "
+    uid=65_170 StaticText "key"
+    uid=65_171 StaticText ", like "
+    uid=65_172 StaticText "<Chat key={email} />"
+    uid=65_173 StaticText ". This tells React that if the recipient is different, it should be considered a "
+    uid=65_174 StaticText "different"
+    uid=65_175 StaticText " "
+    uid=65_176 StaticText "Chat"
+    uid=65_177 StaticText " component that needs to be re-created from scratch with the new data (and UI like inputs). Now switching between the recipients resets the input field—even though you render the same component."
+    uid=66_12 tab "App.js" description="/src/App.js" selectable selected
+    uid=66_13 tab "ContactList.js" description="/src/ContactList.js" selectable
+    uid=66_14 tab "Chat.js" description="/src/Chat.js" selectable
+    uid=65_179 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_180 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_15 button "Fork" description="Open in CodeSandbox"
+    uid=65_183 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useState } from 'react';
+import Chat from './Chat.js';
+import ContactList from './ContactList.js';
+
+export default function Messenger() {
+  const [to, setTo] = useState(contacts[0]);
+  return (
+    <div>
+      <ContactList
+        contacts={contacts}
+        selectedContact={to}
+        onSelect={contact => setTo(contact)}
+      />
+      <Chat key={to.email} contact={to} />
+    </div>
+  )
+}
+
+const contacts = [
+  { name: 'Taylor', email: 'taylor@mail.com' },
+  { name: 'Alice', email: 'alice@mail.com' },
+  { name: 'Bob', email: 'bob@mail.com' }
+];
+
+"
+    uid=65_184 Iframe "Sandbox Preview"
+      uid=65_185 RootWebArea url="about:blank"
+    uid=65_186 button "Show more"
+    uid=65_187 heading "Ready to learn this topic?" level="2"
+    uid=65_188 StaticText "Read "
+    uid=65_189 link "Preserving and Resetting State" url="https://react.dev/learn/preserving-and-resetting-state"
+      uid=65_190 StaticText "Preserving and Resetting State"
+    uid=65_191 StaticText " to learn the lifetime of state and how to control it."
+    uid=65_192 link "Read More" url="https://react.dev/learn/preserving-and-resetting-state"
+      uid=65_193 StaticText "Read More"
+    uid=65_194 StaticText "Extracting state logic into a reducer "
+    uid=65_195 link "Link for Extracting state logic into a reducer " description="Link for Extracting state logic into a reducer" url="https://react.dev/learn/managing-state#extracting-state-logic-into-a-reducer"
+    uid=65_196 StaticText "Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called “reducer”. Your event handlers become concise because they only specify the user “actions”. At the bottom of the file, the reducer function specifies how the state should update in response to each action!"
+    uid=65_197 button "App.js" expandable haspopup="menu"
+    uid=65_198 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_199 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_16 button "Fork" description="Open in CodeSandbox"
+    uid=65_202 textbox "Code Editor for App.js" autocomplete="list" multiline value="import { useReducer } from 'react';
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
+
+export default function TaskApp() {
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
+
+  function handleAddTask(text) {
+    dispatch({
+      type: 'added',
+      id: nextId++,
+      text: text,
+    });
+  }
+
+  function handleChangeTask(task) {
+    dispatch({
+      type: 'changed',
+      task: task
+    });
+  }
+
+  function handleDeleteTask(taskId) {
+    dispatch({
+      type: 'deleted',
+      id: taskId
+    });
+  }
+
+  return (
+    <>
+      <h1>Prague itinerary</h1>
+      <AddTask
+        onAddTask={handleAddTask}
+      />
+      <TaskList
+        tasks={tasks}
+        onChangeTask={handleChangeTask}
+        onDeleteTask={handleDeleteTask}
+      />
+    </>
+  );
+}
+
+function tasksReducer(tasks, action) {
+  switch (action.type) {
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
+    }
+    case 'changed': {
+      return tasks.map(t => {
+        if (t.id === action.task.id) {
+          return action.task;
+        } else {
+          return t;
+        }
+      });
+    }
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
+    }
+    default: {
+      throw Error('Unknown action: ' + action.type);
+    }
+  }
+}
+
+let nextId = 3;
+const initialTasks = [
+  { id: 0, text: 'Visit Kafka Museum', done: true },
+  { id: 1, text: 'Watch a puppet show', done: false },
+  { id: 2, text: 'Lennon Wall pic', done: false }
+];
+
+"
+    uid=65_203 Iframe "Sandbox Preview"
+      uid=65_204 RootWebArea url="about:blank"
+    uid=65_205 button "Show more"
+    uid=65_206 heading "Ready to learn this topic?" level="2"
+    uid=65_207 StaticText "Read "
+    uid=65_208 link "Extracting State Logic into a Reducer" url="https://react.dev/learn/extracting-state-logic-into-a-reducer"
+      uid=65_209 StaticText "Extracting State Logic into a Reducer"
+    uid=65_210 StaticText " to learn how to consolidate logic in the reducer function."
+    uid=65_211 link "Read More" url="https://react.dev/learn/extracting-state-logic-into-a-reducer"
+      uid=65_212 StaticText "Read More"
+    uid=65_213 StaticText "Passing data deeply with context "
+    uid=65_214 link "Link for Passing data deeply with context " description="Link for Passing data deeply with context" url="https://react.dev/learn/managing-state#passing-data-deeply-with-context"
+    uid=65_215 StaticText "Usually, you will pass information from a parent component to a child component via props. But passing props can become inconvenient if you need to pass some prop through many components, or if many components need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props."
+    uid=65_216 StaticText "Here, the "
+    uid=65_217 StaticText "Heading"
+    uid=65_218 StaticText " component determines its heading level by “asking” the closest "
+    uid=65_219 StaticText "Section"
+    uid=65_220 StaticText " for its level. Each "
+    uid=65_221 StaticText "Section"
+    uid=65_222 StaticText " tracks its own level by asking the parent "
+    uid=65_223 StaticText "Section"
+    uid=65_224 StaticText " and adding one to it. Every "
+    uid=65_225 StaticText "Section"
+    uid=65_226 StaticText " provides information to all components below it without passing props—it does that through context."
+    uid=66_17 tab "App.js" description="/src/App.js" selectable selected
+    uid=66_18 tab "Section.js" description="/src/Section.js" selectable
+    uid=66_19 tab "Heading.js" description="/src/Heading.js" selectable
+    uid=66_20 tab "LevelContext.js" description="/src/LevelContext.js" selectable
+    uid=65_228 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_229 button "Clear" description="Clear all edits and reload sandbox"
+    uid=66_21 button "Fork" description="Open in CodeSandbox"
+    uid=65_232 textbox "Code Editor for App.js" autocomplete="list" multiline value="import Heading from './Heading.js';
+import Section from './Section.js';
+
+export default function Page() {
+  return (
+    <Section>
+      <Heading>Title</Heading>
+      <Section>
+        <Heading>Heading</Heading>
+        <Heading>Heading</Heading>
+        <Heading>Heading</Heading>
+        <Section>
+          <Heading>Sub-heading</Heading>
+          <Heading>Sub-heading</Heading>
+          <Heading>Sub-heading</Heading>
+          <Section>
+            <Heading>Sub-sub-heading</Heading>
+            <Heading>Sub-sub-heading</Heading>
+            <Heading>Sub-sub-heading</Heading>
+          </Section>
+        </Section>
+      </Section>
+    </Section>
+  );
+}
+
+"
+    uid=65_233 Iframe "Sandbox Preview"
+      uid=65_234 RootWebArea url="about:blank"
+    uid=65_235 button "Show more"
+    uid=65_236 heading "Ready to learn this topic?" level="2"
+    uid=65_237 StaticText "Read "
+    uid=65_238 link "Passing Data Deeply with Context" url="https://react.dev/learn/passing-data-deeply-with-context"
+      uid=65_239 StaticText "Passing Data Deeply with Context"
+    uid=65_240 StaticText " to learn about using context as an alternative to passing props."
+    uid=65_241 link "Read More" url="https://react.dev/learn/passing-data-deeply-with-context"
+      uid=65_242 StaticText "Read More"
+    uid=65_243 StaticText "Scaling up with reducer and context "
+    uid=65_244 link "Link for Scaling up with reducer and context " description="Link for Scaling up with reducer and context" url="https://react.dev/learn/managing-state#scaling-up-with-reducer-and-context"
+    uid=65_245 StaticText "Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen."
+    uid=65_246 StaticText "With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state."
+    uid=66_22 tab "App.js" description="/src/App.js" selectable selected
+    uid=66_23 tab "TasksContext.js" description="/src/TasksContext.js" selectable
+    uid=66_24 tab "AddTask.js" description="/src/AddTask.js" selectable
+    uid=66_25 tab "TaskList.js" description="/src/TaskList.js" selectable
+    uid=65_248 button "Reload" description="Keep your edits and reload sandbox"
+    uid=65_249 button "Clear" description="Clear all edits and reload sandbox"
+    uid=65_250 link "Fork" description="Open in CodeSandbox" url="https://codesandbox.io/api/v1/sandboxes/define?undefined&environment=create-react-app"
+      uid=65_251 StaticText "Fork"
+    uid=65_252 textbox "Code Editor for App.js" autocomplete="list" multiline value="import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
+import { TasksProvider } from './TasksContext.js';
+
+export default function TaskApp() {
+  return (
+    <TasksProvider>
+      <h1>Day off in Kyoto</h1>
+      <AddTask />
+      <TaskList />
+    </TasksProvider>
+  );
+}
+
+"
+    uid=65_253 Iframe "Sandbox Preview"
+      uid=65_254 RootWebArea url="about:blank"
+    uid=65_255 heading "Ready to learn this topic?" level="2"
+    uid=65_256 StaticText "Read "
+    uid=65_257 link "Scaling Up with Reducer and Context" url="https://react.dev/learn/scaling-up-with-reducer-and-context"
+      uid=65_258 StaticText "Scaling Up with Reducer and Context"
+    uid=65_259 StaticText " to learn how state management scales in a growing app."
+    uid=65_260 link "Read More" url="https://react.dev/learn/scaling-up-with-reducer-and-context"
+      uid=65_261 StaticText "Read More"
+    uid=65_262 StaticText "What’s next? "
+    uid=65_263 link "Link for What’s next? " description="Link for What’s next?" url="https://react.dev/learn/managing-state#whats-next"
+    uid=65_264 StaticText "Head over to "
+    uid=65_265 link "Reacting to Input with State" url="https://react.dev/learn/reacting-to-input-with-state"
+      uid=65_266 StaticText "Reacting to Input with State"
+    uid=65_267 StaticText " to start reading this chapter page by page!"
+    uid=65_268 StaticText "Or, if you’re already familiar with these topics, why not read about "
+    uid=65_269 link "Escape Hatches" url="https://react.dev/learn/escape-hatches"
+      uid=65_270 StaticText "Escape Hatches"
+    uid=65_271 StaticText "?"
+    uid=65_272 link "PREVIOUS Updating Arrays in State" url="https://react.dev/learn/updating-arrays-in-state"
+      uid=65_273 StaticText "PREVIOUS"
+      uid=65_274 StaticText "Updating Arrays in State"
+    uid=65_275 link "NEXT Reacting to Input with State" url="https://react.dev/learn/reacting-to-input-with-state"
+      uid=65_276 StaticText "NEXT"
+      uid=65_277 StaticText "Reacting to Input with State"
+    uid=65_278 link "Meta Open Source" url="https://opensource.fb.com/"
+    uid=65_279 StaticText "Copyright © Meta Platforms, Inc"
+    uid=65_280 StaticText "uwu?"
+    uid=65_281 link "Learn React" url="https://react.dev/learn"
+      uid=65_282 StaticText "Learn React"
+    uid=65_283 link "Quick Start" url="https://react.dev/learn"
+      uid=65_284 StaticText "Quick Start"
+    uid=65_285 link "Installation" url="https://react.dev/learn/installation"
+      uid=65_286 StaticText "Installation"
+    uid=65_287 link "Describing the UI" url="https://react.dev/learn/describing-the-ui"
+      uid=65_288 StaticText "Describing the UI"
+    uid=65_289 link "Adding Interactivity" url="https://react.dev/learn/adding-interactivity"
+      uid=65_290 StaticText "Adding Interactivity"
+    uid=65_291 link "Managing State" url="https://react.dev/learn/managing-state"
+      uid=65_292 StaticText "Managing State"
+    uid=65_293 link "Escape Hatches" url="https://react.dev/learn/escape-hatches"
+      uid=65_294 StaticText "Escape Hatches"
+    uid=65_295 link "API Reference" url="https://react.dev/reference/react"
+      uid=65_296 StaticText "API Reference"
+    uid=65_297 link "React APIs" url="https://react.dev/reference/react"
+      uid=65_298 StaticText "React APIs"
+    uid=65_299 link "React DOM APIs" url="https://react.dev/reference/react-dom"
+      uid=65_300 StaticText "React DOM APIs"
+    uid=65_301 link "Community" url="https://react.dev/community"
+      uid=65_302 StaticText "Community"
+    uid=65_303 link "Code of Conduct" url="https://github.com/react/react/blob/main/CODE_OF_CONDUCT.md"
+      uid=65_304 StaticText "Code of Conduct"
+    uid=65_305 link "Meet the Team" url="https://react.dev/community/team"
+      uid=65_306 StaticText "Meet the Team"
+    uid=65_307 link "Docs Contributors" url="https://react.dev/community/docs-contributors"
+      uid=65_308 StaticText "Docs Contributors"
+    uid=65_309 link "Acknowledgements" url="https://react.dev/community/acknowledgements"
+      uid=65_310 StaticText "Acknowledgements"
+    uid=65_311 StaticText "More"
+    uid=65_312 link "Blog" url="https://react.dev/blog"
+      uid=65_313 StaticText "Blog"
+    uid=65_314 link "React Native" url="https://reactnative.dev/"
+      uid=65_315 StaticText "React Native"
+    uid=65_316 link "Privacy" url="https://opensource.facebook.com/legal/privacy"
+      uid=65_317 StaticText "Privacy"
+    uid=65_318 link "Terms" url="https://opensource.fb.com/legal/terms/"
+      uid=65_319 StaticText "Terms"
+    uid=65_320 link "React on Facebook" url="https://www.facebook.com/react"
+    uid=65_321 link "React on Twitter" url="https://twitter.com/reactjs"
+    uid=65_322 link "React on Bluesky" url="https://bsky.app/profile/react.dev"
+      uid=65_323 image "Bluesky"
+    uid=65_324 link "React on Github" url="https://github.com/react/react"
+  uid=65_325 alert atomic live="assertive" relevant="additions text"

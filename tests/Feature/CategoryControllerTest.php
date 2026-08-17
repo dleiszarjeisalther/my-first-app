@@ -8,123 +8,105 @@ use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertModelExists;
 use function Pest\Laravel\assertModelMissing;
 
-test('non-admin user can only see their own categories in index', function () {
-    $user1 = User::factory()->create();
-    $user2 = User::factory()->create();
-
-    Category::factory()->create(['user_id' => $user1->id, 'name' => 'User 1 Category']);
-    Category::factory()->create(['user_id' => $user2->id, 'name' => 'User 2 Category']);
-
-    $response = actingAs($user1)->get(route('category.index'));
-
-    $response->assertStatus(200);
-    $response->assertSee('User 1 Category');
-    $response->assertDontSee('User 2 Category');
+/**
+ * CategoryControllerTest
+ *
+ * Verifies that CategoryController enforces owner-based access:
+ *  - Index: only the authenticated user's own categories are shown.
+ *  - Create/Store: any authenticated user can add categories.
+ *  - Edit/Update/Destroy: only the owner can modify or delete.
+ */
+test('unauthenticated user is redirected from category index', function () {
+    $this->get(route('category.index'))->assertRedirect(route('login'));
 });
 
-test('admin user can see all categories in index', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
+test('user only sees their own categories in index', function () {
     $user = User::factory()->create();
-
-    Category::factory()->create(['user_id' => $user->id, 'name' => 'User Category']);
-    Category::factory()->create(['user_id' => $admin->id, 'name' => 'Admin Category']);
-
-    $response = actingAs($admin)->get(route('category.index'));
-
-    $response->assertStatus(200);
-    $response->assertSee('User Category');
-    $response->assertSee('Admin Category');
-});
-
-test('non-admin cannot create category', function () {
-    $user = User::factory()->create();
-
-    $response = actingAs($user)->post(route('category.store'), [
-        'name' => 'New Category',
-    ]);
-
-    $response->assertStatus(403);
-});
-
-test('admin can create category', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-
-    $response = actingAs($admin)->post(route('category.store'), [
-        'name' => 'New Admin Category',
-    ]);
-
-    $response->assertRedirect(route('category.index'));
-    assertDatabaseHas('categories', [
-        'name' => 'New Admin Category',
-        'user_id' => $admin->id,
-    ]);
-});
-
-test('non-owner cannot edit others category', function () {
-    $owner = User::factory()->create();
     $other = User::factory()->create();
-    $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = actingAs($other)->get(route('category.edit', $category));
+    $mine = Category::factory()->create(['user_id' => $user->id, 'name' => 'My Category']);
+    Category::factory()->create(['user_id' => $other->id, 'name' => 'Other Category']);
 
-    $response->assertStatus(403);
+    actingAs($user)->get(route('category.index'))
+        ->assertStatus(200)
+        ->assertSee('My Category')
+        ->assertDontSee('Other Category');
+});
+
+test('authenticated user can view category create page', function () {
+    $user = User::factory()->create();
+
+    actingAs($user)->get(route('category.create'))->assertStatus(200);
+});
+
+test('authenticated user can create a category owned by themselves', function () {
+    $user = User::factory()->create();
+
+    actingAs($user)->post(route('category.store'), ['name' => 'New Skill Area'])
+        ->assertRedirect(route('category.index'));
+
+    assertDatabaseHas('categories', [
+        'name' => 'New Skill Area',
+        'user_id' => $user->id, // ownership is set server-side
+    ]);
+});
+
+test('different users can create categories with the same name', function () {
+    $firstUser = User::factory()->create();
+    $secondUser = User::factory()->create();
+
+    actingAs($firstUser)->post(route('category.store'), ['name' => 'Backend'])
+        ->assertRedirect(route('category.index'));
+
+    actingAs($secondUser)->post(route('category.store'), ['name' => 'Backend'])
+        ->assertRedirect(route('category.index'));
+
+    expect(Category::where('name', 'Backend')->count())->toBe(2);
+});
+
+test('a user cannot create duplicate category names', function () {
+    $user = User::factory()->create();
+    Category::factory()->create(['user_id' => $user->id, 'name' => 'Backend']);
+
+    actingAs($user)->post(route('category.store'), ['name' => 'Backend'])
+        ->assertSessionHasErrors('name');
 });
 
 test('owner can edit their own category', function () {
     $owner = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = actingAs($owner)->get(route('category.edit', $category));
-
-    $response->assertStatus(200);
-    $response->assertSee($category->name);
+    actingAs($owner)->get(route('category.edit', $category))
+        ->assertStatus(200)
+        ->assertSee($category->name);
 });
 
-test('admin can edit any category', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-    $user = User::factory()->create();
-    $category = Category::factory()->create(['user_id' => $user->id]);
-
-    $response = actingAs($admin)->get(route('category.edit', $category));
-
-    $response->assertStatus(200);
-});
-
-test('non-owner cannot update others category', function () {
+test('non-owner cannot access edit form for another user\'s category', function () {
     $owner = User::factory()->create();
     $other = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = actingAs($other)->put(route('category.update', $category), [
-        'name' => 'Updated Name',
-    ]);
-
-    $response->assertStatus(403);
+    actingAs($other)->get(route('category.edit', $category))->assertStatus(403);
 });
 
 test('owner can update their own category', function () {
     $owner = User::factory()->create();
-    $category = Category::factory()->create(['user_id' => $owner->id, 'name' => 'Original']);
+    $category = Category::factory()->create(['user_id' => $owner->id, 'name' => 'Old Name']);
 
-    $response = actingAs($owner)->put(route('category.update', $category), [
-        'name' => 'Updated',
-    ]);
+    actingAs($owner)->put(route('category.update', $category), ['name' => 'New Name'])
+        ->assertRedirect(route('category.index'));
 
-    $response->assertRedirect(route('category.index'));
-    assertDatabaseHas('categories', [
-        'id' => $category->id,
-        'name' => 'Updated',
-    ]);
+    assertDatabaseHas('categories', ['id' => $category->id, 'name' => 'New Name']);
 });
 
-test('non-owner cannot delete others category', function () {
+test('non-owner cannot update another user\'s category', function () {
     $owner = User::factory()->create();
     $other = User::factory()->create();
-    $category = Category::factory()->create(['user_id' => $owner->id]);
+    $category = Category::factory()->create(['user_id' => $owner->id, 'name' => 'Original']);
 
-    $response = actingAs($other)->delete(route('category.destroy', $category));
+    actingAs($other)->put(route('category.update', $category), ['name' => 'Hacked'])
+        ->assertStatus(403);
 
-    $response->assertStatus(403);
     assertModelExists($category);
 });
 
@@ -132,19 +114,18 @@ test('owner can delete their own category', function () {
     $owner = User::factory()->create();
     $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = actingAs($owner)->delete(route('category.destroy', $category));
+    actingAs($owner)->delete(route('category.destroy', $category))
+        ->assertRedirect(route('category.index'));
 
-    $response->assertRedirect(route('category.index'));
     assertModelMissing($category);
 });
 
-test('admin can delete any category', function () {
-    $admin = User::factory()->create(['email' => 'dleiszarjeisaltherlagariza@gmail.com']);
-    $user = User::factory()->create();
-    $category = Category::factory()->create(['user_id' => $user->id]);
+test('non-owner cannot delete another user\'s category', function () {
+    $owner = User::factory()->create();
+    $other = User::factory()->create();
+    $category = Category::factory()->create(['user_id' => $owner->id]);
 
-    $response = actingAs($admin)->delete(route('category.destroy', $category));
+    actingAs($other)->delete(route('category.destroy', $category))->assertStatus(403);
 
-    $response->assertRedirect(route('category.index'));
-    assertModelMissing($category);
+    assertModelExists($category);
 });

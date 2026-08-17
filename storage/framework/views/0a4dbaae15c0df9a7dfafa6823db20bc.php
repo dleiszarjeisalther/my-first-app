@@ -1,4 +1,4 @@
-﻿
+
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
@@ -29,5 +29,7 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
+<!-- Start: Text Input -->
 <input <?php if($disabled): echo 'disabled'; endif; ?> <?php echo e($attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm'])); ?>>
+<!-- End: Text Input -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/forms/text-input.blade.php ENDPATH**/ ?>

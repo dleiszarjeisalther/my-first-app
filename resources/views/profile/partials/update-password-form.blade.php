@@ -1,4 +1,6 @@
-﻿<section>
+<!-- Start: Update Password Section -->
+<section>
+    <!-- Start: Section Header -->
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Update Password') }}
@@ -8,32 +10,42 @@
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
     </header>
+    <!-- End: Section Header -->
 
+    <!-- Start: Password Update Form -->
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
 
+        <!-- Start: Current Password Field -->
         <div>
             <x-forms.input-label for="update_password_current_password" :value="__('Current Password')" />
             <x-forms.text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
             <x-forms.input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
+        <!-- End: Current Password Field -->
 
+        <!-- Start: New Password Field -->
         <div>
             <x-forms.input-label for="update_password_password" :value="__('New Password')" />
             <x-forms.text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-forms.input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
+        <!-- End: New Password Field -->
 
+        <!-- Start: Confirm Password Field -->
         <div>
             <x-forms.input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
             <x-forms.text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-forms.input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
+        <!-- End: Confirm Password Field -->
 
+        <!-- Start: Form Actions (Save Button & Status) -->
         <div class="flex items-center gap-4">
             <x-buttons.primary-button>{{ __('Save') }}</x-buttons.primary-button>
 
+            <!-- Start: Saved Status Message -->
             @if (session('status') === 'password-updated')
                 <p
                     x-data="{ show: true }"
@@ -43,6 +55,10 @@
                     class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
             @endif
+            <!-- End: Saved Status Message -->
         </div>
+        <!-- End: Form Actions -->
     </form>
+    <!-- End: Password Update Form -->
 </section>
+<!-- End: Update Password Section -->

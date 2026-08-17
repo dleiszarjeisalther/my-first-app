@@ -1,0 +1,123 @@
+folder: 01Prologue
+files:
+01Release Notes
+02Upgrade Guide
+03Contribution Guide
+
+folder: 02Getting Started
+files: 01Installation
+02Configuration
+03Agentic Development
+04Directory Structure
+05Frontend
+06Starter Kits
+07Deployment
+
+folder: 03Architecture Concepts
+files: 01Request Lifecycle
+02Service Container
+03Service Providers
+04Facades
+
+folder: 04The Basics
+files: 01Routing
+02Middleware
+03CSRF Protection
+04Controllers
+05Requests
+06Responses
+07Views
+08Blade Templates
+09Asset Bundling
+10URL Generation
+11Session
+12Validation
+13Error Handling
+14Logging
+
+folder: 05Digging Deeper
+files: 01Artisan Console
+02Broadcasting
+03Cache
+04Collections
+05Concurrency
+06Context
+07Contracts
+08Events
+09File Storage
+10Helpers
+11HTTP Client
+12Localization
+13Mail
+14Notifications
+15Package Development
+16Processes
+17Queues
+18Rate Limiting
+19Search
+20Strings
+21Task Scheduling
+
+folder: 06Security
+files: 01Authentication
+02Authorization
+03Email Verification
+04Encryption
+05Hashing
+06Password Reset
+
+folder: 07Database
+files: 01Getting Started
+02Query Builder
+03Pagination
+04Migrations
+05Seeding
+06Redis
+07MongoDB
+
+folder: 08Eloquent ORM
+files: 01Getting Started
+02Relationships
+03Collections
+04Mutators / Casts
+05API Resources
+06Serialization
+07Factories
+
+folder: 09AI
+files: 01AI SDK
+02MCP
+03Boost
+
+folder: 10Testing
+files: 01Getting Started
+02HTTP Tests
+03Console Tests
+04Browser Tests
+05Database
+06Mocking
+
+folder: 11Packages
+files: 01Cashier (Stripe)
+02Cashier (Paddle)
+03Dusk
+04Envoy
+05Fortify
+06Folio
+07Homestead
+08Horizon
+09Mix
+10Octane
+11Passport
+12Pennant
+13Pint
+14Precognition
+15Prompts
+16Pulse
+17Reverb
+18Sail
+19Sanctum
+20Scout
+21Socialite
+22Telescope
+23Valet

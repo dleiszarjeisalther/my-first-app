@@ -1,7 +1,7 @@
 {{--
     ============================================================
     LAYOUT: components/layouts/csidebar-layout.blade.php
-            →  [x-layouts.csidebar-layout>
+            →  <x-layouts.csidebar-layout>
     SOURCE : Custom (hand-crafted)
     FILE   : resources/views/components/layouts/csidebar-layout.blade.php
 
@@ -21,7 +21,7 @@
         $slot     — (required) The main page content area.
 
     HOW TO USE:
-        [x-layouts.csidebar-layout>
+        <x-layouts.csidebar-layout>
 
             {{-- Sidebar navigation links --}}
             <x-slot name="sidebar">
@@ -57,8 +57,10 @@
         You'll need to add a hamburger + drawer if mobile support is needed.
     ============================================================
 --}}
+<!-- Start: HTML Document -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <!-- Start: Document Head -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,45 +68,57 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts: Figtree from Bunny Fonts (privacy-friendly Google Fonts mirror) -->
+        <!-- Start: Fonts (Figtree from Bunny Fonts) -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- End: Fonts -->
 
-        <!-- Scripts: Vite compiles resources/css/app.css + resources/js/app.js -->
+        <!-- Start: Scripts & Styles (Vite) -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- End: Scripts & Styles (Vite) -->
     </head>
+    <!-- End: Document Head -->
+
+    <!-- Start: Document Body -->
     <body class="font-sans antialiased bg-gray-100">
+        <!-- Start: Two Column Container -->
         <div class="flex h-screen overflow-hidden">
 
-            {{-- ── LEFT SIDEBAR ─────────────────────────────────────────── --}}
-            {{-- Hidden on mobile (md:flex). Fixed width 256px (w-64). --}}
+            <!-- Start: Left Sidebar (Desktop only) -->
             <aside class="hidden md:flex md:flex-shrink-0 w-64 flex-col bg-white border-r border-gray-200">
 
-                <!-- Logo — links to dashboard -->
+                <!-- Start: Sidebar Logo Section -->
                 <div class="flex items-center h-16 px-6 border-b border-gray-200 shrink-0">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
                         <x-application-logo class="h-8 w-auto fill-current text-gray-800" />
                         <span class="font-semibold text-gray-800">{{ config('app.name') }}</span>
                     </a>
                 </div>
+                <!-- End: Sidebar Logo Section -->
 
-                <!-- Sidebar Navigation — filled by $sidebar slot -->
+                <!-- Start: Sidebar Navigation Slot -->
                 <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
                     {{ $sidebar ?? '' }}
                 </nav>
+                <!-- End: Sidebar Navigation Slot -->
 
-                <!-- User Footer — always at the bottom of the sidebar -->
+                <!-- Start: Sidebar User Footer -->
                 <div class="border-t border-gray-200 p-4">
                     <div class="flex items-center gap-3">
-                        {{-- Avatar: first letter of the user's name --}}
+                        <!-- Start: User Avatar -->
                         <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white text-xs font-bold">
                             {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                         </div>
+                        <!-- End: User Avatar -->
+
+                        <!-- Start: User Details -->
                         <div class="flex-1 min-w-0">
                             <p class="text-sm font-medium text-gray-700 truncate">{{ Auth::user()->name }}</p>
                             <p class="text-xs text-gray-400 truncate">{{ Auth::user()->email }}</p>
                         </div>
-                        {{-- Logout button (icon only) --}}
+                        <!-- End: User Details -->
+
+                        <!-- Start: Logout Button Form -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="text-gray-400 hover:text-red-500 transition" title="Log Out">
@@ -113,14 +127,17 @@
                                 </svg>
                             </button>
                         </form>
+                        <!-- End: Logout Button Form -->
                     </div>
                 </div>
+                <!-- End: Sidebar User Footer -->
             </aside>
+            <!-- End: Left Sidebar -->
 
-            {{-- ── RIGHT: HEADER + MAIN CONTENT ──────────────────────────── --}}
+            <!-- Start: Right Main Area (Header + Content) -->
             <div class="flex flex-col flex-1 overflow-y-auto">
 
-                <!-- Top Bar — filled by $header slot, or shows default heading -->
+                <!-- Start: Top Bar Header -->
                 <header class="bg-white border-b border-gray-200 h-16 flex items-center px-6 shrink-0">
                     @if (isset($header))
                         {{ $header }}
@@ -128,12 +145,18 @@
                         <h1 class="text-lg font-semibold text-gray-800">Dashboard</h1>
                     @endif
                 </header>
+                <!-- End: Top Bar Header -->
 
-                <!-- Page Content — filled by $slot -->
+                <!-- Start: Main Content Slot -->
                 <main class="flex-1 p-6">
                     {{ $slot }}
                 </main>
+                <!-- End: Main Content Slot -->
             </div>
+            <!-- End: Right Main Area -->
         </div>
+        <!-- End: Two Column Container -->
     </body>
+    <!-- End: Document Body -->
 </html>
+<!-- End: HTML Document -->

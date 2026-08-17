@@ -1,4 +1,4 @@
-﻿
+
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
@@ -44,14 +44,16 @@ $width = match ($width) {
 };
 ?>
 
+<!-- Start: Dropdown Container -->
 <div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
-    
+    <!-- Start: Dropdown Trigger -->
     <div @click="open = ! open">
         <?php echo e($trigger); ?>
 
     </div>
+    <!-- End: Dropdown Trigger -->
 
-    
+    <!-- Start: Dropdown Panel -->
     <div x-show="open"
             x-transition:enter="transition ease-out duration-200"
             x-transition:enter-start="opacity-0 scale-95"
@@ -67,5 +69,7 @@ $width = match ($width) {
 
         </div>
     </div>
+    <!-- End: Dropdown Panel -->
 </div>
+<!-- End: Dropdown Container -->
 <?php /**PATH C:\Users\universal\Herd\my-first-app\resources\views/components/ui/dropdown.blade.php ENDPATH**/ ?>
