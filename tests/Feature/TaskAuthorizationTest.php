@@ -36,3 +36,32 @@ test('non-owner cannot update another user task', function () {
 
     assertDatabaseHas('tasks', ['id' => $task->id, 'name' => 'Original task']);
 });
+
+test('authenticated user can view tasks index and create page', function () {
+    $user = User::factory()->create(['email_verified_at' => now()]);
+
+    actingAs($user)
+        ->get(route('tasks.index'))
+        ->assertOk()
+        ->assertViewIs('tasks.index');
+
+    actingAs($user)
+        ->get(route('tasks.create'))
+        ->assertOk()
+        ->assertViewIs('tasks.create');
+});
+
+test('authenticated user can create a task', function () {
+    $user = User::factory()->create(['email_verified_at' => now()]);
+
+    actingAs($user)
+        ->post(route('tasks.store'), [
+            'name' => 'My New Task',
+        ])
+        ->assertRedirect(route('tasks.index'));
+
+    assertDatabaseHas('tasks', [
+        'name' => 'My New Task',
+        'user_id' => $user->id,
+    ]);
+});

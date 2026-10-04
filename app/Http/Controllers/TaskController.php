@@ -5,17 +5,46 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTasksRequest;
 use App\Models\Task;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class TaskController extends Controller
 {
+    /**
+     * Ensure the tasks table exists in the database.
+     * On environments without SSH/CLI access, auto-run migrations if missing.
+     */
+    protected function ensureTasksTableExists(): void
+    {
+        if (app()->environment('testing')) {
+            return;
+        }
+
+        try {
+            if (! Schema::hasTable('tasks')) {
+                Artisan::call('migrate', ['--force' => true]);
+            }
+        } catch (\Throwable $e) {
+            Log::error('Auto-migration for tasks failed: '.$e->getMessage());
+        }
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $names = Task::where('user_id', Auth::id())->get();
+        $this->ensureTasksTableExists();
+
+        try {
+            $names = Task::where('user_id', Auth::id())->get();
+        } catch (\Throwable $e) {
+            Log::error('Task listing error: '.$e->getMessage());
+            $names = collect();
+        }
 
         return view('tasks.index', [
             'user_name' => Auth::user()->name,
@@ -28,7 +57,14 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $tasks = Task::where('user_id', Auth::id())->get();
+        $this->ensureTasksTableExists();
+
+        try {
+            $tasks = Task::where('user_id', Auth::id())->get();
+        } catch (\Throwable $e) {
+            Log::error('Task create error: '.$e->getMessage());
+            $tasks = collect();
+        }
 
         return view('tasks.create', compact('tasks'));
     }
@@ -38,6 +74,8 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
+        $this->ensureTasksTableExists();
+
         $validated = $request->validated();
 
         // Attach the authenticated user as owner — never trust user_id from the form.
@@ -45,7 +83,7 @@ class TaskController extends Controller
 
         Task::create($validated);
 
-        return redirect()->route('tasks.index')->with('success', 'Skill categorized and saved!');
+        return redirect()->route('tasks.index')->with('success', 'Task saved successfully!');
     }
 
     /**

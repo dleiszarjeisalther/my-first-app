@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\trialController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -85,6 +86,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/run-migrations', function () {
+        Artisan::call('migrate', ['--force' => true]);
+
+        return response()->json([
+            'status' => 'success',
+            'output' => Artisan::output(),
+        ]);
+    })->name('migrations.run');
 });
 
 Route::resource('/skills', SkillController::class)->middleware(['auth', 'verified']);
