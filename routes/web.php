@@ -5,8 +5,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\trialController;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 
 Route::get('/', function () {
     return view('welcome');
@@ -87,11 +89,36 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/run-migrations', function () {
-        Artisan::call('migrate', ['--force' => true]);
+        try {
+            Artisan::call('migrate', ['--force' => true]);
+            $output = Artisan::output();
+        } catch (Throwable $e) {
+            $output = 'Artisan error: '.$e->getMessage();
+        }
+
+        $tasksCreated = false;
+        if (! Schema::hasTable('tasks')) {
+            try {
+                Schema::create('tasks', function (Blueprint $table) {
+                    $table->id();
+                    $table->string('name');
+                    $table->boolean('done')->default(false);
+                    $table->unsignedBigInteger('user_id');
+                    $table->timestamps();
+
+                    $table->index('user_id');
+                });
+                $tasksCreated = true;
+            } catch (Throwable $e) {
+                $output .= ' | Schema error: '.$e->getMessage();
+            }
+        }
 
         return response()->json([
             'status' => 'success',
-            'output' => Artisan::output(),
+            'tasks_table_created' => $tasksCreated,
+            'tasks_table_exists' => Schema::hasTable('tasks'),
+            'output' => $output,
         ]);
     })->name('migrations.run');
 });

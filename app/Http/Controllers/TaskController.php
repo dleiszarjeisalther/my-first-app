@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTasksRequest;
 use App\Models\Task;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
@@ -15,7 +15,7 @@ class TaskController extends Controller
 {
     /**
      * Ensure the tasks table exists in the database.
-     * On environments without SSH/CLI access, auto-run migrations if missing.
+     * On environments without SSH/CLI access, auto-create table if missing.
      */
     protected function ensureTasksTableExists(): void
     {
@@ -25,10 +25,18 @@ class TaskController extends Controller
 
         try {
             if (! Schema::hasTable('tasks')) {
-                Artisan::call('migrate', ['--force' => true]);
+                Schema::create('tasks', function (Blueprint $table) {
+                    $table->id();
+                    $table->string('name');
+                    $table->boolean('done')->default(false);
+                    $table->unsignedBigInteger('user_id');
+                    $table->timestamps();
+
+                    $table->index('user_id');
+                });
             }
         } catch (\Throwable $e) {
-            Log::error('Auto-migration for tasks failed: '.$e->getMessage());
+            Log::error('Auto-creation for tasks table failed: '.$e->getMessage());
         }
     }
 
@@ -81,7 +89,13 @@ class TaskController extends Controller
         // Attach the authenticated user as owner — never trust user_id from the form.
         $validated['user_id'] = Auth::id();
 
-        Task::create($validated);
+        try {
+            Task::create($validated);
+        } catch (\Throwable $e) {
+            Log::error('Task creation failed: '.$e->getMessage());
+
+            return back()->withInput()->withErrors(['name' => 'Unable to save task at this time. Please try again.']);
+        }
 
         return redirect()->route('tasks.index')->with('success', 'Task saved successfully!');
     }
@@ -105,11 +119,19 @@ class TaskController extends Controller
     public function update(UpdateTasksRequest $request, Task $task)
     {
         $validated = $request->validated();
-        // dd($validated);
-        $task->fill($validated);
-        $task->save();
 
-        // ✅ Added by AI: return to the task index after a successful task update.
+        try {
+            $task->fill($validated);
+            if ($request->has('done')) {
+                $task->done = $request->boolean('done');
+            }
+            $task->save();
+        } catch (\Throwable $e) {
+            Log::error('Task update failed: '.$e->getMessage());
+
+            return back()->withInput()->withErrors(['name' => 'Unable to update task at this time.']);
+        }
+
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
     }
 
@@ -120,7 +142,11 @@ class TaskController extends Controller
     {
         Gate::authorize('delete', $task);
 
-        Task::destroy($task->id);
+        try {
+            $task->delete();
+        } catch (\Throwable $e) {
+            Log::error('Task deletion failed: '.$e->getMessage());
+        }
 
         return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
     }
