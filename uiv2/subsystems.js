@@ -274,12 +274,116 @@ const SUBSYSTEMS = [
         id: 'business-intelligence',
         title: 'Business Intelligence',
         category: 'Business Intelligence & Analytics',
+        icon: 'crown',
         description: 'Dashboards, KPIs, predictive analytics, reporting, and data integration for decision support.',
+        sections: [
+            {
+                title: 'BUSINESS INTELLIGENCE TOOLS',
+                modules: [
+                    { name: 'KPI Monitoring', subtitle: 'Performance Tracking System', icon: 'analytics' },
+                    { name: 'Predictive Analytics', subtitle: 'Trends, Forecasting & Risk Analysis', icon: 'insights' },
+                    { name: 'Custom Reports', subtitle: 'Client, Department & Monthly Reports', icon: 'description' },
+                    { name: 'Executive Import', subtitle: 'Upload and validate business data', icon: 'upload_file' }
+                ]
+            },
+            {
+                title: 'SYSTEM MANAGEMENT',
+                modules: [
+                    { name: 'Notifications', subtitle: 'System Workflow...', icon: 'notifications' }
+                ]
+            }
+        ],
+        executiveStats: [
+            {
+                id: 'total-collected-revenue',
+                label: 'Total Collected Revenue',
+                value: '₱1,935,500.00',
+                icon: 'account_balance_wallet',
+                iconBg: 'bg-indigo-50 text-indigo-600',
+                badges: [
+                    { text: '-43.3% vs prior month', tone: 'danger' },
+                    { text: 'Trend', tone: 'trend' }
+                ],
+                sparkline: 'wave-green',
+                target: 'Target: ₱0.00 (1-month pace) | No Target Defined',
+                footer: 'AI Forecast: ₱520,000.00'
+            },
+            {
+                id: 'applicants-in-scope',
+                label: 'Applicants in Scope',
+                value: '233',
+                icon: 'groups',
+                iconBg: 'bg-emerald-50 text-emerald-600',
+                badges: [
+                    { text: '+25% vs prior month', tone: 'success' },
+                    { text: 'Trend', tone: 'trend' }
+                ],
+                sparkline: 'up-blue',
+                target: 'Target: 100 (1-month pace) | ⚑ Off Track (-22.3% pace)',
+                footer: 'Hired applicants pacing'
+            },
+            {
+                id: 'recruitment-conversion-rate',
+                label: 'Recruitment Conversion Rate',
+                value: '36.1%',
+                icon: 'hub',
+                iconBg: 'bg-purple-50 text-purple-600',
+                badges: [
+                    { text: 'Target Met (>35%)', tone: 'success' },
+                    { text: '100% Comp', tone: 'teal' }
+                ],
+                sparkline: 'up-purple',
+                target: 'Target: 0.0% | No Target Defined',
+                footer: 'Target Met (>35%) | 100% Comp'
+            },
+            {
+                id: 'total-clients',
+                label: 'Total Clients',
+                value: '18',
+                icon: 'table_chart',
+                iconBg: 'bg-emerald-50 text-emerald-600',
+                badges: [
+                    { text: '-100% vs prior month', tone: 'danger' }
+                ],
+                badgeSub: 'Client Portfolio',
+                sparkline: 'down-teal',
+                target: '',
+                footer: '-100% vs prior month | Corporate client portfolio'
+            },
+            {
+                id: 'total-portal-visitors',
+                label: 'Total Portal Visitors',
+                value: '34',
+                icon: 'group',
+                iconBg: 'bg-blue-50 text-blue-600',
+                badges: [
+                    { text: '-21.1% vs prior period', tone: 'danger' },
+                    { text: 'Public Portal', tone: 'slate' }
+                ],
+                sparkline: 'wave-blue',
+                target: '',
+                footer: 'Unique visitors on greatsolomonmpservices.com'
+            },
+            {
+                id: 'landing-page-abandonment',
+                label: 'Landing Page Abandonment',
+                value: '41.9%',
+                icon: 'trending_down',
+                iconBg: 'bg-emerald-50 text-emerald-600',
+                badges: [
+                    { text: '+3% vs prior period', tone: 'danger' },
+                    { text: 'Traffic Quality', tone: 'slate' }
+                ],
+                sparkline: 'wave-green',
+                target: '',
+                footer: 'Single-page non-converted visits'
+            }
+        ],
         stats: [
-            { label: 'Dashboards Live', value: '14', icon: 'dashboard', tone: 'positive' },
-            { label: 'KPIs Tracking', value: '62', icon: 'insights', tone: 'positive' },
-            { label: 'New Reports', value: '18', icon: 'description', tone: 'neutral' },
-            { label: 'Data Sources', value: '9', icon: 'storage', tone: 'neutral' }
+            { label: 'Total Collected Revenue', value: '₱1,935,500.00', icon: 'account_balance_wallet', tone: 'positive' },
+            { label: 'Applicants in Scope', value: '233', icon: 'groups', tone: 'positive' },
+            { label: 'Recruitment Conversion Rate', value: '36.1%', icon: 'hub', tone: 'positive' },
+            { label: 'Total Clients', value: '18', icon: 'table_chart', tone: 'neutral' }
         ],
         quickActions: [
             'Create new KPI report',
@@ -288,12 +392,11 @@ const SUBSYSTEMS = [
             'Connect a new data source'
         ],
         modules: [
-            'Dashboard & Data Visualization System',
-            'KPI Monitoring & Performance Tracking System',
-            'Predictive Analytics System',
-            'Custom Report Generation System',
-            'Data Aggregation & Integration System',
-            'Exportable Reports & Decision Support System'
+            'KPI Monitoring',
+            'Predictive Analytics',
+            'Custom Reports',
+            'Executive Import',
+            'Notifications'
         ],
         activity: [
             { label: 'Analytics feed refreshed', time: '2 hours ago', status: 'Completed' },
@@ -339,5 +442,5 @@ function getSubsystemById(id) {
 
 function getSubsystemFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    return params.get('subsystem');
+    return params.get('subsystem') || 'business-intelligence';
 }

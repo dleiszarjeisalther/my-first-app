@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </details>
                 <div class="sc-footer">
-                    <a class="sc-open-btn" href="../authentication_card_component_standard/code.html?subsystem=${encodeURIComponent(subsystem.id)}">
+                    <a class="sc-open-btn" href="../dashboard_app_layout/code.html?subsystem=${encodeURIComponent(subsystem.id)}">
                         <span>Open Dashboard</span>
                         <span class="material-symbols-outlined">arrow_forward</span>
                     </a>

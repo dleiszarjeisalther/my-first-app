@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarSubsystemNavPanel = document.getElementById('sidebar-subsystem-nav-panel');
     const sidebarSubsystemModulesNav = document.getElementById('sidebar-subsystem-modules-nav');
 
+    const sidebarBrandIconWrapper = document.getElementById('sidebar-brand-icon-wrapper');
+    const dashboardEyebrow = document.getElementById('dashboard-eyebrow');
+
     if (!dashboardHeading || !dashboardCopy || !dashboardStatsGrid || !dashboardCharts || !dashboardChartOverview || !dashboardChartBreakdown || !dashboardQuickActionsList || !dashboardActivityBody || !sidebarBrandTitle || !sidebarBrandCategory || !sidebarSubsystemNavPanel || !sidebarSubsystemModulesNav) return;
 
     const normalizeStatValue = value => {
@@ -25,7 +28,81 @@ document.addEventListener('DOMContentLoaded', () => {
         return Number.isFinite(parsed) ? Math.min(100, Math.max(5, Math.round(parsed))) : 60;
     };
 
+    const renderSparklineSvg = (type) => {
+        switch (type) {
+            case 'wave-green':
+                return `
+                    <svg class="w-20 sm:w-24 h-9 overflow-visible shrink-0" viewBox="0 0 100 36">
+                        <defs>
+                            <linearGradient id="wg-grad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 0 28 Q 25 28, 50 16 T 100 6" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 0 28 Q 25 28, 50 16 T 100 6 L 100 36 L 0 36 Z" fill="url(#wg-grad)"/>
+                    </svg>
+                `;
+            case 'up-blue':
+                return `
+                    <svg class="w-20 sm:w-24 h-9 overflow-visible shrink-0" viewBox="0 0 100 36">
+                        <defs>
+                            <linearGradient id="ub-grad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 0 32 L 100 8" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 0 32 L 100 8 L 100 36 L 0 36 Z" fill="url(#ub-grad)"/>
+                    </svg>
+                `;
+            case 'up-purple':
+                return `
+                    <svg class="w-20 sm:w-24 h-9 overflow-visible shrink-0" viewBox="0 0 100 36">
+                        <defs>
+                            <linearGradient id="up-grad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 0 32 L 100 10" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 0 32 L 100 10 L 100 36 L 0 36 Z" fill="url(#up-grad)"/>
+                    </svg>
+                `;
+            case 'down-teal':
+                return `
+                    <svg class="w-20 sm:w-24 h-9 overflow-visible shrink-0" viewBox="0 0 100 36">
+                        <defs>
+                            <linearGradient id="dt-grad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#0d9488" stop-opacity="0.0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 0 8 L 100 28" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 0 8 L 100 28 L 100 36 L 0 36 Z" fill="url(#dt-grad)"/>
+                    </svg>
+                `;
+            case 'wave-blue':
+                return `
+                    <svg class="w-20 sm:w-24 h-9 overflow-visible shrink-0" viewBox="0 0 100 36">
+                        <path d="M 0 24 Q 15 4, 30 24 T 60 24 T 100 10" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                `;
+            default:
+                return `
+                    <svg class="w-20 sm:w-24 h-9 overflow-visible shrink-0" viewBox="0 0 100 36">
+                        <path d="M 0 24 Q 25 36, 50 18 T 100 10" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                `;
+        }
+    };
+
     const moduleIconMap = {
+        'KPI Monitoring': 'trending_up',
+        'Predictive Analytics': 'hub',
+        'Custom Reports': 'description',
+        'Executive Import': 'upload_file',
+        'Notifications': 'notifications',
         'Client Management Subsystem': 'groups',
         'Applicant Registration and Profiling System': 'person_add',
         'Recruitment and Selection Subsystem': 'search',
@@ -158,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!subsystem) {
         dashboardHeading.textContent = 'Welcome back, Admin';
         dashboardCopy.textContent = 'Open the module selector and choose a subsystem to view its dedicated dashboard.';
-        breadcrumbCategory.textContent = 'No subsystem selected';
+        if (breadcrumbCategory) breadcrumbCategory.textContent = 'No subsystem selected';
         dashboardStatsGrid.innerHTML = '';
         dashboardCharts.innerHTML = '';
         dashboardQuickActionsList.innerHTML = '<p class="text-sm text-on-surface-variant">Select a subsystem from the module selector to display statistics, charts, and activity.</p>';
@@ -170,58 +247,226 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    document.title = `${subsystem.title} — Dashboard`;
-    dashboardHeading.textContent = 'Welcome back, Admin';
-    dashboardCopy.textContent = `Here's what's happening in ${subsystem.title} today.`;
+    document.title = `${subsystem.title}  EDashboard`;
+    if (subsystem.id === 'business-intelligence') {
+        if (dashboardEyebrow) dashboardEyebrow.textContent = 'KEY METRICS & HEALTH INDICATORS';
+        dashboardHeading.textContent = 'Executive Summary';
+        dashboardCopy.textContent = "Here's what's happening in Business Intelligence & Analytics today.";
+    } else {
+        if (dashboardEyebrow) dashboardEyebrow.textContent = 'KEY METRICS & PERFORMANCE';
+        dashboardHeading.textContent = 'Executive Summary';
+        dashboardCopy.textContent = `Here's what's happening in ${subsystem.title} today.`;
+    }
+
     if (breadcrumbCategory) breadcrumbCategory.textContent = subsystem.title;
     sidebarBrandTitle.textContent = subsystem.title;
     sidebarBrandCategory.textContent = subsystem.category;
-    sidebarSubsystemModulesNav.innerHTML = subsystem.modules.map((module, index) => {
-        const moduleName = typeof module === 'string' ? module : module.name;
-        const isActive = index === 0;
-        return `
-            <a href="#" class="sidebar-subsystem-link ${isActive ? 'active' : ''}">
-                <span class="material-symbols-outlined sidebar-subsystem-link-icon">${getModuleIcon(moduleName)}</span>
-                <span class="truncate">${moduleName}</span>
-            </a>
+
+    if (sidebarBrandIconWrapper) {
+        sidebarBrandIconWrapper.innerHTML = `
+            <img src="../images/logo-icon.svg" alt="Great Solomon Logo" class="w-8 h-8 object-contain" />
         `;
-    }).join('');
-    sidebarSubsystemNavPanel.classList.remove('hidden');
+    }
 
-    dashboardStatsGrid.innerHTML = subsystem.stats.map(stat => {
-        const deltaMap = {
-            'Pipeline Value': { text: '+12.4% vs last month', isPositive: true },
-            'Open Requests': { text: '+8.6% vs last week', isPositive: true },
-            'Active Clients': { text: '+3.2% vs last quarter', isPositive: true },
-            'Fill Rate': { text: '+4.5% vs target', isPositive: true }
-        };
-        const defaultDelta = stat.tone === 'positive'
-            ? { text: '+12% vs last month', isPositive: true }
-            : stat.tone === 'caution'
-            ? { text: '-2.4% vs last month', isPositive: false }
-            : { text: '+1.8% vs last month', isPositive: true };
-        const delta = stat.delta || deltaMap[stat.label] || defaultDelta;
+    const formatSectionTitle = title => {
+        const words = String(title || '').split(' ');
+        if (words.length > 1) {
+            return `<div>${words.slice(0, -1).join(' ')}</div><div class="mt-0.5">${words.slice(-1).join(' ')}</div>`;
+        }
+        return `<div>${title}</div>`;
+    };
 
-        return `
-            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col justify-between gap-4 overflow-hidden relative">
-                <div class="flex items-center justify-between gap-3">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">${stat.label}</p>
-                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                        <span class="material-symbols-outlined text-[20px]">${stat.icon}</span>
-                    </div>
+    if (Array.isArray(subsystem.sections) && subsystem.sections.length > 0) {
+        sidebarSubsystemModulesNav.innerHTML = subsystem.sections.map(section => `
+            <div class="sidebar-section-group">
+                <div class="sidebar-section-title px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 select-none leading-tight">
+                    ${formatSectionTitle(section.title)}
                 </div>
-                <div>
-                    <h3 class="text-3xl font-headline font-bold text-slate-900 leading-none">${stat.value}</h3>
+                <div class="space-y-1 mt-1">
+                    ${section.modules.map(mod => `
+                        <a href="#" data-module="${mod.name}" class="sidebar-subsystem-link group">
+                            <span class="sidebar-subsystem-link-icon w-10 h-10 rounded-full bg-slate-100/80 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-[20px] text-slate-700">${mod.icon || getModuleIcon(mod.name)}</span>
+                            </span>
+                            <div class="flex flex-col min-w-0 ml-1.5">
+                                <span class="sidebar-subsystem-link-title text-[13.5px] font-bold text-slate-900 leading-tight group-hover:text-blue-600 truncate">${mod.name}</span>
+                                <span class="sidebar-subsystem-link-subtitle text-[11px] text-slate-500 font-medium leading-tight mt-0.5 truncate">${mod.subtitle || ''}</span>
+                            </div>
+                        </a>
+                    `).join('')}
                 </div>
-                <div class="flex items-center gap-2 pt-3 border-t border-slate-100 text-xs">
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-semibold ${delta.isPositive ? 'text-emerald-700 bg-emerald-50' : 'text-rose-700 bg-rose-50'}">
-                        <span class="material-symbols-outlined text-[15px]">${delta.isPositive ? 'trending_up' : 'trending_down'}</span>
-                        <span>${delta.text}</span>
-                    </span>
+            </div>
+        `).join('');
+    } else {
+        const toolsModules = subsystem.modules.slice(0, 4);
+        const mgmtModules = subsystem.modules.slice(4);
+        let navHtml = `
+            <div class="sidebar-section-group">
+                <div class="sidebar-section-title px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 select-none leading-tight">
+                    ${formatSectionTitle(`${subsystem.title.toUpperCase()} TOOLS`)}
+                </div>
+                <div class="space-y-1 mt-1">
+                    ${toolsModules.map(m => {
+                        const name = typeof m === 'string' ? m : m.name;
+                        return `
+                            <a href="#" data-module="${name}" class="sidebar-subsystem-link group">
+                                <span class="sidebar-subsystem-link-icon w-10 h-10 rounded-full bg-slate-100/80 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-[20px] text-slate-700">${getModuleIcon(name)}</span>
+                                </span>
+                                <div class="flex flex-col min-w-0 ml-1.5">
+                                    <span class="sidebar-subsystem-link-title text-[13.5px] font-bold text-slate-900 leading-tight group-hover:text-blue-600 truncate">${name}</span>
+                                    <span class="sidebar-subsystem-link-subtitle text-[11px] text-slate-500 font-medium leading-tight mt-0.5 truncate">Subsystem Service</span>
+                                </div>
+                            </a>
+                        `;
+                    }).join('')}
                 </div>
             </div>
         `;
-    }).join('');
+        if (mgmtModules.length > 0) {
+            navHtml += `
+                <div class="sidebar-section-group">
+                    <div class="sidebar-section-title px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 select-none leading-tight">
+                        ${formatSectionTitle('SYSTEM MANAGEMENT')}
+                    </div>
+                    <div class="space-y-1 mt-1">
+                        ${mgmtModules.map(m => {
+                            const name = typeof m === 'string' ? m : m.name;
+                            return `
+                                <a href="#" data-module="${name}" class="sidebar-subsystem-link group">
+                                    <span class="sidebar-subsystem-link-icon w-10 h-10 rounded-full bg-slate-100/80 flex items-center justify-center shrink-0">
+                                        <span class="material-symbols-outlined text-[20px] text-slate-700">${getModuleIcon(name)}</span>
+                                    </span>
+                                    <div class="flex flex-col min-w-0 ml-1.5">
+                                        <span class="sidebar-subsystem-link-title text-[13.5px] font-bold text-slate-900 leading-tight group-hover:text-blue-600 truncate">${name}</span>
+                                        <span class="sidebar-subsystem-link-subtitle text-[11px] text-slate-500 font-medium leading-tight mt-0.5 truncate">System Workflow</span>
+                                    </div>
+                                </a>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        sidebarSubsystemModulesNav.innerHTML = navHtml;
+    }
+    sidebarSubsystemNavPanel.classList.remove('hidden');
+
+    const updateActiveNav = selectedModuleName => {
+        const dashboardLink = document.getElementById('sidebar-dashboard-link');
+        const moduleLinks = document.querySelectorAll('.sidebar-subsystem-link');
+
+        if (!selectedModuleName || selectedModuleName.toLowerCase() === 'dashboard') {
+            if (dashboardLink) dashboardLink.classList.add('active');
+            moduleLinks.forEach(link => link.classList.remove('active'));
+        } else {
+            if (dashboardLink) dashboardLink.classList.remove('active');
+            moduleLinks.forEach(link => {
+                const modName = link.getAttribute('data-module') || '';
+                if (modName.toLowerCase() === selectedModuleName.toLowerCase()) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+    };
+
+    const initialModule = urlParams.get('module') || '';
+    updateActiveNav(initialModule);
+
+    const dashboardLink = document.getElementById('sidebar-dashboard-link');
+    if (dashboardLink) {
+        dashboardLink.addEventListener('click', e => {
+            e.preventDefault();
+            updateActiveNav('');
+        });
+    }
+
+    sidebarSubsystemModulesNav.addEventListener('click', e => {
+        const link = e.target.closest('.sidebar-subsystem-link');
+        if (link) {
+            e.preventDefault();
+            const modName = link.getAttribute('data-module') || '';
+            updateActiveNav(modName);
+        }
+    });
+
+    if (Array.isArray(subsystem.executiveStats) && subsystem.executiveStats.length > 0) {
+        dashboardStatsGrid.innerHTML = subsystem.executiveStats.map(stat => `
+            <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between gap-3 transition-all hover:shadow-md">
+                <div class="flex items-start justify-between gap-2">
+                    <div class="w-8 h-8 rounded-xl ${stat.iconBg || 'bg-blue-50 text-blue-600'} flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-[19px]">${stat.icon}</span>
+                    </div>
+                    <div class="flex flex-col items-end gap-1">
+                        <div class="flex flex-wrap items-center justify-end gap-1.5">
+                            ${(stat.badges || []).map(b => `<span class="badge-pill badge-${b.tone}">${b.text}</span>`).join('')}
+                        </div>
+                        ${stat.badgeSub ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-purple-600 border border-purple-200/70">${stat.badgeSub}</span>` : ''}
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-3 my-0.5">
+                    <div>
+                        <h3 class="text-2xl sm:text-[25px] font-bold text-slate-900 leading-tight tracking-tight">${stat.value}</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-1 leading-tight">${stat.label}</p>
+                    </div>
+                    ${renderSparklineSvg(stat.sparkline)}
+                </div>
+
+                <div class="pt-2.5 border-t border-slate-100 text-[11px] text-slate-400 space-y-1">
+                    ${stat.target ? `
+                        <div class="flex items-center justify-between gap-1 text-[11px] text-slate-500">
+                            <span class="truncate">${stat.target}</span>
+                            <span class="material-symbols-outlined text-[14px] text-slate-400 shrink-0 cursor-pointer hover:text-slate-700" title="Edit Target">edit</span>
+                        </div>
+                    ` : ''}
+                    ${stat.footer ? `
+                        <div class="flex items-center justify-between gap-1 text-[11px] text-slate-500">
+                            <span class="truncate">${stat.footer}</span>
+                            ${!stat.target ? `<span class="material-symbols-outlined text-[14px] text-slate-400 shrink-0 cursor-pointer hover:text-slate-700" title="Edit">edit</span>` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `).join('');
+    } else {
+        dashboardStatsGrid.innerHTML = subsystem.stats.map(stat => {
+            const deltaMap = {
+                'Pipeline Value': { text: '+12.4% vs last month', isPositive: true },
+                'Open Requests': { text: '+8.6% vs last week', isPositive: true },
+                'Active Clients': { text: '+3.2% vs last quarter', isPositive: true },
+                'Fill Rate': { text: '+4.5% vs target', isPositive: true }
+            };
+            const defaultDelta = stat.tone === 'positive'
+                ? { text: '+12% vs last month', isPositive: true }
+                : stat.tone === 'caution'
+                ? { text: '-2.4% vs last month', isPositive: false }
+                : { text: '+1.8% vs last month', isPositive: true };
+            const delta = stat.delta || deltaMap[stat.label] || defaultDelta;
+
+            return `
+                <div class="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex flex-col justify-between gap-4 overflow-hidden relative">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-[19px]">${stat.icon}</span>
+                        </div>
+                        <span class="badge-pill ${delta.isPositive ? 'badge-success' : 'badge-danger'}">
+                            ${delta.text}
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl sm:text-[25px] font-bold text-slate-900 leading-tight">${stat.value}</h3>
+                        <p class="text-xs text-slate-500 font-medium mt-1">${stat.label}</p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-100 text-[11px] text-slate-400">
+                        <span>Updated live across all departments</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
 
     dashboardQuickActionsList.innerHTML = subsystem.quickActions.map(action => `
         <button type="button" class="quick-action-button">
@@ -259,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <button class="dashboard-chart-filter-button inline-flex items-center gap-1.5 hover:border-slate-300 transition-colors">
                     <span>${overviewTrend}</span>
-                    <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+                    <span class="material-symbols-outlined text-[20px] text-slate-700">keyboard_arrow_down</span>
                 </button>
             </div>
             ${renderLineChart(overviewData)}

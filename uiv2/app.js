@@ -282,7 +282,7 @@ function initSidebarController() {
     const openMobile = () => {
         isMobileOpen = true;
         sidebar.classList.remove('-translate-x-full', 'w-0', 'md:w-0', 'border-r-0', 'md:border-r-0', 'opacity-0', 'md:opacity-0', 'pointer-events-none', 'md:pointer-events-none');
-        sidebar.classList.add('translate-x-0', 'w-64', 'border-r', 'opacity-100');
+        sidebar.classList.add('translate-x-0', 'w-72', 'border-r', 'opacity-100');
         if (backdrop) {
             backdrop.classList.remove('hidden', 'opacity-0');
             backdrop.classList.add('block', 'opacity-100', 'pointer-events-auto');
@@ -314,10 +314,10 @@ function initSidebarController() {
             isDesktopOpen = !isDesktopOpen;
             if (isDesktopOpen) {
                 sidebar.classList.remove('w-0', 'border-r-0', 'opacity-0', 'pointer-events-none', 'md:opacity-0', 'md:border-r-0', 'md:w-0');
-                sidebar.classList.add('w-64', 'border-r', 'opacity-100');
+                sidebar.classList.add('w-72', 'border-r', 'opacity-100');
                 if (desktopToggle) desktopToggle.setAttribute('title', 'Close Sidebar');
             } else {
-                sidebar.classList.remove('w-64', 'border-r', 'opacity-100');
+                sidebar.classList.remove('w-72', 'w-64', 'border-r', 'opacity-100');
                 sidebar.classList.add('w-0', 'border-r-0', 'opacity-0', 'pointer-events-none', 'md:opacity-0', 'md:border-r-0', 'md:w-0');
                 if (desktopToggle) desktopToggle.setAttribute('title', 'Open Sidebar');
             }

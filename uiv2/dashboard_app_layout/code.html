@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en"><head>
-<link href="../app.css?v=3" rel="stylesheet"/>
-<script src="../subsystems.js?v=2" defer></script>
+<link href="../app.css?v=5" rel="stylesheet"/>
+<script src="../subsystems.js?v=3" defer></script>
 <script src="../app.js?v=5" defer></script>
-<script src="dashboard.js?v=5" defer></script>
+<script src="dashboard.js?v=8" defer></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dashboard</title>
@@ -12,122 +12,137 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 </head>
-<body class="bg-background text-on-background font-body h-screen flex flex-row overflow-hidden">
+<body class="bg-[#f3f6fc] text-slate-800 font-body h-screen flex flex-row overflow-hidden">
 <!-- Mobile Backdrop overlay -->
 <div id="sidebar-backdrop" class="fixed top-16 bottom-0 left-0 right-0 md:inset-0 bg-gray-900/50 backdrop-blur-md z-40 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
 <!-- Left Sidebar (Collapsible on Desktop, Slide-over on Mobile) -->
-<aside id="app-sidebar" class="dashboard-sidebar fixed md:static top-16 bottom-0 md:inset-y-0 left-0 z-50 bg-white flex flex-col h-[calc(100vh-4rem)] md:h-full shrink-0 shadow-xl md:shadow-none transition-all duration-300 ease-in-out overflow-hidden w-72 border-r border-slate-200 -translate-x-full md:translate-x-0 opacity-100">
-    <div class="px-5 pt-6 pb-5 border-b border-slate-200">
-        <div class="sidebar-brand-card rounded-[2rem] p-6 flex flex-col items-center text-center gap-3">
-            <span class="sidebar-brand-icon inline-flex items-center justify-center w-14 h-14 rounded-[1.75rem] bg-slate-100 text-primary text-2xl shadow-sm">
-                <span class="material-symbols-outlined">account_balance</span>
-            </span>
-            <p id="sidebar-brand-title" class="text-sm font-semibold text-slate-950 truncate">Subsystem</p>
-            <p id="sidebar-brand-category" class="text-xs text-slate-500 mt-1 truncate">Select a subsystem</p>
+<aside id="app-sidebar" class="dashboard-sidebar fixed md:static top-0 bottom-0 md:inset-y-0 left-0 z-50 bg-[#f8fafc] flex flex-col h-full shrink-0 shadow-xl md:shadow-none transition-all duration-300 ease-in-out overflow-hidden w-72 border-r border-slate-200/80 -translate-x-full md:translate-x-0 opacity-100">
+    <div class="p-4 sm:p-5 pb-2">
+        <div class="sidebar-brand-card flex flex-col items-center text-center relative mx-3" style="background-color: #f8fafc; border-radius: 32px; padding: 24px 12px; box-shadow: none; border: none;">
+            <div id="sidebar-brand-icon-wrapper" style="margin-bottom: 8px;">
+                <img src="../images/logo-icon.svg" alt="Great Solomon Logo" style="width: 36px; height: 36px; object-fit: contain;" />
+            </div>
+            <p id="sidebar-brand-title" class="font-bold tracking-tight leading-tight" style="font-size: 15px; color: #0f172a;">Business Intelligence</p>
+            <p id="sidebar-brand-category" class="font-medium leading-tight mt-1" style="font-size: 11px; color: #64748b;">Business Intelligence &amp; Analytics</p>
         </div>
     </div>
-    <nav class="flex-1 overflow-y-auto px-5 py-6 space-y-3">
+    <div class="border-b mx-0 mt-3 mb-3" style="border-color: #e2e8f0;"></div>
+    <nav class="flex-1 overflow-y-auto px-4 sm:px-5 pb-6 space-y-3 dashboard-sidebar-nav">
         <a id="sidebar-dashboard-link" class="sidebar-main-link active" href="#">
-            <span class="sidebar-main-link-icon material-symbols-outlined">dashboard</span>
-            <span class="font-label font-medium text-sm">Dashboard</span>
+            <span class="sidebar-main-link-icon">
+                <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            </span>
+            <span class="sidebar-main-link-label">Dashboard</span>
         </a>
-        <div id="sidebar-subsystem-nav-panel" class="sidebar-subsystem-nav-panel">
-            <nav id="sidebar-subsystem-modules-nav" class="sidebar-subsystem-modules"></nav>
+        <div id="sidebar-subsystem-nav-panel" class="sidebar-subsystem-nav-panel space-y-3">
+            <nav id="sidebar-subsystem-modules-nav" class="space-y-3"></nav>
         </div>
+    </nav>
 </aside>
 <!-- Main Content Wrapper -->
 <div class="flex-1 flex flex-col h-full overflow-hidden relative">
-<!-- TopNavBar (Adapted from JSON) -->
-<header class="bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30 flex justify-between items-center h-16 px-6 w-full z-30 shrink-0">
-<div class="flex items-center gap-3">
-<!-- Small Logo and Separator (Responsive across all screen sizes) -->
-<img src="../images/logo-icon.svg" alt="Great Solomon Manpower Services Inc. logo" class="w-8 h-8 rounded-lg object-contain border border-outline-variant/30 shadow-2xs shrink-0">
-<span class="text-outline-variant font-light select-none">|</span>
-<!-- Responsive Sidebar Toggle Button -->
-<button id="desktop-sidebar-toggle" type="button" class="flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low focus:outline-none transition border border-outline-variant/30 shrink-0 min-w-[2.5rem] min-h-[2.5rem]" title="Close Sidebar">
-<span class="material-symbols-outlined text-xl" id="sidebar-toggle-icon">menu_open</span>
-</button>
+<!-- TopNavBar -->
+<header class="bg-white/95 backdrop-blur-md shadow-2xs border-b flex justify-between items-center h-16 px-5 sm:px-6 w-full z-30 shrink-0" style="border-color: #e2e8f0;">
+<div class="flex items-center gap-1.5 sm:gap-2">
+<!-- Module Selector & Sidebar Toggle Group -->
+<div class="flex items-center gap-1">
+    <a href="../module_selector/code.html" class="flex items-center justify-center transition-colors" style="width: 44px; height: 44px; border-radius: 12px; background-color: #f8fafc;" title="Select Subsystem / Modules">
+        <img src="../images/logo-icon.svg" alt="Great Solomon Logo" style="width: 24px; height: 24px; object-fit: contain;" />
+    </a>
+    <div style="height: 20px; width: 1px; background-color: #e2e8f0; margin: 0 6px;"></div>
+    <button id="desktop-sidebar-toggle" type="button" class="flex items-center justify-center focus:outline-none transition-colors cursor-pointer" style="width: 44px; height: 44px; border-radius: 12px; background-color: #ffffff; border: 1px solid #e2e8f0;" title="Toggle Sidebar">
+        <span class="material-symbols-outlined" id="sidebar-toggle-icon" style="font-size: 24px; color: #334155;">menu_open</span>
+    </button>
+</div>
 </div>
 
 <!-- Right Side: Profile Dropdown -->
 <div class="relative flex items-center">
-<button id="profile-dropdown-toggle" type="button" class="flex items-center gap-3 p-1.5 rounded-full hover:bg-surface-container-low transition-colors focus:outline-none border border-transparent hover:border-outline-variant/30 cursor-pointer" aria-expanded="false" title="Account Menu">
-<div class="w-9 h-9 rounded-full bg-primary-container/30 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm shadow-2xs shrink-0">
-AU
+<button id="profile-dropdown-toggle" type="button" class="flex items-center gap-2.5 p-1 rounded-full transition-colors focus:outline-none cursor-pointer" aria-expanded="false" title="Account Menu">
+<div class="relative shrink-0">
+    <div class="rounded-full flex items-center justify-center font-bold" style="width: 40px; height: 40px; background-color: #eef2ff; color: #4338ca; border: 1px solid #e0e7ff; font-size: 14px;">
+        EU
+    </div>
+    <span class="absolute font-extrabold text-white text-center rounded-full" style="top: -4px; right: -4px; background-color: #dc2626; font-size: 10px; padding: 2px 6px; border: 2px solid #ffffff; min-width: 20px;">
+        34
+    </span>
 </div>
-<div class="hidden md:flex flex-col text-left mr-1">
-<span class="font-label font-semibold text-sm text-on-surface leading-tight">Admin User</span>
-<span class="text-xs text-on-surface-variant font-light">Administrator</span>
+<div class="hidden md:flex flex-col text-left ml-1">
+    <span class="font-bold leading-tight" style="font-size: 14px; color: #0f172a;">Executive User</span>
+    <span class="font-normal leading-tight" style="font-size: 12px; color: #64748b;">Executive</span>
 </div>
-<span class="material-symbols-outlined text-on-surface-variant text-sm hidden sm:inline-block">expand_more</span>
+<span class="material-symbols-outlined hidden sm:inline-block" style="font-size: 20px; color: #64748b;">expand_more</span>
 </button>
 
 <!-- Profile Dropdown Menu Container -->
-<div id="profile-dropdown-menu" class="absolute right-0 top-14 w-60 bg-surface rounded-2xl shadow-xl border border-outline-variant/30 py-2 z-50 transition-all duration-200 hidden opacity-0 scale-95 origin-top-right">
-<div class="px-4 py-3 border-b border-outline-variant/20 md:hidden">
-<p class="text-sm font-semibold text-on-surface">Admin User</p>
-<p class="text-xs text-on-surface-variant truncate">admin@example.com</p>
+<div id="profile-dropdown-menu" class="absolute right-0 top-12 w-60 bg-white rounded-2xl shadow-xl border border-slate-200/80 py-2 z-50 transition-all duration-200 hidden opacity-0 scale-95 origin-top-right">
+<div class="px-4 py-3 border-b border-slate-100 md:hidden">
+<p class="text-sm font-semibold text-slate-900">Executive User</p>
+<p class="text-xs text-slate-500 truncate">executive@example.com</p>
 </div>
 <div class="px-4 py-2 hidden md:block">
-<p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Account</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Account</p>
 </div>
-<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-lg text-on-surface-variant">person</span>
+<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors font-medium">
+<span class="material-symbols-outlined text-base text-slate-400">person</span>
 <span class="font-medium">My Profile</span>
 </a>
-<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-lg text-on-surface-variant">manage_accounts</span>
+<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors font-medium">
+<span class="material-symbols-outlined text-base text-slate-400">manage_accounts</span>
 <span class="font-medium">Account Settings</span>
 </a>
-<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-lg text-on-surface-variant">notifications</span>
+<a href="#" class="flex items-center gap-3 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors font-medium">
+<span class="material-symbols-outlined text-base text-slate-400">notifications</span>
 <span class="font-medium">Notifications</span>
 </a>
-<div class="my-1 border-t border-outline-variant/20"></div>
-<a href="#" onclick="openDashboardModal('dash-logout-modal'); return false;" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors font-medium cursor-pointer">
-<span class="material-symbols-outlined text-lg">logout</span>
+<div class="my-1 border-t border-slate-100"></div>
+<a href="#" onclick="openDashboardModal('dash-logout-modal'); return false;" class="flex items-center gap-3 px-4 py-2.5 text-xs text-red-600 hover:bg-red-50 transition-colors font-semibold cursor-pointer">
+<span class="material-symbols-outlined text-base">logout</span>
 <span>Log Out</span>
 </a>
 </div>
 </div>
 </header>
 <!-- Main Scrollable Area -->
-<main class="flex-1 overflow-y-auto bg-surface-container-lowest p-6 md:p-8">
-<div class="max-w-7xl mx-auto space-y-8">
-<div class="flex flex-col gap-6">
-    <!-- Enterprise Dynamic Breadcrumb Standard Bar (Multi-Module Compatible) -->
-    <div class="bg-surface-container-lowest rounded-xl sm:rounded-2xl border border-outline-variant/60 shadow-sm p-4 sm:px-6 sm:py-4.5 flex flex-col md:flex-row md:items-center justify-between gap-4 w-full max-w-full">
-        <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 sm:gap-3 min-w-0">
-            <!-- Active Synchronized View -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-primary/10 text-primary text-xs sm:text-sm font-bold border border-primary/20 shadow-2xs">
-                <span class="material-symbols-outlined text-[20px] fill">dashboard</span>
-                <span>Dashboard</span>
-                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" title="Live Synchronized View"></span>
-            </div>
-        </nav>
+<main class="flex-1 overflow-y-auto bg-[#f3f6fc] p-5 sm:p-7 md:p-8">
+<div class="max-w-7xl mx-auto space-y-7">
+<!-- Top Subheader / Scope and Filters Toolbar -->
+<div class="bg-white flex flex-col md:flex-row md:items-center justify-between gap-4 w-full max-w-full" style="border-radius: 28px; border: 1px solid #e2e8f0; padding: 12px 20px;">
+    <div class="flex items-center gap-2">
+        <a href="#" class="inline-flex items-center gap-2 font-bold" style="padding: 10px 18px; border-radius: 12px; background-color: #eff6ff; color: #4f46e5; border: 1px solid #dbeafe; font-size: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+            <span class="material-symbols-outlined" style="font-size: 20px;">grid_view</span>
+            <span>Dashboard</span>
+        </a>
     </div>
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full">
-        <div>
-            <h1 class="text-3xl font-headline font-bold text-on-surface" id="dashboard-heading">Welcome back, Admin</h1>
-            <p class="text-on-surface-variant text-sm mt-2" id="dashboard-copy">Here’s what’s happening in Financial Management today.</p>
-        </div>
-        <div class="flex flex-wrap items-center justify-start sm:justify-end gap-3 shrink-0">
-            <button id="export-report" class="btn-secondary dashboard-action-button m-0">
-                <span class="material-symbols-outlined">file_download</span>
-                Export Report
-            </button>
-            <button id="new-transaction" class="btn-primary dashboard-action-button m-0">
-                <span class="material-symbols-outlined">add</span>
-                New Transaction
-            </button>
-        </div>
+    <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <button type="button" class="inline-flex items-center gap-2 font-bold transition-colors" style="padding: 10px 22px; border-radius: 9999px; background-color: #1e2433; color: #ffffff; font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+            <span class="material-symbols-outlined" style="font-size: 18px; color: #94a3b8;">calendar_month</span>
+            <span>Scope: Jan 1 to Dec 31, 2026 | All departments</span>
+        </button>
+        <button type="button" class="inline-flex items-center gap-2 font-bold transition-colors" style="padding: 10px 22px; border-radius: 9999px; background-color: #ffffff; border: 1px solid #e2e8f0; color: #1e293b; font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+            <span class="material-symbols-outlined" style="font-size: 18px; color: #475569;">tune</span>
+            <span>Customize Filters &amp; Layout</span>
+        </button>
     </div>
 </div>
+
+<!-- Section Title: Key Metrics & Health Indicators / Executive Summary -->
+<div class="space-y-1">
+    <p class="text-[11px] font-bold text-[#4f46e5] uppercase tracking-wider font-label" id="dashboard-eyebrow">KEY METRICS &amp; HEALTH INDICATORS</p>
+    <h1 class="text-2xl font-bold font-headline text-slate-900 tracking-tight" id="dashboard-heading">Executive Summary</h1>
+    <p class="text-slate-500 text-xs mt-1 hidden" id="dashboard-copy">Executive Overview</p>
+</div>
+
 <!-- Stat Cards Grid -->
 <div id="dashboard-stats-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-<div id="dashboard-charts" class="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-6">
-    <div id="dashboard-chart-overview" class="dashboard-card bg-white shadow-sm border border-slate-200"></div>
-    <div id="dashboard-chart-breakdown" class="dashboard-card bg-white shadow-sm border border-slate-200"></div>
+
+<!-- Interactive Analytics Section -->
+<div class="space-y-4 pt-2">
+    <p class="text-[11px] font-bold text-[#4f46e5] uppercase tracking-wider font-label">INTERACTIVE ANALYTICS</p>
+    <div id="dashboard-charts" class="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-6">
+        <div id="dashboard-chart-overview" class="dashboard-card bg-white shadow-xs border border-slate-200/80 rounded-2xl p-6"></div>
+        <div id="dashboard-chart-breakdown" class="dashboard-card bg-white shadow-xs border border-slate-200/80 rounded-2xl p-6"></div>
+    </div>
 </div>
 <div class="grid grid-cols-1 xl:grid-cols-[2.5fr_1fr] gap-6">
     <div class="bg-white rounded-[1.75rem] shadow-sm border border-slate-200 overflow-hidden">
