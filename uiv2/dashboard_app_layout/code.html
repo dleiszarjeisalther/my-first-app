@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en"><head>
-<link href="../app.css?v=5" rel="stylesheet"/>
+<link href="../app.css?v=7" rel="stylesheet"/>
 <script src="../subsystems.js?v=3" defer></script>
 <script src="../app.js?v=5" defer></script>
-<script src="dashboard.js?v=8" defer></script>
+<script src="dashboard.js?v=9" defer></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dashboard</title>
@@ -107,22 +107,12 @@
 <main class="flex-1 overflow-y-auto bg-[#f3f6fc] p-5 sm:p-7 md:p-8">
 <div class="max-w-7xl mx-auto space-y-7">
 <!-- Top Subheader / Scope and Filters Toolbar -->
-<div class="bg-white flex flex-col md:flex-row md:items-center justify-between gap-4 w-full max-w-full" style="border-radius: 28px; border: 1px solid #e2e8f0; padding: 12px 20px;">
+<div class="bg-white flex items-center gap-4 w-full max-w-full" style="border-radius: 28px; border: 1px solid #e2e8f0; padding: 12px 20px;">
     <div class="flex items-center gap-2">
         <a href="#" class="inline-flex items-center gap-2 font-bold" style="padding: 10px 18px; border-radius: 12px; background-color: #eff6ff; color: #4f46e5; border: 1px solid #dbeafe; font-size: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
             <span class="material-symbols-outlined" style="font-size: 20px;">grid_view</span>
             <span>Dashboard</span>
         </a>
-    </div>
-    <div class="flex flex-wrap items-center gap-3 shrink-0">
-        <button type="button" class="inline-flex items-center gap-2 font-bold transition-colors" style="padding: 10px 22px; border-radius: 9999px; background-color: #1e2433; color: #ffffff; font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-            <span class="material-symbols-outlined" style="font-size: 18px; color: #94a3b8;">calendar_month</span>
-            <span>Scope: Jan 1 to Dec 31, 2026 | All departments</span>
-        </button>
-        <button type="button" class="inline-flex items-center gap-2 font-bold transition-colors" style="padding: 10px 22px; border-radius: 9999px; background-color: #ffffff; border: 1px solid #e2e8f0; color: #1e293b; font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
-            <span class="material-symbols-outlined" style="font-size: 18px; color: #475569;">tune</span>
-            <span>Customize Filters &amp; Layout</span>
-        </button>
     </div>
 </div>
 
@@ -205,8 +195,8 @@
 
 <!-- Dashboard Confirmation Modals -->
 <div id="dash-delete-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" onclick="if(event.target.id==='dash-delete-modal') closeDashboardModal('dash-delete-modal')">
-<div class="bg-surface rounded-3xl max-w-md w-full p-6 md:p-7 shadow-2xl border border-outline-variant/30 relative transform scale-95 transition-transform duration-200" onclick="event.stopPropagation()">
-<button type="button" onclick="closeDashboardModal('dash-delete-modal')" class="absolute top-5 right-5 p-1.5 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Close modal">
+<div class="bg-surface max-w-md w-full p-6 md:p-7 shadow-2xl relative transform scale-95 transition-transform duration-200" style="border-radius: 28px; border: 1px solid rgba(226, 232, 240, 0.8); background-color: #ffffff;" onclick="event.stopPropagation()">
+<button type="button" onclick="closeDashboardModal('dash-delete-modal')" class="absolute top-5 right-5 p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors" title="Close modal">
 <span class="material-symbols-outlined text-xl">close</span>
 </button>
 <div class="flex items-center gap-3 mb-5">
@@ -214,18 +204,18 @@
 <span class="material-symbols-outlined text-2xl">delete_forever</span>
 </div>
 <div>
-<h3 class="text-lg font-headline font-bold text-on-surface">Delete User Record</h3>
-<p class="text-xs text-on-surface-variant">Permanent action &bull; Revoke access</p>
+<h3 class="text-lg font-headline font-bold text-slate-900">Delete User Record</h3>
+<p class="text-xs text-slate-500">Permanent action &bull; Revoke access</p>
 </div>
 </div>
-<p class="text-sm text-on-surface leading-relaxed mb-6">
+<p class="text-sm text-slate-600 leading-relaxed mb-6">
 Are you sure you want to delete the account for <strong id="delete-target-name" class="font-semibold text-red-600">Sarah Jenkins</strong>? All historical logs and permissions will be purged.
 </p>
-<div class="flex justify-end gap-3 pt-4 border-t border-outline-variant/20">
-<button type="button" onclick="closeDashboardModal('dash-delete-modal')" class="px-4 py-2 rounded-xl border border-outline-variant/50 text-on-surface font-medium text-sm hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-end gap-3 pt-4 border-t border-slate-200/60">
+<button type="button" onclick="closeDashboardModal('dash-delete-modal')" class="px-5 py-2.5 font-semibold text-sm transition-colors cursor-pointer" style="border-radius: 9999px; border: 1.5px solid #cbd5e1; background-color: #ffffff; color: #1e293b;">
 Cancel
 </button>
-<button type="button" onclick="confirmDashboardAction('dash-delete-modal', 'User record deleted successfully!')" class="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm shadow-md shadow-red-600/20 transition-all cursor-pointer">
+<button type="button" onclick="confirmDashboardAction('dash-delete-modal', 'User record deleted successfully!')" class="flex items-center gap-1.5 px-5 py-2.5 text-white font-semibold text-sm transition-all cursor-pointer" style="border-radius: 9999px; background-color: #dc2626; border: none; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);">
 <span class="material-symbols-outlined text-base">delete</span>
 <span>Delete Permanently</span>
 </button>
@@ -234,22 +224,22 @@ Cancel
 </div>
 
 <div id="dash-logout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" onclick="if(event.target.id==='dash-logout-modal') closeDashboardModal('dash-logout-modal')">
-<div class="bg-surface rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-outline-variant/30 relative transform scale-95 transition-transform duration-200 text-center" onclick="event.stopPropagation()">
-<button type="button" onclick="closeDashboardModal('dash-logout-modal')" class="absolute top-4 right-4 p-1.5 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Close modal">
+<div class="bg-surface max-w-sm w-full p-7 shadow-2xl relative transform scale-95 transition-transform duration-200 text-center" style="border-radius: 28px; border: 1px solid rgba(226, 232, 240, 0.8); background-color: #ffffff; padding: 2rem 1.75rem;" onclick="event.stopPropagation()">
+<button type="button" onclick="closeDashboardModal('dash-logout-modal')" class="absolute top-4 right-4 p-1.5 rounded-full transition-colors flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100" style="width: 32px; height: 32px;" title="Close modal">
 <span class="material-symbols-outlined text-xl">close</span>
 </button>
-<div class="w-14 h-14 shrink-0 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-on-surface mx-auto mb-4">
-<span class="material-symbols-outlined text-3xl text-on-surface-variant">logout</span>
+<div class="w-14 h-14 shrink-0 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: #f0edff;">
+<span class="material-symbols-outlined text-3xl" style="color: #4338ca;">logout</span>
 </div>
-<h3 class="text-xl font-headline font-bold text-on-surface mb-2">Sign Out of Session?</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+<h3 class="text-xl font-headline font-bold text-slate-900 mb-2">Sign Out of Session?</h3>
+<p class="text-sm text-slate-500 leading-relaxed mb-6" style="max-width: 280px; margin-left: auto; margin-right: auto;">
 Are you sure you want to log out of your current administration session?
 </p>
 <div class="flex gap-3">
-<button type="button" onclick="closeDashboardModal('dash-logout-modal')" class="flex-1 px-4 py-2.5 rounded-xl border border-outline-variant/50 text-on-surface font-medium text-sm hover:bg-surface-container-low transition-colors cursor-pointer">
+<button type="button" onclick="closeDashboardModal('dash-logout-modal')" class="flex-1 px-4 py-2.5 font-bold text-sm transition-colors cursor-pointer" style="border-radius: 9999px; border: 1.5px solid #cbd5e1; background-color: #ffffff; color: #1e293b; height: 44px;">
 Cancel
 </button>
-<button type="button" onclick="confirmDashboardAction('dash-logout-modal', 'Signed out successfully.')" class="flex-1 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm shadow-md shadow-red-600/20 transition-all cursor-pointer">
+<button type="button" onclick="confirmDashboardAction('dash-logout-modal', 'Signed out successfully.')" class="flex-1 px-4 py-2.5 font-bold text-sm text-white transition-all cursor-pointer" style="border-radius: 9999px; background-color: #dc2626; border: none; height: 44px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);">
 Sign Out
 </button>
 </div>

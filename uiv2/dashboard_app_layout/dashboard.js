@@ -269,17 +269,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const formatSectionTitle = title => {
-        const words = String(title || '').split(' ');
-        if (words.length > 1) {
-            return `<div>${words.slice(0, -1).join(' ')}</div><div class="mt-0.5">${words.slice(-1).join(' ')}</div>`;
+        const raw = String(title || '').trim();
+        if (raw.endsWith(' TOOLS')) {
+            const prefix = raw.slice(0, -6);
+            return `<div>${prefix}</div><div style="margin-top: 1px;">TOOLS</div>`;
         }
-        return `<div>${title}</div>`;
+        return `<div>${raw}</div>`;
     };
 
     if (Array.isArray(subsystem.sections) && subsystem.sections.length > 0) {
         sidebarSubsystemModulesNav.innerHTML = subsystem.sections.map(section => `
             <div class="sidebar-section-group">
-                <div class="sidebar-section-title px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 select-none leading-tight">
+                <div class="sidebar-section-title" style="padding: 10px 10px 4px 10px; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.075em; color: #71829d; line-height: 1.25; user-select: none;">
                     ${formatSectionTitle(section.title)}
                 </div>
                 <div class="space-y-1 mt-1">
@@ -302,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mgmtModules = subsystem.modules.slice(4);
         let navHtml = `
             <div class="sidebar-section-group">
-                <div class="sidebar-section-title px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 select-none leading-tight">
+                <div class="sidebar-section-title" style="padding: 10px 10px 4px 10px; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.075em; color: #71829d; line-height: 1.25; user-select: none;">
                     ${formatSectionTitle(`${subsystem.title.toUpperCase()} TOOLS`)}
                 </div>
                 <div class="space-y-1 mt-1">
@@ -326,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mgmtModules.length > 0) {
             navHtml += `
                 <div class="sidebar-section-group">
-                    <div class="sidebar-section-title px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 select-none leading-tight">
+                    <div class="sidebar-section-title" style="padding: 10px 10px 4px 10px; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.075em; color: #71829d; line-height: 1.25; user-select: none;">
                         ${formatSectionTitle('SYSTEM MANAGEMENT')}
                     </div>
                     <div class="space-y-1 mt-1">

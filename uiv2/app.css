@@ -1610,6 +1610,21 @@ button, label[for^="filter-"] {
   margin-top: 0.5rem;
 }
 
+.sidebar-section-group {
+  margin-top: 0.5rem;
+}
+
+.sidebar-section-title {
+  padding: 0.65rem 0.65rem 0.25rem 0.65rem;
+  font-size: 0.6875rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.075em !important;
+  color: #71829d !important;
+  line-height: 1.25 !important;
+  user-select: none !important;
+}
+
 .dashboard-sidebar > .flex-1 {
   min-height: 0;
 }
@@ -2143,6 +2158,7 @@ button, label[for^="filter-"] {
 .rounded-lg { border-radius: var(--radius-lg); }
 .rounded-xl { border-radius: var(--radius-xl); }
 .rounded-2xl { border-radius: var(--radius-2xl); }
+.rounded-3xl { border-radius: 1.75rem; }
 .rounded-full { border-radius: var(--radius-full); }
 
 /* Shadows & Effects */
